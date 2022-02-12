@@ -1,0 +1,24 @@
+
+/* TEAM */
+
+Your title: Mohammed Taysser
+
+Site: mohamedtaysser983@gmail.com
+
+linkedin: linkedin.com/in/mohammed-taysser/
+
+
+/* THANKS */
+
+Name: https://github.com/Mohammed-Taysser
+
+/* SITE */
+
+Last update: 12 Feb 2022
+
+Standards: HTML5, CSS3, ES5, ES6
+
+Components: Bootstrap, cropperJs, FontAwesome.
+
+Software: vsCode, fireFox Developer Edition
+
