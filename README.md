@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# [paperCuts][vercel-live]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+paperCuts is a site that lists free eBooks 📚 and online books related to programming, computer science, software engineering, web design and more which are provided by publishers or authors on their websites legally. We do not host pirated books or we do not link to sites that host pirated books.
 
-## Available Scripts
+for live demo
+- [![vercel](https://img.shields.io/badge/-vercel-05122A?style=plastic&logo=vercel)][vercel-live]
+- [![Netlify Status](https://api.netlify.com/api/v1/badges/e892e00f-462d-447b-8941-f45d11701c94/deploy-status)][netlify-live]
 
-In the project directory, you can run:
+[vercel-live]: https://papercuts.vercel.app/
+[netlify-live]: https://papercuts-project.netlify.app/
 
-### `npm start`
+## Used tools
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [`Bootstrap v5.1`](https://getbootstrap.com/)
+- [`Axios`](https://axios-http.com/)
+- [`Tajawal Arabic Font`](https://fonts.google.com/specimen/Tajawal)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Want To Use On localhost (local deploy)
 
-### `npm test`
+### First Step
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Download the files from [releases](https://github.com/Mohammed-Taysser/paperCuts/releases) or clone it with **git** version control:
 
-### `npm run build`
+```shell
+git clone https://github.com/Mohammed-Taysser/paperCuts.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Second Step
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+install dependencies by
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+npm install
+```
 
-### `npm run eject`
+### Pre Last Step
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+start json-server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```shell
+npm run json_server
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Last Step
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+to start just run
 
-## Learn More
+```shell
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Adding Bootstrap
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
+npm install bootstrap
+```
 
-### Code Splitting
+Import Bootstrap CSS and optionally Bootstrap theme CSS in the beginning of your `src/index.js` file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```js
+import 'bootstrap/dist/css/bootstrap.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
+```
 
-### Analyzing the Bundle Size
+### Using a Custom Theme
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To enable `scss` in Create React App you will need to install `sass`.
 
-### Making a Progressive Web App
+```shell
+npm install sass
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To customize Bootstrap, create a file called `src/custom.scss` (or similar) and import the Bootstrap source stylesheet. Add any overrides before the imported file(s). You can reference [Bootstrap's documentation](https://getbootstrap.com/docs/4.6/getting-started/theming/#variable-defaults) for the names of the available variables.
 
-### Advanced Configuration
+```scss
+// Override default variables before the import
+$body-bg: #000;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+```
 
-### Deployment
+Finally, import the newly created `.scss` file instead of the default Bootstrap `.css` in the beginning of your `src/index.js` file, for example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```js
+import './custom.scss';
+```
 
-### `npm run build` fails to minify
+## Json Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+thanks tp [`json server`](https://www.npmjs.com/package/json-server) for create a full fake REST API with zero coding in less than 30 seconds
+
+also create fake json using [`json-generator`](https://json-generator.com/)
+
+for image url use [`picsum.photos`](https://picsum.photos/)
