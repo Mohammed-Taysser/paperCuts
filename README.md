@@ -1,7 +1,7 @@
 # [paperCuts][vercel-live] 💥
 
 <div style='text-align:center;'>
-  <img src='assets/img/favicon.png' height='300px' style='display:inline-block;'>
+  <img src='src/assets/img/favicon.png' height='300px' style='display:inline-block;'>
 </div>
 
 paperCuts is a site that lists free eBooks 📚 and online books related to programming, computer science, software engineering, web design and more which are provided by publishers or authors on their websites legally. We do not host pirated books or we do not link to sites that host pirated books.
