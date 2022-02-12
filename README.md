@@ -1,8 +1,13 @@
-# [paperCuts][vercel-live]
+# [paperCuts][vercel-live] 💥
+
+<div style='text-align:center;'>
+  <img src='assets/img/favicon.png' height='300px' style='display:inline-block;'>
+</div>
 
 paperCuts is a site that lists free eBooks 📚 and online books related to programming, computer science, software engineering, web design and more which are provided by publishers or authors on their websites legally. We do not host pirated books or we do not link to sites that host pirated books.
 
 for live demo
+
 - [![vercel](https://img.shields.io/badge/-vercel-05122A?style=plastic&logo=vercel)][vercel-live]
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/e892e00f-462d-447b-8941-f45d11701c94/deploy-status)][netlify-live]
 
@@ -11,11 +16,11 @@ for live demo
 
 ## Used tools
 
-- [`Bootstrap v5.1`](https://getbootstrap.com/)
+- [`Bootstrap`](https://getbootstrap.com/)
 - [`Axios`](https://axios-http.com/)
 - [`Tajawal Arabic Font`](https://fonts.google.com/specimen/Tajawal)
 
-## Want To Use On localhost (local deploy)
+## Quick start 🚀
 
 ### First Step
 
@@ -48,6 +53,10 @@ to start just run
 ```shell
 npm start
 ```
+
+## Features 💬
+
+- Designed with progressive enhancement in mind.
 
 ## Adding Bootstrap
 
