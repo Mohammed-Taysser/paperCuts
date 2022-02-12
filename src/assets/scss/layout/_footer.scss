@@ -1,0 +1,15 @@
+footer.footer{
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  .shapes {
+    .dotted-shape {
+      position: absolute;
+      top: 50px;
+      user-select: none;
+      left: 50px;
+      transform: scale(2);
+      opacity: 0.4;
+    }
+  }
+}
