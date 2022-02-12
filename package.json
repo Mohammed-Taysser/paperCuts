@@ -1,7 +1,7 @@
 {
   "name": "papercuts",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
+    "json_server": "json-server -w localhost_server/db.json -p 8080 -r localhost_server/routes.json ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +35,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "axios": "^0.25.0",
+    "bootstrap": "^5.1.3",
+    "react-router-dom": "^6.2.1",
+    "sass": "^1.49.7"
   }
 }
