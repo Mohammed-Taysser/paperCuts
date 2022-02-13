@@ -1,5 +1,8 @@
-import React, { useEffect } from 'react';
-import logo from './assets/img/favicon.png';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import MainRoute from './routes';
+import AuthContext from './context/auth';
 
 function App() {
   useEffect(() => {
@@ -8,27 +11,26 @@ function App() {
     };
   }, []);
 
+  let is_auth_default = false,
+    user_id_default = null;
+
+  if (localStorage.getItem('auth') !== null) {
+    const auth_localStorage = JSON.parse(localStorage.getItem('auth'));
+    is_auth_default = auth_localStorage.isAuth;
+    user_id_default = auth_localStorage.userId;
+  }
+
+  const [isAuth, setIsAuth] = useState(is_auth_default);
+  const [userId, setUserId] = useState(user_id_default);
+  const auth_context_data = { isAuth, userId, setIsAuth, setUserId };
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-        <button className='btn btn-success'>add</button>
-        <button className='btn btn-aurora'>add</button>
-        <button className='btn btn-primary'>add</button>
-        <button className='btn btn-warning'>add</button>
-      </header>
-    </div>
+    <AuthContext.Provider value={auth_context_data}>
+      <BrowserRouter>
+        <Navbar />
+        <MainRoute />
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 
