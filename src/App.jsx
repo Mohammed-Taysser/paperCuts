@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import MainRoute from './routes';
 import AuthContext from './context/auth';
 
@@ -29,6 +30,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <MainRoute />
+        <Footer />
       </BrowserRouter>
     </AuthContext.Provider>
   );
