@@ -36,7 +36,7 @@ function Navbar() {
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbar-main-menu'>
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+            <ul className='navbar-nav me-auto'>
               <li className='nav-item'>
                 <NavLink
                   className={`nav-link ${({ isActive }) =>
@@ -79,7 +79,7 @@ function Navbar() {
                 </button>
               </div>
             </form>
-            <ul className='navbar-nav mb-2 mb-lg-0'>
+            <ul className='navbar-nav'>
               {auth_context.isAuth ? (
                 <>
                   <li className='nav-item'>
