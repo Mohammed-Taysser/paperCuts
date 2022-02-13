@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../context/auth';
 import { FcSearch } from 'react-icons/fc';
 import 'bootstrap/js/src/collapse';
@@ -7,6 +7,7 @@ import favicon from '../assets/img/favicon.png';
 
 function Navbar() {
   const auth_context = useContext(AuthContext);
+
   const onLogoutClick = (e) => {
     e.preventDefault();
     auth_context.setIsAuth(false);
@@ -35,19 +36,31 @@ function Navbar() {
           <div className='collapse navbar-collapse' id='navbar-main-menu'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <Link className='nav-link active' to='/'>
+                <NavLink
+                  className={`nav-link ${({ isActive }) =>
+                    isActive ? 'active' : null}`}
+                  to='/'
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/category'>
+                <NavLink
+                  className={`nav-link ${({ isActive }) =>
+                    isActive ? 'active' : null}`}
+                  to='/category'
+                >
                   categories
-                </Link>
+                </NavLink>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/books'>
+                <NavLink
+                  className={`nav-link ${({ isActive }) =>
+                    isActive ? 'active' : null}`}
+                  to='/books'
+                >
                   books
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <form className='me-auto' action='/search'>
@@ -68,31 +81,44 @@ function Navbar() {
               {auth_context.isAuth ? (
                 <>
                   <li className='nav-item'>
-                    <Link className='nav-link' to='/profile'>
+                    <NavLink
+                      className={`nav-link ${({ isActive }) =>
+                        isActive ? 'active' : null}`}
+                      to='/profile'
+                    >
                       Profile
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <Link
-                      className='nav-link'
+                    <NavLink
+                      className={`nav-link ${({ isActive }) =>
+                        isActive ? 'active' : null}`}
                       to='/logout'
                       onClick={onLogoutClick}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </li>
                 </>
               ) : (
                 <>
                   <li className='nav-item'>
-                    <Link className='nav-link' to='/login'>
+                    <NavLink
+                      className={`nav-link ${({ isActive }) =>
+                        isActive ? 'active' : null}`}
+                      to='/login'
+                    >
                       Login
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <Link className='nav-link' to='/register'>
+                    <NavLink
+                      className={`nav-link ${({ isActive }) =>
+                        isActive ? 'active' : null}`}
+                      to='/register'
+                    >
                       register
-                    </Link>
+                    </NavLink>
                   </li>
                 </>
               )}
