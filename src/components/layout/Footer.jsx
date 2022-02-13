@@ -8,8 +8,8 @@ import {
   FaMapMarkerAlt,
   FaRegEnvelope,
 } from 'react-icons/fa';
-import favicon from '../assets/img/favicon.png';
-import dottedShape from '../assets/img/dotted-shape.svg';
+import favicon from '../../assets/img/favicon.png';
+import dottedShape from '../../assets/img/dotted-shape.svg';
 
 const Shapes = () => {
   return (

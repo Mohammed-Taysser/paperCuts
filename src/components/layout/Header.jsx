@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroHerder from '../assets/img/hero-header.jpg';
+import HeroHerder from '../../assets/img/hero-header.jpg';
 
 function Header() {
   return (
