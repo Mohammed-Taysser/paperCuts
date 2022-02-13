@@ -7,10 +7,15 @@ body {
   }
 }
 
-.arabic-font {
-  font-family: Tajawal, sans-serif;
-}
+a {
+  color: $main-color;
+  text-decoration: none;
+  transition: 0.3s;
 
+  &:hover {
+    color: $dark-main-color;
+  }
+}
 .user-select-none {
   user-select: none;
 }
@@ -104,5 +109,18 @@ body {
   .input-group-text {
     color: #333;
     background-color: #f8f9fa;
+  }
+}
+
+.more-details {
+  text-align: center;
+  .small-title {
+    letter-spacing: 4px;
+    color: $main-color;
+    text-transform: uppercase;
+  }
+  .big-title {
+    margin-top: -7px;
+    font-size: 2.5rem;
   }
 }
