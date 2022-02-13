@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ServicesAPI } from '../api/Localhost';
-import ServicesItem from './servicesItem';
+import ServicesItem from './ServicesItem';
+import SectionTitle from './SectionTitle';
 import Alert from './bootstrap-component/Alert';
 import Spinner from './bootstrap-component/Spinner';
 
@@ -30,7 +31,7 @@ function Services() {
         // handle error
         if (error.toString() === 'Error: Network Error') {
           setHasError(true);
-          setErrorMessage('Server Is Down, Please Try On Another Time');
+          setErrorMessage('Localhost Server Is Down, Please Try On Another Time');
         }
       })
       .then(() => {
@@ -51,10 +52,7 @@ function Services() {
   return (
     <>
       <section className='services-section my-5 py-5'>
-        <div className='more-details'>
-          <small className='small-title'>what we introduce</small>
-          <h2 className='h1 big-title'>our services</h2>
-        </div>
+        <SectionTitle title='our services' subtitle='what we introduce' />
         <div className='container'>
           <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
             {render_message()}
