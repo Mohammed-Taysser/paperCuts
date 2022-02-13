@@ -21,6 +21,10 @@ for live demo
 - [`Bootstrap`](https://getbootstrap.com/)
 - [`Axios`](https://axios-http.com/)
 - [`Tajawal Arabic Font`](https://fonts.google.com/specimen/Tajawal)
+- [`React.js`](https://reactjs.org/)
+- [`React-Router-Dom`](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
+- [`React-Icons`](https://react-icons.github.io/react-icons)
+- [`sass`](https://sass-lang.com/)
 
 ## Quick start 🚀
 
