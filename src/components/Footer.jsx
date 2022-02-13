@@ -48,9 +48,9 @@ const QuickLinks = () => {
       <div className='widget links mt-3'>
         <h4 className='mb-3 fw-bolder'>quick links</h4>
         <ul className='list-unstyled'>
-          {links_arr.map((link) => {
+          {links_arr.map((link, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Link to={link.href}>{link.label}</Link>
               </li>
             );
@@ -90,10 +90,13 @@ const ContactUs = () => {
           </li>
           <li className='my-2'>
             <div className='social-media-container mt-3'>
-              {social_media_Arr.map((link) => {
+              {social_media_Arr.map((link, index) => {
                 return (
-                  <a href={link.href} className='mx-2 d-inline-block h4'>
-                    {' '}
+                  <a
+                    href={link.href}
+                    className='mx-2 d-inline-block h4'
+                    key={index}
+                  >
                     {link.label}
                   </a>
                 );
