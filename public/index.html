@@ -25,22 +25,83 @@
       font-display: swap;
     }
 
+    @keyframes loading_animation {
+      0% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -105;
+      }
+
+      50% {
+        stroke-dasharray: 80 10;
+        stroke-dashoffset: -160;
+      }
+
+      100% {
+        stroke-dasharray: 1 98;
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .loading-overlay {
+      position: fixed;
+      background: #f8f9fa;
+      width: 100%;
+      height: 100%;
+      z-index: 90;
+      display: none;
+    }
+
+    .loading-container {
+      position: fixed;
+      top: 50%;
+      z-index: 100;
+      text-align: center;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      display: none;
+      width: 200px;
+      height: 200px;
+    }
+
+    .loading-container .spinner {
+      -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+      transform-origin: center;
+      -webkit-animation-name: loading_animation;
+      animation-name: loading_animation;
+      -webkit-animation-duration: 1.2s;
+      animation-duration: 1.2s;
+      -webkit-animation-timing-function: cubic-bezier;
+      animation-timing-function: cubic-bezier;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      fill: transparent;
+      stroke: #16b8ba;
+      stroke-width: 7px;
+      stroke-linecap: round;
+    }
+
+    body.load .loading-container,
+    body.load .loading-overlay {
+      display: block;
+    }
+
   </style>
 </head>
 
 <body class='load'>
   <div class="loading-overlay"></div>
   <div class="loading-container" id="js-loading-container">
-    <div class="loading-divider" aria-hidden="true"></div>
-    <p class="loading-text" aria-label="Loading">
-      <span class="letter" aria-hidden="true">L</span>
-      <span class="letter" aria-hidden="true">o</span>
-      <span class="letter" aria-hidden="true">a</span>
-      <span class="letter" aria-hidden="true">d</span>
-      <span class="letter" aria-hidden="true">i</span>
-      <span class="letter" aria-hidden="true">n</span>
-      <span class="letter" aria-hidden="true">g</span>
-    </p>
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <filter class="loading-shadow">
+          <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#fc6767" />
+        </filter>
+      </defs>
+      <circle class="spinner" cx="50" cy="50" r="45" />
+    </svg>
   </div>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
