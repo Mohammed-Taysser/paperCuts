@@ -1,18 +1,20 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth';
 import { FcSearch } from 'react-icons/fc';
 import 'bootstrap/js/src/collapse';
 import favicon from '../assets/img/favicon.png';
 
 function Navbar() {
-  const auth_context = useContext(AuthContext);
+  const auth_context = useContext(AuthContext),
+    navigate_to = useNavigate();
 
   const onLogoutClick = (e) => {
     e.preventDefault();
     auth_context.setIsAuth(false);
     auth_context.setUserId(null);
     localStorage.removeItem('auth');
+    navigate_to('/login');
   };
 
   return (
