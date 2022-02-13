@@ -1,14 +1,14 @@
-import React from 'react'
-import Services from '../components/services'
-import Header from '../components/Header'
+import React from 'react';
+import Services from '../components/Services';
+import Header from '../components/Header';
 
 function homepage() {
   return (
     <>
-    <Header />
+      <Header />
       <Services />
     </>
-  )
+  );
 }
 
-export default homepage
+export default homepage;
