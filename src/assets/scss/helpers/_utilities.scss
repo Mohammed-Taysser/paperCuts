@@ -7,6 +7,11 @@ body {
   }
 }
 
+::selection {
+  background-color: $main-color;
+  color: #fff;
+}
+
 a {
   color: $main-color;
   text-decoration: none;
