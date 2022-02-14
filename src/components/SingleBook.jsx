@@ -13,22 +13,13 @@ function SingleBook(props) {
         </div>
         <div className='card-body'>
           <h5 className='card-title'>
-            <Link to={`/books/${book.id}`}> {book.title} </Link>
+            <Link to={`/books/${book.id}`} className='stretched-link'> {book.title} </Link>
           </h5>
-          <h6 className='card-subtitle mb-2 text-muted'> {book.author} </h6>
-          <h6 className='card-subtitle mb-3 d-flex justify-content-between'>
+          <h6 className='card-subtitle mb-3 text-muted'> {book.author} </h6>
+          <h6 className='card-subtitle d-flex justify-content-between'>
             <span className='text-aurora'>{book.price}$</span>
-            <span className=''>
-              {<Stars stars_length={book.stars} />}
-            </span>
+            <span className=''>{<Stars stars_length={book.stars} />}</span>
           </h6>
-          <p className='card-text'>{book.info.slice(0, 100)}...</p>
-          <Link
-            to={`/books/${book.id}`}
-            className='btn btn-aurora stretched-link'
-          >
-            Continue reading
-          </Link>
         </div>
       </div>
     </div>
