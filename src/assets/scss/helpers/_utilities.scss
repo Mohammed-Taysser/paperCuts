@@ -117,6 +117,12 @@ a {
   }
 }
 
+.special-small-title {
+  letter-spacing: 4px;
+  color: $main-color;
+  text-transform: uppercase;
+}
+
 .more-details {
   text-align: center;
   .small-title {
