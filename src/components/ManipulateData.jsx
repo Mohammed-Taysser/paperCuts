@@ -8,4 +8,12 @@ const Stars = ({ stars_length }) => {
   return <span className='text-warning'>{temp}</span>;
 };
 
-export { Stars };
+Stars.defaultProps = {
+  stars_length: 1,
+};
+
+function capitalize(str) {
+  return str.trim().replace(/^\w/, (char) => char.toUpperCase());
+}
+
+export { Stars, capitalize };
