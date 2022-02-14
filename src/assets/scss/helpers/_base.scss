@@ -34,11 +34,6 @@
 
 .latest-books {
   .single-book {
-    .img {
-      img {
-        height: 320px;
-      }
-    }
     &:hover {
       .img {
         position: relative;
@@ -60,7 +55,7 @@
     .single-book {
       .img {
         img {
-          height: auto;
+          height: 300px;
         }
       }
     }
@@ -147,6 +142,17 @@
         top: -110px;
         z-index: -1;
         right: 130px;
+      }
+    }
+  }
+}
+
+.location-section {
+  .clients-container {
+    .single-client img {
+      transition: 0.5s;
+      &:hover {
+        transform: translate(0, -5px);
       }
     }
   }
