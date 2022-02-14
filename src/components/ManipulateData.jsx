@@ -12,7 +12,7 @@ Stars.defaultProps = {
   stars_length: 1,
 };
 
-function capitalize(str) {
+function capitalize(str = '') {
   return str.trim().replace(/^\w/, (char) => char.toUpperCase());
 }
 
