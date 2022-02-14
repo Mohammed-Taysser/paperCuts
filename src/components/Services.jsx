@@ -1,52 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { ServicesAPI } from '../api/Localhost';
-import ServicesItem from './ServicesItem';
+import React from 'react';
+import { FcRadarPlot } from 'react-icons/fc';
+import { SERVICES } from '../api/Localhost';
 import SectionTitle from './SectionTitle';
-import Alert from './bootstrap-component/Alert';
-import Spinner from './bootstrap-component/Spinner';
 
 function Services() {
-  const [services, setServices] = useState([]);
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('second');
-
-  useEffect(() => {
-    get_api_services();
-  }, []);
-
-  const get_api_services = async () => {
-    await ServicesAPI.get(`/`, {
-      params: {},
-    })
-      .then((response) => {
-        setHasError(false);
-        setServices(response.data);
-        if (response.data.length === 0) {
-          setHasError(true);
-          setErrorMessage(`No Post Contain`);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        // handle error
-        if (error.toString() === 'Error: Network Error') {
-          setHasError(true);
-          setErrorMessage('Localhost Server Is Down, Please Try On Another Time');
-        }
-      })
-      .then(() => {
-        // always executed
+  const service_items = () => {
+    if (SERVICES.length > 0) {
+      return SERVICES.map((service) => {
+        return (
+          <div className='col-md-6 col-lg-3 my-3' key={service.id}>
+            <div className='single-service'>
+              <div className='card border-0 h-100 text-center'>
+                <img
+                  src={service.img}
+                  className='card-img-top img-fluid d-inline-block mx-auto'
+                  alt={service.title}
+                />
+                <div className='card-body'>
+                  <div className='my-2'>
+                    <FcRadarPlot className='h2' />
+                  </div>
+                  <h4 className='card-title text-aurora'>{service.title}</h4>
+                  <p className='card-text text-muted'>{service.info}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       });
-  };
-
-  const render_message = () => {
-    if (services.length > 0) {
-      return <ServicesItem services={services} />;
-    } else if (hasError) {
-      return <Alert color='warning'>{errorMessage}</Alert>;
-    } else {
-      return <Spinner />;
     }
+    return <> no services available </>;
   };
 
   return (
@@ -55,7 +38,7 @@ function Services() {
         <SectionTitle title='our services' subtitle='what we introduce' />
         <div className='container'>
           <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
-            {render_message()}
+            {service_items()}
           </div>
         </div>
       </section>
