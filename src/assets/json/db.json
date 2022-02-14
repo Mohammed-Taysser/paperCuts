@@ -1,0 +1,345 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "mohammed taysser",
+      "email": "mo@mo.mo",
+      "password": "123456789"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Bestsellers",
+      "info": "Actors and the Art of Performance: Under Exposure combines the author's two main biographical paths ",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/services/img/img-1.png"
+    },
+    {
+      "id": 2,
+      "title": "Readers choice",
+      "info": "This open access wide-ranging collation of papers examines a host of issues in studying immigrant. ",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/services/img/img-2.png"
+    },
+    {
+      "id": 3,
+      "title": "Biographical",
+      "info": "This open access book provides an overview of childlessness throughout Europe.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/services/img/img-3.png"
+    },
+    {
+      "id": 4,
+      "title": "Science Fiction",
+      "info": "Arguing that neo-Victorian fiction enacts and celebrates cultural memory.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/services/img/img-4.png"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 2,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 3,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 4,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 5,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 6,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 7,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 8,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 9,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    },
+    {
+      "id": 10,
+      "title": "Amster Hamster Trip",
+      "author": "James Hoffman",
+      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+      "stars": 4,
+      "price": 19.00,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "CD",
+        "Kindle"
+      ],
+      "category": [
+        "Sociology",
+        "Social Sciences"
+      ],
+      "publisher": "Springer",
+      "publishedAt": "2014-04-07T08:32:15",
+      "pages": 356,
+      "edition": 2,
+      "language": "English",
+      "pdfSize": 7.23
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "customer": "Ernest Hemingway",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+      "info": "All good books have one thing in common - they are truer than if they had really happened.",
+      "rate": 4
+    },
+    {
+      "id": 2,
+      "customer": "Eleanor Catton",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+      "info": "I have always loved reading books for children and young adults, because those books are mysteries.",
+      "rate": 5
+    },
+    {
+      "id": 3,
+      "customer": "Stephen King",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+      "info": "Every book you pick up has its own lesson or lessons, and quite often the bad books have more to teach.",
+      "rate": 4
+    },
+    {
+      "id": 4,
+      "customer": "Ernest Hemingway",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+      "info": "All good books have one thing in common - they are truer than if they had really happened.",
+      "rate": 5
+    },
+    {
+      "id": 5,
+      "customer": "aurora light",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+      "info": "All good books have one thing in common - they are truer than if they had really happened.",
+      "rate": 5
+    }
+  ]
+}
