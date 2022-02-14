@@ -22,7 +22,7 @@ function LatestBooks() {
         </div>
       </div>
       <div className='text-center mt-4'>
-        <Link to='/books' className='text-decoration-underline'>
+        <Link to='/books' className='btn btn-aurora'>
           show more books
         </Link>
       </div>
