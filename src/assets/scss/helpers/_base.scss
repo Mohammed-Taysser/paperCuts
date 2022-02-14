@@ -148,6 +148,9 @@
 }
 
 .location-section {
+  a.text-muted:hover {
+    color: $main-color !important;
+  }
   .clients-container {
     .single-client img {
       transition: 0.5s;
