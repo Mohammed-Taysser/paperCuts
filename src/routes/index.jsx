@@ -5,6 +5,7 @@ import AuthContext from '../context/auth';
 
 import Homepage from '../pages/homepage';
 import PageNotFound from '../pages/404';
+import AboutUs from '../pages/about-us';
 import Login from '../pages/login';
 import Register from '../pages/register';
 import Profile from '../pages/profile';
@@ -24,6 +25,7 @@ function PaperCutsRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/search' element={<Search />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/about-us' element={<AboutUs />} />
         {
           auth_context.isAuth 
             ?  <Route path='/profile' element={<Profile />} />
