@@ -46,7 +46,7 @@ a {
 }
 
 .bg-gradient {
-  background: $main-gradient;
+  background-image: $main-gradient !important;
 }
 
 .cursor-pointer {
