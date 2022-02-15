@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
 
 function ForgetPassword() {
   return (
@@ -9,12 +6,16 @@ function ForgetPassword() {
       <section className='forget-password-page my-5 py-5'>
         <div className='container'>
           <div className='row justify-content-center align-items-stretch g-0'>
-            <div className='col-md-6 my-3'>
+            <div className='col-md-8 my-3'>
               <div className='p-4 rounded-start border login-content'>
-                <h1 className='my-4 text-center'>forget password</h1>
+                <h1 className='my-4 text-center'>Lost your password?</h1>
+                <p className='text-muted text-center'>
+                  Please enter your email address. You will receive a link to
+                  create a new password via email.
+                </p>
                 <form className='mb-3' action='' method=''>
                   <div className='my-3'>
-                    <label className='form-label' htmlFor='login-email'>
+                    <label className='form-label' htmlFor='rest-password-email'>
                       email address
                     </label>
                     <input
@@ -22,30 +23,15 @@ function ForgetPassword() {
                       type='email'
                       placeholder=''
                       required={true}
-                      id='login-email'
+                      id='rest-password-email'
                     />
                   </div>
                   <div className='text-center'>
                     <button className='btn btn-aurora mt-4' type='submit'>
-                      Send Code
+                      Reset password
                     </button>
                   </div>
                 </form>
-              </div>
-            </div>
-            <div className='col-md-6 my-3'>
-              <div className='bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login'>
-                <div className='text-center text-white'>
-                  <h2 className='mb-3'>Hello, Friend!</h2>
-                  <p>Enter your personal details and start journey with us</p>
-                  <Link
-                    className='rounded-pill mt-2 px-3 py-2 btn btn-outline-light'
-                    to='/register'
-                    title='register'
-                  >
-                    sign up
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
