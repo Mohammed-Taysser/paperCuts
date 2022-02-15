@@ -11,7 +11,6 @@ import Register from '../pages/register';
 import ForgetPassword from '../pages/forget-password';
 import Profile from '../pages/profile';
 import Books from '../pages/books';
-import Search from '../pages/search';
 import BooksDetails from '../pages/booksDetails';
 import Category from '../pages/category';
 import CategoryDetails from '../pages/categoryDetails';
@@ -34,7 +33,6 @@ function PaperCutsRoutes() {
         <Route path='/' element={<Homepage />} />
         <Route path='*' element={<PageNotFound />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/search' element={<Search />} />
         <Route path='/register' element={<Register />} />
         <Route path='/about-us' element={<AboutUs />} />
         {auth_routes()}
