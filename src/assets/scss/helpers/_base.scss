@@ -169,14 +169,6 @@
   color: #fff;
   text-align: center;
 
-  &::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #0000006e;
-    z-index: -1;
-  }
   .page-subtitle {
     letter-spacing: 4px;
     color: $main-color;
@@ -188,42 +180,42 @@
   }
 }
 
-.qty-container .btn-qty {
-  background: none;
-  color: #042825;
-  border: 1px solid #ced4da;
-  height: 40px;
-  width: auto;
-  padding: 0 10px;
-  font-size: 13px;
-  cursor: pointer;
-}
+.qty-container {
+  .btn-qty {
+    background: none;
+    color: #042825;
+    border: 1px solid #ced4da;
+    height: 40px;
+    width: auto;
+    padding: 0 10px;
+    font-size: 13px;
+    cursor: pointer;
 
-.qty-container .btn-qty.btn-qty-up {
-  border-radius: 0 3px 3px 0;
-}
-
-.qty-container input.form-qty {
-  -moz-appearance: textfield;
-  height: 40px;
-  border: none;
-  border-top-color: currentcolor;
-  border-top-style: none;
-  border-top-width: medium;
-  border-bottom-color: currentcolor;
-  border-bottom-style: none;
-  border-bottom-width: medium;
-  background: #ffffff;
-  text-align: center;
-  width: 50px;
-  border-top: 1px solid #ced4da;
-  border-bottom: 1px solid #ced4da;
-  color: #042825;
-  vertical-align: middle;
-}
-
-.qty-container .btn-qty.btn-qty-down {
-  border-radius: 3px 0 0 3px;
+    &.btn-qty-up {
+      border-radius: 0 3px 3px 0;
+    }
+    &.btn-qty-down {
+      border-radius: 3px 0 0 3px;
+    }
+  }
+  input.form-qty {
+    -moz-appearance: textfield;
+    height: 40px;
+    border: none;
+    border-top-color: currentcolor;
+    border-top-style: none;
+    border-top-width: medium;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    background: #ffffff;
+    text-align: center;
+    width: 50px;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    color: #042825;
+    vertical-align: middle;
+  }
 }
 
 .book-details-page {
@@ -240,6 +232,102 @@
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
     background-color: $main-color;
+  }
+}
+
+.page-not-found {
+  height: calc(100vh - 76px);
+  background: center / cover no-repeat $main-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.autobiography-section {
+  .autobiography-container {
+    position: relative;
+
+    .autobiography-img {
+      position: relative;
+      text-align: right;
+      z-index: 1;
+
+      .writer-machine {
+        position: absolute;
+        z-index: 2;
+        top: -160px;
+        left: -50px;
+      }
+      .cup-shape {
+        position: absolute;
+        z-index: 2;
+        bottom: -100px;
+        right: 250px;
+      }
+      .spread-shape {
+        position: absolute;
+        z-index: -1;
+        top: -150px;
+        left: -150px;
+      }
+      .orange-rounded-shape {
+        position: absolute;
+        top: 0;
+        top: -110px;
+        z-index: -1;
+        right: 130px;
+      }
+      .interview-word {
+        position: absolute;
+        right: 70px;
+        top: -90px;
+      }
+    }
+  }
+}
+
+.coffee-section {
+  .coffee-container {
+    position: relative;
+
+    .coffee-img {
+      position: relative;
+      text-align: right;
+      z-index: 1;
+
+      .writer-machine {
+        position: absolute;
+        z-index: 2;
+        top: 230px;
+        left: 40px;
+      }
+      .cup-shape {
+        position: absolute;
+        z-index: 2;
+        bottom: -100px;
+        right: 250px;
+      }
+      .pop-shape {
+        position: absolute;
+        z-index: -1;
+        top: -50px;
+        left: 20px;
+      }
+      .yellow-rounded-shape {
+        position: absolute;
+        top: 150px;
+        z-index: -1;
+        right: -100px;
+      }
+      .hand-write-shape {
+        position: absolute;
+        right: 40px;
+        bottom: -90px;
+      }
+    }
   }
 }
 
