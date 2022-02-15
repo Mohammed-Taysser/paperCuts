@@ -70,6 +70,23 @@ a {
     box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
   }
 }
+.btn-outline-aurora {
+  background-color: transparent;
+  color: $main-color;
+  border-color: $main-color;
+
+  &:hover {
+    color: #fff;
+    background-color: $main-color;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: rgba($color: $main-color, $alpha: 0.8);
+    border-color: rgba($color: $main-color, $alpha: 0.8);
+    box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
+  }
+}
 
 .custom-pagination {
   .page-item {
@@ -124,6 +141,43 @@ a {
   border-color: rgba($color: $main-color, $alpha: 0.6);
   outline: 0;
   box-shadow: none;
+}
+
+.form-range {
+  &:focus {
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 1px rgba($color: $main-color, $alpha: 0.7),
+        0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
+    }
+    &::-moz-range-thumb {
+      box-shadow: 0 0 0 1px rgba($color: $main-color, $alpha: 0.7),
+        0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    background-color: $main-color;
+
+    &:active {
+      background-color: $main-color;
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    background-color: rgba($color: $main-color, $alpha: 0.2);
+  }
+
+  &::-moz-range-thumb {
+    background-color: $main-color;
+
+    &:active {
+      background-color: rgba($color: $main-color, $alpha: 0.5);
+    }
+  }
+
+  &::-moz-range-track {
+    background-color: rgba($color: $main-color, $alpha: 0.2);
+  }
 }
 
 .custom-input-group {
