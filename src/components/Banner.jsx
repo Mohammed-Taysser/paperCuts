@@ -4,7 +4,7 @@ import BannerImage from '../assets/img/background/banner.jpg';
 function Banner(props) {
   return (
     <section
-      className='banner'
+      className='banner bg-with-overlay'
       style={{ backgroundImage: `url(${props.img})` }}
     >
       <div className='wrapper'>
