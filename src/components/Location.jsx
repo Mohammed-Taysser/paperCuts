@@ -6,6 +6,7 @@ import Client1 from '../assets/img/clients/client-1.png';
 import Client2 from '../assets/img/clients/client-2.png';
 import Client3 from '../assets/img/clients/client-3.png';
 import Client4 from '../assets/img/clients/client-4.png';
+import Client5 from '../assets/img/clients/client-5.png';
 
 function Location() {
   const google_map = () => {
@@ -122,24 +123,29 @@ function Location() {
 
         <div className='clients-container'>
           <div className='row mt-4 justify-content-center align-items-center align-items-stretch text-center'>
-            <div className='col-6 col-lg-3 my-3'>
+            <div className='col-6 col-lg-2 my-3'>
               <Link to='' className='single-client'>
                 <img src={Client1} alt='client-1' className='img-fluid' />
               </Link>
             </div>
-            <div className='col-6 col-lg-3 my-3'>
+            <div className='col-6 col-lg-2 my-3'>
               <Link to='' className='single-client'>
                 <img src={Client2} alt='client-2' className='img-fluid' />
               </Link>
             </div>
-            <div className='col-6 col-lg-3 my-3'>
+            <div className='col-6 col-lg-2 my-3'>
               <Link to='' className='single-client'>
                 <img src={Client3} alt='client-3' className='img-fluid' />
               </Link>
             </div>
-            <div className='col-6 col-lg-3 my-3'>
+            <div className='col-6 col-lg-2 my-3'>
               <Link to='' className='single-client'>
                 <img src={Client4} alt='client-4' className='img-fluid' />
+              </Link>
+            </div>
+            <div className='col-6 col-lg-2 my-3'>
+              <Link to='' className='single-client'>
+                <img src={Client5} alt='client-4' className='img-fluid' />
               </Link>
             </div>
           </div>
