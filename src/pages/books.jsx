@@ -40,6 +40,44 @@ function Books() {
     );
   };
 
+  const top_five_of_week = () => {
+    const TOP_5 = [
+      {
+        title: 'Master Hamster Trip',
+        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg',
+      },
+      {
+        title: 'Master Hamster Trip',
+        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg',
+      },
+      {
+        title: 'Master Hamster Trip',
+        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg',
+      },
+      {
+        title: 'Master Hamster Trip',
+        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg',
+      },
+      {
+        title: 'Master Hamster Trip',
+        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg',
+      },
+    ];
+    return TOP_5.map((book, index) => {
+      return (
+        <Link to='' key={index}>
+          <img
+            src={book.img}
+            alt={book.title}
+            className='m-1 img-fluid d-inline-block'
+            width={50}
+            height={120}
+          />
+        </Link>
+      );
+    });
+  };
+
   return (
     <>
       <Banner title='shop list' subtitle='products' />
@@ -120,7 +158,7 @@ function Books() {
                   </div>
                 </form>
               </section>
-              <div className='filter-results d-flex justify-content-between align-items-center mb-4'>
+              <div className='filter-results d-md-flex justify-content-between align-items-center mb-4'>
                 <span className='text-muted'> Showing 1-12 of 53 results </span>
                 <div className=''>
                   <select
@@ -136,7 +174,7 @@ function Books() {
                       sort by price low to height
                     </option>
                     <option value={'price-desc'}>
-                      sort by price height to low{' '}
+                      sort by price height to low
                     </option>
                   </select>
                 </div>
@@ -150,6 +188,10 @@ function Books() {
                 <section className='category-section'>
                   <h4 className='mb-3'>categories</h4>
                   {category_list()}
+                </section>
+                <section className='top-five-section mt-4'>
+                  <h4 className='mb-3'>Top 5 of the week</h4>
+                  {top_five_of_week()}
                 </section>
               </div>
             </div>
