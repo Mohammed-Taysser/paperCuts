@@ -11,4 +11,9 @@ function SectionTitle(props) {
   );
 }
 
+SectionTitle.defaultProps = {
+  title: 'big title',
+  subtitle: 'small title',
+};
+
 export default SectionTitle;
