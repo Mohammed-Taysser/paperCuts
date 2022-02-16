@@ -17,6 +17,8 @@ import Category from '../pages/category';
 import CategoryDetails from '../pages/categoryDetails';
 import Events from '../pages/events';
 import EventsDetails from '../pages/eventDetails';
+import Author from '../pages/authors';
+import AuthorDetails from '../pages/authorDetails';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -46,6 +48,8 @@ function PaperCutsRoutes() {
         <Route path='/category/:id' element={<CategoryDetails />} />
         <Route path='/events/' element={<Events />} />
         <Route path='/events/:id' element={<EventsDetails />} />
+        <Route path='/author' element={<Author />} />
+        <Route path='/author/:id' element={<AuthorDetails />} />
       </Routes>
     </>
   );
