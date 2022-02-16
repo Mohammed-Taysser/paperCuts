@@ -351,6 +351,45 @@
   }
 }
 
+.events-page {
+  .book-events {
+    background: center / cover no-repeat $main-color;
+  }
+
+  ul.events-list {
+    li {
+      border-bottom: 1px solid #ddd;
+
+      &:last-of-type {
+        border: none;
+      }
+    }
+  }
+
+  .join-club {
+    height: 250px;
+    background: center / no-repeat $main-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timeline-container {
+    .single-timeline.special {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        background: $main-color;
+        height: 15px;
+        width: 100%;
+        top: 0;
+      }
+    }
+  }
+}
+
 @media (min-width: 576px) {
 }
 @media (min-width: 768px) {
