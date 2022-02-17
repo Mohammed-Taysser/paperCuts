@@ -48,8 +48,8 @@ function PaperCutsRoutes() {
         <Route path='/category/:id' element={<CategoryDetails />} />
         <Route path='/events/' element={<Events />} />
         <Route path='/events/:id' element={<EventsDetails />} />
-        <Route path='/author' element={<Author />} />
-        <Route path='/author/:id' element={<AuthorDetails />} />
+        <Route path='/authors' element={<Author />} />
+        <Route path='/authors/:id' element={<AuthorDetails />} />
       </Routes>
     </>
   );
