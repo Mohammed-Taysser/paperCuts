@@ -85,7 +85,10 @@ function BooksDetails() {
         <small className='special-small-title text-muted'>
           publisher: {current_book.publisher}
         </small>
-        <h1 className='h2 mb-2'>{current_book.title}</h1>
+        <div className="d-flex align-items-start">
+        <h1 className='h2 mb-2'>{current_book.title}  </h1>
+        <small className="badge rounded-pill bg-warning mx-3">new</small>
+        </div>
         <div className='d-flex align-items-end'>
           {<Stars stars_length={current_book.stars} />}
           <a
