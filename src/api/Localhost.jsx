@@ -14,6 +14,10 @@ const CategoryAPI = axios.create({
   baseURL: 'http://localhost:8080/category',
 });
 
+const BooksAPI = axios.create({
+  baseURL: 'http://localhost:8080/books',
+});
+
 // exported variable names
 const SERVICES = Data.services,
   REVIEWS = Data.reviews,
@@ -27,5 +31,5 @@ function shuffle_arr(arr) {
 }
 
 export default base_url;
-export { CategoryAPI, ServicesAPI };
+export { CategoryAPI, ServicesAPI, BooksAPI };
 export { SERVICES, REVIEWS, BOOKS, LATEST_BOOKS, RELATED_BOOKS, CATEGORY };
