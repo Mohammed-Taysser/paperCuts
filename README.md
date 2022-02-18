@@ -109,3 +109,8 @@ thanks tp [`json server`](https://www.npmjs.com/package/json-server) for create 
 also create fake json using [`json-generator`](https://json-generator.com/)
 
 for image url use [`picsum.photos`](https://picsum.photos/)
+
+## special thanks to
+
+- [chapter-one-bookstore-and-publisher-theme](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
+- [dbooks](https://www.dbooks.org/)
