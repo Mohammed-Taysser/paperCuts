@@ -5,6 +5,7 @@ import LatestBooks from '../components/LatestBooks';
 import Testimonials from '../components/Testimonials';
 import Awards from '../components/Awards';
 import Location from '../components/Location';
+import NewsLetter from '../components/NewsLetter';
 
 function homepage() {
   return (
@@ -15,6 +16,7 @@ function homepage() {
       <Testimonials />
       <Awards />
       <Location />
+      <NewsLetter />
     </>
   );
 }
