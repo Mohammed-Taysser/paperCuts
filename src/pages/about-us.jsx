@@ -7,6 +7,7 @@ import FlyShape from '../assets/img/fly-shape.svg';
 import CupShape from '../assets/img/shapes/cup-shape.png';
 import CoffeeSectionImage from '../assets/img/background/coffee-section-image.png';
 import AutobiographySectionImage from '../assets/img/background/autobiography-section-image.png';
+import AboutAudioBook from '../components/AboutAudioBook';
 
 function aboutUs() {
   return (
@@ -46,7 +47,6 @@ function aboutUs() {
                     // width='250'
                     // height='250'
                   />
-                  
                 </div>
               </div>
             </div>
@@ -56,7 +56,6 @@ function aboutUs() {
       <section className='coffee-section my-5 py-5'>
         <div className='container'>
           <div className='row justify-content-between align-items-center'>
-
             <div className='col-md-6 my-3'>
               <div className='coffee-container'>
                 <div className='coffee-img'>
@@ -67,7 +66,6 @@ function aboutUs() {
                     width='550'
                     height='420'
                   />
-
                 </div>
               </div>
             </div>
@@ -94,9 +92,12 @@ function aboutUs() {
           </div>
         </div>
       </section>
-      <section className="team-member">
+      <section className='team-member'>
         <TeamMembers />
       </section>
+      <div className=''>
+        <AboutAudioBook />
+      </div>
     </>
   );
 }
