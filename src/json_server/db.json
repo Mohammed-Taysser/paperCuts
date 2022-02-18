@@ -315,6 +315,53 @@
       "pdfSize": 7.23
     }
   ],
+  "category": [
+    {
+      "id": 1,
+      "title": "Action",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-1.ico"
+    },
+    {
+      "id": 2,
+      "title": "Art",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-2.ico"
+    },
+    {
+      "id": 3,
+      "title": "Best Sellers",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-3.ico"
+    },
+    {
+      "id": 4,
+      "title": "Design",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-4.ico"
+    },
+    {
+      "id": 5,
+      "title": "Fantasy",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-5.ico"
+    },
+    {
+      "id": 6,
+      "title": "History",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-6.ico"
+    },
+    {
+      "id": 7,
+      "title": "Home",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-7.ico"
+    },
+    {
+      "id": 8,
+      "title": "Love Stories",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-8.ico"
+    },
+    {
+      "id": 9,
+      "title": "New",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-9.ico"
+    }
+  ],
   "reviews": [
     {
       "id": 1,
@@ -351,5 +398,29 @@
       "info": "All good books have one thing in common - they are truer than if they had really happened.",
       "rate": 5
     }
-  ]
+  ],
+  "about-us": {
+    "autobiography": {
+      "subtitle": "autobiography",
+      "title": "Long printing history",
+      "info": "This open access wide-ranging collation of papers examines a host of issues in studying immigrant.This open access wide-ranging collation of papers examines a host of issues in studying immigrant.",
+      "main-image": "",
+      "secondary-image": "",
+      "pop-shape": "",
+      "word-shape": "",
+      "rounded-shape": "",
+      "sketch-shape": ""
+    },
+    "coffee": {
+      "subtitle": "autobiography",
+      "title": "coffee with favorite Erika",
+      "info": "This open access wide-ranging collation of papers examines a host of issues in studying immigrant.This open access wide-ranging collation of papers examines a host of issues in studying immigrant.",
+      "main-image": "",
+      "secondary-image": "",
+      "pop-shape": "",
+      "word-shape": "",
+      "rounded-shape": "",
+      "sketch-shape": ""
+    }
+  }
 }
