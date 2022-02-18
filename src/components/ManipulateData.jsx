@@ -53,4 +53,13 @@ const human_date = (date) => {
   return `${year}-${month}-${day}`;
 };
 
-export { Stars, capitalize, human_date };
+/**
+ * create slug from strings like titles
+ * @param {String} str the string to be slugify
+ * @returns {String}
+ */
+function slugify(str) {
+  return str.trim().replace(/\W+/g, '-').toLowerCase();
+}
+
+export { Stars, capitalize, human_date, slugify };
