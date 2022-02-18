@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import Services from '../components/Services';
+import TeamMembers from '../components/TeamMembers';
 
 import FlyShape from '../assets/img/fly-shape.svg';
 import CupShape from '../assets/img/shapes/cup-shape.png';
@@ -92,6 +93,9 @@ function aboutUs() {
             </div>
           </div>
         </div>
+      </section>
+      <section className="team-member">
+        <TeamMembers />
       </section>
     </>
   );
