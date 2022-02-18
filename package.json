@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "json_server": "json-server -w localhost_server/db.json -p 8080 -r localhost_server/routes.json ",
+    "json_server": "json-server -w src/json_server/db.json -p 8080 -r src/json_server/routes.json ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
