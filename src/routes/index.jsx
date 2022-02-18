@@ -11,6 +11,8 @@ import Login from '../pages/login';
 import Register from '../pages/register';
 import ForgetPassword from '../pages/forget-password';
 import Profile from '../pages/profile';
+import Cart from '../pages/cart';
+import Checkout from '../pages/checkout';
 import Books from '../pages/books';
 import BooksDetails from '../pages/booksDetails';
 import Category from '../pages/category';
@@ -27,6 +29,8 @@ function PaperCutsRoutes() {
       return (
         <>
           <Route path='/profile' element={<Profile />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/forget-password' element={<ForgetPassword />} />
         </>
       );
