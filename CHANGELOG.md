@@ -7,3 +7,6 @@
 - use sponsors as api
 - no book description on homepage, only on details page
 - add back to top btn
+- create profile page like <https://www.linkedin.com/in/mohammed-taysser/>
+- add kids page <https://chapterone.qodeinteractive.com/childrens-books/>
+- fix navbar & footer link
