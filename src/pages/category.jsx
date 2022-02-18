@@ -1,69 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
+import { CATEGORY, CategoryAPI } from '../api/Localhost';
+import JsonServerToast from '../components/JsonServerToast';
 
 function Category() {
+  const [category, setCategory] = useState(CATEGORY);
+  const [jsonServerIsDown, setJsonServerIsDown] = useState(false);
+  useEffect(() => {
+    api_get_category();
+  }, []);
+
+  const api_get_category = async () => {
+    await CategoryAPI.get('/')
+      .then(function (response) {
+        // handle success
+        setJsonServerIsDown(false);
+        setCategory(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        if (error.toString() === 'Error: Network Error') {
+          setJsonServerIsDown(true);
+        }
+      })
+      .then(function () {
+        // always executed
+      });
+  };
+
   const category_list = () => {
-    const CATEGORY = [
-      {
-        id: 1,
-        title: 'Action',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg',
-      },
-      {
-        id: 2,
-        title: 'Art',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg',
-      },
-      {
-        id: 3,
-        title: 'Best Sellers',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg',
-      },
-      {
-        id: 4,
-        title: 'Design',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg',
-      },
-      {
-        id: 5,
-        title: 'Fantasy',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg',
-      },
-      {
-        id: 6,
-        title: 'History',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg',
-      },
-      {
-        id: 7,
-        title: 'Home',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg',
-      },
-      {
-        id: 8,
-        title: 'Love Stories',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg',
-      },
-      {
-        id: 9,
-        title: 'New',
-        img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg',
-      },
-    ];
     return (
       <>
-        {CATEGORY.map((cat) => {
+        {category.map((cty) => {
           return (
-            <div className='col-sm-6 col-md-4 col-lg-3 my-3' key={cat.id}>
-              <div className='card border-0 nice-shadow h-100 single-category'>
+            <div className='col-6 col-md-4 col-lg-3 my-3' key={cty.id}>
+              <div className='card border-0 nice-shadow h-100 single-category p-4 pb-2'>
                 <div className='img'>
-                  <img src={cat.img} className='card-img-top' alt={cat.title} />
+                  <img src={cty.img} className='card-img-top' alt={cty.title} />
                 </div>
-                <div className='card-body'>
+                <div className='card-body text-center'>
                   <h5 className='card-title m-0'>
-                    <Link to={`/category/${cat.id}`} className='stretched-link'>
-                      {cat.title}
+                    <Link to={`/category/${cty.id}`} className='stretched-link'>
+                      {cty.title}
                     </Link>
                   </h5>
                 </div>
@@ -77,6 +56,7 @@ function Category() {
 
   return (
     <>
+      {jsonServerIsDown && <JsonServerToast />}
       <Banner title='our category' subtitle='our  space' />
       <section className='my-5 py-5'>
         <div className='container'>
