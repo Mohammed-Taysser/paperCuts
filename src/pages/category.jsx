@@ -41,7 +41,7 @@ function Category() {
                 </div>
                 <div className='card-body text-center'>
                   <h5 className='card-title m-0'>
-                    <Link to={`/category/${cty.id}`} className='stretched-link'>
+                    <Link to={`/category/${cty.title}`} className='stretched-link'>
                       {cty.title}
                     </Link>
                   </h5>
