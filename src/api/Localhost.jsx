@@ -1,26 +1,31 @@
-// import axios from 'axios';
+import axios from 'axios';
+import Data from '../json_server/db.json';
 
-// const base_url = axios.create({
-//   baseURL: 'http://localhost:8080/db',
-// });
+// axios instance
+const base_url = axios.create({
+  baseURL: 'http://localhost:8080/db',
+});
 
-// const ServicesAPI = axios.create({
-//   baseURL: 'http://localhost:8080/services',
-// });
+const ServicesAPI = axios.create({
+  baseURL: 'http://localhost:8080/services',
+});
 
-// export default base_url;
-// export { base_url, ServicesAPI };
+const CategoryAPI = axios.create({
+  baseURL: 'http://localhost:8080/category',
+});
 
-import Data from '../assets/json/db.json';
+// exported variable names
+const SERVICES = Data.services,
+  REVIEWS = Data.reviews,
+  BOOKS = Data.books,
+  CATEGORY = Data.category,
+  LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
+  RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4));
 
 function shuffle_arr(arr) {
   return arr.sort(() => 0.5 - Math.random());
 }
 
-const SERVICES = Data.services;
-const REVIEWS = Data.reviews;
-const BOOKS = Data.books;
-const LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8));
-const RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4));
-
-export { SERVICES, REVIEWS, BOOKS, LATEST_BOOKS, RELATED_BOOKS };
+export default base_url;
+export { CategoryAPI, ServicesAPI };
+export { SERVICES, REVIEWS, BOOKS, LATEST_BOOKS, RELATED_BOOKS, CATEGORY };
