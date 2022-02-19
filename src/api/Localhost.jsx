@@ -25,6 +25,7 @@ const SERVICES = Data.services,
   CATEGORY = Data.category,
   LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
   RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4)),
+  BOOKS_CATEGORY = shuffle_arr(Data.books.slice(0, 4)),
   BOOKS_REVIEWS = Data.books[0].reviews;
 
 function shuffle_arr(arr) {
@@ -33,6 +34,10 @@ function shuffle_arr(arr) {
 
 function get_book_by_id(id = '1') {
   return BOOKS.filter((book) => book.id.toString() === id)[0];
+}
+
+function get_category_by_id(id = '1') {
+  return CATEGORY.filter((cty) => cty.id.toString() === id)[0];
 }
 
 export default base_url;
@@ -45,5 +50,7 @@ export {
   RELATED_BOOKS,
   BOOKS_REVIEWS,
   CATEGORY,
+  BOOKS_CATEGORY,
   get_book_by_id,
+  get_category_by_id,
 };
