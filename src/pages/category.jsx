@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
 import { CATEGORY, CategoryAPI } from '../api/Localhost';
-import JsonServerToast from '../components/JsonServerToast';
 
 function Category() {
   const [category, setCategory] = useState(CATEGORY);
@@ -56,7 +55,6 @@ function Category() {
 
   return (
     <>
-      {jsonServerIsDown && <JsonServerToast />}
       <Banner title='our category' subtitle='our  space' />
       <section className='my-5 py-5'>
         <div className='container'>

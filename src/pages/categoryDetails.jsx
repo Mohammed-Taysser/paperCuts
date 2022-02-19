@@ -3,7 +3,6 @@ import { BooksAPI, BOOKS } from '../api/Localhost';
 import { useParams } from 'react-router-dom';
 import Banner from '../components/Banner';
 import SingleBook from '../components/SingleBook';
-import JsonServerToast from '../components/JsonServerToast';
 import Alert from '../components/bootstrap-component/Alert';
 
 function CategoryDetails() {
@@ -55,7 +54,6 @@ function CategoryDetails() {
 
   return (
     <>
-      {jsonServerIsDown && <JsonServerToast />}
       <Banner title='category title' subtitle='shop list' />
       <section className='author-books my-5 py-5'>
         <div className='container p-xs-0 px-5 px-md-0'>
