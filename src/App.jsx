@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import MainRoute from './routes';
 import AuthContext from './context/auth';
+import JsonServerToast from './components/JsonServerToast';
 
 function App() {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
     <AuthContext.Provider value={auth_context_data}>
       <BrowserRouter>
         <Navbar />
+        {<JsonServerToast />}
         <MainRoute />
         <Footer />
       </BrowserRouter>
