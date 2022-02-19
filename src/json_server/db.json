@@ -7,6 +7,1053 @@
       "password": "123456789"
     }
   ],
+  "authors": [
+    {
+      "id": 1,
+      "first_name": "Lisha",
+      "last_name": "Ghidotti",
+      "email": "lghidotti0@nba.com",
+      "gender": "Male",
+      "age": 49,
+      "short_info": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+      "info": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+      "language": [
+        "Quechua",
+        "Estonian",
+        "Catalan"
+      ],
+      "socialMedia": {
+        "twitter": "https://addthis.com/dapibus/at/diam/nam/tristique/tortor.png",
+        "facebook": "https://imdb.com/non/ligula/pellentesque/ultrices.jsp",
+        "telegram": "https://wp.com/luctus.js",
+        "instagram": "https://hugedomains.com/mauris/viverra/diam.png"
+      },
+      "category": [
+        "Fantasy",
+        "History",
+        "Art",
+        "Action",
+        "Home",
+        "Best Sellers",
+        "Design",
+        "Love Stories"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Down Twisted",
+          "author": "Brana Gibbon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 25.02,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Shaolin Temple (Shao Lin si)",
+          "author": "Ky Bondesen",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 95.06,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Remember Sunday",
+          "author": "Cacilia Orgel",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 83.04,
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "first_name": "Josy",
+      "last_name": "Huntingford",
+      "email": "jhuntingford1@mediafire.com",
+      "gender": "Female",
+      "age": 25,
+      "short_info": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "info": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+      "language": [
+        "Dhivehi",
+        "Irish Gaelic",
+        "Tsonga"
+      ],
+      "socialMedia": {
+        "twitter": "http://e-recht24.de/sit/amet/nunc/viverra.xml",
+        "facebook": "https://techcrunch.com/ullamcorper/purus.jpg",
+        "telegram": "http://gravatar.com/orci/eget/orci.js",
+        "instagram": "http://feedburner.com/in.jpg"
+      },
+      "category": [
+        "New",
+        "Action",
+        "History",
+        "Home",
+        "Art",
+        "Design",
+        "Best Sellers",
+        "Fantasy"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Art of War, The",
+          "author": "Davina Alywin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 34.61,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "A Cry in the Wild",
+          "author": "Maison Burdytt",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 17.95,
+          "stars": 4
+        },
+        {
+          "id": 3,
+          "title": "Wrong Turn 4",
+          "author": "Pavel Blabie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 95.47,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "Loving Leah",
+          "author": "Packston Perford",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 83.59,
+          "stars": 1
+        },
+        {
+          "id": 5,
+          "title": "Descent: Part 2, The",
+          "author": "Cobbie Jones",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 41.94,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "first_name": "Tallie",
+      "last_name": "Carrol",
+      "email": "tcarrol2@prweb.com",
+      "gender": "Female",
+      "age": 62,
+      "short_info": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+      "info": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "language": [
+        "Swahili",
+        "Filipino",
+        "Lao"
+      ],
+      "socialMedia": {
+        "twitter": "https://pinterest.com/nulla/elit/ac.jpg",
+        "facebook": "https://free.fr/cubilia/curae/donec/pharetra/magna.jpg",
+        "telegram": "http://nytimes.com/nullam/sit.json",
+        "instagram": "https://wikipedia.org/massa/donec.png"
+      },
+      "category": [
+        "Design"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Two Weeks Notice",
+          "author": "Ola Rossey",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 66.16,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "Snapshot",
+          "author": "Christi Battill",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 32.25,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Tuya's Marriage (Tuya de hun shi)",
+          "author": "Buckie Antoszczyk",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 57.8,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Violent Saturday",
+          "author": "Diana Sapwell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 24.26,
+          "stars": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "first_name": "Inigo",
+      "last_name": "Klulicek",
+      "email": "iklulicek3@wikipedia.org",
+      "gender": "Male",
+      "age": 44,
+      "short_info": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+      "info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "language": [
+        "Croatian",
+        "Moldovan",
+        "Albanian"
+      ],
+      "socialMedia": {
+        "twitter": "http://wufoo.com/morbi/non/quam/nec/dui/luctus/rutrum.jpg",
+        "facebook": "https://ycombinator.com/ultrices/aliquet/maecenas/leo/odio.json",
+        "telegram": "https://twitpic.com/est/donec.jpg",
+        "instagram": "https://aboutads.info/adipiscing.jsp"
+      },
+      "category": [
+        "Home",
+        "New",
+        "Love Stories",
+        "Action",
+        "Best Sellers",
+        "History"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Scooby-Doo",
+          "author": "Bengt Simonich",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 36.17,
+          "stars": 3
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "first_name": "Sammie",
+      "last_name": "Dawbury",
+      "email": "sdawbury4@amazon.co.jp",
+      "gender": "Female",
+      "age": 54,
+      "short_info": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
+      "info": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "language": [
+        "Kashmiri",
+        "Papiamento",
+        "Zulu"
+      ],
+      "socialMedia": {
+        "twitter": "https://twitpic.com/pellentesque/ultrices.html",
+        "facebook": "http://cpanel.net/pede/ullamcorper/augue/a/suscipit/nulla/elit.xml",
+        "telegram": "https://merriam-webster.com/nulla/justo/aliquam/quis.png",
+        "instagram": "https://sina.com.cn/magna/vestibulum/aliquet/ultrices/erat/tortor.aspx"
+      },
+      "category": [
+        "History",
+        "Best Sellers",
+        "Home",
+        "Love Stories"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "I'll Sleep When I'm Dead",
+          "author": "Emelyne Cartlidge",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 46.73,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Make Like a Thief (Juokse kuin varas)",
+          "author": "Emery Ovise",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 66.36,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Directed by John Ford",
+          "author": "Lonna Shearwood",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 50.32,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "Charlotte Gray",
+          "author": "Keary Knagges",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 75.43,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "first_name": "Dionne",
+      "last_name": "Notley",
+      "email": "dnotley5@qq.com",
+      "gender": "Female",
+      "age": 33,
+      "short_info": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+      "info": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
+      "language": [
+        "Armenian",
+        "Malagasy",
+        "Portuguese"
+      ],
+      "socialMedia": {
+        "twitter": "https://cdc.gov/posuere/felis/sed/lacus/morbi/sem.aspx",
+        "facebook": "https://wikispaces.com/ipsum/primis/in/faucibus/orci/luctus.xml",
+        "telegram": "http://mapy.cz/tortor.jpg",
+        "instagram": "https://dion.ne.jp/consectetuer/adipiscing/elit/proin/interdum/mauris/non.png"
+      },
+      "category": [
+        "Design",
+        "New",
+        "Home",
+        "History"
+      ],
+      "books": []
+    },
+    {
+      "id": 7,
+      "first_name": "Cori",
+      "last_name": "McManamen",
+      "email": "cmcmanamen6@diigo.com",
+      "gender": "Non-binary",
+      "age": 66,
+      "short_info": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+      "info": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+      "language": [
+        "Estonian",
+        "Kannada",
+        "Chinese"
+      ],
+      "socialMedia": {
+        "twitter": "https://independent.co.uk/consequat/nulla/nisl.js",
+        "facebook": "https://domainmarket.com/rutrum/neque/aenean/auctor/gravida/sem.jsp",
+        "telegram": "https://symantec.com/sed/nisl.xml",
+        "instagram": "https://youku.com/in/lacus/curabitur/at/ipsum.html"
+      },
+      "category": [
+        "Action",
+        "Fantasy",
+        "History",
+        "Home"
+      ],
+      "books": []
+    },
+    {
+      "id": 8,
+      "first_name": "Nonah",
+      "last_name": "Rostern",
+      "email": "nrostern7@goo.ne.jp",
+      "gender": "Male",
+      "age": 21,
+      "short_info": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+      "info": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+      "language": [
+        "Northern Sotho",
+        "Quechua",
+        "Dutch"
+      ],
+      "socialMedia": {
+        "twitter": "https://microsoft.com/ornare/consequat/lectus/in/est/risus.json",
+        "facebook": "http://prweb.com/sapien/ut/nunc.xml",
+        "telegram": "https://infoseek.co.jp/in/ante/vestibulum/ante/ipsum/primis/in.json",
+        "instagram": "https://loc.gov/nisl/duis/bibendum/felis.js"
+      },
+      "category": [
+        "Love Stories",
+        "Best Sellers",
+        "New",
+        "Fantasy",
+        "History",
+        "Action",
+        "Design",
+        "Home",
+        "Art"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Firaaq",
+          "author": "Karia Harrhy",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 98.65,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Someone Marry Barry",
+          "author": "Haze Rennels",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 15.23,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "first_name": "Maude",
+      "last_name": "Steers",
+      "email": "msteers8@barnesandnoble.com",
+      "gender": "Male",
+      "age": 26,
+      "short_info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+      "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+      "language": [
+        "Bulgarian",
+        "Yiddish",
+        "Persian"
+      ],
+      "socialMedia": {
+        "twitter": "https://123-reg.co.uk/diam/id/ornare/imperdiet/sapien/urna.aspx",
+        "facebook": "https://clickbank.net/tempus/sit.js",
+        "telegram": "https://uol.com.br/et/magnis.jsp",
+        "instagram": "http://sina.com.cn/semper/interdum/mauris.json"
+      },
+      "category": [
+        "Action",
+        "Home",
+        "Fantasy"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Gothic",
+          "author": "Derril Dopson",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 82.03,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Wild at Heart",
+          "author": "Rusty Veart",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 11.16,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Lightnin'",
+          "author": "Goldia Fulloway",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 51.24,
+          "stars": 4
+        },
+        {
+          "id": 4,
+          "title": "Hellraiser: Bloodline",
+          "author": "Agretha Brasseur",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 71.68,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "first_name": "Arron",
+      "last_name": "Ingham",
+      "email": "aingham9@imageshack.us",
+      "gender": "Male",
+      "age": 23,
+      "short_info": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+      "info": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+      "language": [
+        "Catalan",
+        "Kyrgyz",
+        "Czech"
+      ],
+      "socialMedia": {
+        "twitter": "https://google.com.au/interdum/mauris.xml",
+        "facebook": "https://cbsnews.com/luctus.png",
+        "telegram": "https://php.net/varius/nulla/facilisi/cras/non.js",
+        "instagram": "http://oracle.com/cras/mi/pede/malesuada.js"
+      },
+      "category": [
+        "Design",
+        "Art"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Ghetto (Vilniaus Getas)",
+          "author": "Bobinette Cow",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 31.31,
+          "stars": 2
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "first_name": "Larina",
+      "last_name": "Huguenet",
+      "email": "lhugueneta@sciencedaily.com",
+      "gender": "Male",
+      "age": 77,
+      "short_info": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+      "info": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      "language": [
+        "German",
+        "Bosnian",
+        "Bislama"
+      ],
+      "socialMedia": {
+        "twitter": "http://washington.edu/rhoncus/dui/vel/sem.js",
+        "facebook": "http://delicious.com/dui/proin/leo/odio/porttitor/id.json",
+        "telegram": "https://themeforest.net/integer/pede/justo/lacinia.png",
+        "instagram": "http://nbcnews.com/lobortis/vel/dapibus/at.jsp"
+      },
+      "category": [
+        "Fantasy",
+        "Best Sellers",
+        "Love Stories",
+        "Action",
+        "Design",
+        "Home",
+        "New",
+        "Art",
+        "History"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Ghost and Mrs. Muir, The",
+          "author": "Parker Hanstock",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 66.53,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Acid House, The",
+          "author": "Kissiah Licas",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 87.58,
+          "stars": 1
+        },
+        {
+          "id": 3,
+          "title": "Life of Jesus, The (La vie de Jésus)",
+          "author": "Lavinia Rostron",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 12.03,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Don't Say a Word",
+          "author": "Sarina Sorsby",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 13.65,
+          "stars": 5
+        },
+        {
+          "id": 5,
+          "title": "Cliffhanger",
+          "author": "Cordy Lethardy",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 30.28,
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "first_name": "Salvador",
+      "last_name": "Searchwell",
+      "email": "ssearchwellb@unesco.org",
+      "gender": "Female",
+      "age": 56,
+      "short_info": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+      "info": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+      "language": [
+        "Armenian",
+        "Quechua",
+        "Danish"
+      ],
+      "socialMedia": {
+        "twitter": "http://homestead.com/in/sapien/iaculis.html",
+        "facebook": "https://prlog.org/odio.js",
+        "telegram": "http://squarespace.com/velit/eu/est/congue/elementum/in/hac.png",
+        "instagram": "https://spiegel.de/in/hac/habitasse/platea/dictumst/aliquam.jsp"
+      },
+      "category": [
+        "New",
+        "Action",
+        "Best Sellers",
+        "Love Stories",
+        "Art",
+        "Fantasy",
+        "Design",
+        "Home"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Trouble with Angels, The",
+          "author": "Sheela Pfeiffer",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 16.25,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Shine of Rainbows, A",
+          "author": "Clarita Drees",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 36.14,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Accused, The",
+          "author": "Alexine Siddon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 83.15,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "first_name": "Pier",
+      "last_name": "Ogilby",
+      "email": "pogilbyc@miitbeian.gov.cn",
+      "gender": "Male",
+      "age": 25,
+      "short_info": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+      "info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+      "language": [
+        "Kashmiri",
+        "Ndebele",
+        "Malayalam"
+      ],
+      "socialMedia": {
+        "twitter": "http://pen.io/luctus/nec.jsp",
+        "facebook": "http://redcross.org/amet/nunc/viverra/dapibus/nulla/suscipit/ligula.json",
+        "telegram": "https://ucla.edu/tempor.jsp",
+        "instagram": "http://umich.edu/morbi/odio/odio/elementum/eu/interdum/eu.js"
+      },
+      "category": [
+        "Best Sellers",
+        "Design",
+        "Love Stories",
+        "History",
+        "Fantasy",
+        "New"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Cat's Eye",
+          "author": "Gualterio Eyeington",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 95.87,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Alien Hunter",
+          "author": "Letty Milvarnie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 32.61,
+          "stars": 1
+        },
+        {
+          "id": 3,
+          "title": "Breaking Out (Vägen ut)",
+          "author": "Demetris McComiskie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 94.42,
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "first_name": "Grantley",
+      "last_name": "Frammingham",
+      "email": "gframminghamd@tuttocitta.it",
+      "gender": "Female",
+      "age": 51,
+      "short_info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+      "info": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
+      "language": [
+        "Marathi",
+        "Bulgarian",
+        "Yiddish"
+      ],
+      "socialMedia": {
+        "twitter": "https://prweb.com/justo/nec/condimentum.jsp",
+        "facebook": "https://senate.gov/nibh/in/hac/habitasse/platea.aspx",
+        "telegram": "http://163.com/eget/eros/elementum/pellentesque/quisque/porta.xml",
+        "instagram": "https://npr.org/leo/rhoncus/sed/vestibulum.aspx"
+      },
+      "category": [
+        "Home",
+        "Design",
+        "Love Stories",
+        "Best Sellers",
+        "Action"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "To Wong Foo, Thanks for Everything! Julie Newmar",
+          "author": "Gregorius Edwards",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 76.67,
+          "stars": 1
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "first_name": "Winifred",
+      "last_name": "Pinyon",
+      "email": "wpinyone@hatena.ne.jp",
+      "gender": "Male",
+      "age": 42,
+      "short_info": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+      "info": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+      "language": [
+        "Tsonga",
+        "Telugu",
+        "Kyrgyz"
+      ],
+      "socialMedia": {
+        "twitter": "https://skype.com/nunc/nisl/duis/bibendum/felis.js",
+        "facebook": "http://mozilla.org/sapien/urna/pretium/nisl/ut/volutpat/sapien.xml",
+        "telegram": "http://admin.ch/hac/habitasse/platea/dictumst/etiam/faucibus.png",
+        "instagram": "http://woothemes.com/sapien.html"
+      },
+      "category": [
+        "Love Stories",
+        "Design",
+        "Action",
+        "Fantasy",
+        "History",
+        "Art",
+        "New",
+        "Home",
+        "Best Sellers"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Strange Voyage",
+          "author": "Luisa Reyes",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 68.56,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "After Alice (Eye of the Killer)",
+          "author": "Algernon Paskins",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 79.36,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Half Life of Timofey Berezin, The (PU-239)",
+          "author": "Anatol Heel",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 53.72,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Cobweb, The",
+          "author": "Kellen Pisculli",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 25.99,
+          "stars": 1
+        },
+        {
+          "id": 5,
+          "title": "Lightnin'",
+          "author": "Nola Austing",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 12.98,
+          "stars": 2
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "first_name": "Graham",
+      "last_name": "Escolme",
+      "email": "gescolmef@redcross.org",
+      "gender": "Polygender",
+      "age": 31,
+      "short_info": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+      "info": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+      "language": [
+        "Persian",
+        "New Zealand Sign Language",
+        "Icelandic"
+      ],
+      "socialMedia": {
+        "twitter": "http://baidu.com/pharetra/magna.html",
+        "facebook": "http://yahoo.com/at/turpis.html",
+        "telegram": "http://businesswire.com/donec/quis/orci/eget/orci/vehicula/condimentum.png",
+        "instagram": "https://pinterest.com/aenean/lectus/pellentesque/eget.html"
+      },
+      "category": [
+        "Home",
+        "Best Sellers",
+        "New",
+        "Love Stories",
+        "Fantasy",
+        "Action",
+        "Design",
+        "Art"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Others, The",
+          "author": "Emalia Hofton",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 95.82,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "first_name": "Ferdinande",
+      "last_name": "Oxenford",
+      "email": "foxenfordg@senate.gov",
+      "gender": "Female",
+      "age": 23,
+      "short_info": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+      "info": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+      "language": [
+        "Azeri",
+        "New Zealand Sign Language",
+        "Finnish"
+      ],
+      "socialMedia": {
+        "twitter": "http://dailymotion.com/sit/amet/consectetuer.html",
+        "facebook": "http://woothemes.com/vivamus/vel/nulla/eget/eros/elementum.jsp",
+        "telegram": "http://msn.com/consectetuer/eget/rutrum/at/lorem/integer.png",
+        "instagram": "http://privacy.gov.au/orci/eget/orci/vehicula/condimentum.aspx"
+      },
+      "category": [
+        "Art",
+        "History",
+        "Love Stories",
+        "Design"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Nature of Existence, The",
+          "author": "Tedie Verdon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 18.29,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "Class Reunion",
+          "author": "Gerik Bladder",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 25.64,
+          "stars": 5
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "first_name": "Barbette",
+      "last_name": "McLuckie",
+      "email": "bmcluckieh@netlog.com",
+      "gender": "Female",
+      "age": 21,
+      "short_info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "info": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+      "language": [
+        "Korean",
+        "Latvian",
+        "Punjabi"
+      ],
+      "socialMedia": {
+        "twitter": "https://tripadvisor.com/orci/eget.aspx",
+        "facebook": "https://photobucket.com/ultrices/vel/augue/vestibulum.json",
+        "telegram": "http://skyrock.com/vel/enim/sit/amet.jsp",
+        "instagram": "http://bbc.co.uk/ut/nulla/sed/accumsan/felis.xml"
+      },
+      "category": [
+        "Best Sellers",
+        "History",
+        "New",
+        "Fantasy"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Man with One Red Shoe, The",
+          "author": "Ernest Mee",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 59.78,
+          "stars": 2
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "first_name": "Auberta",
+      "last_name": "O'Conor",
+      "email": "aoconori@163.com",
+      "gender": "Female",
+      "age": 48,
+      "short_info": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+      "language": [
+        "Macedonian",
+        "Yiddish",
+        "Somali"
+      ],
+      "socialMedia": {
+        "twitter": "http://scribd.com/id/ornare/imperdiet/sapien/urna/pretium.json",
+        "facebook": "http://msu.edu/pellentesque/quisque/porta/volutpat/erat/quisque/erat.html",
+        "telegram": "https://gizmodo.com/porttitor/lacus.html",
+        "instagram": "http://netvibes.com/bibendum/imperdiet/nullam/orci/pede/venenatis/non.js"
+      },
+      "category": [
+        "New",
+        "History",
+        "Art",
+        "Home",
+        "Design",
+        "Fantasy",
+        "Action",
+        "Best Sellers",
+        "Love Stories"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Music and Lyrics",
+          "author": "Jeff Massel",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 55.85,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Friend Zone (Pagafantas)",
+          "author": "Bat Blench",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 45.15,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "None But the Brave",
+          "author": "Marjy Jewiss",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 29.72,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Boiling Point",
+          "author": "Odessa Janney",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 82.18,
+          "stars": 2
+        },
+        {
+          "id": 5,
+          "title": "Soul of Bread, The (Ai de mian bao hun)",
+          "author": "Lind Poolman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 14.95,
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "first_name": "Trixi",
+      "last_name": "Iddon",
+      "email": "tiddonj@engadget.com",
+      "gender": "Male",
+      "age": 41,
+      "short_info": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+      "info": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+      "language": [
+        "Arabic",
+        "English",
+        "Luxembourgish"
+      ],
+      "socialMedia": {
+        "twitter": "https://slate.com/lectus/in/est/risus/auctor/sed/tristique.png",
+        "facebook": "http://devhub.com/porttitor/lorem/id/ligula/suspendisse/ornare/consequat.html",
+        "telegram": "http://hugedomains.com/dapibus/dolor/vel/est/donec/odio/justo.aspx",
+        "instagram": "http://nbcnews.com/vestibulum/ante/ipsum/primis/in.png"
+      },
+      "category": [
+        "New",
+        "Design",
+        "Action",
+        "Home"
+      ],
+      "books": [
+        {
+          "id": 1,
+          "title": "Cloudburst",
+          "author": "Dorena Fraschetti",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 82.21,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Wayward Cloud, The (Tian bian yi duo yun)",
+          "author": "Gisele Sergean",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 78.79,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "RiP: A Remix Manifesto",
+          "author": "Rozina Ashton",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 99.13,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Stars and Bars",
+          "author": "Maurie Bestiman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 60.25,
+          "stars": 4
+        }
+      ]
+    }
+  ],
   "services": [
     {
       "id": 1,
@@ -31,288 +1078,6 @@
       "title": "Science Fiction",
       "info": "Arguing that neo-Victorian fiction enacts and celebrates cultural memory.",
       "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/services/img/img-4.png"
-    }
-  ],
-  "books": [
-    {
-      "id": 1,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 2,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 3,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 4,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 5,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 6,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 7,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 8,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 9,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
-    },
-    {
-      "id": 10,
-      "title": "Amster Hamster Trip",
-      "author": "James Hoffman",
-      "info": "This open access book provides an overview of childlessness throughout Europe. It offers a collection of papers written by leading demographers and sociologists that examine contexts, causes, and consequences of childlessness in countries throughout the region.The book features data from all over Europe. It specifically highlights patterns of childlessness in Germany, France, the United Kingdom, Finland, Sweden, Austria and Switzerland. An additional chapter on childlessness in the United States puts the European experience in perspective. The book offers readers such insights as the determinants of lifelong childlessness, whether governments can and should counteract increasing childlessness, how the phenomenon differs across social strata and the role economic uncertainties play. In addition, the book also examines life course dynamics and biographical patterns, assisted reproduction as well as the consequences of childlessness. Childlessness has been increasing rapidly in most European countries in recent decades. This book offers readers expert analysis into this issue from leading experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "short_info": "This open access book provides an overview of childlessness throughout Europe. experts in the field of family behavior. From causes to consequences, it explores the many facets of childlessness throughout Europe to present a comprehensive portrait of this important demographic and sociological trend.",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
-      "stars": 4,
-      "price": 19.00,
-      "types": [
-        "Paperback",
-        "Hardcover",
-        "Audiobook",
-        "Audio",
-        "CD",
-        "Kindle"
-      ],
-      "category": [
-        "Sociology",
-        "Social Sciences"
-      ],
-      "publisher": "Springer",
-      "publishedAt": "2014-04-07T08:32:15",
-      "pages": 356,
-      "edition": 2,
-      "language": "English",
-      "pdfSize": 7.23
     }
   ],
   "category": [
@@ -360,6 +1125,2126 @@
       "id": 9,
       "title": "New",
       "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-9.ico"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Tillbaka till Bromma",
+      "short_info": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+      "info": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+      "price": 87.43,
+      "types": [
+        "Audio",
+        "Hardcover"
+      ],
+      "stars": 3,
+      "publisher": "Wikizz",
+      "publishedAt": "2020-07-05T03:13:35Z",
+      "pages": 737,
+      "edition": 2,
+      "language": "Hebrew",
+      "pdfSize": 38.0,
+      "author": {
+        "name": "Penny Whistance",
+        "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png"
+      },
+      "category": [
+        {
+          "id": 5,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 6,
+          "label": "Love Stories"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Accidental Golfer, The (Den ofrivillige golfaren)",
+          "author": "Trula Greenwell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 39.4,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Saturday Night Fever",
+          "author": "Hans Jeafferson",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 69.39,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Harrison Bergeron",
+          "author": "Friedrick Cunniam",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 56.5,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Shanghai Gesture, The",
+          "author": "Marijn Oliva",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 80.65,
+          "stars": 3
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Clair Foulks",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+          "rate": 4,
+          "date": "2021-10-13T10:59:47Z"
+        },
+        {
+          "id": 2,
+          "name": "Gunner Voce",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+          "rate": 3,
+          "date": "2021-03-04T14:22:21Z"
+        },
+        {
+          "id": 3,
+          "name": "Ashby Greber",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+          "rate": 5,
+          "date": "2021-08-03T20:40:50Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Original Sin",
+      "short_info": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      "info": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+      "price": 72.01,
+      "types": [
+        "Audiobook",
+        "Audio"
+      ],
+      "stars": 1,
+      "publisher": "Roodel",
+      "publishedAt": "2014-04-10T23:31:12Z",
+      "pages": 195,
+      "edition": 15,
+      "language": "Hiri Motu",
+      "pdfSize": 36.63,
+      "author": {
+        "name": "Dietrich Freear",
+        "info": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png"
+      },
+      "category": [
+        {
+          "id": 5,
+          "label": "Art"
+        },
+        {
+          "id": 9,
+          "label": "Art"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Trio, The (Trio, Das)",
+          "author": "Griselda Abbiss",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 41.71,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "Eight Below",
+          "author": "Pollyanna Iskower",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 26.35,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Haunted Palace, The",
+          "author": "Sergio Harry",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 98.76,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Outrage",
+          "author": "Morris Cardenoso",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 41.88,
+          "stars": 4
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Elijah Tumber",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+          "rate": 3,
+          "date": "2021-09-04T09:49:27Z"
+        },
+        {
+          "id": 2,
+          "name": "Stacy Poizer",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+          "rate": 2,
+          "date": "2021-10-21T14:09:37Z"
+        },
+        {
+          "id": 3,
+          "name": "Clari Pardew",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+          "rate": 2,
+          "date": "2021-09-02T06:33:56Z"
+        },
+        {
+          "id": 4,
+          "name": "Boyce Cornborough",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+          "rate": 5,
+          "date": "2021-05-23T09:58:58Z"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Evelyn Prentice",
+      "short_info": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+      "info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+      "price": 72.0,
+      "types": [
+        "Audio",
+        "CD"
+      ],
+      "stars": 3,
+      "publisher": "Blognation",
+      "publishedAt": "2011-06-02T23:58:37Z",
+      "pages": 223,
+      "edition": 12,
+      "language": "Punjabi",
+      "pdfSize": 14.17,
+      "author": {
+        "name": "Edee Ruppel",
+        "info": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "History"
+        },
+        {
+          "id": 5,
+          "label": "Action"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Wild Boys of the Road",
+          "author": "Consuelo Jarlmann",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 35.03,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "She Done Him Wrong",
+          "author": "Salmon Keelan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 35.87,
+          "stars": 4
+        },
+        {
+          "id": 3,
+          "title": "Rain",
+          "author": "Kelsey Savine",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 25.97,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "Countdown to Looking Glass",
+          "author": "Tirrell Sackett",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 27.5,
+          "stars": 5
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Bee Josefsen",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
+          "rate": 4,
+          "date": "2021-06-12T22:56:38Z"
+        },
+        {
+          "id": 2,
+          "name": "Clark Sloan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+          "rate": 2,
+          "date": "2021-11-08T03:21:12Z"
+        },
+        {
+          "id": 3,
+          "name": "Maureen Plitz",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+          "rate": 1,
+          "date": "2021-12-14T19:10:57Z"
+        },
+        {
+          "id": 4,
+          "name": "Kittie Buff",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+          "rate": 4,
+          "date": "2021-12-26T07:53:03Z"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Equinox Flower (Higanbana)",
+      "short_info": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+      "info": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+      "price": 75.1,
+      "types": [
+        "Hardcover",
+        "Kindle",
+        "Paperback",
+        "Audio",
+        "CD"
+      ],
+      "stars": 4,
+      "publisher": "Innotype",
+      "publishedAt": "2011-04-29T12:44:33Z",
+      "pages": 948,
+      "edition": 1,
+      "language": "Croatian",
+      "pdfSize": 8.54,
+      "author": {
+        "name": "Ninnette Farries",
+        "info": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png"
+      },
+      "category": [
+        {
+          "id": 3,
+          "label": "History"
+        },
+        {
+          "id": 6,
+          "label": "Love Stories"
+        },
+        {
+          "id": 5,
+          "label": "Fantasy"
+        },
+        {
+          "id": 8,
+          "label": "Home"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Moon 44",
+          "author": "Peggi Meddick",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 20.11,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Legal Deceit",
+          "author": "Sal Riggulsford",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 42.29,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Nicholas Nickleby",
+          "author": "Morty Adderley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 44.78,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "X-Files: I Want to Believe, The",
+          "author": "Yolande Culkin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 84.47,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Rozina Southan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+          "rate": 2,
+          "date": "2021-12-13T20:44:11Z"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Gasland Part II",
+      "short_info": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+      "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+      "price": 49.65,
+      "types": [
+        "Paperback",
+        "Audiobook",
+        "Kindle",
+        "Hardcover",
+        "Audio"
+      ],
+      "stars": 4,
+      "publisher": "Zoomzone",
+      "publishedAt": "2013-07-13T19:10:48Z",
+      "pages": 171,
+      "edition": 4,
+      "language": "Zulu",
+      "pdfSize": 26.93,
+      "author": {
+        "name": "Lin Pople",
+        "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 7,
+          "label": "Best Sellers"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Slap Her... She's French (a.k.a. She Gets What She Wants)",
+          "author": "Zelma Brandel",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 39.81,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Yumurta (Egg)",
+          "author": "Gavin Strut",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 44.08,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Best Intentions, The (Den goda viljan)",
+          "author": "Cahra Shorbrook",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 72.61,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "Eila",
+          "author": "Dennison Lantiff",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 75.28,
+          "stars": 4
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Allene Chiplin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+          "rate": 2,
+          "date": "2021-03-10T04:59:34Z"
+        },
+        {
+          "id": 2,
+          "name": "Meridith Chiplin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+          "rate": 2,
+          "date": "2021-02-26T13:31:52Z"
+        },
+        {
+          "id": 3,
+          "name": "Lowrance Worral",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+          "rate": 5,
+          "date": "2021-08-09T03:43:01Z"
+        },
+        {
+          "id": 4,
+          "name": "Moria Bromet",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+          "rate": 1,
+          "date": "2021-07-28T13:28:18Z"
+        },
+        {
+          "id": 5,
+          "name": "Albie Tomaskov",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+          "rate": 5,
+          "date": "2021-11-04T14:46:22Z"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Bandwagon",
+      "short_info": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+      "info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+      "price": 84.31,
+      "types": [
+        "Hardcover",
+        "Audiobook",
+        "CD",
+        "Audio",
+        "Paperback",
+        "Kindle"
+      ],
+      "stars": 3,
+      "publisher": "Jabberstorm",
+      "publishedAt": "2007-04-20T10:55:09Z",
+      "pages": 306,
+      "edition": 1,
+      "language": "Kashmiri",
+      "pdfSize": 27.25,
+      "author": {
+        "name": "Patsy Posse",
+        "info": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Design"
+        },
+        {
+          "id": 1,
+          "label": "History"
+        },
+        {
+          "id": 3,
+          "label": "Design"
+        },
+        {
+          "id": 6,
+          "label": "Art"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Who's Camus Anyway? (Kamyu nante shiranai)",
+          "author": "Saw Broadist",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 30.9,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Casual Relations",
+          "author": "Howie Stuckey",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 19.59,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Vampire Lovers, The",
+          "author": "Cher Saban",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 97.85,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Three on a Match",
+          "author": "Desirae Learmount",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 91.22,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Gabi Elles",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+          "rate": 3,
+          "date": "2021-10-31T08:48:56Z"
+        },
+        {
+          "id": 2,
+          "name": "Melvyn Tourmell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+          "rate": 1,
+          "date": "2021-08-24T10:46:45Z"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Broken English",
+      "short_info": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+      "info": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+      "price": 95.92,
+      "types": [
+        "Kindle",
+        "Hardcover",
+        "Audio"
+      ],
+      "stars": 1,
+      "publisher": "Skinder",
+      "publishedAt": "2013-08-11T05:44:10Z",
+      "pages": 605,
+      "edition": 9,
+      "language": "Northern Sotho",
+      "pdfSize": 23.8,
+      "author": {
+        "name": "Lauretta Nibley",
+        "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 9,
+          "label": "Home"
+        },
+        {
+          "id": 3,
+          "label": "History"
+        },
+        {
+          "id": 6,
+          "label": "Fantasy"
+        },
+        {
+          "id": 7,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 8,
+          "label": "Love Stories"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Arizona",
+          "author": "Aurora Jaynes",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 82.06,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "Nuts",
+          "author": "Anallese Bettridge",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 56.82,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Cat and the Canary, The",
+          "author": "Winny McGillacoell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 45.9,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Whole",
+          "author": "Robbin Barrowclough",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 41.28,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Fin Escofier",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+          "rate": 2,
+          "date": "2021-06-04T23:44:09Z"
+        },
+        {
+          "id": 2,
+          "name": "Olly Marrian",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+          "rate": 3,
+          "date": "2021-06-16T19:03:21Z"
+        },
+        {
+          "id": 3,
+          "name": "Emili Lanegran",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+          "rate": 3,
+          "date": "2021-06-01T05:12:58Z"
+        },
+        {
+          "id": 4,
+          "name": "Nickola Sedge",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+          "rate": 1,
+          "date": "2021-05-01T07:48:01Z"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "All Access",
+      "short_info": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+      "info": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+      "price": 84.84,
+      "types": [
+        "Audio",
+        "Hardcover",
+        "Kindle",
+        "Paperback",
+        "Audiobook"
+      ],
+      "stars": 5,
+      "publisher": "Skaboo",
+      "publishedAt": "2012-04-20T00:20:13Z",
+      "pages": 181,
+      "edition": 16,
+      "language": "Persian",
+      "pdfSize": 11.11,
+      "author": {
+        "name": "Tammy Gatley",
+        "info": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 1,
+          "label": "History"
+        },
+        {
+          "id": 3,
+          "label": "Art"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Russian Ark (Russkiy Kovcheg)",
+          "author": "Konstantine Earpe",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 10.56,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Cookers",
+          "author": "Annnora Murney",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 37.15,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Hard to Hold",
+          "author": "Karlie McSherry",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 47.42,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Old Acquaintance",
+          "author": "Chrysa Bissell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 71.07,
+          "stars": 1
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Amata McCoid",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+          "rate": 4,
+          "date": "2021-05-23T10:51:26Z"
+        },
+        {
+          "id": 2,
+          "name": "Dottie Summerside",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+          "rate": 1,
+          "date": "2021-05-01T06:36:12Z"
+        },
+        {
+          "id": 3,
+          "name": "Ambros Jenking",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+          "rate": 5,
+          "date": "2021-10-02T13:29:40Z"
+        },
+        {
+          "id": 4,
+          "name": "Iain Friedman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+          "rate": 3,
+          "date": "2021-07-19T16:00:26Z"
+        },
+        {
+          "id": 5,
+          "name": "Mayne Greve",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+          "rate": 5,
+          "date": "2021-07-08T10:11:22Z"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "The Nutcracker Prince",
+      "short_info": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+      "info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+      "price": 14.51,
+      "types": [
+        "Audio",
+        "Hardcover",
+        "Audiobook",
+        "Paperback",
+        "CD"
+      ],
+      "stars": 2,
+      "publisher": "Devshare",
+      "publishedAt": "2016-12-15T10:50:27Z",
+      "pages": 745,
+      "edition": 3,
+      "language": "Azeri",
+      "pdfSize": 11.1,
+      "author": {
+        "name": "Maddy Tye",
+        "info": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 9,
+          "label": "New"
+        },
+        {
+          "id": 2,
+          "label": "Fantasy"
+        },
+        {
+          "id": 4,
+          "label": "History"
+        },
+        {
+          "id": 5,
+          "label": "New"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Our Life (La nostra vita)",
+          "author": "Gilles Osmar",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 51.95,
+          "stars": 3
+        },
+        {
+          "id": 2,
+          "title": "Will Penny",
+          "author": "Nerty Ganter",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 95.05,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Saving Lincoln",
+          "author": "Marve Eliassen",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 73.26,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "In the Blood",
+          "author": "Berti Trobridge",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 29.53,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Helaina Shepton",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+          "rate": 4,
+          "date": "2021-03-31T07:43:46Z"
+        },
+        {
+          "id": 2,
+          "name": "Kennett Bowkley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+          "rate": 5,
+          "date": "2021-04-17T03:56:45Z"
+        },
+        {
+          "id": 3,
+          "name": "Maybelle Grundon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+          "rate": 1,
+          "date": "2021-03-08T15:33:39Z"
+        },
+        {
+          "id": 4,
+          "name": "Phillida Greber",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+          "rate": 2,
+          "date": "2021-05-16T20:08:36Z"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Heatstroke",
+      "short_info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+      "info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+      "price": 52.16,
+      "types": [
+        "Paperback",
+        "Kindle",
+        "Audiobook",
+        "Hardcover",
+        "Audio",
+        "CD"
+      ],
+      "stars": 5,
+      "publisher": "Skippad",
+      "publishedAt": "2014-10-03T06:27:02Z",
+      "pages": 725,
+      "edition": 13,
+      "language": "Estonian",
+      "pdfSize": 31.55,
+      "author": {
+        "name": "Naomi Byrde",
+        "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 5,
+          "label": "Love Stories"
+        },
+        {
+          "id": 2,
+          "label": "Art"
+        },
+        {
+          "id": 9,
+          "label": "Home"
+        },
+        {
+          "id": 1,
+          "label": "Fantasy"
+        },
+        {
+          "id": 4,
+          "label": "History"
+        },
+        {
+          "id": 1,
+          "label": "Best Sellers"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Man on Wire",
+          "author": "Ephrem Desporte",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 23.6,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "Eating Raoul",
+          "author": "Monroe Benardette",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 72.41,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Dead Like Me: Life After Death",
+          "author": "Gigi O'Feeny",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 79.14,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Krush Groove",
+          "author": "Shandee Blunderfield",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 98.99,
+          "stars": 5
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Judy McGaugan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+          "rate": 5,
+          "date": "2021-02-27T07:37:10Z"
+        },
+        {
+          "id": 2,
+          "name": "Ardys Pigrome",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+          "rate": 4,
+          "date": "2021-11-13T08:20:14Z"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Spider-Man: The Ultimate Villain Showdown",
+      "short_info": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+      "info": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+      "price": 76.89,
+      "types": [
+        "Audio",
+        "Hardcover",
+        "Kindle"
+      ],
+      "stars": 3,
+      "publisher": "Kayveo",
+      "publishedAt": "2002-03-10T12:13:44Z",
+      "pages": 870,
+      "edition": 8,
+      "language": "Belarusian",
+      "pdfSize": 37.54,
+      "author": {
+        "name": "Amber Bickle",
+        "info": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png"
+      },
+      "category": [
+        {
+          "id": 1,
+          "label": "Design"
+        },
+        {
+          "id": 5,
+          "label": "Toaster"
+        },
+        {
+          "id": 5,
+          "label": "Best Sellers"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "The Brave Little Toaster Goes to Mars",
+          "author": "Rory Lutsch",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 92.84,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Playing 'In the Company of Men' (En jouant 'Dans la compagnie des hommes')",
+          "author": "Kathryn McDoual",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 45.92,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Necessary Roughness",
+          "author": "Lisbeth Stoacley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 77.23,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Liberty Stands Still",
+          "author": "Sanson Farlham",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 10.39,
+          "stars": 1
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Florri Sherbrook",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+          "rate": 2,
+          "date": "2021-10-13T06:37:34Z"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Amityville II: The Possession",
+      "short_info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+      "info": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+      "price": 22.2,
+      "types": [
+        "Hardcover",
+        "Audiobook",
+        "Audio",
+        "Paperback",
+        "CD"
+      ],
+      "stars": 4,
+      "publisher": "Tagpad",
+      "publishedAt": "2016-06-19T15:27:13Z",
+      "pages": 605,
+      "edition": 19,
+      "language": "Gujarati",
+      "pdfSize": 10.63,
+      "author": {
+        "name": "Katya Malden",
+        "info": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png"
+      },
+      "category": [
+        {
+          "id": 6,
+          "label": "History"
+        },
+        {
+          "id": 5,
+          "label": "History"
+        },
+        {
+          "id": 2,
+          "label": "Action"
+        },
+        {
+          "id": 3,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 8,
+          "label": "Design"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Sorcerer and the White Snake, The (Bai she chuan shuo)",
+          "author": "Arv Bennett",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 97.11,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "Joysticks",
+          "author": "Cale McGuffog",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 93.19,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "My Night At Maud's (Ma Nuit Chez Maud)",
+          "author": "Ulla Antonsen",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 67.28,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Spaceballs",
+          "author": "Tansy Learoid",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 99.25,
+          "stars": 4
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Jobye Goaks",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+          "rate": 5,
+          "date": "2022-01-24T14:41:54Z"
+        },
+        {
+          "id": 2,
+          "name": "Arden McAlindon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+          "rate": 3,
+          "date": "2021-08-11T14:06:10Z"
+        },
+        {
+          "id": 3,
+          "name": "Nathalie Lamberteschi",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+          "rate": 4,
+          "date": "2021-05-20T02:25:44Z"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Beasts of the Southern Wild",
+      "short_info": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+      "info": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+      "price": 38.71,
+      "types": [
+        "Hardcover"
+      ],
+      "stars": 4,
+      "publisher": "Photolist",
+      "publishedAt": "2006-11-30T07:49:22Z",
+      "pages": 148,
+      "edition": 1,
+      "language": "Malay",
+      "pdfSize": 36.24,
+      "author": {
+        "name": "Alfreda Zarfati",
+        "info": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 8,
+          "label": "Action"
+        },
+        {
+          "id": 7,
+          "label": "Fantasy"
+        },
+        {
+          "id": 9,
+          "label": "Art"
+        },
+        {
+          "id": 5,
+          "label": "Love Stories"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Whoregasm",
+          "author": "Esme Janas",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 73.21,
+          "stars": 3
+        },
+        {
+          "id": 2,
+          "title": "Sweet Liberty",
+          "author": "Lorne Elverstone",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 64.52,
+          "stars": 1
+        },
+        {
+          "id": 3,
+          "title": "Shout, The",
+          "author": "Gaylene Seage",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 40.55,
+          "stars": 4
+        },
+        {
+          "id": 4,
+          "title": "Diary of a Chambermaid, The",
+          "author": "Isiahi Schimoni",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 34.53,
+          "stars": 5
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Olia Baterip",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+          "rate": 2,
+          "date": "2021-09-11T11:00:42Z"
+        },
+        {
+          "id": 2,
+          "name": "Prisca Philcott",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+          "rate": 3,
+          "date": "2021-11-21T11:09:18Z"
+        },
+        {
+          "id": 3,
+          "name": "Marylinda Fantin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+          "rate": 5,
+          "date": "2021-08-25T22:15:22Z"
+        },
+        {
+          "id": 4,
+          "name": "Aldridge Points",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+          "rate": 3,
+          "date": "2021-12-19T08:29:37Z"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Land Before Time II: The Great Valley Adventure, The",
+      "short_info": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+      "info": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+      "price": 36.09,
+      "types": [
+        "Paperback",
+        "CD",
+        "Audio",
+        "Audiobook",
+        "Kindle",
+        "Hardcover"
+      ],
+      "stars": 2,
+      "publisher": "Kayveo",
+      "publishedAt": "2000-06-27T21:35:14Z",
+      "pages": 208,
+      "edition": 19,
+      "language": "Korean",
+      "pdfSize": 9.26,
+      "author": {
+        "name": "Bobbe Blunsom",
+        "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Action"
+        },
+        {
+          "id": 8,
+          "label": "best seller"
+        },
+        {
+          "id": 2,
+          "label": "Art"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Jesse Stone: Sea Change",
+          "author": "Brit Magarrell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 37.68,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Pandora's Box",
+          "author": "Armando Howford",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 38.52,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Come Blow Your Horn",
+          "author": "Stefanie Santino",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 48.49,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Late Shift, The",
+          "author": "Lindy Ericsson",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 99.85,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Leann Bracknall",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+          "rate": 3,
+          "date": "2022-01-15T22:09:39Z"
+        },
+        {
+          "id": 2,
+          "name": "Tarrah Featherston",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+          "rate": 5,
+          "date": "2021-09-04T06:35:53Z"
+        },
+        {
+          "id": 3,
+          "name": "Ivy Kennford",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+          "rate": 5,
+          "date": "2021-10-06T20:25:39Z"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Pecker",
+      "short_info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+      "info": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+      "price": 96.78,
+      "types": [
+        "CD",
+        "Audio",
+        "Audiobook",
+        "Kindle",
+        "Paperback",
+        "Hardcover"
+      ],
+      "stars": 3,
+      "publisher": "Trunyx",
+      "publishedAt": "2004-01-27T11:49:37Z",
+      "pages": 809,
+      "edition": 10,
+      "language": "Maltese",
+      "pdfSize": 42.46,
+      "author": {
+        "name": "Adelice Lindenblatt",
+        "info": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png"
+      },
+      "category": [
+        {
+          "id": 1,
+          "label": "Action"
+        },
+        {
+          "id": 6,
+          "label": "Home"
+        },
+        {
+          "id": 3,
+          "label": "Love Stories"
+        },
+        {
+          "id": 8,
+          "label": "New"
+        },
+        {
+          "id": 9,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 5,
+          "label": "Art"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Vanity Fair",
+          "author": "Agnese Atwell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 23.59,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "Transmorphers",
+          "author": "Sibyl Rowden",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 88.78,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Almost Man, The (Mer eller mindre mann)",
+          "author": "Bidget MacCall",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 92.28,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Crystal Lake Memories: The Complete History of Friday the 13th",
+          "author": "Barbette McGawn",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 30.24,
+          "stars": 1
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Sunshine Addey",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+          "rate": 5,
+          "date": "2021-05-15T18:56:18Z"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Safe House",
+      "short_info": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+      "info": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+      "price": 57.27,
+      "types": [
+        "Paperback",
+        "Hardcover",
+        "Audio",
+        "Kindle",
+        "CD",
+        "Audiobook"
+      ],
+      "stars": 1,
+      "publisher": "Aimbu",
+      "publishedAt": "2020-10-11T09:31:13Z",
+      "pages": 957,
+      "edition": 20,
+      "language": "Montenegrin",
+      "pdfSize": 36.92,
+      "author": {
+        "name": "Yoshi Brahmer",
+        "info": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png"
+      },
+      "category": [
+        {
+          "id": 9,
+          "label": "Art"
+        },
+        {
+          "id": 2,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 1,
+          "label": "New"
+        },
+        {
+          "id": 4,
+          "label": "History"
+        },
+        {
+          "id": 6,
+          "label": "History"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Illegal Tender",
+          "author": "Kienan Adrienne",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 40.84,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "O Amor das Três Romãs",
+          "author": "Tobey Christescu",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 45.03,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Daisy Miller",
+          "author": "Gib Brisley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 82.85,
+          "stars": 4
+        },
+        {
+          "id": 4,
+          "title": "Bela Kiss: Prologue",
+          "author": "Elizabeth Boyne",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 88.15,
+          "stars": 5
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Delaney Ciciotti",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+          "rate": 2,
+          "date": "2021-04-18T15:56:32Z"
+        },
+        {
+          "id": 2,
+          "name": "Raffaello Rudham",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+          "rate": 2,
+          "date": "2021-03-29T18:08:43Z"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "The Outsider",
+      "short_info": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      "info": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+      "price": 86.87,
+      "types": [
+        "Kindle",
+        "Hardcover",
+        "CD",
+        "Paperback",
+        "Audiobook",
+        "Audio"
+      ],
+      "stars": 2,
+      "publisher": "Avaveo",
+      "publishedAt": "2008-03-27T01:50:13Z",
+      "pages": 270,
+      "edition": 4,
+      "language": "Portuguese",
+      "pdfSize": 33.49,
+      "author": {
+        "name": "Lynnell Wilstead",
+        "info": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png"
+      },
+      "category": [
+        {
+          "id": 7,
+          "label": "History"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Take the Money and Run",
+          "author": "Marve Garbutt",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 27.7,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "That's Black Entertainment",
+          "author": "Angus Simoncello",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 37.74,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Flesh and the Devil",
+          "author": "Aldus Haseley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 71.52,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Sweet Sixteen",
+          "author": "Eunice Antonovic",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 89.92,
+          "stars": 4
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Natasha Brumbye",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+          "rate": 2,
+          "date": "2022-01-05T15:28:15Z"
+        },
+        {
+          "id": 2,
+          "name": "Baryram Portigall",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+          "rate": 3,
+          "date": "2021-04-10T17:15:32Z"
+        },
+        {
+          "id": 3,
+          "name": "Otho Carnegie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+          "rate": 3,
+          "date": "2021-05-06T15:25:11Z"
+        },
+        {
+          "id": 4,
+          "name": "Xenos Topping",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+          "rate": 4,
+          "date": "2022-01-02T23:55:20Z"
+        },
+        {
+          "id": 5,
+          "name": "Magdaia Cosans",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+          "rate": 1,
+          "date": "2021-05-17T01:55:53Z"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Lovely to Look At",
+      "short_info": "Fusce consequat. Nulla nisl. Nunc nisl.",
+      "info": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+      "price": 46.96,
+      "types": [
+        "CD",
+        "Audiobook",
+        "Paperback",
+        "Hardcover",
+        "Audio"
+      ],
+      "stars": 3,
+      "publisher": "Rhyloo",
+      "publishedAt": "2018-12-21T21:27:21Z",
+      "pages": 405,
+      "edition": 14,
+      "language": "West Frisian",
+      "pdfSize": 47.58,
+      "author": {
+        "name": "Katie Renon",
+        "info": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png"
+      },
+      "category": [
+        {
+          "id": 2,
+          "label": "Home"
+        },
+        {
+          "id": 9,
+          "label": "Art"
+        },
+        {
+          "id": 6,
+          "label": "Action"
+        },
+        {
+          "id": 5,
+          "label": "Design"
+        },
+        {
+          "id": 4,
+          "label": "History"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "The Puzzle",
+          "author": "Wenonah Skyram",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 58.35,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Boricua's Bond",
+          "author": "Marketa Pengelley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 90.09,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Tribute",
+          "author": "Shannon Standage",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 38.2,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Apartment Zero",
+          "author": "Grantham McGeraghty",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 88.79,
+          "stars": 2
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Gennie Delucia",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+          "rate": 2,
+          "date": "2022-01-31T13:01:17Z"
+        },
+        {
+          "id": 2,
+          "name": "Hadlee Klimp",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+          "rate": 4,
+          "date": "2021-03-16T10:49:22Z"
+        },
+        {
+          "id": 3,
+          "name": "Reece Bakhrushkin",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+          "rate": 1,
+          "date": "2021-04-06T17:54:37Z"
+        },
+        {
+          "id": 4,
+          "name": "Junia Roseaman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+          "rate": 3,
+          "date": "2021-09-25T14:05:58Z"
+        },
+        {
+          "id": 5,
+          "name": "Trish Malarkey",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-4.png",
+          "info": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+          "rate": 1,
+          "date": "2021-06-24T02:58:29Z"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Emmett's Mark",
+      "short_info": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+      "info": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+      "price": 78.87,
+      "types": [
+        "Paperback",
+        "Audio"
+      ],
+      "stars": 2,
+      "publisher": "Viva",
+      "publishedAt": "2017-09-08T02:51:03Z",
+      "pages": 227,
+      "edition": 20,
+      "language": "Afrikaans",
+      "pdfSize": 42.62,
+      "author": {
+        "name": "Ebba Cornelis",
+        "info": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png"
+      },
+      "category": [
+        {
+          "id": 6,
+          "label": "Design"
+        },
+        {
+          "id": 9,
+          "label": "Home"
+        },
+        {
+          "id": 1,
+          "label": "History"
+        },
+        {
+          "id": 3,
+          "label": "New"
+        },
+        {
+          "id": 7,
+          "label": "Love Stories"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Tarnished Angels, The",
+          "author": "Jody Vicary",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 10.28,
+          "stars": 3
+        },
+        {
+          "id": 2,
+          "title": "In the Good Old Summertime",
+          "author": "Leighton Lorraine",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 21.95,
+          "stars": 4
+        },
+        {
+          "id": 3,
+          "title": "Wonder Man",
+          "author": "Kingston Ogden",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 63.28,
+          "stars": 4
+        },
+        {
+          "id": 4,
+          "title": "James Dean Remembered",
+          "author": "Cornelle Hryniewicz",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 20.28,
+          "stars": 3
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Robinett Pleasaunce",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+          "rate": 1,
+          "date": "2021-06-21T11:37:15Z"
+        },
+        {
+          "id": 2,
+          "name": "Nil Bassford",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+          "rate": 5,
+          "date": "2021-09-01T16:40:27Z"
+        },
+        {
+          "id": 3,
+          "name": "Bondon Benitez",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
+          "rate": 1,
+          "date": "2021-02-18T23:03:40Z"
+        },
+        {
+          "id": 4,
+          "name": "Linc Farrier",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-3.png",
+          "info": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+          "rate": 3,
+          "date": "2021-08-17T09:24:14Z"
+        },
+        {
+          "id": 5,
+          "name": "Cele Merrigan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-5.png",
+          "info": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+          "rate": 3,
+          "date": "2021-09-02T14:30:30Z"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Off Limits",
+      "short_info": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "info": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+      "price": 93.61,
+      "types": [
+        "Audiobook",
+        "Audio",
+        "Paperback",
+        "Hardcover",
+        "Kindle"
+      ],
+      "stars": 5,
+      "publisher": "Babbleopia",
+      "publishedAt": "2013-05-12T23:27:04Z",
+      "pages": 277,
+      "edition": 18,
+      "language": "Azeri",
+      "pdfSize": 13.59,
+      "author": {
+        "name": "Montgomery Gledhill",
+        "info": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
+        "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png"
+      },
+      "category": [
+        {
+          "id": 9,
+          "label": "Best Sellers"
+        },
+        {
+          "id": 8,
+          "label": "Love Stories"
+        }
+      ],
+      "relatedBooks": [
+        {
+          "id": 1,
+          "title": "Invisible Woman, The",
+          "author": "Natty Gilbride",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 20.03,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "Chop Shop",
+          "author": "Cathie Conechie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 93.48,
+          "stars": 2
+        },
+        {
+          "id": 3,
+          "title": "Phantasm II",
+          "author": "Davy Digman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 45.94,
+          "stars": 4
+        },
+        {
+          "id": 4,
+          "title": "Pot O' Gold",
+          "author": "Silvana O'Kenny",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 29.41,
+          "stars": 4
+        }
+      ],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Olimpia Keddey",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+          "rate": 5,
+          "date": "2021-04-24T19:11:36Z"
+        },
+        {
+          "id": 2,
+          "name": "Joyce Keunemann",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
+          "info": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+          "rate": 1,
+          "date": "2022-01-25T23:06:48Z"
+        },
+        {
+          "id": 3,
+          "name": "Perri Carrabott",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+          "rate": 5,
+          "date": "2021-08-14T01:10:03Z"
+        },
+        {
+          "id": 4,
+          "name": "Nathanael Chantrell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-1.png",
+          "info": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
+          "rate": 2,
+          "date": "2021-07-30T07:14:49Z"
+        }
+      ]
     }
   ],
   "reviews": [
