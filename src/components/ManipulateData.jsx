@@ -41,7 +41,7 @@ const add_zero = (num = 0) => {
 
 /**
  * turn date to human readable date
- * @param {Date} date date object to formate
+ * @param {Date | String} date date object to formate
  * @returns {String}
  */
 const human_date = (date) => {
@@ -62,4 +62,22 @@ function slugify(str) {
   return str.trim().replace(/\W+/g, '-').toLowerCase();
 }
 
-export { Stars, capitalize, human_date, slugify };
+/**
+ * calculate diff between dates in days
+ * @param {Date | String} date_1 first date must be bigger than otherDate
+ * @param {Date | String} date_2 second date
+ * @returns {Number} days number
+ */
+function diff_in_days(date_1, date_2) {
+  const first_date =
+      typeof date_1 === 'string'
+        ? new Date(date_1).getTime()
+        : date_1.getTime(),
+    second_date =
+      typeof date_2 === 'string'
+        ? new Date(date_2).getTime()
+        : date_2.getTime();
+  return Math.ceil(Math.abs(first_date - second_date) / (1000 * 60 * 60 * 24));
+}
+
+export { Stars, capitalize, human_date, slugify, diff_in_days };
