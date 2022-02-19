@@ -24,12 +24,26 @@ const SERVICES = Data.services,
   BOOKS = Data.books,
   CATEGORY = Data.category,
   LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
-  RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4));
+  RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4)),
+  BOOKS_REVIEWS = Data.books[0].reviews;
 
 function shuffle_arr(arr) {
   return arr.sort(() => 0.5 - Math.random());
 }
 
+function get_book_by_id(id = '1') {
+  return BOOKS.filter((book) => book.id.toString() === id)[0];
+}
+
 export default base_url;
 export { CategoryAPI, ServicesAPI, BooksAPI };
-export { SERVICES, REVIEWS, BOOKS, LATEST_BOOKS, RELATED_BOOKS, CATEGORY };
+export {
+  SERVICES,
+  REVIEWS,
+  BOOKS,
+  LATEST_BOOKS,
+  RELATED_BOOKS,
+  BOOKS_REVIEWS,
+  CATEGORY,
+  get_book_by_id,
+};
