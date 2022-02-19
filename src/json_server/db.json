@@ -1083,48 +1083,619 @@
   "category": [
     {
       "id": 1,
-      "title": "Action",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-1.ico"
+      "title": "Art",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-1.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Gimme the Loot",
+          "author": "Zaneta Izat",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 13.17,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "99 and 44/100% Dead",
+          "author": "Cori O'Mullaney",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 37.21,
+          "stars": 4
+        },
+        {
+          "id": 3,
+          "title": "True Story",
+          "author": "Blane Goldingay",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 72.38,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "Dream Demon",
+          "author": "Gallagher Veryard",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 27.52,
+          "stars": 3
+        },
+        {
+          "id": 5,
+          "title": "Grifters, The",
+          "author": "Issie Lewendon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 25.63,
+          "stars": 4
+        },
+        {
+          "id": 6,
+          "title": "Crime After Crime",
+          "author": "Leodora Gerrad",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 17.23,
+          "stars": 2
+        },
+        {
+          "id": 7,
+          "title": "Lost Skeleton Returns Again, The",
+          "author": "Codee Copcote",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 36.32,
+          "stars": 5
+        },
+        {
+          "id": 8,
+          "title": "I Married a Monster from Outer Space",
+          "author": "Damiano Cran",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 91.01,
+          "stars": 4
+        },
+        {
+          "id": 9,
+          "title": "Left Behind II: Tribulation Force",
+          "author": "Wren Halewood",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 11.27,
+          "stars": 2
+        },
+        {
+          "id": 10,
+          "title": "Year of the Wolf, The (Suden vuosi)",
+          "author": "Leeann Crysell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 63.02,
+          "stars": 4
+        },
+        {
+          "id": 11,
+          "title": "Bond Girls Are Forever",
+          "author": "Max Keher",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 89.36,
+          "stars": 4
+        },
+        {
+          "id": 12,
+          "title": "Some Folks Call It a Sling Blade",
+          "author": "Ruthy Greenhead",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 95.07,
+          "stars": 3
+        },
+        {
+          "id": 13,
+          "title": "Prize, The",
+          "author": "Richie Lynthal",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 60.13,
+          "stars": 5
+        },
+        {
+          "id": 14,
+          "title": "Keyhole",
+          "author": "Norrie Seid",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 30.35,
+          "stars": 3
+        },
+        {
+          "id": 15,
+          "title": "On the Run",
+          "author": "Anjanette Vairow",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 16.05,
+          "stars": 4
+        },
+        {
+          "id": 16,
+          "title": "Sidestreet",
+          "author": "Daryl Strelitzki",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 35.12,
+          "stars": 3
+        },
+        {
+          "id": 17,
+          "title": "Stolen Seas",
+          "author": "Lizbeth Connow",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 85.49,
+          "stars": 5
+        },
+        {
+          "id": 18,
+          "title": "Buying the Cow",
+          "author": "Juan Houten",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-1.jpg",
+          "price": 68.24,
+          "stars": 2
+        }
+      ]
     },
     {
       "id": 2,
-      "title": "Art",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-2.ico"
+      "title": "Best Sellers",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-2.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Eddie Izzard: Dress to Kill",
+          "author": "Michele Dagnan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-16.jpg",
+          "price": 42.97,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Idol of the Crowds",
+          "author": "Kristoffer Baudain",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 91.35,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Wittgenstein",
+          "author": "Jeromy Gossage",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 93.08,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Lawman",
+          "author": "Ruggiero O'Keeffe",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 50.57,
+          "stars": 3
+        },
+        {
+          "id": 5,
+          "title": "Dear John",
+          "author": "Adrian McGairl",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 66.59,
+          "stars": 2
+        },
+        {
+          "id": 6,
+          "title": "Jurassic Park III",
+          "author": "Shayne Worssam",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 96.14,
+          "stars": 2
+        },
+        {
+          "id": 7,
+          "title": "Way Down East",
+          "author": "Melania Ramalhete",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 36.48,
+          "stars": 5
+        },
+        {
+          "id": 8,
+          "title": "Antonio das Mortes (O Dragão da Maldade contra o Santo Guerreiro)",
+          "author": "Willey Castlake",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 22.82,
+          "stars": 4
+        },
+        {
+          "id": 9,
+          "title": "009 Re: Cyborg",
+          "author": "Salomo Borgnol",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 80.31,
+          "stars": 3
+        },
+        {
+          "id": 10,
+          "title": "Berserk",
+          "author": "Mercie Pettigree",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-13.jpg",
+          "price": 67.07,
+          "stars": 2
+        },
+        {
+          "id": 11,
+          "title": "Urgh! A Music War",
+          "author": "Zorana Bulpitt",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-4.jpg",
+          "price": 59.75,
+          "stars": 5
+        },
+        {
+          "id": 12,
+          "title": "Diary of a Hitman",
+          "author": "Freddie Holborn",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 11.34,
+          "stars": 1
+        },
+        {
+          "id": 13,
+          "title": "Young Aphrodites (Mikres Afrodites)",
+          "author": "Gwenni Lawn",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 99.56,
+          "stars": 1
+        }
+      ]
     },
     {
       "id": 3,
-      "title": "Best Sellers",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-3.ico"
+      "title": "Design",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-3.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Queen and I, The (Drottningen och jag)",
+          "author": "Ara Tupie",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 75.79,
+          "stars": 5
+        },
+        {
+          "id": 2,
+          "title": "Shadowzone",
+          "author": "Rosalie Antonescu",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 73.05,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Private Affairs of Bel Ami, The",
+          "author": "Quentin Amdohr",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 57.78,
+          "stars": 5
+        },
+        {
+          "id": 4,
+          "title": "Cyberjack (Virtual Assassin)",
+          "author": "Rich Searjeant",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 56.08,
+          "stars": 5
+        },
+        {
+          "id": 5,
+          "title": "Creature with the Atom Brain",
+          "author": "Davita Elcom",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 45.29,
+          "stars": 3
+        },
+        {
+          "id": 6,
+          "title": "Métastases",
+          "author": "Nisse Sillitoe",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 62.46,
+          "stars": 3
+        }
+      ]
     },
     {
       "id": 4,
-      "title": "Design",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-4.ico"
+      "title": "Fantasy",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-4.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Babe",
+          "author": "Ron Bee",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 30.12,
+          "stars": 4
+        },
+        {
+          "id": 2,
+          "title": "Black Tar Heroin: The Dark End of the Street",
+          "author": "Estell Mansel",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 58.69,
+          "stars": 1
+        },
+        {
+          "id": 3,
+          "title": "Macao",
+          "author": "Daisey Monkleigh",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-2.jpg",
+          "price": 98.56,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "800 Bullets (800 Balas)",
+          "author": "Daffie Monnelly",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 29.95,
+          "stars": 3
+        },
+        {
+          "id": 5,
+          "title": "Well Spent Life, A",
+          "author": "Anne-corinne Hamman",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 49.18,
+          "stars": 2
+        },
+        {
+          "id": 6,
+          "title": "Loft (Rofuto)",
+          "author": "Dewie Di Francesco",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 47.42,
+          "stars": 4
+        },
+        {
+          "id": 7,
+          "title": "Naqoyqatsi",
+          "author": "Ulric Gowar",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 25.91,
+          "stars": 3
+        }
+      ]
     },
     {
       "id": 5,
-      "title": "Fantasy",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-5.ico"
+      "title": "History",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-5.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Manhunt",
+          "author": "Wenona Donaway",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-14.jpg",
+          "price": 85.59,
+          "stars": 3
+        },
+        {
+          "id": 2,
+          "title": "One in the Chamber",
+          "author": "Algernon Bater",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 19.36,
+          "stars": 4
+        },
+        {
+          "id": 3,
+          "title": "Don't Move (Non ti muovere)",
+          "author": "Rodrigo Fowley",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 74.67,
+          "stars": 1
+        },
+        {
+          "id": 4,
+          "title": "Thief of Bagdad, The",
+          "author": "Frayda Hanburry",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 11.49,
+          "stars": 4
+        },
+        {
+          "id": 5,
+          "title": "On Moonlight Bay",
+          "author": "Axe Elkington",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 37.69,
+          "stars": 5
+        },
+        {
+          "id": 6,
+          "title": "Mr. Hobbs Takes a Vacation",
+          "author": "Leonid di Rocca",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 58.93,
+          "stars": 3
+        },
+        {
+          "id": 7,
+          "title": "I Live My Life",
+          "author": "Rowe Berge",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 93.87,
+          "stars": 3
+        }
+      ]
     },
     {
       "id": 6,
-      "title": "History",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-6.ico"
+      "title": "Home",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-6.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "Zero Years, The",
+          "author": "Rufus Doughton",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-18.jpg",
+          "price": 73.37,
+          "stars": 1
+        },
+        {
+          "id": 2,
+          "title": "Psycho III",
+          "author": "Krissy Mateus",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-7.jpg",
+          "price": 15.92,
+          "stars": 4
+        }
+      ]
     },
     {
       "id": 7,
-      "title": "Home",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-7.ico"
+      "title": "Love Stories",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-7.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "X-Files: I Want to Believe, The",
+          "author": "Peri Curtiss",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 19.5,
+          "stars": 2
+        },
+        {
+          "id": 2,
+          "title": "White Noise 2: The Light",
+          "author": "Jacky Pigdon",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-17.jpg",
+          "price": 99.03,
+          "stars": 5
+        },
+        {
+          "id": 3,
+          "title": "Tai Chi Master (Twin Warriors) (Tai ji: Zhang San Feng)",
+          "author": "Gasparo Pickerill",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-10.jpg",
+          "price": 49.03,
+          "stars": 2
+        },
+        {
+          "id": 4,
+          "title": "8 Mile",
+          "author": "Monte Sunderland",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-20.jpg",
+          "price": 28.39,
+          "stars": 5
+        },
+        {
+          "id": 5,
+          "title": "License to Drive",
+          "author": "Ted Tureville",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 15.57,
+          "stars": 4
+        },
+        {
+          "id": 6,
+          "title": "Virginity Hit, The",
+          "author": "Amandi Brocklesby",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 11.08,
+          "stars": 3
+        },
+        {
+          "id": 7,
+          "title": "Christmas Story, A",
+          "author": "Elysha MacColgan",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 89.78,
+          "stars": 2
+        },
+        {
+          "id": 8,
+          "title": "Born on the Fourth of July",
+          "author": "Oby Skyme",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-8.jpg",
+          "price": 40.08,
+          "stars": 3
+        }
+      ]
     },
     {
       "id": 8,
-      "title": "Love Stories",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-8.ico"
-    },
-    {
-      "id": 9,
       "title": "New",
-      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-9.ico"
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/categories/img/img-8.ico",
+      "books": [
+        {
+          "id": 1,
+          "title": "To Each His Own",
+          "author": "Hermon Giraudoux",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 49.58,
+          "stars": 3
+        },
+        {
+          "id": 2,
+          "title": "American Hustle",
+          "author": "Cirstoforo Gaitskell",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-9.jpg",
+          "price": 47.26,
+          "stars": 3
+        },
+        {
+          "id": 3,
+          "title": "Land Before Time III: The Time of the Great Giving",
+          "author": "Bird Folk",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-12.jpg",
+          "price": 72.67,
+          "stars": 3
+        },
+        {
+          "id": 4,
+          "title": "Rampo (a.k.a. The Mystery of Rampo)",
+          "author": "Winonah Dobbs",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-6.jpg",
+          "price": 18.15,
+          "stars": 1
+        },
+        {
+          "id": 5,
+          "title": "Secret of the Wings",
+          "author": "Louisa Reynold",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-19.jpg",
+          "price": 93.19,
+          "stars": 4
+        },
+        {
+          "id": 6,
+          "title": "Grown Up Movie Star",
+          "author": "Tobiah Mottershaw",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-11.jpg",
+          "price": 48.03,
+          "stars": 3
+        },
+        {
+          "id": 7,
+          "title": "Key, The",
+          "author": "Gayler Faull",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-5.jpg",
+          "price": 44.04,
+          "stars": 4
+        },
+        {
+          "id": 8,
+          "title": "Last Resort (National Lampoon's Last Resort)",
+          "author": "Oliy Gynn",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-15.jpg",
+          "price": 15.39,
+          "stars": 3
+        },
+        {
+          "id": 9,
+          "title": "It Had to Be You",
+          "author": "Trevor Mundle",
+          "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/books/img/img-3.jpg",
+          "price": 74.18,
+          "stars": 1
+        }
+      ]
     }
   ],
   "books": [
