@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SingleMember(props) {
   const { member } = props;
@@ -32,7 +33,7 @@ function SingleMember(props) {
   };
 
   return (
-    <div className='col-md-6 col-lg-3 my-3'>
+    <div className='col-md-6 col-lg-3 my-4'>
       <div className='single-member-wrapper'>
         <div className='member-image-container'>
           <img
@@ -46,17 +47,28 @@ function SingleMember(props) {
           <div className='line-shape'>{line_svg()}</div>
           <div className='plus-shape'>{plus_shape()}</div>
           <div className='member-signature'>
-            <img
-              src={member.signature}
-              alt='username signature'
-              width={120}
-              height={50}
-            />
+            {member.signature && (
+              <img
+                src={member.signature}
+                alt='username signature'
+                width={120}
+                height={50}
+              />
+            )}
           </div>
         </div>
         <div className='member-info'>
           <h6 className='member-position'>{member.position}</h6>
-          <h4 className='member-name text-aurora'>{member.name}</h4>
+          {props.url_id ? (
+            <Link
+              to={`/authors/${props.url_id}`}
+              className='h4 member-name text-aurora'
+            >
+              {member.name}
+            </Link>
+          ) : (
+            <h4 className='member-name text-aurora'>{member.name}</h4>
+          )}
         </div>
       </div>
     </div>
