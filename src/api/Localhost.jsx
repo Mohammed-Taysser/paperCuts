@@ -18,11 +18,17 @@ const BooksAPI = axios.create({
   baseURL: 'http://localhost:8080/books',
 });
 
+const TeamMemberAPI = axios.create({
+  baseURL: 'http://localhost:8080/teamMember',
+});
+
 // exported variable names
 const SERVICES = Data.services,
   REVIEWS = Data.reviews,
   BOOKS = Data.books,
   CATEGORY = Data.category,
+  TOP_FIVE = Data.topFive,
+  TEAM_MEMBER = Data.teamMember,
   LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
   RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4)),
   BOOKS_CATEGORY = shuffle_arr(Data.books.slice(0, 4)),
@@ -41,11 +47,13 @@ function get_category_by_id(id = '1') {
 }
 
 export default base_url;
-export { CategoryAPI, ServicesAPI, BooksAPI };
+export { CategoryAPI, ServicesAPI, BooksAPI, TeamMemberAPI };
 export {
   SERVICES,
   REVIEWS,
   BOOKS,
+  TOP_FIVE,
+  TEAM_MEMBER,
   LATEST_BOOKS,
   RELATED_BOOKS,
   BOOKS_REVIEWS,
