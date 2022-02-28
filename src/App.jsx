@@ -6,11 +6,9 @@ import MainRoute from './routes';
 import AuthContext from './context/auth';
 import IsJsonServerDownContext from './context/IsJsonServerDown';
 import useJsonServerToast from './hooks/useJsonServerToast';
-import useAuthContext from './hooks/useAuthContext';
 
 function App() {
   const [isDown, jsonServerToast] = useJsonServerToast();
-  const auth_context_data = useAuthContext();
 
   useEffect(() => {
     window.onload = function () {
@@ -19,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <AuthContext.Provider value={auth_context_data}>
+    <AuthContext>
       <BrowserRouter>
         <Navbar />
         {isDown && jsonServerToast}
@@ -28,7 +26,7 @@ function App() {
         </IsJsonServerDownContext.Provider>
         <Footer />
       </BrowserRouter>
-    </AuthContext.Provider>
+    </AuthContext>
   );
 }
 
