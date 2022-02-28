@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import Signature1 from '../assets/img/shapes/signature/signature-1.svg';
 
 function SingleMember(props) {
+  const { member } = props;
+
   const rounded_svg = () => {
     return (
       <svg>
@@ -21,13 +21,13 @@ function SingleMember(props) {
 
   const plus_shape = () => {
     return (
-      <div className='plus-shape'>
+      <>
         <span className='animate-plus'>+</span>
         <span className='animate-plus'>+</span>
         <span className='animate-plus'>+</span>
         <span className='animate-plus'>+</span>
         <span className='animate-plus'>+</span>
-      </div>
+      </>
     );
   };
 
@@ -36,23 +36,27 @@ function SingleMember(props) {
       <div className='single-member-wrapper'>
         <div className='member-image-container'>
           <img
-            src={props.img}
+            src={member.avatar}
             className='member-image'
-            alt={props.name}
+            alt={member.name}
             width='200'
             height='200'
           />
           <div className='rounded-shape'>{rounded_svg()}</div>
           <div className='line-shape'>{line_svg()}</div>
-          {plus_shape()}
+          <div className='plus-shape'>{plus_shape()}</div>
           <div className='member-signature'>
-            <img src={props.signature} alt='username signature' />
+            <img
+              src={member.signature}
+              alt='username signature'
+              width={120}
+              height={50}
+            />
           </div>
         </div>
         <div className='member-info'>
-          <h6 className='member-position'>{props.position}</h6>
-          <Link className='member-name h4' to={`/authors/${props.id}`}>{props.name}</Link>
-          <p className='member-about'>{props.about}</p>
+          <h6 className='member-position'>{member.position}</h6>
+          <h4 className='member-name text-aurora'>{member.name}</h4>
         </div>
       </div>
     </div>
@@ -60,10 +64,12 @@ function SingleMember(props) {
 }
 
 SingleMember.defaultProps = {
-  name: 'author name',
+  name: 'member name',
   position: 'position',
-  signature: Signature1,
-  img: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+  signature:
+    'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/signatures/signature-2.png',
+  avatar:
+    'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
 };
 
 export default SingleMember;
