@@ -1,37 +1,99 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { MdAlternateEmail } from 'react-icons/md';
+import IsJsonServerDown from '../context/IsJsonServerDown';
+import SingleBook from '../components/SingleBook';
 import Banner from '../components/Banner';
+import SectionTitle from '../components/SectionTitle';
+import { AuthorsAPI, get_author_by_id } from '../api/Localhost';
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import SingleBook from '../components/SingleBook';
-import { LATEST_BOOKS } from '../api/Localhost';
-import SectionTitle from '../components/SectionTitle';
 
 function AuthorDetails() {
+  const { id } = useParams();
+  const is_jsonServer_down = useContext(IsJsonServerDown);
+  const [currentAuthor, setCurrentAuthor] = useState(get_author_by_id(id));
+
+  useEffect(() => {
+    if (is_jsonServer_down) {
+      setCurrentAuthor(get_author_by_id(id));
+    } else {
+      get_author_api();
+    }
+  }, [is_jsonServer_down]);
+
+  const get_author_api = () => {
+    AuthorsAPI.get(`/${id}`)
+      .then((response) => {
+        setCurrentAuthor(response.data);
+      })
+      .catch((err) => {
+        setCurrentAuthor(get_author_by_id(id));
+      });
+  };
+
   const book_list = () => {
-    if (LATEST_BOOKS.length > 0) {
-      return LATEST_BOOKS.map((book) => {
+    if (currentAuthor.books.length > 0) {
+      return currentAuthor.books.map((book) => {
         return <SingleBook book={book} key={book.id} />;
       });
     }
     return <> no books available </>;
   };
 
+  const full_name = () => {
+    return `${currentAuthor.first_name} ${currentAuthor.last_name}`;
+  };
+
+  const social_media = () => {
+    return (
+      <>
+        <a
+          className='text-dark h5 me-2'
+          href={currentAuthor.socialMedia.facebook}
+        >
+          <FaFacebookF />
+        </a>
+        <a
+          className='text-dark h5 mx-2'
+          href={currentAuthor.socialMedia.instagram}
+        >
+          <FaInstagram />
+        </a>
+        <a
+          className='text-dark h5 mx-2'
+          href={currentAuthor.socialMedia.telegram}
+        >
+          <FaTelegram />
+        </a>
+        <a
+          className='text-dark h5 mx-2'
+          href={currentAuthor.socialMedia.twitter}
+        >
+          <FaTwitter />
+        </a>
+        <a className='text-dark h5 ms-2' href={`mailto:${currentAuthor.email}`}>
+          <MdAlternateEmail />
+        </a>
+      </>
+    );
+  };
+
   return (
     <>
-      <Banner title='author name' subtitle='author' />
+      <Banner title={full_name()} subtitle='author' />
 
       <section className='my-5'>
         <div className='container'>
           <div className='row justify-content-center align-items-center'>
             <div className='col-md-5 my-3 text-center'>
               <img
-                src='https://chapterone.qodeinteractive.com/wp-content/uploads/2019/08/author1.png'
-                alt='author name'
+                src={currentAuthor.img}
+                alt={full_name()}
                 width={250}
                 height={250}
                 className='img-fluid rounded-circle'
@@ -39,39 +101,20 @@ function AuthorDetails() {
             </div>
             <div className='col-md-7 my-3'>
               <div className='author-details-section'>
-                <small className='special-small-title'>Austria</small>
-                <h1 className='h2 mb-3'> John Strass </h1>
-                <p className='small-info'>
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua."
+                <small className='special-small-title'>
+                  {currentAuthor.gender}
+                </small>
+                <h1 className='h2 mb-3'> {full_name()} </h1>
+                <p className='small-info'>{currentAuthor.short_info}</p>
+                <p className='text-muted'>{currentAuthor.info}</p>
+                <p className='mb-1'>age: {currentAuthor.age}</p>
+                <p className='mb-1'>
+                  Category: {currentAuthor.category.join(', ')}
                 </p>
-                <p className='text-muted'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in
+                <p className='mb-1'>
+                  Languages: {currentAuthor.language.join(', ')}
                 </p>
-                <p className='mb-1'>age: 12</p>
-                <p className='mb-1'>Category: Fiction</p>
-                <p className='mb-1'>Languages:German, French</p>
-                <div className='mt-4'>
-                  <Link className='text-dark h5 mx-2' to=''>
-                    <FaFacebookF />
-                  </Link>
-                  <Link className='text-dark h5 mx-2' to=''>
-                    <FaInstagram />
-                  </Link>
-                  <Link className='text-dark h5 mx-2' to=''>
-                    <FaTelegram />
-                  </Link>
-                  <Link className='text-dark h5 mx-2' to=''>
-                    <FaTwitter />
-                  </Link>
-                </div>
+                <div className='mt-4'>{social_media()}</div>
               </div>
             </div>
           </div>
