@@ -2,7 +2,6 @@ import React from 'react';
 import Banner from '../components/Banner';
 import Services from '../components/Services';
 import TeamMembers from '../components/TeamMembers';
-
 import FlyShape from '../assets/img/fly-shape.svg';
 import CupShape from '../assets/img/shapes/cup-shape.png';
 import CoffeeSectionImage from '../assets/img/background/coffee-section-image.png';
@@ -18,7 +17,7 @@ function aboutUs() {
         <div className='container'>
           <div className='row justify-content-between align-items-center'>
             <div className='col-md-6 my-3'>
-              <div className='content pe-5 mb-5 mb-md-0 pb-5 pb-md-0'>
+              <div className='content mb-5 mb-md-0'>
                 <small className='special-small-title'>autobiography</small>
                 <h3 className='mb-3'>Long printing history</h3>
                 <p className='text-muted'>
@@ -44,8 +43,8 @@ function aboutUs() {
                     src={AutobiographySectionImage}
                     alt='autobiography-section'
                     className='autobiography-section-image img-fluid'
-                    // width='250'
-                    // height='250'
+                    width='550'
+                    height='550'
                   />
                 </div>
               </div>
