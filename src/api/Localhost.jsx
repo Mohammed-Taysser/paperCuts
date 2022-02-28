@@ -18,6 +18,10 @@ const BooksAPI = axios.create({
   baseURL: 'http://localhost:8080/books',
 });
 
+const AuthorsAPI = axios.create({
+  baseURL: 'http://localhost:8080/authors',
+});
+
 const TeamMemberAPI = axios.create({
   baseURL: 'http://localhost:8080/teamMember',
 });
@@ -28,6 +32,7 @@ const SERVICES = Data.services,
   BOOKS = Data.books,
   CATEGORY = Data.category,
   TOP_FIVE = Data.topFive,
+  AUTHORS = Data.authors,
   TEAM_MEMBER = Data.teamMember,
   LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
   RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4)),
@@ -46,13 +51,18 @@ function get_category_by_id(id = '1') {
   return CATEGORY.filter((cty) => cty.id.toString() === id)[0];
 }
 
+function get_author_by_id(id = '1') {
+  return AUTHORS.filter((author) => author.id.toString() === id)[0];
+}
+
 export default base_url;
-export { CategoryAPI, ServicesAPI, BooksAPI, TeamMemberAPI };
+export { CategoryAPI, ServicesAPI, BooksAPI, TeamMemberAPI, AuthorsAPI };
 export {
   SERVICES,
   REVIEWS,
   BOOKS,
   TOP_FIVE,
+  AUTHORS,
   TEAM_MEMBER,
   LATEST_BOOKS,
   RELATED_BOOKS,
@@ -60,5 +70,6 @@ export {
   CATEGORY,
   BOOKS_CATEGORY,
   get_book_by_id,
+  get_author_by_id,
   get_category_by_id,
 };
