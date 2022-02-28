@@ -16,9 +16,11 @@ function useJsonServerToast(initValue = true) {
 
   const toast = (
     <Toast>
-      json-server is down, please insure it's work. You can't create, edit or
-      delete unless it work. learn how to work with
-      <a href='#github'> json-server </a>
+      json-server is down, please make sure it's work. any data are static. You
+      can't create, edit or delete unless it work. learn how to work with
+      <a href='https://github.com/Mohammed-Taysser/react-learn-projects#json-server'>
+        json-server
+      </a>
     </Toast>
   );
 
