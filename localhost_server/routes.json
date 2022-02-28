@@ -1,7 +1,0 @@
-{
-  "/api/*": "/$1",
-  "/blog/posts/:id": "/posts/:id",
-  "/:resource/:id/show": "/:resource/:id",
-  "/products/:category": "/posts?category=:category",
-  "/articles\\?id=:id": "/posts/:id"
-}
