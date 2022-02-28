@@ -4,7 +4,7 @@ import PageNotFoundImage from '../assets/img/background/404-img.jpg';
 function PageNotFound() {
   return (
     <section
-      className='page-not-found'
+      className='page-not-found bg-with-overlay'
       style={{ backgroundImage: `url(${PageNotFoundImage})` }}
     >
       <div className='wrapper'>
@@ -14,7 +14,7 @@ function PageNotFound() {
           Oops! The page you are looking for does not exist. It might have been
           moved or deleted.
         </p>
-        <button className='btn btn-aurora btn-lg'>Go To Home</button>
+        <button className='btn btn-aurora'>Go To Home</button>
       </div>
     </section>
   );
