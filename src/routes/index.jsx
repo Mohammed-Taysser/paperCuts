@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import AuthContext from '../context/auth';
+import {Context as AuthContext} from '../context/auth';
 
 import Homepage from '../pages/homepage';
 import PageNotFound from '../pages/404';
