@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FcRadarPlot } from 'react-icons/fc';
-import { SERVICES } from '../api/Localhost';
+import { SERVICES, ServicesAPI } from '../api/Localhost';
 import SectionTitle from './SectionTitle';
+import IsJsonServerDown from '../context/IsJsonServerDown';
 
 function Services() {
+  const is_jsonServer_down = useContext(IsJsonServerDown);
+  const [services, setServices] = useState(SERVICES);
+
+  useEffect(() => {
+    if (is_jsonServer_down) {
+      setServices(SERVICES);
+    } else {
+      get_services_api();
+    }
+  }, []);
+
+  const get_services_api = () => {
+    ServicesAPI.get('/')
+      .then((response) => {
+        setServices(response.data);
+      })
+      .catch((err) => {
+        setServices(SERVICES);
+      });
+  };
+
   const service_items = () => {
-    if (SERVICES.length > 0) {
-      return SERVICES.map((service) => {
+    if (services.length > 0) {
+      return services.map((service) => {
         return (
           <div className='col-md-6 col-lg-3 my-3' key={service.id}>
             <div className='single-service'>
