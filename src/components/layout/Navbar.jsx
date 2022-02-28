@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import AuthContext from '../../context/auth';
+import { Context as AuthContext } from '../../context/auth';
 import { FcSearch } from 'react-icons/fc';
 import 'bootstrap/js/src/collapse';
 import favicon from '../../assets/img/favicon.png';
