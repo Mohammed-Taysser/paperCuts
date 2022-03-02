@@ -80,4 +80,19 @@ function diff_in_days(date_1, date_2) {
   return Math.ceil(Math.abs(first_date - second_date) / (1000 * 60 * 60 * 24));
 }
 
-export { Stars, capitalize, human_date, slugify, diff_in_days };
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export { Stars, capitalize, human_date, slugify, diff_in_days, monthNames };
