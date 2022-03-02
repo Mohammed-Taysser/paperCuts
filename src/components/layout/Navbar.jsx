@@ -89,7 +89,7 @@ function Navbar() {
                         isActive ? 'active' : null}`}
                       to='/cart'
                     >
-                      <BsCart4 className='h4 m-0' />
+                      <BsCart4 className='h5 m-0' />
                     </NavLink>
                   </li>
                   <li className='nav-item'>
