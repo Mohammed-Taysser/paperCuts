@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 
 function QuantityControlButton(props) {
-  const [quantityNumber, setQuantityNumber] = useState(1);
-
-  useEffect(() => {
-    props.onQuantityChange(quantityNumber);
-  }, [quantityNumber]);
+  const [quantityNumber, setQuantityNumber] = useState(props.initQuantity);
 
   const onQuantityAdd = (evt) => {
     evt.preventDefault();
     if (quantityNumber >= 1) {
-      setQuantityNumber(quantityNumber + 1);
+      let new_value = quantityNumber + 1;
+      setQuantityNumber(new_value);
+      props.onQuantityChange(new_value);
     }
   };
 
   const onQuantityMinus = (evt) => {
     evt.preventDefault();
     if (quantityNumber > 1) {
-      setQuantityNumber(quantityNumber - 1);
+      let new_value = quantityNumber - 1;
+      setQuantityNumber(new_value);
+      props.onQuantityChange(new_value);
     }
-  };
-
-  const onQuantityChange = (evt) => {
-    setQuantityNumber(parseInt(evt.target.value, 10));
-    props.onQuantityChange(quantityNumber);
-    console.log(evt.target.value);
   };
 
   return (
     <div className='d-flex align-items-center qty-container'>
-      <button className='btn-qty btn-qty-down' onClick={onQuantityAdd}>
+      <button
+        className='btn-qty btn-qty-down'
+        onClick={onQuantityAdd}
+        disabled={props.disabled}
+      >
         <FaPlus />
       </button>
       <input
@@ -38,9 +36,13 @@ function QuantityControlButton(props) {
         type='number'
         name='quantity'
         value={quantityNumber}
-        onChange={onQuantityChange}
+        readOnly
       />
-      <button className='btn-qty btn-qty-up' onClick={onQuantityMinus}>
+      <button
+        className='btn-qty btn-qty-up'
+        onClick={onQuantityMinus}
+        disabled={props.disabled}
+      >
         <FaMinus />
       </button>
     </div>
@@ -48,6 +50,8 @@ function QuantityControlButton(props) {
 }
 
 QuantityControlButton.defaultProps = {
+  initQuantity: 1,
+  disabled: false,
   onQuantityChange: (data) => {
     console.log(data);
   },
