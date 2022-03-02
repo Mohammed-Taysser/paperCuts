@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import {Context as AuthContext} from '../context/auth';
+import { Context as AuthContext } from '../context/auth';
 
 import Homepage from '../pages/homepage';
 import PageNotFound from '../pages/404';
@@ -20,6 +20,8 @@ import Events from '../pages/events';
 import EventsDetails from '../pages/eventDetails';
 import Author from '../pages/authors';
 import AuthorDetails from '../pages/authorDetails';
+import Order from '../pages/orders';
+import OrderDetails from '../pages/orderDetails';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -31,6 +33,8 @@ function PaperCutsRoutes() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/forget-password' element={<ForgetPassword />} />
+          <Route path='/orders' element={<Order />} />
+          <Route path='/orders/:id' element={<OrderDetails />} />
         </>
       );
     }
