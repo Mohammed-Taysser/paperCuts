@@ -277,3 +277,17 @@ a.text-dark {
     box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.4);
   }
 }
+
+.form-label {
+  &.require {
+    position: relative;
+
+    &::before {
+      content: '*';
+      display: inline-block;
+      color: red;
+      position: absolute;
+      right: -10px;
+    }
+  }
+}
