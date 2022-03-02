@@ -191,6 +191,11 @@
     font-size: 13px;
     cursor: pointer;
 
+    &:disabled {
+      color: #555;
+      background: #f2f2f2ad;
+    }
+
     &.btn-qty-up {
       border-radius: 0 3px 3px 0;
     }
@@ -215,6 +220,7 @@
     border-bottom: 1px solid #ced4da;
     color: #042825;
     vertical-align: middle;
+    outline: none;
   }
 }
 
