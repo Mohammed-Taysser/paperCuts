@@ -1,49 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FcBrokenLink } from 'react-icons/fc';
 import Banner from '../components/Banner';
+import { EventAPI, EVENTS } from '../api/Localhost';
+import IsJsonServerDown from '../context/IsJsonServerDown';
 import SecondaryBannerImage from '../assets/img/background/secondary-banner.jpg';
 import EventsBackgroundImage from '../assets/img/background/events-background.png';
 import JoinClubImage from '../assets/img/background/join-club.jpg';
 import SectionTitle from '../components/SectionTitle';
 
 function Events() {
+  const is_jsonServer_down = useContext(IsJsonServerDown);
+  const [events, setEvents] = useState(EVENTS);
+
+  useEffect(() => {
+    if (is_jsonServer_down) {
+      setEvents(EVENTS);
+    } else {
+      get_events_api();
+    }
+  }, [is_jsonServer_down]);
+
+  const get_events_api = () => {
+    EventAPI.get(`/`)
+      .then((response) => {
+        setEvents(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const is_expire = (date) => {
+    let date_time = null;
+    if (typeof date === 'string') {
+      date_time = new Date(date).getTime();
+    }
+    return date_time <= new Date().getTime();
+  };
+  const format_to_ymd = (date) => {
+    let real_date = typeof date === 'string' ? new Date(date) : date;
+    return real_date.toISOString().slice(0, 10).replace(/-/g, '.');
+  };
+
   const events_list = () => {
-    const EVENTS = [
-      {
-        id: 1,
-        title: 'Festival of Books',
-        date: '21.07.2019',
-        location: 'LA, California',
-      },
-      {
-        id: 2,
-        title: 'Book Signing',
-        date: '21.07.2019',
-        location: 'Paris, France',
-      },
-      {
-        id: 3,
-        title: 'Book Fair',
-        date: '21.07.2019',
-        location: 'Washington, US',
-      },
-      {
-        id: 4,
-        title: 'promotion Book ',
-        date: '21.07.2019',
-        location: 'Madrid, Spain',
-      },
-    ];
+
     return (
       <ul className='events-list list-unstyled mt-5 pt-3'>
-        {EVENTS.map((event,index) => {
+        {events.map((event) => {
           return (
             <li key={event.id} className='py-3 text-center text-md-start'>
               <div className='row algin-items-center align-items-center justify-content-between'>
                 <div className='col-md-4 my-2'>
                   <small className='special-small-title text-muted'>
-                    {event.date} / {event.location}
+                    {format_to_ymd(event.date)} / {event.address}
                   </small>
                 </div>
                 <div className='col-md-6 my-2'>
@@ -52,7 +62,12 @@ function Events() {
                   </Link>
                 </div>
                 <div className='col-md-2 my-2 text-md-end'>
-                  <Link to={`/events/${event.id}`} className={`btn btn-${index !== 2 ? 'aurora' : 'dark disabled'}`}>
+                  <Link
+                    to={`/events/${event.id}`}
+                    className={`btn btn-${
+                      is_expire(event.date) ? 'aurora' : 'dark'
+                    }`}
+                  >
                     see tickets
                   </Link>
                 </div>
