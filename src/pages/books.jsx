@@ -9,17 +9,20 @@ import useJsonServerToast from '../context/IsJsonServerDown';
 
 function Books() {
   const LIMIT = 9;
-  const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const is_jsonServer_down = useContext(useJsonServerToast);
-  const [categories, setCategoryies] = useState(CATEGORY);
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+
+  const [categories, setCategories] = useState(CATEGORY);
   const [books, setBooks] = useState(BOOKS);
   const [topFive, setTopFive] = useState(TOP_FIVE);
+
   const [authorSearch, setAuthorSearch] = useState('');
   const [titleSearch, setTitleSearch] = useState('');
   const [sortType, setSortType] = useState('choose sort type');
   const [startPriceRange, setStartPriceRange] = useState(1);
   const [endPriceRange, setEndPriceRange] = useState(null);
   const [starsNumber, setStarsNumber] = useState(null);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [paginationLinkObject, setPaginationLinkObject] = useState('');
   const [paginationObject, setPaginationObject] = useState({});
@@ -27,6 +30,8 @@ function Books() {
   useEffect(() => {
     if (is_jsonServer_down) {
       setBooks(BOOKS);
+      setCategories(CATEGORY);
+      setTopFive(TOP_FIVE);
     } else {
       api_get_books(`?_limit=${LIMIT}&_page=${currentPageNumber}`);
     }
@@ -62,9 +67,9 @@ function Books() {
       })
       .catch((error) => {
         // handle error
-      })
-      .then(() => {
-        // always executed
+        setBooks(BOOKS);
+        setCategories(CATEGORY);
+        setTopFive(TOP_FIVE);
       });
   };
 
@@ -93,7 +98,7 @@ function Books() {
         {categories.map((cat, index) => {
           return (
             <li className='special-small-title my-2' key={index}>
-              <Link to='/'>
+              <Link to={`/category/${cat.id}`}>
                 {cat.title}
                 <small className='text-muted'>({cat.books.length})</small>
               </Link>
@@ -138,14 +143,14 @@ function Books() {
         label: 'sort by average rating',
         value: 'stars',
       },
-      {
-        label: 'sort by price low to height',
-        value: 'price',
-      },
-      {
-        label: 'sort by price height to low',
-        value: 'price-desc',
-      },
+      // {
+      //   label: 'sort by price low to height',
+      //   value: 'price',
+      // },
+      // {
+      //   label: 'sort by price height to low',
+      //   value: 'price-desc',
+      // },
     ];
     return (
       <select
@@ -199,11 +204,12 @@ function Books() {
     setEndPriceRange(null);
     setStarsNumber(null);
     setSearchParams({});
+    setCurrentPageNumber(1);
   };
 
   const get_pagination = () => {
     return (
-      books.length > LIMIT && (
+      books.length >= LIMIT && (
         <nav aria-label='Page navigation example'>
           <ul className='pagination justify-content-center'>
             {paginationObject.prev && (
