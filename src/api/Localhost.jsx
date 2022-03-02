@@ -26,6 +26,18 @@ const TeamMemberAPI = axios.create({
   baseURL: 'http://localhost:8080/teamMember',
 });
 
+const CartAPI = axios.create({
+  baseURL: 'http://localhost:8080/cart',
+});
+
+const CouponAPI = axios.create({
+  baseURL: 'http://localhost:8080/coupons',
+});
+
+const OrderAPI = axios.create({
+  baseURL: 'http://localhost:8080/orders',
+});
+
 // exported variable names
 const SERVICES = Data.services,
   REVIEWS = Data.reviews,
@@ -33,6 +45,8 @@ const SERVICES = Data.services,
   CATEGORY = Data.category,
   TOP_FIVE = Data.topFive,
   AUTHORS = Data.authors,
+  CART = Data.cart,
+  COUPONS = Data.coupons,
   TEAM_MEMBER = Data.teamMember,
   LATEST_BOOKS = shuffle_arr(Data.books.slice(0, 8)),
   RELATED_BOOKS = shuffle_arr(Data.books.slice(0, 4)),
@@ -44,24 +58,43 @@ function shuffle_arr(arr) {
 }
 
 function get_book_by_id(id = '1') {
-  return BOOKS.filter((book) => book.id.toString() === id)[0];
+  return BOOKS.find((book) => book.id.toString() === id);
 }
 
 function get_category_by_id(id = '1') {
-  return CATEGORY.filter((cty) => cty.id.toString() === id)[0];
+  return CATEGORY.find((cty) => cty.id.toString() === id);
 }
 
 function get_author_by_id(id = '1') {
-  return AUTHORS.filter((author) => author.id.toString() === id)[0];
+  return AUTHORS.find((author) => author.id.toString() === id);
+}
+
+function get_coupon_by_id(id = 1) {
+  return COUPONS.find((coupon) => coupon.id === id);
+}
+
+function get_coupon_by_title(title = '') {
+  return COUPONS.find((coupon) => coupon.title === title);
 }
 
 export default base_url;
-export { CategoryAPI, ServicesAPI, BooksAPI, TeamMemberAPI, AuthorsAPI };
+export {
+  CategoryAPI,
+  ServicesAPI,
+  BooksAPI,
+  TeamMemberAPI,
+  AuthorsAPI,
+  CartAPI,
+  CouponAPI,
+  OrderAPI,
+};
 export {
   SERVICES,
   REVIEWS,
   BOOKS,
+  CART,
   TOP_FIVE,
+  COUPONS,
   AUTHORS,
   TEAM_MEMBER,
   LATEST_BOOKS,
@@ -72,4 +105,6 @@ export {
   get_book_by_id,
   get_author_by_id,
   get_category_by_id,
+  get_coupon_by_id,
+  get_coupon_by_title,
 };
