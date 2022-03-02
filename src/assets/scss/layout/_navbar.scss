@@ -2,8 +2,11 @@ nav.navbar {
   .navbar-toggler:focus {
     box-shadow: 0 0 0 0.25rem #ddd;
   }
-  .nav-item .nav-link.active {
-    color: $main-color;
+  .nav-item .nav-link {
+    &:hover,
+    &.active {
+      color: $main-color;
+    }
   }
   .navbar-search-form {
     position: relative;
