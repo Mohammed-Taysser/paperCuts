@@ -19,8 +19,11 @@ function useJsonServerToast(initValue = true) {
       json-server is down, please make sure it's work.
       <span className='bg-aurora text-light'> any data are static </span>. You
       can't create, edit or delete unless it work. learn how to work with
-      <a href='https://github.com/Mohammed-Taysser/react-learn-projects#json-server'>
-        json-server
+      <a
+        href='https://github.com/Mohammed-Taysser/react-learn-projects#json-server'
+        className='mx-2'
+      >
+        Json-Server
       </a>
     </Toast>
   );
