@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import MainRoute from './routes';
 import AuthContext from './context/auth';
+import CouponContext from './context/coupon';
 import IsJsonServerDownContext from './context/IsJsonServerDown';
 import useJsonServerToast from './hooks/useJsonServerToast';
 
@@ -18,14 +19,16 @@ function App() {
 
   return (
     <AuthContext>
-      <BrowserRouter>
-        <Navbar />
-        {isDown && jsonServerToast}
-        <IsJsonServerDownContext.Provider value={isDown}>
-          <MainRoute />
-        </IsJsonServerDownContext.Provider>
-        <Footer />
-      </BrowserRouter>
+      <CouponContext>
+        <BrowserRouter>
+          <Navbar />
+          {isDown && jsonServerToast}
+          <IsJsonServerDownContext.Provider value={isDown}>
+            <MainRoute />
+          </IsJsonServerDownContext.Provider>
+          <Footer />
+        </BrowserRouter>
+      </CouponContext>
     </AuthContext>
   );
 }
