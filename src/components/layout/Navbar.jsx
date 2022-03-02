@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context as AuthContext } from '../../context/auth';
 import { FcSearch } from 'react-icons/fc';
+import { BsCart4 } from 'react-icons/bs';
 import 'bootstrap/js/src/collapse';
 import favicon from '../../assets/img/favicon.png';
 
@@ -82,6 +83,15 @@ function Navbar() {
             <ul className='navbar-nav'>
               {auth_context.isAuth ? (
                 <>
+                  <li className='nav-item'>
+                    <NavLink
+                      className={`nav-link ${({ isActive }) =>
+                        isActive ? 'active' : null}`}
+                      to='/cart'
+                    >
+                      <BsCart4 className='h4 m-0' />
+                    </NavLink>
+                  </li>
                   <li className='nav-item'>
                     <NavLink
                       className={`nav-link ${({ isActive }) =>
