@@ -13,7 +13,7 @@ function Location() {
     return (
       <div className='ratio ratio-16x9'>
         <iframe
-          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7174449.442873114!2d28.493433407753876!3d28.595302279474986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14368976c35c36e9%3A0x2c45a00925c4c444!2sEgypt!5e0!3m2!1sen!2seg!4v1644822191608!5m2!1sen!2seg'
+          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.335640563026!2d31.22344491961029!3d30.059558098332303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1646204637166!5m2!1sen!2seg'
           loading='lazy'
           title='paperCuts o google map'
         ></iframe>
