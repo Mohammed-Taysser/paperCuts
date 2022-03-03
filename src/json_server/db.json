@@ -2,7 +2,10 @@
   "users": [
     {
       "id": 1,
-      "name": "mohammed taysser",
+      "username": "Mohammed-Taysser",
+      "first_name": "mohammed",
+      "last_name": "taysser",
+      "img": "https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png",
       "email": "mo@mo.mo",
       "password": "123456789"
     }
@@ -4687,7 +4690,7 @@
       "title": "Mr. Hobbs Takes a Vacation",
       "hosting": "Devcast",
       "venue": "Chunjing",
-      "price": 62.0,
+      "price": 62,
       "start": "3:45 AM",
       "end": "7:31 PM",
       "info": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
