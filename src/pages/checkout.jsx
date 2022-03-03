@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Banner from '../components/Banner';
 import CartCoupon from '../components/CartCoupon';
 import useCart from '../hooks/useCart';
@@ -8,6 +8,7 @@ import { BsPaypal } from 'react-icons/bs';
 import { RiVisaFill } from 'react-icons/ri';
 import { OrderAPI } from '../api/Localhost';
 import { useNavigate } from 'react-router-dom';
+import JsonServerToast from '../context/IsJsonServerDown';
 
 function Checkout() {
   const INIT_VALUES = {
@@ -28,6 +29,7 @@ function Checkout() {
   const navigate = useNavigate();
   const [SHIPPING_PRICE, COUPON_PRICE, TOTAL_CART_PRICE, cartItems] = useCart();
   const [formData, setFormData] = useState(INIT_VALUES);
+  const is_jsonServer_down = useContext(JsonServerToast);
 
   const api_set_order = async () => {
     let calculate_total_price =
@@ -74,7 +76,9 @@ function Checkout() {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    api_set_order();
+    if (!is_jsonServer_down) {
+      api_set_order();
+    }
   };
 
   const onInputChange = (evt) => {
@@ -208,7 +212,11 @@ function Checkout() {
           experience throughout this website, and for other purposes described
           in our privacy policy.
         </div>
-        <button className='btn btn-aurora btn-lg mt-3' type='submit'>
+        <button
+          className='btn btn-aurora btn-lg mt-3'
+          type='submit'
+          disabled={is_jsonServer_down}
+        >
           Place Order
         </button>
       </div>
