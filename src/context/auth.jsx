@@ -2,9 +2,9 @@ import React, { useState, createContext } from 'react';
 
 const Context = createContext({
   isAuth: null,
-  userId: null,
+  userData: null,
   setIsAuth: (data) => console.log(data),
-  setUserId: (data) => console.log(data),
+  setUserData: (data) => console.log(data),
 });
 
 const AuthContext = (props) => {
@@ -14,12 +14,12 @@ const AuthContext = (props) => {
   if (localStorage.getItem('auth') !== null) {
     const auth_localStorage = JSON.parse(localStorage.getItem('auth'));
     default_is_auth = auth_localStorage.isAuth;
-    default_user_id = auth_localStorage.userId;
+    default_user_id = auth_localStorage.userData;
   }
 
   const [isAuth, setIsAuth] = useState(default_is_auth);
-  const [userId, setUserId] = useState(default_user_id);
-  const auth_context_data = { isAuth, userId, setIsAuth, setUserId };
+  const [userData, setUserData] = useState(default_user_id);
+  const auth_context_data = { isAuth, userData, setIsAuth, setUserData };
 
   return (
     <Context.Provider value={auth_context_data}>
