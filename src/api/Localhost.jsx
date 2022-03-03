@@ -42,6 +42,10 @@ const EventAPI = axios.create({
   baseURL: 'http://localhost:8080/events',
 });
 
+const UserAPI = axios.create({
+  baseURL: 'http://localhost:8080/users',
+});
+
 // exported variable names
 const SERVICES = Data.services,
   REVIEWS = Data.reviews,
@@ -49,6 +53,7 @@ const SERVICES = Data.services,
   CATEGORY = Data.category,
   TOP_FIVE = Data.topFive,
   AUTHORS = Data.authors,
+  USERS = Data.users,
   CART = Data.cart,
   COUPONS = Data.coupons,
   EVENTS = Data.events,
@@ -86,6 +91,14 @@ function get_event_by_id(id = '1') {
   return EVENTS.find((event) => event.id.toString() === id);
 }
 
+function get_user_by_email(email = '') {
+  return USERS.find((user) => user.email === email);
+}
+
+function get_user_by_username(username = '') {
+  return USERS.find((user) => user.username === username);
+}
+
 export default base_url;
 export {
   CategoryAPI,
@@ -97,6 +110,7 @@ export {
   CouponAPI,
   OrderAPI,
   EventAPI,
+  UserAPI,
 };
 export {
   SERVICES,
@@ -113,10 +127,14 @@ export {
   CATEGORY,
   EVENTS,
   BOOKS_CATEGORY,
+};
+export {
   get_book_by_id,
   get_author_by_id,
   get_category_by_id,
   get_coupon_by_id,
   get_coupon_by_title,
   get_event_by_id,
+  get_user_by_email,
+  get_user_by_username,
 };
