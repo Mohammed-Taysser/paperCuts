@@ -10,3 +10,4 @@
 - create profile page like <https://www.linkedin.com/in/mohammed-taysser/>
 - add kids page <https://chapterone.qodeinteractive.com/childrens-books/>
 - fix navbar & footer link
+- add login by email `(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)`
