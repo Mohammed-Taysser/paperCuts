@@ -13,7 +13,7 @@ function Navbar() {
   const onLogoutClick = (e) => {
     e.preventDefault();
     auth_context.setIsAuth(false);
-    auth_context.setUserId(null);
+    auth_context.setUserData(null);
     localStorage.removeItem('auth');
     navigate_to('/login');
   };
@@ -98,7 +98,8 @@ function Navbar() {
                         isActive ? 'active' : null}`}
                       to='/profile'
                     >
-                      Profile
+                      <img src={auth_context.userData.img} alt={auth_context.userData.first_name} width={25} className='img-fluid rounded-circle me-1' />
+                      {auth_context.userData.first_name}
                     </NavLink>
                   </li>
                   <li className='nav-item'>
