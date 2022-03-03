@@ -1,6 +1,10 @@
 import React from 'react';
 
 function ForgetPassword() {
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+  };
+
   return (
     <>
       <section className='forget-password-page my-5 py-5'>
@@ -13,7 +17,7 @@ function ForgetPassword() {
                   Please enter your email address. You will receive a link to
                   create a new password via email.
                 </p>
-                <form className='mb-3' action='' method=''>
+                <form className='mb-3' onSubmit={onFormSubmit}>
                   <div className='my-3'>
                     <label className='form-label' htmlFor='rest-password-email'>
                       email address
