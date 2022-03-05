@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/js/src/carousel';
+import useJsonServerToast from '../context/IsJsonServerDown';
 import { Stars } from './ManipulateData';
-import { REVIEWS } from '../api/Localhost';
+import { REVIEWS, ReviewAPI } from '../api/Localhost';
 import RoundedBorder from '../assets/img/rounded-border.svg';
 import DashedShape from '../assets/img/dashed-shape.svg';
 
 function Testimonials(props) {
+  const is_jsonServer_down = useContext(useJsonServerToast);
+  const [reviews, setReviews] = useState(REVIEWS);
+
+  useEffect(() => {
+    if (is_jsonServer_down) {
+      setReviews(REVIEWS);
+    } else {
+      api_get_reviews();
+    }
+  }, [is_jsonServer_down]);
+
+  const api_get_reviews = async () => {
+    await ReviewAPI.get('/')
+      .then((response) => {
+        setReviews(response.data);
+      })
+      .catch((error) => {
+        setReviews(REVIEWS);
+      });
+  };
+
   const carousel_indicators = () => {
     let indicators = [];
-    for (let index = 0; index < REVIEWS.length; index++) {
+
+    for (let index = 0; index < reviews.length; index++) {
       indicators.push(
         <button
           type='button'
@@ -25,7 +48,7 @@ function Testimonials(props) {
   };
 
   const carousel_items = () => {
-    return REVIEWS.map((item, index) => {
+    return reviews.map((item, index) => {
       return (
         <div
           className={`carousel-item ${index === 1 ? 'active' : ''}`}
