@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { LATEST_BOOKS, BooksAPI } from '../api/Localhost';
+import useJsonServerToast from '../context/IsJsonServerDown';
 import SectionTitle from './SectionTitle';
 import SingleBook from './SingleBook';
-import { LATEST_BOOKS } from '../api/Localhost';
 
 function LatestBooks() {
+  const is_jsonServer_down = useContext(useJsonServerToast);
+  const [books, setBooks] = useState(LATEST_BOOKS);
+
+  useEffect(() => {
+    if (is_jsonServer_down) {
+      setBooks(LATEST_BOOKS);
+    } else {
+      api_get_latest_books();
+    }
+  }, [is_jsonServer_down]);
+
+  const api_get_latest_books = async () => {
+    await BooksAPI.get('/')
+      .then((response) => {
+        setBooks(response.data);
+      })
+      .catch((error) => {
+        setBooks(LATEST_BOOKS);
+      });
+  };
+
   const book_list = () => {
-    if (LATEST_BOOKS.length > 0) {
-      return LATEST_BOOKS.map((book) => {
-        return <SingleBook book={book} key={book.id} />;
+    if (books.length > 0) {
+      return books.map((book) => {
+        return (
+          <SingleBook
+            book={{
+              id: book.id,
+              title: book.title,
+              img: book.img,
+              author: book.author.name,
+              price: book.price,
+              stars: book.stars,
+            }}
+            key={book.id}
+          />
+        );
       });
     }
     return <> no books available </>;
