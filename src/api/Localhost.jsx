@@ -58,6 +58,7 @@ const SERVICES = Data.services,
   TOP_FIVE = Data.topFive,
   AUTHORS = Data.authors,
   USERS = Data.users,
+  ORDERS = Data.orders,
   CART = Data.cart,
   COUPONS = Data.coupons,
   EVENTS = Data.events,
@@ -103,6 +104,10 @@ function get_user_by_username(username = '') {
   return USERS.find((user) => user.username === username);
 }
 
+function get_order_by_id(id = '1') {
+  return ORDERS.find((order) => order.id.toString() === id);
+}
+
 export default base_url;
 export {
   CategoryAPI,
@@ -130,6 +135,7 @@ export {
   RELATED_BOOKS,
   BOOKS_REVIEWS,
   CATEGORY,
+  ORDERS,
   EVENTS,
   BOOKS_CATEGORY,
 };
@@ -142,4 +148,5 @@ export {
   get_event_by_id,
   get_user_by_email,
   get_user_by_username,
+  get_order_by_id,
 };
