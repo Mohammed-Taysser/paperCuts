@@ -15,7 +15,7 @@ function homepage() {
       <LatestBooks />
       <Testimonials />
       <Awards />
-      <Location />
+      <Location map={false} />
       <NewsLetter />
     </>
   );
