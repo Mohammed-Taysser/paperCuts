@@ -46,6 +46,10 @@ const UserAPI = axios.create({
   baseURL: 'http://localhost:8080/users',
 });
 
+const ReviewAPI = axios.create({
+  baseURL: 'http://localhost:8080/reviews',
+});
+
 // exported variable names
 const SERVICES = Data.services,
   REVIEWS = Data.reviews,
@@ -111,6 +115,7 @@ export {
   OrderAPI,
   EventAPI,
   UserAPI,
+  ReviewAPI,
 };
 export {
   SERVICES,
