@@ -8,7 +8,7 @@ import Client3 from '../assets/img/clients/client-3.png';
 import Client4 from '../assets/img/clients/client-4.png';
 import Client5 from '../assets/img/clients/client-5.png';
 
-function Location() {
+function Location(props) {
   const google_map = () => {
     return (
       <div className='ratio ratio-16x9'>
@@ -24,7 +24,7 @@ function Location() {
     <section className='location-section py-5 my-5'>
       <SectionTitle subtitle='find us' title='Bookstore locations' />
       <div className='container'>
-        <div className='my-5 '>{google_map()}</div>
+        <div className='my-5 '>{props.map && google_map()}</div>
 
         <div className='row mt-4 justify-content-center align-items-center align-items-stretch'>
           <div className='col-md-6 col-lg-3 my-3'>
@@ -154,5 +154,9 @@ function Location() {
     </section>
   );
 }
+
+Location.defaultProps = {
+  map: true,
+};
 
 export default Location;
