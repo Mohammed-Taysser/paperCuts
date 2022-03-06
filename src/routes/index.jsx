@@ -32,7 +32,6 @@ function PaperCutsRoutes() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
-          <Route path='/forget-password' element={<ForgetPassword />} />
           <Route path='/orders' element={<Order />} />
           <Route path='/orders/:id' element={<OrderDetails />} />
         </>
@@ -57,6 +56,7 @@ function PaperCutsRoutes() {
         <Route path='/events/:id' element={<EventsDetails />} />
         <Route path='/authors' element={<Author />} />
         <Route path='/authors/:id' element={<AuthorDetails />} />
+        <Route path='/forget-password' element={<ForgetPassword />} />
       </Routes>
     </>
   );
