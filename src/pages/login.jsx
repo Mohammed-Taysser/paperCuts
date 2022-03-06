@@ -9,7 +9,7 @@ import { UserAPI, get_user_by_email } from '../api/Localhost';
 import jsonServerToast from '../context/IsJsonServerDown';
 
 function Login() {
-  const navigate = useNavigate()
+  const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
   const is_jsonServer_down = useContext(jsonServerToast);
   const [email, setEmail] = useState('');
@@ -35,11 +35,14 @@ function Login() {
         ? setWrongPassword(false)
         : setWrongPassword(true);
 
+      auth_context.setIsAuth(true);
+      auth_context.setUserData(user);
+
       localStorage.setItem(
         'auth',
         JSON.stringify({ isAuth: true, userData: user })
       );
-      navigate('/')
+      navigate_to('/');
     } else {
       setUserNotExist(true);
     }
