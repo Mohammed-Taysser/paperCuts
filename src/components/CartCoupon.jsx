@@ -11,10 +11,9 @@ function CartCoupon(props) {
   const [userTypedCoupon, setUserTypedCoupon] = useState('');
   const [couponErrorMessage, setCouponErrorMessage] = useState(null);
 
-
   useEffect(() => {
     check_coupon_status(currentCoupon);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCoupon]);
 
   const api_get_coupon_by_title = async (coupon_title) => {
@@ -60,7 +59,7 @@ function CartCoupon(props) {
           setCouponErrorMessage('');
           let new_coupon = [...applyCoupon, coupon_instance];
           setApplyCoupon(new_coupon);
-          coupon_context.setCoupons(new_coupon)
+          coupon_context.setCoupons(new_coupon);
           setUserTypedCoupon('');
           setCurrentCoupon(null);
         }
@@ -73,7 +72,7 @@ function CartCoupon(props) {
   const onClearCoupon = (coupon_id) => {
     let new_coupon = applyCoupon.filter((coupon) => coupon.id !== coupon_id);
     setApplyCoupon(new_coupon);
-    coupon_context.setCoupons(new_coupon)
+    coupon_context.setCoupons(new_coupon);
   };
 
   const AppliedCoupons = () => {
