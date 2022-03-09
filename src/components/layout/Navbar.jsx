@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context as AuthContext } from '../../context/auth';
 import { FcSearch } from 'react-icons/fc';
@@ -9,6 +9,7 @@ import favicon from '../../assets/img/favicon.png';
 function Navbar() {
   const auth_context = useContext(AuthContext),
     navigate_to = useNavigate();
+  const [query, setQuery] = useState('');
 
   const onLogoutClick = (e) => {
     e.preventDefault();
@@ -16,6 +17,11 @@ function Navbar() {
     auth_context.setUserData(null);
     localStorage.removeItem('auth');
     navigate_to('/login');
+  };
+
+  const onFormSubmit = (evt) => {
+    evt.preventDefault();
+    navigate_to(`/search?_page=1&_limit=9&title_like=${query}`);
   };
 
   return (
@@ -66,13 +72,15 @@ function Navbar() {
                 </NavLink>
               </li>
             </ul>
-            <form className='me-auto' action='/search'>
+            <form className='me-auto' onSubmit={onFormSubmit}>
               <div className='navbar-search-form'>
                 <input
                   className='form-control form-control-sm'
                   type='search'
                   name='query'
                   placeholder='Search'
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                   aria-label='Search'
                 />
                 <button className='btn btn-link btn-sm' type='submit'>
@@ -98,7 +106,12 @@ function Navbar() {
                         isActive ? 'active' : null}`}
                       to='/profile'
                     >
-                      <img src={auth_context.userData.img} alt={auth_context.userData.first_name} width={25} className='img-fluid rounded-circle me-1' />
+                      <img
+                        src={auth_context.userData.img}
+                        alt={auth_context.userData.first_name}
+                        width={25}
+                        className='img-fluid rounded-circle me-1'
+                      />
                       {auth_context.userData.first_name}
                     </NavLink>
                   </li>
