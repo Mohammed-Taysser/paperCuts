@@ -12,3 +12,4 @@
 - fix navbar & footer link
 - add login by email `(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)`
 - fix pagination in books page
+- how to update page title
