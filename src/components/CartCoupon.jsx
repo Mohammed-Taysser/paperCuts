@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useJsonServerToast from '../context/IsJsonServerDown';
 import { CouponAPI, get_coupon_by_title } from '../api/Localhost';
 import { Context as CouponContext } from '../context/coupon';
+import { InputField } from './bootstrap-component/Form';
 
 function CartCoupon(props) {
   const coupon_context = useContext(CouponContext);
@@ -35,6 +36,9 @@ function CartCoupon(props) {
     setUserTypedCoupon(input_value);
     if (input_value.length === 0) {
       evt.target.className = evt.target.className.replace('is-invalid', '');
+      setCouponErrorMessage(null);
+      setCurrentCoupon(null);
+      setUserTypedCoupon('');
     }
   };
 
@@ -56,7 +60,7 @@ function CartCoupon(props) {
         if (coupon_is_exist) {
           setCouponErrorMessage('Coupon already applied');
         } else {
-          setCouponErrorMessage('');
+          setCouponErrorMessage(null);
           let new_coupon = [...applyCoupon, coupon_instance];
           setApplyCoupon(new_coupon);
           coupon_context.setCoupons(new_coupon);
@@ -109,21 +113,17 @@ function CartCoupon(props) {
     <div className='my-5'>
       <form className='row g-3' onSubmit={onAddCoupon}>
         <div className='col-auto'>
-          <label htmlFor='coupon-input-id' className='visually-hidden'>
-            coupon
-          </label>
-          <input
-            type='text'
-            className={`form-control ${couponErrorMessage && 'is-invalid'}`}
-            id='coupon-input-id'
-            placeholder='Coupon Code'
+          <InputField
+            className={couponErrorMessage && 'is-invalid'}
             value={userTypedCoupon}
-            onChange={onCouponInputChange}
+            placeholder='Coupon Code'
+            label=''
             required
+            name='coupon'
+            onChange={onCouponInputChange}
+            id='coupon-input-id'
+            invalidFeedback={couponErrorMessage}
           />
-          {couponErrorMessage && (
-            <div className='invalid-feedback'>{couponErrorMessage}</div>
-          )}
           <AppliedCoupons />
         </div>
         <div className='col-auto'>
