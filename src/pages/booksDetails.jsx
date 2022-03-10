@@ -22,7 +22,6 @@ function BooksDetails() {
   let params = useParams();
   const is_jsonServer_down = useContext(useJsonServerToast);
   const reviews_tap_btn_ref = useRef(null);
-  const [selectType, setSelectType] = useState('');
   const [quantityNumber, setQuantityNumber] = useState(1);
   const [currentBook, setCurrentBook] = useState(get_book_by_id(params.id));
   const [relatedBooks, setRelatedBooks] = useState(RELATED_BOOKS);
@@ -34,6 +33,7 @@ function BooksDetails() {
     } else {
       api_get_books();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   const api_get_books = async () => {
@@ -103,7 +103,6 @@ function BooksDetails() {
 
   const setApiResponseData = (response_data) => {
     setCurrentBook(response_data);
-    setSelectType(currentBook.types[0]);
     setRelatedBooks(response_data.relatedBooks);
     setReviews(currentBook.reviews);
   };
@@ -120,7 +119,6 @@ function BooksDetails() {
           <form action='' onSubmit={onCartFormSubmit}>
             <TypesSelect
               types={currentBook.types}
-              onSelectChange={(e) => setSelectType(e.target.value)}
             />
             <div className='d-flex mt-3'>
               <QuantityControlButton onQuantityChange={setQuantityNumber} />

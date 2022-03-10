@@ -34,6 +34,7 @@ function Books() {
     } else {
       api_get_books(`?${searchParams.toString()}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_jsonServer_down]);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ function Books() {
         .replace('endPrice', 'price_lte');
       api_get_books(`${search_params_str}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
 
   const api_get_books = async (url) => {

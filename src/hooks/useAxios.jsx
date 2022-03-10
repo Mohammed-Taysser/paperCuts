@@ -70,6 +70,7 @@ function useAxios(config = defaultConfig) {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { response, error, loading };

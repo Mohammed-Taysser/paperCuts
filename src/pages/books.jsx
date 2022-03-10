@@ -8,7 +8,7 @@ import Pagination from '../components/Pagination';
 
 function Books() {
   const LIMIT = 9;
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const is_jsonServer_down = useContext(useJsonServerToast);
   const [pageNumber, setPageNumber] = useState(searchParams.get('_page') || 1);
   const [books, setBooks] = useState(BOOKS);
@@ -32,6 +32,7 @@ function Books() {
     if (pageNumber !== searchParams.get('_page')) {
       api_get_books(`?_limit=${LIMIT}&_page=${pageNumber}`);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
 
   const api_get_books = async (url) => {

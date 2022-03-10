@@ -24,6 +24,7 @@ function EventsDetails() {
     } else {
       get_events_api();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_jsonServer_down]);
 
   const get_events_api = () => {

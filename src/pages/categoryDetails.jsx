@@ -26,6 +26,7 @@ function CategoryDetails() {
     } else {
       api_get_category();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_jsonServer_down]);
 
   const api_get_category = async () => {

@@ -16,6 +16,7 @@ function OrderDetails() {
     } else {
       api_get_order();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_jsonServer_down]);
 
   const api_get_order = async () => {

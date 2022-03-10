@@ -14,6 +14,7 @@ function Category() {
     } else {
       api_get_category();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const api_get_category = async () => {

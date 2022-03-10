@@ -14,6 +14,7 @@ function TeamMembers() {
     } else {
       get_team_member_api();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_team_member_api = () => {

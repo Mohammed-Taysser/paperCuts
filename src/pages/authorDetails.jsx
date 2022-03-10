@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { MdAlternateEmail } from 'react-icons/md';
 import IsJsonServerDown from '../context/IsJsonServerDown';
 import SingleBook from '../components/SingleBook';
@@ -24,6 +24,7 @@ function AuthorDetails() {
     } else {
       get_author_api();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is_jsonServer_down]);
 
   const get_author_api = () => {

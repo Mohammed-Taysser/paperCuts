@@ -14,6 +14,7 @@ function Services() {
     } else {
       get_services_api();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_services_api = () => {
