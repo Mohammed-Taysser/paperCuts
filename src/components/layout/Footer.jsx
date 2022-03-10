@@ -22,7 +22,7 @@ const Shapes = () => {
 
 const WebsiteLogo = () => {
   return (
-    <div className='col-lg-4 col-md-6 my-3'>
+    <div className='col-lg-3 col-md-6 my-3'>
       <div className='widget'>
         <Link className='logo' to='/'>
           <img className='img-fluid' src={favicon} alt='website favicon' />
@@ -35,16 +35,44 @@ const WebsiteLogo = () => {
   );
 };
 
+const Sitemap = () => {
+  const links_arr = [
+    { label: 'authors', href: '/authors' },
+    { label: 'events', href: '/events' },
+    { label: 'login', href: '/login' },
+    { label: 'register', href: '/register' },
+    { label: 'checkout', href: '/checkout' },
+  ];
+
+  return (
+    <div className='col-lg-2 col-6 my-3'>
+      <div className='widget links mt-3'>
+        <h4 className='mb-3 fw-bolder'>sitemap</h4>
+        <ul className='list-unstyled'>
+          {links_arr.map((link, index) => {
+            return (
+              <li key={index}>
+                <Link to={link.href}>{link.label}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 const QuickLinks = () => {
   const links_arr = [
     { label: 'home', href: '/' },
     { label: 'About Us', href: '/about-us' },
+    { label: 'Contact Us', href: '/contact-us' },
     { label: 'books', href: '/books' },
     { label: 'category', href: '/category' },
   ];
 
   return (
-    <div className='col-lg-3 col-md-6 my-3'>
+    <div className='col-lg-2 col-6 my-3'>
       <div className='widget links mt-3'>
         <h4 className='mb-3 fw-bolder'>quick links</h4>
         <ul className='list-unstyled'>
@@ -72,18 +100,18 @@ const ContactUs = () => {
       <div className='widget mt-3'>
         <h4 className='mb-3 fw-bolder'>contact us</h4>
         <ul className='list-unstyled'>
-          <li className='my-2'>
-            <span>
+          <li className='my-2 small'>
+            <span className='d-flex align-items-center'>
               <FaMapMarkerAlt className='me-2' /> Markaz Meet Ghamr, Ad
               Daqahliyah, Egypt
             </span>
           </li>
-          <li className='my-2'>
+          <li className='my-2 small'>
             <a href='tel:01015081861'>
               <FaPhoneAlt className='me-2' /> 01015081861
             </a>
           </li>
-          <li className='my-2'>
+          <li className='my-2 small'>
             <a href='mailto:mohamedtaysser983@gmail.com'>
               <FaRegEnvelope className='me-2' /> mohamedtaysser983@gmail.com
             </a>
@@ -132,6 +160,7 @@ function Footer() {
           <WebsiteLogo />
           <ContactUs />
           <QuickLinks />
+          <Sitemap />
         </div>
       </div>
       <hr className='' />
