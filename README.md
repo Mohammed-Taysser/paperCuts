@@ -62,7 +62,7 @@ npm start
 ## Features 💬
 
 - Designed with progressive enhancement in mind.
-- Standalone With Only React No Redux Yet
+- Standalone With Only React
 - Using Hooks & Context & localStorage To Save And Deal With Data
 
 ## Adding Bootstrap
