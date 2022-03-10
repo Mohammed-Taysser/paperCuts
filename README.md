@@ -1,8 +1,8 @@
-# [paperCuts][vercel-live] 💥
+# [paperCuts][vercel-live]
 
 <div style='text-align:center;'>
   <a href='https://papercuts.vercel.app/'>
-    <img src='src/assets/img/favicon.png' height='300px' style='display:inline-block;'>
+    <img src='src/assets/img/favicon.png' height='150px' style='display:block;margin: auto;'>
   </a>
 </div>
 
@@ -20,7 +20,6 @@ for live demo
 
 - [`Bootstrap`](https://getbootstrap.com/)
 - [`Axios`](https://axios-http.com/)
-- [`Tajawal Arabic Font`](https://fonts.google.com/specimen/Tajawal)
 - [`React.js`](https://reactjs.org/)
 - [`React-Router-Dom`](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 - [`React-Icons`](https://react-icons.github.io/react-icons)
@@ -38,7 +37,7 @@ git clone https://github.com/Mohammed-Taysser/paperCuts.git
 
 ### Second Step
 
-install dependencies by
+Inside Papercuts Directory Install Dependencies By
 
 ```shell
 npm install
@@ -46,15 +45,15 @@ npm install
 
 ### Pre Last Step
 
-start json-server
+Start Json Server
 
 ```shell
-npm run json_server
+npm run json-server
 ```
 
 ### Last Step
 
-to start just run
+Start The Development Server
 
 ```shell
 npm start
@@ -63,6 +62,8 @@ npm start
 ## Features 💬
 
 - Designed with progressive enhancement in mind.
+- Standalone With Only React No Redux Yet
+- Using Hooks & Context & localStorage To Save And Deal With Data
 
 ## Adding Bootstrap
 
@@ -104,13 +105,34 @@ import './custom.scss';
 
 ## Json Server
 
-thanks tp [`json server`](https://www.npmjs.com/package/json-server) for create a full fake REST API with zero coding in less than 30 seconds
+Thanks to [`json server`](https://www.npmjs.com/package/json-server) for create a full fake REST API with zero coding in less than 30 seconds
 
-also create fake json using [`json-generator`](https://json-generator.com/)
+please make sure it work to enable update via server
+
+### how to start it
+
+inside paperCuts directory
+
+1. using node directly `node src/json_server/server.js`
+2. with npm task `npm run json-server`
+
+### how to change live port
+
+inside [`src/json_server/server.js`](https://github.com/Mohammed-Taysser/paperCuts/blob/a6a2357d838063f6641a75b98485f388d8d608f3/src/json_server/server.js#L1) in first line you can change the port to any one you want
+
+also create fake json using [`mockaroo`](https://mockaroo.com/)
+
+Used Public Dataset
+
+- [authors](https://mockaroo.com/8b7588a0)
+- [books](https://mockaroo.com/2ae647e0)
+- [cart](https://mockaroo.com/b5bf7990)
+- [categories](https://mockaroo.com/386903)
+- [coupons](https://mockaroo.com/fb04ecc0)
 
 for image url use [`picsum.photos`](https://picsum.photos/)
 
-## special thanks to
+## Special Thanks For Inspiration To
 
 - [chapter-one-bookstore-and-publisher-theme](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
 - [dbooks](https://www.dbooks.org/)
