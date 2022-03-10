@@ -19,7 +19,7 @@ function OrderDetails() {
   }, [is_jsonServer_down]);
 
   const api_get_order = async () => {
-    await OrderAPI.get(`/orders/${id}`)
+    await OrderAPI.get(`/${id}`)
       .then((response) => {
         setCurrentOrder(response.data);
       })
@@ -52,21 +52,18 @@ function OrderDetails() {
   };
 
   const CartItemsRows = () => {
-    if (currentOrder.cartItems.length > 0) {
-      return currentOrder.cartItems.map((item) => {
-        return (
-          <tr key={item.id}>
-            <td className='text-center'>
-              <span className='text-aurora'>{item.quantity}</span>
-            </td>
-            <td>{item.title}</td>
-            <td> ${(item.quantity * item.price).toFixed(2)}</td>
-          </tr>
-        );
-      });
-    } else {
-      return <></>;
-    }
+    let cartItems = currentOrder.cartItems.map((item) => {
+      return (
+        <tr key={item.id}>
+          <td className='text-center'>
+            <span className='text-aurora'>{item.quantity}</span>
+          </td>
+          <td>{item.title}</td>
+          <td> {`$${(item.quantity * item.price).toFixed(2)}`}</td>
+        </tr>
+      );
+    });
+    return <>{cartItems}</>;
   };
 
   const OrderTable = () => {
@@ -85,7 +82,9 @@ function OrderDetails() {
             <tr>
               <td colSpan={2}>Total</td>
               <td>
-                <span className='text-aurora'>${currentOrder.total}</span>
+                <span className='text-aurora'>
+                  ${currentOrder.total.toFixed(2)}
+                </span>
               </td>
             </tr>
           </tbody>
