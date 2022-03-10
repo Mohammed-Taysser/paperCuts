@@ -12,7 +12,7 @@ function Awards() {
         <div className='row justify-content-between'>
           <div className='col-md-6 my-3'>
             <div className='writer-container'>
-              <img src={AwardsImage} alt='awards' />
+              <img src={AwardsImage} alt='awards' className='img-fluid' />
             </div>
           </div>
           <div className='col-md-6 my-3'>
