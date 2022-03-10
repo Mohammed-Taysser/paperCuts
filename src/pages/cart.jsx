@@ -28,6 +28,18 @@ function Cart() {
     }
   };
 
+  const delete_cart_api = (book_id) => {
+    if (!is_jsonServer_down) {
+      CartAPI.delete(`/${book_id}`)
+        .then((response) => {
+          // console.log('changed');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   const books_table = () => {
     return (
       <table className='table'>
@@ -37,42 +49,61 @@ function Cart() {
             <th scope='col'>book</th>
             <th scope='col'>Price</th>
             <th scope='col'>Quantity</th>
-            <th scope='col'>Subtotal</th>
+            <th scope='col' colSpan={2}>
+              Subtotal
+            </th>
           </tr>
         </thead>
         <tbody>
-          {cartItems.map((book, index) => {
-            return (
-              <tr key={index}>
-                <th scope='row'>{index + 1}</th>
-                <td className='td-title'>
-                  <img
-                    src={book.img}
-                    alt={book.title}
-                    className='img-fluid'
-                    width={70}
-                    height={100}
-                  />
-                  <Link to={`/books/${book.id}`} className='mx-2'>
-                    {book.title}
-                  </Link>
-                </td>
-                <td className='td-price'> {book.price}$ </td>
-                <td className='td-quantity'>
-                  <QuantityControlButton
-                    initQuantity={book.quantity}
-                    disabled={is_jsonServer_down}
-                    onQuantityChange={(quantity) =>
-                      onQuantityChange(quantity, book.id)
-                    }
-                  />
-                </td>
-                <td className='td-total'>
-                  {(book.price * book.quantity).toFixed(2)}$
-                </td>
-              </tr>
-            );
-          })}
+          {cartItems.length > 0 ? (
+            cartItems.map((book, index) => {
+              return (
+                <tr key={index}>
+                  <th scope='row'>{index + 1}</th>
+                  <td className='td-title'>
+                    <img
+                      src={book.img}
+                      alt={book.title}
+                      className='img-fluid'
+                      width={70}
+                      height={100}
+                    />
+                    <Link to={`/books/${book.id}`} className='mx-2'>
+                      {book.title}
+                    </Link>
+                  </td>
+                  <td className='td-price'> {book.price}$ </td>
+                  <td className='td-quantity'>
+                    <QuantityControlButton
+                      initQuantity={book.quantity}
+                      disabled={is_jsonServer_down}
+                      onQuantityChange={(quantity) =>
+                        onQuantityChange(quantity, book.id)
+                      }
+                    />
+                  </td>
+                  <td className='td-total'>
+                    {(book.price * book.quantity).toFixed(2)}$
+                  </td>
+                  <td className="td-price'">
+                    <button
+                      className='btn btn-sm btn-outline-danger text-center p-0 rounded-circle'
+                      onClick={(e) => delete_cart_api(book.id)}
+                      style={{ width: '25px', height: '25px' }}
+                    >
+                      X
+                    </button>
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan={6}>
+                <h4 className='m-0'>no cart items found</h4>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     );
