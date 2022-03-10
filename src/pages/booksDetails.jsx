@@ -7,6 +7,7 @@ import {
   RELATED_BOOKS,
   BOOKS_REVIEWS,
   get_book_by_id,
+  CartAPI,
 } from '../api/Localhost';
 import useJsonServerToast from '../context/IsJsonServerDown';
 import QuantityControlButton from '../components/QuantityControlButton';
@@ -38,7 +39,6 @@ function BooksDetails() {
   const api_get_books = async () => {
     await BooksAPI.get(`/${params.id}`)
       .then((response) => {
-        // handle success
         setApiResponseData(response.data);
       })
       .catch((error) => {
@@ -47,6 +47,58 @@ function BooksDetails() {
       .then(() => {
         // always executed
       });
+  };
+
+  const get_cart_api = () => {
+    if (!is_jsonServer_down) {
+      CartAPI.get(`/${currentBook.id}`)
+        .then((response) => {
+          console.log(response);
+          set_quantity_api(quantityNumber);
+        })
+        .catch((error) => {
+          if (
+            error.toString() === 'Error: Request failed with status code 404'
+          ) {
+            create_cart_item();
+          }
+        });
+    }
+  };
+
+  const set_cart_api = (item_data) => {
+    if (!is_jsonServer_down) {
+      CartAPI.post(`/`, item_data)
+        .then((response) => {
+          // console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const set_quantity_api = (quantity) => {
+    if (!is_jsonServer_down) {
+      CartAPI.patch(`/${currentBook.id}`, { quantity })
+        .then((response) => {
+          // console.log('changed');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const create_cart_item = () => {
+    let cart_data = {
+      id: currentBook.id,
+      quantity: quantityNumber,
+      title: currentBook.title,
+      price: currentBook.price,
+      img: currentBook.img,
+    };
+    set_cart_api(cart_data);
   };
 
   const setApiResponseData = (response_data) => {
@@ -90,7 +142,9 @@ function BooksDetails() {
 
   const onCartFormSubmit = (evt) => {
     evt.preventDefault();
-    console.log(quantityNumber, selectType);
+    if (!is_jsonServer_down) {
+      get_cart_api();
+    }
   };
 
   return (
