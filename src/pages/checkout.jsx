@@ -23,7 +23,7 @@ function Checkout() {
     phone: '',
     email: '',
     additionalNote: '',
-    paymentMethod: '',
+    paymentMethod: 'masterCard',
   };
 
   const navigate = useNavigate();
@@ -46,7 +46,6 @@ function Checkout() {
     await OrderAPI.post(`/`, order_detail)
       .then((response) => {
         // handle success
-        console.log(response.data.id);
         navigate(`/orders/${response.data.id}`);
       })
       .catch((error) => {
