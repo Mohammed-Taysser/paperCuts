@@ -20,7 +20,6 @@ function Login() {
   const api_get_user = async () => {
     await UserAPI.get(`?email=${email}`)
       .then((response) => {
-        // handle success
         check_user_exist(response.data[0]);
       })
       .catch((error) => {
@@ -57,6 +56,27 @@ function Login() {
     }
   };
 
+  const other_login_methods = () => {
+    return (
+      <div className='my-3 text-center'>
+        <Link className='text-dark social-media-icon' to='#' title='google'>
+          <FcGoogle className='h5 m-0' />
+        </Link>
+        <Link
+          className='text-primary social-media-icon'
+          to='#'
+          title='facebook'
+        >
+          <FaFacebook className='h5 m-0' />
+        </Link>
+        <Link className='text-dark social-media-icon' to='#' title='github'>
+          <FaGithub className='h5 m-0' />
+        </Link>
+        <p className='small text-muted mt-4'>or use your account</p>
+      </div>
+    );
+  };
+
   if (auth_context.isAuth) {
     return (
       <section className='login-page my-5 py-5'>
@@ -76,30 +96,7 @@ function Login() {
               <div className='col-md-6 my-3'>
                 <div className='p-4 rounded-start border login-content'>
                   <h1 className='my-4 text-center'>Sign in</h1>
-                  <div className='my-3 text-center'>
-                    <Link
-                      className='text-dark social-media-icon'
-                      to='#'
-                      title='google'
-                    >
-                      <FcGoogle className='h5 m-0' />
-                    </Link>
-                    <Link
-                      className='text-primary social-media-icon'
-                      to='#'
-                      title='facebook'
-                    >
-                      <FaFacebook className='h5 m-0' />
-                    </Link>
-                    <Link
-                      className='text-dark social-media-icon'
-                      to='#'
-                      title='github'
-                    >
-                      <FaGithub className='h5 m-0' />
-                    </Link>
-                    <p className='small text-muted mt-4'>or use your account</p>
-                  </div>
+                  {other_login_methods()}
                   <form className='mb-3' onSubmit={onFormSubmit}>
                     <div className='my-3'>
                       <label className='form-label' htmlFor='login-email'>
