@@ -30,19 +30,7 @@ function LatestBooks() {
   const book_list = () => {
     if (books.length > 0) {
       return books.map((book) => {
-        return (
-          <SingleBook
-            book={{
-              id: book.id,
-              title: book.title,
-              img: book.img,
-              author: book.author.name,
-              price: book.price,
-              stars: book.stars,
-            }}
-            key={book.id}
-          />
-        );
+        return <SingleBook book={book} key={book.id} />;
       });
     }
     return <> no books available </>;
@@ -50,7 +38,7 @@ function LatestBooks() {
   return (
     <section className='latest-books py-5 my-5'>
       <SectionTitle subtitle='shop online' title='Latest books online' />
-      <div className='container p-xs-0 px-5 px-md-0'>
+      <div className='container'>
         <div className='row mt-4 justify-content-center align-items-center align-items-stretch'>
           {book_list()}
         </div>

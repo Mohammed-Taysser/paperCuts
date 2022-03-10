@@ -8,19 +8,7 @@ function RelatedBooks(props) {
   const books_list = () => {
     if (books.length > 0) {
       return books.map((book, index) => {
-        return (
-          <SingleBook
-            book={{
-              id: book.id,
-              title: book.title,
-              img: book.img,
-              author: book.author.name,
-              price: book.price,
-              stars: book.stars,
-            }}
-            key={index}
-          />
-        );
+        return <SingleBook book={book} key={index} />;
       });
     }
     return <Alert>no available books found</Alert>;
