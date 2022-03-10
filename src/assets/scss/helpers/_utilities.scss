@@ -291,3 +291,8 @@ a.text-dark {
     }
   }
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $main-color;
+}
