@@ -60,8 +60,8 @@ function Orders() {
       return (
         <li key={order.id}>
           <span className='line'></span>
-          <Link className='info text-white' to={`/orders/${order.id}`}>
-            order#{order.id} with {order.total}$
+          <Link className='info text-white h5' to={`/orders/${order.id}`}>
+            order#{order.id} with {order.total.toFixed(2)}$
           </Link>
           <div className='time'>
             <span>{date_details(order.date)}</span>
