@@ -13,3 +13,12 @@
 - add login by email `(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)`
 - fix pagination in books page
 - how to update page title
+- add review in book details page
+- add tree with folder & files
+- see readMe for create-react-app
+
+## 13 Mar 2022
+
+## 12 Feb 2022
+
+- Init Project With React
