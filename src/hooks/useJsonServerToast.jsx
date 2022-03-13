@@ -16,9 +16,8 @@ function useJsonServerToast(initValue = true) {
 
   const toast = (
     <Toast>
-      json-server is down, please make sure it's work.
-      <span className='bg-aurora text-light'> any data are static </span>. You
-      can't create, edit or delete unless it work. learn how to work with
+      json-server is down, please make sure it's work. You can't create, edit or
+      delete unless it work. learn how to work with
       <a
         href='https://github.com/Mohammed-Taysser/paperCuts#json-server'
         className='mx-2'
