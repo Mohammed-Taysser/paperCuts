@@ -42,10 +42,6 @@ const EventAPI = axios.create({
   baseURL: 'http://localhost:8080/events',
 });
 
-const UserAPI = axios.create({
-  baseURL: 'http://localhost:8080/users',
-});
-
 const ReviewAPI = axios.create({
   baseURL: 'http://localhost:8080/reviews',
 });
@@ -55,9 +51,8 @@ const SERVICES = Data.services,
   REVIEWS = Data.reviews,
   BOOKS = Data.books,
   CATEGORY = Data.category,
-  TOP_FIVE = Data.topFive,
+  TOP_FIVE = shuffle_arr(Data.books.slice(0, 5)),
   AUTHORS = Data.authors,
-  USERS = Data.users,
   ORDERS = Data.orders,
   CART = Data.cart,
   COUPONS = Data.coupons,
@@ -80,8 +75,20 @@ function get_category_by_id(id = '1') {
   return CATEGORY.find((cty) => cty.id.toString() === id);
 }
 
+function get_category_by_slug(slug = '') {
+  return CATEGORY.find((cty) => cty.slug === slug);
+}
+
 function get_author_by_id(id = '1') {
   return AUTHORS.find((author) => author.id.toString() === id);
+}
+
+function get_author_by_username(username = '') {
+  return AUTHORS.find((author) => author.username === username);
+}
+
+function get_author_by_email(email = '') {
+  return AUTHORS.find((author) => author.email === email);
 }
 
 function get_coupon_by_id(id = 1) {
@@ -94,14 +101,6 @@ function get_coupon_by_title(title = '') {
 
 function get_event_by_id(id = '1') {
   return EVENTS.find((event) => event.id.toString() === id);
-}
-
-function get_user_by_email(email = '') {
-  return USERS.find((user) => user.email === email);
-}
-
-function get_user_by_username(username = '') {
-  return USERS.find((user) => user.username === username);
 }
 
 function get_order_by_id(id = '1') {
@@ -119,7 +118,6 @@ export {
   CouponAPI,
   OrderAPI,
   EventAPI,
-  UserAPI,
   ReviewAPI,
 };
 export {
@@ -143,10 +141,11 @@ export {
   get_book_by_id,
   get_author_by_id,
   get_category_by_id,
+  get_category_by_slug,
   get_coupon_by_id,
   get_coupon_by_title,
   get_event_by_id,
-  get_user_by_email,
-  get_user_by_username,
+  get_author_by_username,
+  get_author_by_email,
   get_order_by_id,
 };
