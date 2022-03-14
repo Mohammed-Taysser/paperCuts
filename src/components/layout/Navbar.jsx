@@ -46,29 +46,17 @@ function Navbar() {
           <div className='collapse navbar-collapse' id='navbar-main-menu'>
             <ul className='navbar-nav me-auto'>
               <li className='nav-item'>
-                <NavLink
-                  className={`nav-link ${({ isActive }) =>
-                    isActive ? 'active' : null}`}
-                  to='/'
-                >
+                <NavLink className={`nav-link`} to='/'>
                   Home
                 </NavLink>
               </li>
               <li className='nav-item'>
-                <NavLink
-                  className={`nav-link ${({ isActive }) =>
-                    isActive ? 'active' : null}`}
-                  to='/category'
-                >
+                <NavLink className={`nav-link`} to='/category'>
                   categories
                 </NavLink>
               </li>
               <li className='nav-item'>
-                <NavLink
-                  className={`nav-link ${({ isActive }) =>
-                    isActive ? 'active' : null}`}
-                  to='/books'
-                >
+                <NavLink className={`nav-link`} to='/books'>
                   books
                 </NavLink>
               </li>
@@ -140,33 +128,24 @@ function Navbar() {
               {auth_context.isAuth ? (
                 <>
                   <li className='nav-item'>
-                    <NavLink
-                      className={`nav-link ${({ isActive }) =>
-                        isActive ? 'active' : null}`}
-                      to='/cart'
-                    >
+                    <NavLink className={`nav-link `} to='/cart'>
                       <BsCart4 className='h5 m-0' />
                     </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <NavLink
-                      className={`nav-link ${({ isActive }) =>
-                        isActive ? 'active' : null}`}
-                      to='/profile'
-                    >
+                    <NavLink className={`nav-link`} to='/profile'>
                       <img
-                        src={auth_context.userData.img}
-                        alt={auth_context.userData.first_name}
+                        src={auth_context.userData.image}
+                        alt={auth_context.userData.firstName}
                         width={25}
                         className='img-fluid rounded-circle me-1'
                       />
-                      {auth_context.userData.first_name}
+                      {auth_context.userData.firstName}
                     </NavLink>
                   </li>
                   <li className='nav-item'>
                     <NavLink
-                      className={`nav-link ${({ isActive }) =>
-                        isActive ? 'active' : null}`}
+                      className={`nav-link`}
                       to='/logout'
                       onClick={onLogoutClick}
                     >
@@ -177,20 +156,12 @@ function Navbar() {
               ) : (
                 <>
                   <li className='nav-item'>
-                    <NavLink
-                      className={`nav-link ${({ isActive }) =>
-                        isActive ? 'active' : null}`}
-                      to='/login'
-                    >
+                    <NavLink className={`nav-link`} to='/login'>
                       Login
                     </NavLink>
                   </li>
                   <li className='nav-item'>
-                    <NavLink
-                      className={`nav-link ${({ isActive }) =>
-                        isActive ? 'active' : null}`}
-                      to='/register'
-                    >
+                    <NavLink className={`nav-link`} to='/register'>
                       register
                     </NavLink>
                   </li>
