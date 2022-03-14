@@ -18,11 +18,11 @@ function CategoryDetails() {
   }, []);
 
   const api_get_category = async () => {
-    await CategoryAPI.get(`?slug_like=${slug}`)
+    await CategoryAPI.get(`?slug=${slug}`)
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentCategory(response.data[0]);
-          get_category_books(response.data[0].id);
+          get_category_books(response.data[0]);
         }
       })
       .catch((error) => {
@@ -36,7 +36,6 @@ function CategoryDetails() {
   };
 
   const get_category_books = (cty) => {
-    setCurrentCategory(cty);
     let books = BOOKS.filter((book) => book.category.includes(cty.id));
     setBooksByCategory([...new Set(books)]);
   };
