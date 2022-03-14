@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNotFoundImage from '../assets/images/background/404-img.jpg';
+import '../assets/scss/pages/_404.scss';
 
 function PageNotFound() {
   return (
