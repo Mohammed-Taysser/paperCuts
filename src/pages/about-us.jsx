@@ -2,13 +2,13 @@ import React from 'react';
 import Banner from '../components/Banner';
 import Services from '../components/Services';
 import TeamMembers from '../components/TeamMembers';
-import FlyShape from '../assets/img/fly-shape.svg';
-import CupShape from '../assets/img/shapes/cup-shape.png';
-import CoffeeSectionImage from '../assets/img/background/coffee-section-image.png';
-import AutobiographySectionImage from '../assets/img/background/autobiography-section-image.png';
+import FlyShape from '../assets/images/shapes/fly-shape.svg';
+import CupShape from '../assets/images/shapes/cup-shape.png';
+import CoffeeImage from '../assets/images/background/about/coffee.png';
+import AutobiographyImage from '../assets/images/background/about/autobiography.png';
 import AboutAudioBook from '../components/AboutAudioBook';
 
-function aboutUs() {
+function AboutUs() {
   return (
     <>
       <Banner title='about us' subtitle='info' />
@@ -40,7 +40,7 @@ function aboutUs() {
               <div className='autobiography-container'>
                 <div className='autobiography-img'>
                   <img
-                    src={AutobiographySectionImage}
+                    src={AutobiographyImage}
                     alt='autobiography-section'
                     className='autobiography-section-image img-fluid'
                     width='550'
@@ -59,7 +59,7 @@ function aboutUs() {
               <div className='coffee-container'>
                 <div className='coffee-img'>
                   <img
-                    src={CoffeeSectionImage}
+                    src={CoffeeImage}
                     alt='coffee-section'
                     className='coffee-section-image img-fluid'
                     width='550'
@@ -91,14 +91,10 @@ function aboutUs() {
           </div>
         </div>
       </section>
-      <section className='team-member'>
-        <TeamMembers />
-      </section>
-      <div className=''>
-        <AboutAudioBook />
-      </div>
+      <TeamMembers />
+      <AboutAudioBook />
     </>
   );
 }
 
-export default aboutUs;
+export default AboutUs;
