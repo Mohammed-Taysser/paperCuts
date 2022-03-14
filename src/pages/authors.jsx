@@ -1,20 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import SingleMember from '../components/SingleMember';
+import React, { useEffect, useState } from 'react';
+import SingleAuthor from '../components/single/SingleAuthor';
 import Banner from '../components/Banner';
+import Spinner from '../components/bootstrap-component/Spinner';
 import { AuthorsAPI, AUTHORS } from '../api/Localhost';
-import IsJsonServerDown from '../context/IsJsonServerDown';
 
 function Authors() {
-  const [authors, setAuthors] = useState(AUTHORS);
-  const is_jsonServer_down = useContext(IsJsonServerDown);
+  const [authors, setAuthors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setAuthors(AUTHORS);
-    } else {
-      get_author_api();
-    }
-  }, [is_jsonServer_down]);
+    get_author_api();
+  }, []);
 
   const get_author_api = () => {
     AuthorsAPI.get(`/`)
@@ -23,27 +19,40 @@ function Authors() {
       })
       .catch((err) => {
         setAuthors(AUTHORS);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  const authors_list = () => {
-    return authors.map((member) => {
-      const config = {
-        name: `${member.first_name} ${member.last_name}`,
-        avatar: member.img,
-        position: member.email,
-      };
-      return <SingleMember key={member.id} member={config} url_id={member.id} />;
-    });
+  const AuthorsList = () => {
+    if (authors.length > 0) {
+      let authors_list = authors.map((author) => (
+        <SingleAuthor key={author.id} author={author} />
+      ));
+      return (
+        <div className='row justify-content-center align-items-center'>
+          {authors_list}
+        </div>
+      );
+    }
+    return <> no author found </>;
   };
+
+  const RenderMessage = () => {
+    if (loading) {
+      return <Spinner />;
+    } else {
+      return <AuthorsList />;
+    }
+  };
+
   return (
     <>
       <Banner title='authors' subtitle='info' />
       <section className='my-5 py-5'>
         <div className='container'>
-          <div className='row justify-content-center align-items-center'>
-            {authors_list()}
-          </div>
+          <RenderMessage />
         </div>
       </section>
     </>
