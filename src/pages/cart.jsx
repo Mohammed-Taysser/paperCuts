@@ -1,43 +1,37 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
 import { CartAPI } from '../api/Localhost';
 import QuantityControlButton from '../components/QuantityControlButton';
-import useJsonServerToast from '../context/IsJsonServerDown';
 import 'bootstrap/js/src/alert';
 import CartCoupon from '../components/CartCoupon';
 import useCart from '../hooks/useCart';
 
 function Cart() {
   const [SHIPPING_PRICE, COUPON_PRICE, TOTAL_CART_PRICE, cartItems] = useCart();
-  const is_jsonServer_down = useContext(useJsonServerToast);
 
   const onQuantityChange = (quantity, book_id) => {
     set_quantity_api(quantity, book_id);
   };
 
   const set_quantity_api = (quantity, book_id) => {
-    if (!is_jsonServer_down) {
-      CartAPI.patch(`/${book_id}`, { quantity })
-        .then((response) => {
-          // console.log('changed');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    CartAPI.patch(`/${book_id}`, { quantity })
+      .then((response) => {
+        console.log('changed');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const delete_cart_api = (book_id) => {
-    if (!is_jsonServer_down) {
-      CartAPI.delete(`/${book_id}`)
-        .then((response) => {
-          // console.log('changed');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    CartAPI.delete(`/${book_id}`)
+      .then((response) => {
+        // console.log('changed');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const books_table = () => {
@@ -76,7 +70,6 @@ function Cart() {
                   <td className='td-quantity'>
                     <QuantityControlButton
                       initQuantity={book.quantity}
-                      disabled={is_jsonServer_down}
                       onQuantityChange={(quantity) =>
                         onQuantityChange(quantity, book.id)
                       }
