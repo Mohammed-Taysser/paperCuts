@@ -7,7 +7,6 @@ import JsonServerToast from '../../context/IsJsonServerDown';
 function RightSidebar(props) {
   const is_jsonServer_down = useContext(JsonServerToast);
   const [categories, setCategories] = useState(CATEGORY);
-  const [topFive, setTopFive] = useState(TOP_FIVE);
 
   useEffect(() => {
     initRender();
@@ -17,7 +16,6 @@ function RightSidebar(props) {
   const initRender = () => {
     if (is_jsonServer_down) {
       setCategories(CATEGORY);
-      setTopFive(TOP_FIVE);
     }
   };
 
@@ -27,7 +25,7 @@ function RightSidebar(props) {
         {categories.map((cat, index) => {
           return (
             <li className='special-small-title my-2' key={index}>
-              <Link to={`/category/${cat.id}`}>
+              <Link to={`/category/${cat.slug}`}>
                 {cat.title}
                 <small className='text-muted'>({cat.books.length})</small>
               </Link>
@@ -39,11 +37,11 @@ function RightSidebar(props) {
   };
 
   const TopFiveOfWeek = () => {
-    let top_5 = topFive.map((book, index) => {
+    let top_5 = TOP_FIVE.map((book, index) => {
       return (
-        <Link to={`/books/${book.id}`} key={index}>
+        <Link to={`/books/${book.slug}`} key={index}>
           <img
-            src={book.img}
+            src={book.image}
             alt={book.title}
             className='m-1 img-fluid d-inline-block'
             width={50}
