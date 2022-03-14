@@ -129,6 +129,7 @@ Used Public Dataset
 - [cart](https://mockaroo.com/b5bf7990)
 - [categories](https://mockaroo.com/386903)
 - [coupons](https://mockaroo.com/fb04ecc0)
+- [reviews](https://mockaroo.com/2ae647e0)
 
 for image url use [`picsum.photos`](https://picsum.photos/)
 
