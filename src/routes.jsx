@@ -56,7 +56,7 @@ function PaperCutsRoutes() {
         <Route path='/events/' element={<Events />} />
         <Route path='/events/:slug' element={<EventsDetails />} />
         <Route path='/authors' element={<Author />} />
-        <Route path='/authors/:slug' element={<AuthorDetails />} />
+        <Route path='/authors/:username' element={<AuthorDetails />} />
         <Route path='/forget-password' element={<ForgetPassword />} />
         <Route path='/test' element={<Test />} />
       </Routes>
