@@ -5,7 +5,6 @@ import Footer from './components/layout/Footer';
 import MainRoute from './routes';
 import AuthContext from './context/auth';
 import CouponContext from './context/coupon';
-import IsJsonServerDownContext from './context/IsJsonServerDown';
 import useJsonServerToast from './hooks/useJsonServerToast';
 
 function App() {
@@ -23,9 +22,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           {isDown && jsonServerToast}
-          <IsJsonServerDownContext.Provider value={isDown}>
-            <MainRoute />
-          </IsJsonServerDownContext.Provider>
+          <MainRoute />
           <Footer />
         </BrowserRouter>
       </CouponContext>
