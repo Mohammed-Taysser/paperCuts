@@ -9,7 +9,7 @@ const Alert = (props) => {
 }
 
 Alert.defaultProps = {
-  color: 'primary',
+  color: 'warning',
   children: (
     <>Alert with <a href="#go-some-where" className="alert-link">link</a>.</>
   )
