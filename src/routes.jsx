@@ -23,7 +23,6 @@ import AuthorDetails from './pages/authorDetails';
 import Order from './pages/orders';
 import OrderDetails from './pages/orderDetails';
 import Test from './pages/Test';
-import Search from './pages/Search';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -50,15 +49,14 @@ function PaperCutsRoutes() {
         <Route path='/about-us' element={<AboutUs />} />
         <Route path='/contact-us' element={<ContactUs />} />
         {auth_routes()}
-        <Route path='/search' element={<Search />} />
         <Route path='/books' element={<Books />} />
-        <Route path='/books/:id' element={<BooksDetails />} />
+        <Route path='/books/:slug' element={<BooksDetails />} />
         <Route path='/category' element={<Category />} />
-        <Route path='/category/:id' element={<CategoryDetails />} />
+        <Route path='/category/:slug' element={<CategoryDetails />} />
         <Route path='/events/' element={<Events />} />
-        <Route path='/events/:id' element={<EventsDetails />} />
+        <Route path='/events/:slug' element={<EventsDetails />} />
         <Route path='/authors' element={<Author />} />
-        <Route path='/authors/:id' element={<AuthorDetails />} />
+        <Route path='/authors/:slug' element={<AuthorDetails />} />
         <Route path='/forget-password' element={<ForgetPassword />} />
         <Route path='/test' element={<Test />} />
       </Routes>
