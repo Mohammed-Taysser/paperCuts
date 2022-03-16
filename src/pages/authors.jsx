@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleAuthor from '../components/single/SingleAuthor';
 import Banner from '../components/Banner';
-import Spinner from '../components/bootstrap-component/Spinner';
+import Spinner from '../components/bootstrap/Spinner';
 import { AuthorsAPI, AUTHORS } from '../api/Localhost';
 
 function Authors() {
