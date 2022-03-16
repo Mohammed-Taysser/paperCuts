@@ -1,22 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../../components/Banner';
-import { CATEGORY, TOP_FIVE } from '../../api/Localhost';
-import JsonServerToast from '../../context/IsJsonServerDown';
+import Banner from '../components/Banner';
+import { CATEGORY, TOP_FIVE, CategoryAPI } from '../api/Localhost';
+import Spinner from '../components/bootstrap/Spinner';
+import Alert from '../components/bootstrap/Alert';
 
 function RightSidebar(props) {
-  const is_jsonServer_down = useContext(JsonServerToast);
-  const [categories, setCategories] = useState(CATEGORY);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    initRender();
+    get_category_api();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [is_jsonServer_down]);
+  }, []);
 
-  const initRender = () => {
-    if (is_jsonServer_down) {
-      setCategories(CATEGORY);
-    }
+  const get_category_api = () => {
+    CategoryAPI.get('/')
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        setCategories(CATEGORY);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const CategoryList = () => {
@@ -34,6 +42,17 @@ function RightSidebar(props) {
         })}
       </ul>
     );
+  };
+
+  const RenderCategoryList = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+    if (categories.length > 0) {
+      return <CategoryList />;
+    } else {
+      return <Alert> no category found </Alert>;
+    }
   };
 
   const TopFiveOfWeek = () => {
@@ -58,7 +77,7 @@ function RightSidebar(props) {
       <div className='ms-lg-3'>
         <section className='category-section'>
           <h4 className='mb-3'>categories</h4>
-          <CategoryList />
+          <RenderCategoryList />
         </section>
         <section className='top-five-section mt-4'>
           <h4 className='mb-3'>Top 5 of the week</h4>
