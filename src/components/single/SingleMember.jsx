@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function SingleAuthor(props) {
-  const { author } = props;
+function SingleMember(props) {
+  const { member } = props;
 
   const RoundedSvg = () => {
     return (
@@ -41,9 +40,9 @@ function SingleAuthor(props) {
       <div className='single-member-wrapper'>
         <div className='member-image-container'>
           <img
-            src={author.image}
+            src={member.avatar}
             className='member-image'
-            alt={author.firstName}
+            alt={member.name}
             width='200'
             height='200'
           />
@@ -51,10 +50,10 @@ function SingleAuthor(props) {
           <LineSvg />
           <PlusShape />
           <div className='member-signature'>
-            {author.signature && (
+            {member.signature && (
               <img
-                src={author.signature}
-                alt={`${author.firstName} signature`}
+                src={member.signature}
+                alt='username signature'
                 width={120}
                 height={50}
               />
@@ -62,17 +61,12 @@ function SingleAuthor(props) {
           </div>
         </div>
         <div className='member-info'>
-          <h6 className='member-position'>{author.username}</h6>
-          <Link
-            to={`/authors/${author.username}`}
-            className='h4 member-name text-aurora'
-          >
-            {`${author.firstName} ${author.lastName}`}
-          </Link>
+          <h6 className='member-position my-2'>{member.position}</h6>
+          <h4 className='member-name text-aurora'>{member.name}</h4>
         </div>
       </div>
     </div>
   );
 }
 
-export default SingleAuthor;
+export default SingleMember;
