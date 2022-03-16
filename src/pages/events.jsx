@@ -1,25 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FcBrokenLink } from 'react-icons/fc';
 import Banner from '../components/Banner';
 import { EventAPI, EVENTS } from '../api/Localhost';
-import IsJsonServerDown from '../context/IsJsonServerDown';
-import SecondaryBannerImage from '../assets/img/background/secondary-banner.jpg';
-import EventsBackgroundImage from '../assets/img/background/events-background.png';
-import JoinClubImage from '../assets/img/background/join-club.jpg';
+import SecondaryBannerImage from '../assets/images/background/secondary-banner.jpg';
+import EventsBackgroundImage from '../assets/images/background/events-background.png';
+import JoinClubImage from '../assets/images/background/join-club.jpg';
 import SectionTitle from '../components/SectionTitle';
+import Spinner from '../components/bootstrap/Spinner';
+import Alert from '../components/bootstrap/Alert';
 
 function Events() {
-  const is_jsonServer_down = useContext(IsJsonServerDown);
-  const [events, setEvents] = useState(EVENTS);
+  const [events, setEvents] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setEvents(EVENTS);
-    } else {
-      get_events_api();
-    }
-  }, [is_jsonServer_down]);
+    get_events_api();
+  }, []);
 
   const get_events_api = () => {
     EventAPI.get(`/`)
@@ -27,24 +24,43 @@ function Events() {
         setEvents(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        setEvents(EVENTS);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   const is_expire = (date) => {
-    let date_time = null;
-    if (typeof date === 'string') {
-      date_time = new Date(date).getTime();
-    }
-    return date_time <= new Date().getTime();
+    return new Date(date).getTime() <= new Date().getTime();
   };
+
   const format_to_ymd = (date) => {
     let real_date = typeof date === 'string' ? new Date(date) : date;
     return real_date.toISOString().slice(0, 10).replace(/-/g, '.');
   };
 
-  const events_list = () => {
+  const TicketButton = ({ event }) => {
+    if (is_expire(event.date)) {
+      return (
+        <Link
+          to={`/events/${event.slug}`}
+          className='btn btn-dark css-tooltip'
+          data-tooltip='expire'
+        >
+          see tickets
+        </Link>
+      );
+    } else {
+      return (
+        <Link to={`/events/${event.slug}`} className='btn btn-aurora'>
+          see tickets
+        </Link>
+      );
+    }
+  };
 
+  const EventsList = () => {
     return (
       <ul className='events-list list-unstyled mt-5 pt-3'>
         {events.map((event) => {
@@ -57,19 +73,15 @@ function Events() {
                   </small>
                 </div>
                 <div className='col-md-6 my-2'>
-                  <Link to={`/events/${event.id}`} className='h4 m-0 text-dark'>
+                  <Link
+                    to={`/events/${event.slug}`}
+                    className='h4 m-0 text-dark'
+                  >
                     {event.title}
                   </Link>
                 </div>
                 <div className='col-md-2 my-2 text-md-end'>
-                  <Link
-                    to={`/events/${event.id}`}
-                    className={`btn btn-${
-                      is_expire(event.date) ? 'aurora' : 'dark'
-                    }`}
-                  >
-                    see tickets
-                  </Link>
+                  <TicketButton event={event} />
                 </div>
               </div>
             </li>
@@ -78,6 +90,19 @@ function Events() {
       </ul>
     );
   };
+
+  const Render = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+
+    if (events && events.length > 0) {
+      return <EventsList />;
+    } else {
+      return <Alert> no events yet </Alert>;
+    }
+  };
+
   return (
     <>
       <Banner title='our Events' subtitle='info' img={SecondaryBannerImage} />
@@ -88,7 +113,7 @@ function Events() {
         >
           <div className='container my-5 py-5'>
             <SectionTitle subtitle='events' title='Book promotions' />
-            {events_list()}
+            <Render />
           </div>
         </div>
         <div
