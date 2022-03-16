@@ -1,132 +1,81 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import 'bootstrap/js/src/tab';
+import { BooksAPI, get_book_by_slug } from '../api/Localhost';
+import AboutAuthor from '../components/AboutAuthor';
+import AddToCart from '../components/AddToCart';
+import AddToWishList from '../components/AddToWishlist';
 import Banner from '../components/Banner';
-import {
-  BooksAPI,
-  RELATED_BOOKS,
-  BOOKS_REVIEWS,
-  get_book_by_id,
-  CartAPI,
-} from '../api/Localhost';
-import useJsonServerToast from '../context/IsJsonServerDown';
-import QuantityControlButton from '../components/QuantityControlButton';
-import RelatedBooks from '../components/book-details-page/RelatedBooks';
-import TabAndNav from '../components/book-details-page/TabAndNav';
-import AboutAuthor from '../components/book-details-page/AboutAuthor';
-import BookDetailsColumn from '../components/book-details-page/BookDetailsColumn';
-import TypesSelect from '../components/book-details-page/TypesSelect';
-import CategoryTags from '../components/book-details-page/CategoryTags';
+import Alert from '../components/bootstrap/Alert';
+import Spinner from '../components/bootstrap/Spinner';
+import InlineCategoryTags from '../components/InlineCategoryTags';
+import { diff_in_days, Stars } from '../components/ManipulateData';
+import TabAndNav from '../components/TabAndNav';
+import { Books as RelatedBooks } from '../components/Books';
 
 function BooksDetails() {
-  let params = useParams();
-  const is_jsonServer_down = useContext(useJsonServerToast);
+  let { slug } = useParams();
   const reviews_tap_btn_ref = useRef(null);
-  const [quantityNumber, setQuantityNumber] = useState(1);
-  const [currentBook, setCurrentBook] = useState(get_book_by_id(params.id));
-  const [relatedBooks, setRelatedBooks] = useState(RELATED_BOOKS);
-  const [reviews, setReviews] = useState(BOOKS_REVIEWS);
+  const [currentBook, setCurrentBook] = useState(null);
+  const [reviewsLength, setReviewsLength] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setCurrentBook(get_book_by_id(params.id));
-    } else {
-      api_get_books();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params]);
+    api_get_books();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   const api_get_books = async () => {
-    await BooksAPI.get(`/${params.id}`)
+    await BooksAPI.get(`?slug=${slug}`)
       .then((response) => {
-        setApiResponseData(response.data);
+        if (response.data.length === 1) {
+          setCurrentBook(response.data[0]);
+        }
       })
       .catch((error) => {
-        // handle error
+        setCurrentBook(get_book_by_slug(slug));
       })
-      .then(() => {
-        // always executed
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  const get_cart_api = () => {
-    if (!is_jsonServer_down) {
-      CartAPI.get(`/${currentBook.id}`)
-        .then((response) => {
-          console.log(response);
-          set_quantity_api(quantityNumber);
-        })
-        .catch((error) => {
-          if (
-            error.toString() === 'Error: Request failed with status code 404'
-          ) {
-            create_cart_item();
-          }
-        });
+  const BookBadge = () => {
+    const DAYS_NUMBER = 7;
+    if (diff_in_days(new Date(), currentBook.publishedAt) < DAYS_NUMBER) {
+      return <small className='badge rounded-pill bg-warning mx-3'>new</small>;
     }
+    return <></>;
   };
 
-  const set_cart_api = (item_data) => {
-    if (!is_jsonServer_down) {
-      CartAPI.post(`/`, item_data)
-        .then((response) => {
-          // console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  const set_quantity_api = (quantity) => {
-    if (!is_jsonServer_down) {
-      CartAPI.patch(`/${currentBook.id}`, { quantity })
-        .then((response) => {
-          // console.log('changed');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  const create_cart_item = () => {
-    let cart_data = {
-      id: currentBook.id,
-      quantity: quantityNumber,
-      title: currentBook.title,
-      price: currentBook.price,
-      img: currentBook.img,
-    };
-    set_cart_api(cart_data);
-  };
-
-  const setApiResponseData = (response_data) => {
-    setCurrentBook(response_data);
-    setRelatedBooks(response_data.relatedBooks);
-    setReviews(currentBook.reviews);
-  };
-
-  const book_details_column = () => {
+  const BookDetailsColumn = () => {
     return (
       <div className='col-md-8 my-3'>
         <div className='wrapper'>
-          <BookDetailsColumn
-            book={currentBook}
-            reviews_length={reviews.length}
-            onReviewButtonClick={onReviewButtonClick}
-          />
-          <form action='' onSubmit={onCartFormSubmit}>
-            <TypesSelect
-              types={currentBook.types}
-            />
-            <div className='d-flex mt-3'>
-              <QuantityControlButton onQuantityChange={setQuantityNumber} />
-              <button className='btn btn-aurora mx-4'>Add To Cart</button>
-            </div>
-          </form>
-          <CategoryTags category={currentBook.category} />
-          <AboutAuthor author={currentBook.author} />
+          <div className='d-flex align-items-start justify-content-between'>
+            <span className='special-small-title'>
+              publisher: {currentBook.publisher}
+            </span>
+            <AddToWishList currentBook={currentBook} />
+          </div>
+          <div className='d-flex align-items-start'>
+            <h1 className='h2 mb-2'>{currentBook.title} </h1>
+            <BookBadge />
+          </div>
+          <div className='d-flex align-items-end'>
+            {<Stars stars_length={currentBook.stars} />}
+            <a
+              className='small mx-4 text-muted special-small-title'
+              href='#reviews'
+              onClick={onReviewButtonClick}
+            >
+              ({reviewsLength !== null && reviewsLength} reviews)
+            </a>
+          </div>
+          <p className='mt-2 h4'>{currentBook.price}$</p>
+          <p className='mt-3 text-muted'>{currentBook.info}</p>
+          <AddToCart currentBook={currentBook} />
+          <InlineCategoryTags category={currentBook.category} />
+          <AboutAuthor id={currentBook.author.id} />
         </div>
       </div>
     );
@@ -138,38 +87,49 @@ function BooksDetails() {
     reviews_tap_btn_ref.current.click();
   };
 
-  const onCartFormSubmit = (evt) => {
-    evt.preventDefault();
-    if (!is_jsonServer_down) {
-      get_cart_api();
+  const Render = () => {
+    if (loading) {
+      return <Spinner />;
     }
-  };
-
-  return (
-    <>
-      <Banner title={currentBook.title} subtitle='products' />
-      <section className='book-details-page my-5'>
-        <div className='container'>
+    if (currentBook) {
+      return (
+        <>
           <div className='row justify-content-center'>
             <div className='col-md-4 my-3'>
               <div className='img-container'>
                 <img
-                  src={currentBook.img}
+                  src={currentBook.image}
                   alt={currentBook.title}
                   className='img-fluid'
                 />
               </div>
             </div>
-            {book_details_column()}
+            <BookDetailsColumn />
           </div>
           <TabAndNav
             currentBook={currentBook}
             reviews_ref={reviews_tap_btn_ref}
-            reviews={reviews}
+            setReviewsLength={setReviewsLength}
           />
+        </>
+      );
+    } else {
+      return <Alert> no book exist </Alert>;
+    }
+  };
+
+  return (
+    <>
+      <Banner
+        title={currentBook ? currentBook.title : 'book details'}
+        subtitle='products'
+      />
+      <section className='book-details-page my-5'>
+        <div className='container'>
+          <Render />
         </div>
       </section>
-      <RelatedBooks books={relatedBooks} />
+      <RelatedBooks />
     </>
   );
 }

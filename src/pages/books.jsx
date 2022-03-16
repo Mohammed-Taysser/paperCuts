@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SingleBook from '../components/single/SingleBook';
 import { BOOKS, BooksAPI } from '../api/Localhost';
-import RightSidebar from '../components/layout/RightSidebar';
-import Spinner from '../components/bootstrap-component/Spinner';
-import SearchForm from '../components/SearchForm';
-import Alert from '../components/bootstrap-component/Alert';
+import RightSidebar from '../layout/RightSidebar';
+import Spinner from '../components/bootstrap/Spinner';
+import FilterForm from '../components/FilterForm';
+import Alert from '../components/bootstrap/Alert';
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -52,7 +52,7 @@ function Books() {
 
   return (
     <RightSidebar title='shop list' subtitle='products'>
-      <SearchForm
+      <FilterForm
         setLoading={setLoading}
         books={books}
         filteredBooks={filteredBooks}
