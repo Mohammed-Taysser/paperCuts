@@ -30,27 +30,22 @@ const InlineCategoryTags = (props) => {
     }
 
     if (category.length > 0) {
-      let filterd_category = CATEGORY.filter((cty) =>
-        props.category.includes(cty.id)
-      );
+      let category_items = [];
 
-      if (filterd_category.length > 0) {
-        let temp_cat = [];
-
-        filterd_category.forEach((cty, index) => {
-          temp_cat.push(
+      category.forEach((cty, index) => {
+        if (props.category.includes(cty.id)) {
+          category_items.push(
             <Link to={`/category/${cty.slug}`} key={index}>
               {cty.title}
             </Link>
           );
-          if (filterd_category.length - 1 !== index) {
-            temp_cat.push(' , ');
-          }
-        });
-        return <>category: {temp_cat}</>;
-      } else {
-        return <small>no category</small>;
-      }
+          category_items.push(' , ');
+        }
+      });
+
+      category_items.pop();
+
+      return <>category: {category_items}</>;
     } else {
       return <small>no category</small>;
     }
