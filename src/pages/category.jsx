@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../components/Banner';
-import Spinner from '../components/bootstrap-component/Spinner';
+import Spinner from '../components/bootstrap/Spinner';
 import { CATEGORY, CategoryAPI } from '../api/Localhost';
 
 function Category() {
