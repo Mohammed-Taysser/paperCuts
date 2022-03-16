@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { MdAlternateEmail } from 'react-icons/md';
-import SingleBook from '../components/single/SingleBook';
 import Banner from '../components/Banner';
 import SectionTitle from '../components/SectionTitle';
-import {
-  AuthorsAPI,
-  get_author_by_username,
-  BOOKS,
-  CATEGORY,
-} from '../api/Localhost';
+import { AuthorsAPI, get_author_by_username } from '../api/Localhost';
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import Alert from '../components/bootstrap-component/Alert';
-import Spinner from '../components/bootstrap-component/Spinner';
+import Alert from '../components/bootstrap/Alert';
+import Spinner from '../components/bootstrap/Spinner';
+import GetBookByCategory from '../components/GetBookByCategory';
+import InlineCategoryTags from '../components/InlineCategoryTags';
 
 function AuthorDetails() {
   const { username } = useParams();
   const [currentAuthor, setCurrentAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [books, setBooks] = useState([]);
-  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     get_author_api();
@@ -36,30 +30,17 @@ function AuthorDetails() {
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentAuthor(response.data[0]);
-          setBooks(
-            BOOKS.filter((book) => response.data[0].books.includes(book.id))
-          );
-          setCategory(
-            CATEGORY.filter((cty) => response.data[0].category.includes(cty.id))
-          );
         }
       })
       .catch((err) => {
-        setCurrentAuthor(get_author_by_username(username));
+        let temp_author = get_author_by_username(username);
+        if (temp_author) {
+          setCurrentAuthor(temp_author);
+        }
       })
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const AuthorBookList = () => {
-    if (books.length > 0) {
-      let author_books = books.map((book) => (
-        <SingleBook book={book} key={book.id} />
-      ));
-      return <> {author_books} </>;
-    }
-    return <> no books available </>;
   };
 
   const full_name = () => {
@@ -110,24 +91,6 @@ function AuthorDetails() {
     );
   };
 
-  const AuthorCategory = () => {
-    if (category.length === 0) {
-      return <small> no category</small>;
-    }
-    let author_category = [];
-    category.forEach((cty, index) => {
-      author_category.push(
-        <Link to={`/category/${cty.slug}`} key={cty.id}>
-          {cty.title}
-        </Link>
-      );
-      if (index !== category.length - 1) {
-        author_category.push(', ');
-      }
-    });
-    return <>{author_category}</>;
-  };
-
   const AuthorDetailsSection = () => {
     return (
       <>
@@ -150,9 +113,7 @@ function AuthorDetails() {
               <p className='small-info'>{currentAuthor.short_info}</p>
               <p className='text-muted'>{currentAuthor.info}</p>
               <p className='mb-1'>age: {currentAuthor.age}</p>
-              <p className='mb-1'>
-                Category: <AuthorCategory />
-              </p>
+              <InlineCategoryTags category={currentAuthor.category} />
               <p className='mb-1'>
                 Languages:{' '}
                 {currentAuthor.language.length > 0 ? (
@@ -167,7 +128,7 @@ function AuthorDetails() {
         </div>
         <SectionTitle subtitle='shop online' title='author books' />
         <div className='row mt-4 justify-content-center align-items-center align-items-stretch'>
-          <AuthorBookList />
+          <GetBookByCategory getBy={currentAuthor.books} />
         </div>
       </>
     );

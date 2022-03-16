@@ -7,10 +7,11 @@ import AddToWishList from '../components/AddToWishlist';
 import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
 import Spinner from '../components/bootstrap/Spinner';
+import GetBookByCategory from '../components/GetBookByCategory';
 import InlineCategoryTags from '../components/InlineCategoryTags';
 import { diff_in_days, Stars } from '../components/ManipulateData';
+import SectionTitle from '../components/SectionTitle';
 import TabAndNav from '../components/TabAndNav';
-import { Books as RelatedBooks } from '../components/Books';
 
 function BooksDetails() {
   let { slug } = useParams();
@@ -81,6 +82,15 @@ function BooksDetails() {
     );
   };
 
+  const RelatedBooks = () => {
+    return (
+      <div className='my-5 pt-5'>
+        <SectionTitle title='related books' subtitle='you may like' />
+        <GetBookByCategory getBy={currentBook.category} />
+      </div>
+    );
+  };
+
   const onReviewButtonClick = (evt) => {
     evt.preventDefault();
     reviews_tap_btn_ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -111,6 +121,7 @@ function BooksDetails() {
             reviews_ref={reviews_tap_btn_ref}
             setReviewsLength={setReviewsLength}
           />
+          <RelatedBooks />
         </>
       );
     } else {
@@ -129,7 +140,6 @@ function BooksDetails() {
           <Render />
         </div>
       </section>
-      <RelatedBooks />
     </>
   );
 }
