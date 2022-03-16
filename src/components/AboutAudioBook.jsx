@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheckCircle } from 'react-icons/fi';
-import AboutAudioBookImage from '../assets/img/background/about-audio-book.png';
+import AboutAudioBookImage from '../assets/images/background/about-audio-book.png';
 
 function AboutAudioBook() {
   const audioBookFeathers = [
