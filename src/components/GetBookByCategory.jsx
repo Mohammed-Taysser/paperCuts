@@ -14,7 +14,7 @@ import { BooksAPI, BOOKS } from '../api/Localhost';
  * @returns {JSX.Element} books
  */
 function GetBookByCategory(props) {
-  const { getBy = null } = props;
+  const { getBy = '' } = props;
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
 
