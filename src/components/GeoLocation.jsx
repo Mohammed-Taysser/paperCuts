@@ -44,8 +44,8 @@ function Location(props) {
       },
     ];
     let address_details = [];
-    address.forEach((adrs) => {
-      address_details.push(<SingleAddress address={adrs} />);
+    address.forEach((adrs, index) => {
+      address_details.push(<SingleAddress address={adrs} key={index} />);
     });
     return (
       <div className='row mt-4 justify-content-center align-items-center align-items-stretch'>
@@ -60,7 +60,7 @@ function Location(props) {
 
     sponser_images.forEach((img, index) => {
       sponser_arr.push(
-        <div className='col-6 col-lg-2 my-3'>
+        <div className='col-6 col-lg-2 my-3' key={index}>
           <div className='single-client'>
             <img src={img} alt={`client-${index}`} className='img-fluid' />
           </div>
