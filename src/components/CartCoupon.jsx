@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import useJsonServerToast from '../context/IsJsonServerDown';
 import { CouponAPI, get_coupon_by_title } from '../api/Localhost';
 import { Context as CouponContext } from '../context/coupon';
-import { InputField } from './bootstrap-component/Form';
+import { InputField } from './bootstrap/Form';
 
 function CartCoupon(props) {
   const coupon_context = useContext(CouponContext);
-  const is_jsonServer_down = useContext(useJsonServerToast);
+  const [oldCoupon, setOldCoupon] = useState('');
+  const [newCoupon, setNewCoupon] = useState('');
   const [currentCoupon, setCurrentCoupon] = useState(null);
   const [applyCoupon, setApplyCoupon] = useState(coupon_context.coupons || []);
-  const [userTypedCoupon, setUserTypedCoupon] = useState('');
   const [couponErrorMessage, setCouponErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     check_coupon_status(currentCoupon);
@@ -18,6 +18,7 @@ function CartCoupon(props) {
   }, [currentCoupon]);
 
   const api_get_coupon_by_title = async (coupon_title) => {
+    setLoading(true);
     await CouponAPI.get(`?title=${coupon_title}`)
       .then((response) => {
         if (response.data.length === 1) {
@@ -28,31 +29,35 @@ function CartCoupon(props) {
       })
       .catch((error) => {
         setCurrentCoupon(get_coupon_by_title(coupon_title));
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   const onCouponInputChange = (evt) => {
     let input_value = evt.target.value;
-    setUserTypedCoupon(input_value);
+    setNewCoupon(input_value);
+
     if (input_value.length === 0) {
       evt.target.className = evt.target.className.replace('is-invalid', '');
       setCouponErrorMessage(null);
       setCurrentCoupon(null);
-      setUserTypedCoupon('');
+      setNewCoupon('');
     }
   };
 
   const onAddCoupon = (evt) => {
     evt.preventDefault();
-    if (is_jsonServer_down) {
-      setCurrentCoupon(get_coupon_by_title(userTypedCoupon));
-    } else {
-      api_get_coupon_by_title(userTypedCoupon);
+    setCouponErrorMessage(null);
+    if (newCoupon !== oldCoupon) {
+      api_get_coupon_by_title(newCoupon);
     }
+    setOldCoupon(newCoupon);
   };
 
   const check_coupon_status = (coupon_instance) => {
-    if (userTypedCoupon) {
+    if (newCoupon) {
       if (coupon_instance) {
         let coupon_is_exist = applyCoupon.some(
           (coupon) => coupon.id === coupon_instance.id
@@ -64,7 +69,7 @@ function CartCoupon(props) {
           let new_coupon = [...applyCoupon, coupon_instance];
           setApplyCoupon(new_coupon);
           coupon_context.setCoupons(new_coupon);
-          setUserTypedCoupon('');
+          setNewCoupon('');
           setCurrentCoupon(null);
         }
       } else {
@@ -90,7 +95,7 @@ function CartCoupon(props) {
                 role='alert'
                 key={coupon.id}
               >
-                <strong className='me-1'>{`${coupon.title}(${coupon.value})`}</strong>
+                <strong className='me-1'>{`${coupon.title}(${coupon.value}$)`}</strong>
                 is applied
                 <button
                   type='button'
@@ -115,7 +120,7 @@ function CartCoupon(props) {
         <div className='col-auto'>
           <InputField
             className={couponErrorMessage && 'is-invalid'}
-            value={userTypedCoupon}
+            value={newCoupon}
             placeholder='Coupon Code'
             label=''
             required
@@ -124,6 +129,7 @@ function CartCoupon(props) {
             id='coupon-input-id'
             invalidFeedback={couponErrorMessage}
           />
+          {loading && <div className='form-text'>loading....</div>}
           <AppliedCoupons />
         </div>
         <div className='col-auto'>
