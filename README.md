@@ -2,7 +2,7 @@
 
 <div style='text-align:center;'>
   <a href='https://papercuts.vercel.app/'>
-    <img src='src/assets/img/favicon.png' height='150px' style='display:block;margin: auto;'>
+    <img src='src/assets/images/favicon.png' height='150px' style='display:block;margin: auto;'>
   </a>
 </div>
 
@@ -115,6 +115,16 @@ inside paperCuts directory
 
 1. using node directly `node src/json_server/server.js`
 2. with npm task `npm run json-server`
+
+## deside to use only json-server
+
+in this case you need to the [`db.json`](src/api/db.json) that provide the needed api call like authors, coupon ..
+
+so let's numerate waht we need
+
+- install `json-server`
+- use `db.json` as db call
+- make sure server run on `8080` port
 
 ### how to change live port
 
