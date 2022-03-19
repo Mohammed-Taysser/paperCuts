@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
+import Spinner from './bootstrap/Spinner';
 
 function QuantityControlButton(props) {
+  const { loading } = props;
   const [quantityNumber, setQuantityNumber] = useState(props.initQuantity);
 
   const onQuantityAdd = (evt) => {
@@ -21,6 +23,10 @@ function QuantityControlButton(props) {
       props.onQuantityChange(new_value);
     }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='d-flex align-items-center qty-container'>
