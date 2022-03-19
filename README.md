@@ -2,7 +2,7 @@
 
 <div style='text-align:center;'>
   <a href='https://papercuts.vercel.app/'>
-    <img src='src/assets/images/favicon.png' height='150px' style='display:block;margin: auto;'>
+    <img src='src/assets/images/icons/favicon.png' height='150px' style='display:block;margin: auto;'>
   </a>
 </div>
 
