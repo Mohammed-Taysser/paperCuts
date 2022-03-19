@@ -22,7 +22,6 @@ import Author from './pages/authors';
 import AuthorDetails from './pages/authorDetails';
 import Order from './pages/orders';
 import OrderDetails from './pages/orderDetails';
-import Test from './pages/Test';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -58,7 +57,6 @@ function PaperCutsRoutes() {
         <Route path='/authors' element={<Author />} />
         <Route path='/authors/:username' element={<AuthorDetails />} />
         <Route path='/forget-password' element={<ForgetPassword />} />
-        <Route path='/test' element={<Test />} />
       </Routes>
     </>
   );
