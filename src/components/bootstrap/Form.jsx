@@ -1,12 +1,13 @@
 import React from 'react';
 
+// helpers
+
 const InvalidFeedback = (props) => {
-  const { invalidFeedback, label } = props.props;
+  const { invalidFeedback: invalid, label } = props.inputProps;
   let textContent =
-    typeof invalidFeedback === 'string'
-      ? invalidFeedback
-      : `${label} can't be empty`;
-  return invalidFeedback ? (
+    typeof invalid === 'string' ? invalid : `${label} can't be empty`;
+
+  return invalid ? (
     <div className='invalid-feedback'>{textContent}</div>
   ) : (
     <></>
@@ -14,168 +15,216 @@ const InvalidFeedback = (props) => {
 };
 
 const ValidFeedback = (props) => {
-  const { validFeedback } = props.props;
-  let textContent =
-    typeof validFeedback === 'string' ? validFeedback : `looks good!`;
+  const { validFeedback: valid } = props.inputProps;
+  let textContent = typeof valid === 'string' ? valid : `looks good!`;
 
-  return validFeedback ? (
-    <div className='valid-feedback'>{textContent}</div>
-  ) : (
-    <></>
-  );
+  return valid ? <div className='valid-feedback'>{textContent}</div> : <></>;
 };
+
+const Label = (props) => {
+  const { required, id, label, labelClass } = props.inputProps;
+  const labelProps = {
+    className: `${labelClass ? labelClass : 'form-label'} ${
+      required ? 'require' : ''
+    }`,
+    htmlFor: id,
+  };
+
+  return label ? <label {...labelProps}>{label}</label> : <></>;
+};
+
+// default init
+
+const INIT = (props) => ({
+  name: props.name,
+  value: props.value,
+  id: props.id,
+  required: props.required,
+  disabled: props.disabled,
+  readOnly: props.readOnly,
+  onChange: props.onChange ? props.onChange : (data) => console.log(data),
+});
+
+// components
+
+function SegmentWrapper(props) {
+  const { inputProps } = props;
+  return (
+    <div className={inputProps.outer}>
+      {inputProps.type === 'radio' ? (
+        <>
+          {props.children}
+          <Label inputProps={inputProps} />
+        </>
+      ) : (
+        <>
+          <Label inputProps={inputProps} />
+          {props.children}
+        </>
+      )}
+      <InvalidFeedback inputProps={inputProps} />
+      <ValidFeedback inputProps={inputProps} />
+    </div>
+  );
+}
 
 function InputField(props) {
   const inputProps = {
-    name: props.name,
-    type: props.type,
-    id: props.id,
-    required: props.required,
-    disabled: props.disabled,
-    readOnly: props.readOnly,
+    ...INIT(props),
+    type: props.type ? props.type : 'text',
     placeholder: props.placeholder,
-    className: `form-control ${props.className ? props.className : ''}`,
-    value: props.value,
-    onChange: props.onChange,
-    onBlur: props.onBlur,
-    onFocus: props.onFocus,
+    minLength: props.minLength,
+    className: `form-control ${props.className ? props.className : ''} ${
+      props.sm ? 'form-control-sm' : ''
+    } ${props.lg ? 'form-control-lg' : ''}`,
   };
 
-  function Label() {
-    const labelProps = {
-      className: `form-label ${props.required ? 'require' : ''}`,
-      htmlFor: props.id,
-    };
-
-    return props.label ? <label {...labelProps}>{props.label}</label> : <></>;
-  }
-
   return (
-    <div className={props.outer}>
-      <Label />
+    <SegmentWrapper inputProps={props}>
       <input {...inputProps} />
-      <InvalidFeedback props={props} />
-      <ValidFeedback props={props} />
-    </div>
+    </SegmentWrapper>
   );
 }
 
-InputField.defaultProps = {
-  type: 'text',
-  name: 'input-name',
-  id: 'input-id',
-  outer: '',
-  value: '',
-  onchange: (e) => console.log(e.target.value),
-};
+function SelectField(props) {
+  const selectProps = {
+    ...INIT(props),
+    multiple: props.multiple,
+    size: props.size,
+    placeholder: props.placeholder,
+    'aria-label': props.label,
+    className: `form-select ${props.className ? props.className : ''} ${
+      props.sm ? 'form-select-sm' : ''
+    } ${props.lg ? 'form-select-lg' : ''}`,
+  };
 
-function CheckBox(props) {
-  const checkboxProps = {
-    type: 'checkbox',
-    name: props.name,
-    id: props.id,
-    required: props.required,
-    disabled: props.disabled,
-    readOnly: props.readOnly,
-    checked: props.checked,
-    className: `form-check-input ${props.className ? props.className : ''}`,
-    value: props.value,
-    onChange: props.onChange,
+  const SelectOptions = () => {
+    if (props.options) {
+      let select_options = props.options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
+      ));
+
+      return <> {select_options} </>;
+    }
+    return <></>;
   };
 
   return (
-    <div className={props.outer}>
-      <div className='form-check'>
-        <input {...checkboxProps} />
-        <label className='form-check-label' htmlFor={props.id}>
-          {props.label}
-        </label>
-        <InvalidFeedback props={props} />
-        <ValidFeedback props={props} />
-      </div>
-    </div>
+    <SegmentWrapper inputProps={props}>
+      <select {...selectProps}>
+        <SelectOptions />
+      </select>
+    </SegmentWrapper>
   );
 }
 
-CheckBox.defaultProps = {
-  name: 'checkbox-name',
-  id: 'checkbox-id',
-  outer: '',
-  value: 'checkbox-value',
-  onchange: (e) => console.log(e.target.value),
-};
+function Textarea(props) {
+  const inputProps = {
+    ...INIT(props),
+    placeholder: props.placeholder,
+    minLength: props.minLength,
+    maxLength: props.maxLength,
+    rows: props.rows,
+    className: `form-control ${props.className ? props.className : ''}`,
+  };
 
-function Ratio(props) {
-  const ratioProps = {
+  return (
+    <SegmentWrapper inputProps={props}>
+      <textarea {...inputProps} />
+    </SegmentWrapper>
+  );
+}
+
+// function CheckBox(props) {
+//   const checkboxProps = {
+//     type: 'checkbox',
+//     name: props.name,
+//     id: props.id,
+//     required: props.required,
+//     disabled: props.disabled,
+//     readOnly: props.readOnly,
+//     checked: props.checked,
+//     className: `form-check-input ${props.className ? props.className : ''}`,
+//     value: props.value,
+//     onChange: props.onChange,
+//   };
+
+//   return (
+//     <div className={props.outer}>
+//       <div className='form-check'>
+//         <input {...checkboxProps} />
+//         <label className='form-check-label' htmlFor={props.id}>
+//           {props.label}
+//         </label>
+//         <InvalidFeedback props={props} />
+//         <ValidFeedback props={props} />
+//       </div>
+//     </div>
+//   );
+// }
+
+// CheckBox.defaultProps = {
+//   name: 'checkbox-name',
+//   id: 'checkbox-id',
+//   outer: '',
+//   value: 'checkbox-value',
+//   onchange: (e) => console.log(e.target.value),
+// };
+
+function RadioField(props) {
+  const radioProps = {
+    ...INIT(props),
     type: 'radio',
-    name: props.name,
-    id: props.id,
-    required: props.required,
-    disabled: props.disabled,
-    readOnly: props.readOnly,
     checked: props.checked,
     className: `form-check-input ${props.className ? props.className : ''}`,
-    value: props.value,
-    onChange: props.onChange,
   };
 
   return (
-    <div className={props.col}>
-      <div className='form-check'>
-        <input {...ratioProps} />
-        <label className='form-check-label' htmlFor={props.id}>
-          {props.label}
-        </label>
-        <InvalidFeedback props={props} />
-        <ValidFeedback props={props} />
-      </div>
-    </div>
+    <SegmentWrapper
+      inputProps={{ ...props, labelClass: 'form-check-label', type: 'radio' }}
+    >
+      <input {...radioProps} />
+    </SegmentWrapper>
   );
 }
 
-Ratio.defaultProps = {
-  name: 'ratio-name',
-  id: 'ratio-id',
-  outer: '',
-  value: 'ratio-value',
-  onchange: (e) => console.log(e.target.value),
-};
+// function Switch(props) {
+//   const switchProps = {
+//     type: 'checkbox',
+//     role: 'switch',
+//     name: props.name,
+//     id: props.id,
+//     required: props.required,
+//     disabled: props.disabled,
+//     readOnly: props.readOnly,
+//     checked: props.checked,
+//     className: `form-check-input ${props.className ? props.className : ''}`,
+//     value: props.value,
+//     onChange: props.onChange,
+//   };
 
-function Switch(props) {
-  const switchProps = {
-    type: 'checkbox',
-    role: 'switch',
-    name: props.name,
-    id: props.id,
-    required: props.required,
-    disabled: props.disabled,
-    readOnly: props.readOnly,
-    checked: props.checked,
-    className: `form-check-input ${props.className ? props.className : ''}`,
-    value: props.value,
-    onChange: props.onChange,
-  };
+//   return (
+//     <div className={props.col}>
+//       <div className='form-check form-switch'>
+//         <input {...switchProps} />
+//         <label className='form-check-label' htmlFor={props.id}>
+//           {props.label}
+//         </label>
+//         <InvalidFeedback props={props} />
+//         <ValidFeedback props={props} />
+//       </div>
+//     </div>
+//   );
+// }
 
-  return (
-    <div className={props.col}>
-      <div className='form-check form-switch'>
-        <input {...switchProps} />
-        <label className='form-check-label' htmlFor={props.id}>
-          {props.label}
-        </label>
-        <InvalidFeedback props={props} />
-        <ValidFeedback props={props} />
-      </div>
-    </div>
-  );
-}
+// Switch.defaultProps = {
+//   name: 'switch-name',
+//   id: 'switch-id',
+//   outer: '',
+//   value: 'switch-value',
+//   onchange: (e) => console.log(e.target.value),
+// };
 
-Switch.defaultProps = {
-  name: 'switch-name',
-  id: 'switch-id',
-  outer: '',
-  value: 'switch-value',
-  onchange: (e) => console.log(e.target.value),
-};
-
-export { InputField, CheckBox, Ratio, Switch };
+export { InputField, SelectField, Textarea, RadioField };
