@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { OrderAPI, ORDERS } from '../api/Localhost';
 import Banner from '../components/Banner';
 import { monthNames } from '../components/ManipulateData';
-import useJsonServerToast from '../context/IsJsonServerDown';
-import OrdersImage from '../assets/img/background/orders.jpg';
+import Alert from '../components/bootstrap/Alert';
+import Spinner from '../components/bootstrap/Spinner';
+import OrdersImage from '../assets/images/background/orders.jpg';
 
 function Orders() {
-  const is_jsonServer_down = useContext(useJsonServerToast);
-  const [orders, setOrders] = useState(ORDERS);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setOrders(ORDERS);
-    } else {
-      api_get_category();
-    }
-  }, [is_jsonServer_down]);
+    api_get_category();
+  }, []);
 
   const api_get_category = async () => {
     await OrderAPI.get('/')
@@ -25,6 +22,9 @@ function Orders() {
       })
       .catch((error) => {
         setOrders(ORDERS);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -52,24 +52,26 @@ function Orders() {
     return `${hours}:${minutes} ${mid}`;
   };
 
-  const orders_items = () => {
-    if (orders.length === 0) {
-      return <> nor orders yet </>;
+  const OrdersList = () => {
+    if (orders.length > 0) {
+      let orders_items = orders.map((order) => {
+        return (
+          <li key={order.id}>
+            <span className='line'></span>
+            <Link className='info text-white h5' to={`/orders/${order.id}`}>
+              order#{order.id} with {order.total.toFixed(2)}$
+            </Link>
+            <div className='time'>
+              <span>{date_details(order.date)}</span>
+              <span>{time_details(order.date)}</span>
+            </div>
+          </li>
+        );
+      });
+      return <ul>{orders_items}</ul>;
     }
-    return orders.map((order) => {
-      return (
-        <li key={order.id}>
-          <span className='line'></span>
-          <Link className='info text-white h5' to={`/orders/${order.id}`}>
-            order#{order.id} with {order.total.toFixed(2)}$
-          </Link>
-          <div className='time'>
-            <span>{date_details(order.date)}</span>
-            <span>{time_details(order.date)}</span>
-          </div>
-        </li>
-      );
-    });
+
+    return <Alert> nor orders yet </Alert>;
   };
 
   return (
@@ -79,9 +81,9 @@ function Orders() {
         className='bg-aurora bg-with-overlay order-page'
         style={{ backgroundImage: `url(${OrdersImage})` }}
       >
-        <div className='container py-5 my-5'>
+        <div className='container py-5'>
           <div className='timeline-container my-5 py-5 mx-3 mx-md-0'>
-            <ul>{orders_items()}</ul>
+            {loading ? <Spinner /> : <OrdersList />}
           </div>
         </div>
       </section>
