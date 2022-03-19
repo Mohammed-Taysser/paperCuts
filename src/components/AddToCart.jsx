@@ -46,6 +46,7 @@ function AddToCart(props) {
   const create_cart_item = () => {
     let item_data = {
       id: currentBook.id,
+      slug: currentBook.slug,
       quantity: quantity,
       title: currentBook.title,
       price: currentBook.price,
