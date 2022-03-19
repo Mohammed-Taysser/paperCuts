@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/js/src/toast';
-import FavIcon from '../../assets/img/favicon.png';
+import FavIcon from '../../assets/images/icons/favicon.png';
 
 function Toast(props) {
   return (
