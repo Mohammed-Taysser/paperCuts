@@ -1,37 +1,37 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/js/src/carousel';
-import useJsonServerToast from '../context/IsJsonServerDown';
 import { Stars } from './ManipulateData';
-import { REVIEWS, ReviewAPI } from '../api/Localhost';
-import RoundedBorder from '../assets/img/rounded-border.svg';
-import DashedShape from '../assets/img/dashed-shape.svg';
+import { TestimonialsAPI, TESTIMONIALS } from '../api/Localhost';
+import RoundedBorder from '../assets/images/shapes/rounded-border.svg';
+import DashedShape from '../assets/images/shapes/dashed-shape.svg';
+import Spinner from './bootstrap/Spinner';
+import Alert from './bootstrap/Alert';
 
 function Testimonials(props) {
-  const is_jsonServer_down = useContext(useJsonServerToast);
-  const [reviews, setReviews] = useState(REVIEWS);
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setReviews(REVIEWS);
-    } else {
-      api_get_reviews();
-    }
-  }, [is_jsonServer_down]);
+    api_get_tesimonials();
+  }, []);
 
-  const api_get_reviews = async () => {
-    await ReviewAPI.get('/')
+  const api_get_tesimonials = async () => {
+    await TestimonialsAPI.get('/')
       .then((response) => {
-        setReviews(response.data);
+        setTestimonials(response.data);
       })
       .catch((error) => {
-        setReviews(REVIEWS);
+        setTestimonials(TESTIMONIALS);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  const carousel_indicators = () => {
+  const CarouselIndicators = () => {
     let indicators = [];
 
-    for (let index = 0; index < reviews.length; index++) {
+    for (let index = 0; index < testimonials.length; index++) {
       indicators.push(
         <button
           type='button'
@@ -44,11 +44,11 @@ function Testimonials(props) {
         ></button>
       );
     }
-    return indicators;
+    return <> {indicators} </>;
   };
 
-  const carousel_items = () => {
-    return reviews.map((item, index) => {
+  const CarouselItems = () => {
+    let items = testimonials.map((item, index) => {
       return (
         <div
           className={`carousel-item ${index === 1 ? 'active' : ''}`}
@@ -69,9 +69,10 @@ function Testimonials(props) {
         </div>
       );
     });
+    return <> {items} </>;
   };
 
-  const background_shapes = () => {
+  const BackgroundShapes = () => {
     return (
       <div className='shapes'>
         <img
@@ -84,7 +85,7 @@ function Testimonials(props) {
     );
   };
 
-  const carousel_control = () => {
+  const CarouselControl = () => {
     return (
       <>
         <button
@@ -115,20 +116,36 @@ function Testimonials(props) {
     );
   };
 
-  return (
-    <section className='testimonial-section py-5 my-5'>
-      {background_shapes()}
-      <div
-        id={`${props.id}`}
-        className='carousel slide carousel-dark'
-        data-bs-ride='carousel'
-      >
-        <div className='carousel-indicators'>{carousel_indicators()}</div>
-        <div className='carousel-inner'>{carousel_items()}</div>
-        {carousel_control()}
-      </div>
-    </section>
-  );
+  const Render = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+
+    if (testimonials && testimonials.length > 0) {
+      return (
+        <section className='testimonial-section py-5 my-5'>
+          <BackgroundShapes />
+          <div
+            id={`${props.id}`}
+            className='carousel slide carousel-dark'
+            data-bs-ride='carousel'
+          >
+            <div className='carousel-indicators'>
+              <CarouselIndicators />
+            </div>
+            <div className='carousel-inner'>
+              <CarouselItems />
+            </div>
+            <CarouselControl />
+          </div>
+        </section>
+      );
+    } else {
+      return <Alert> no testimonials found </Alert>;
+    }
+  };
+
+  return <Render />;
 }
 
 Testimonials.defaultProps = {
