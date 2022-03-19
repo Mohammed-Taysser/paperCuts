@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheckCircle } from 'react-icons/fi';
-import AboutAudioBookImage from '../assets/img/background/about-audio-book.png';
+import AboutAudioBookImage from '../assets/images/background/about-audio-book.png';
 
 function AboutAudioBook() {
   const audioBookFeathers = [
@@ -16,6 +16,18 @@ function AboutAudioBook() {
     'Downloadable',
   ];
 
+  const AudioBookFeathers = () => {
+    let feathers = audioBookFeathers.map((feather, index) => {
+      return (
+        <div className='col-6 my-2' key={index}>
+          <FiCheckCircle className='text-aurora' />
+          <span className='mx-2'>{feather}</span>
+        </div>
+      );
+    });
+    return <> {feathers} </>;
+  };
+
   return (
     <section className='about-audio-book my-5 py-5'>
       <div className='container'>
@@ -28,14 +40,7 @@ function AboutAudioBook() {
               you can feature audiobooks too!
             </p>
             <div className='row justify-content-center align-items-center text-muted '>
-              {audioBookFeathers.map((feather, index) => {
-                return (
-                  <div className='col-6 my-2' key={index}>
-                    <FiCheckCircle className='text-aurora' />
-                    <span className='mx-2'>{feather}</span>
-                  </div>
-                );
-              })}
+              <AudioBookFeathers />
             </div>
           </div>
           <div className='col-lg-7 my-3'>

@@ -4,75 +4,115 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { IoMdWarning } from 'react-icons/io';
 import { Context as AuthContext } from '../context/auth';
-import Alert from '../components/bootstrap-component/Alert';
-import { UserAPI, get_user_by_email } from '../api/Localhost';
-import jsonServerToast from '../context/IsJsonServerDown';
+import Alert from '../components/bootstrap/Alert';
+import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
+import Spinner from '../components/bootstrap/Spinner';
+import GetBookByCategory from '../components/GetBookByCategory';
+import SectionTitle from '../components/SectionTitle';
 
 function Login() {
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
-  const is_jsonServer_down = useContext(jsonServerToast);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [wrongPassword, setWrongPassword] = useState(false);
   const [userNotExist, setUserNotExist] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submited, setSubmited] = useState(false);
 
   const api_get_user = async () => {
-    await UserAPI.get(`?email=${email}`)
+    setLoading(true);
+    await AuthorsAPI.get(`?email=${email}`)
       .then((response) => {
         check_user_exist(response.data[0]);
       })
       .catch((error) => {
-        check_user_exist(get_user_by_email(email));
+        check_user_exist(get_author_by_email(email));
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   const check_user_exist = (user) => {
     if (user) {
+      setSubmited(false);
       setUserNotExist(false);
-      password === user.password
-        ? setWrongPassword(false)
-        : setWrongPassword(true);
 
-      auth_context.setIsAuth(true);
-      auth_context.setUserData(user);
+      if (password === user.password) {
+        setWrongPassword(false);
+        auth_context.setIsAuth(true);
+        auth_context.setUserData(user);
 
-      localStorage.setItem(
-        'auth',
-        JSON.stringify({ isAuth: true, userData: user })
-      );
-      navigate_to('/');
+        localStorage.setItem(
+          'auth',
+          JSON.stringify({ isAuth: true, userData: user })
+        );
+        navigate_to('/');
+      } else {
+        setWrongPassword(true);
+      }
     } else {
+      setSubmited(false);
       setUserNotExist(true);
     }
   };
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    if (is_jsonServer_down) {
-      check_user_exist(get_user_by_email(email));
-    } else {
+    setWrongPassword(false);
+    setUserNotExist(false);
+    setSubmited(true);
+    if (email && password) {
       api_get_user();
     }
   };
 
-  const other_login_methods = () => {
+  const OtherLoginMethods = () => {
     return (
       <div className='my-3 text-center'>
-        <Link className='text-dark social-media-icon' to='#' title='google'>
+        <a
+          className='text-dark social-media-icon'
+          href='#other-method'
+          title='google'
+        >
           <FcGoogle className='h5 m-0' />
-        </Link>
-        <Link
+        </a>
+        <a
           className='text-primary social-media-icon'
-          to='#'
+          href='#other-method'
           title='facebook'
         >
           <FaFacebook className='h5 m-0' />
-        </Link>
-        <Link className='text-dark social-media-icon' to='#' title='github'>
+        </a>
+        <a
+          className='text-dark social-media-icon'
+          href='#other-method'
+          title='github'
+        >
           <FaGithub className='h5 m-0' />
-        </Link>
+        </a>
         <p className='small text-muted mt-4'>or use your account</p>
+      </div>
+    );
+  };
+
+  const DummyCol = () => {
+    return (
+      <div className='col-md-6 my-3'>
+        <div className='bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login'>
+          <div className='text-center text-white'>
+            <h2 className='mb-3'>Hello, Friend!</h2>
+            <p>Enter your personal details and start journey with us</p>
+            <Link
+              className='rounded-pill mt-2 px-3 py-2 btn btn-outline-light'
+              to='/register'
+              title='register'
+            >
+              sign up
+            </Link>
+          </div>
+        </div>
       </div>
     );
   };
@@ -84,6 +124,10 @@ function Login() {
           <Alert color='warning'>
             <IoMdWarning className='mx-1 h4 my-0' /> You already sign in
           </Alert>
+          <section className='my-5 pt-5'>
+            <SectionTitle title='new released' subtitle='you my like' />
+            <GetBookByCategory />
+          </section>
         </div>
       </section>
     );
@@ -96,37 +140,45 @@ function Login() {
               <div className='col-md-6 my-3'>
                 <div className='p-4 rounded-start border login-content'>
                   <h1 className='my-4 text-center'>Sign in</h1>
-                  {other_login_methods()}
-                  <form className='mb-3' onSubmit={onFormSubmit}>
+                  <OtherLoginMethods />
+                  <form
+                    className={`mb-3 ${
+                      submited && 'was-validated'
+                    } needs-validation`}
+                    noValidate
+                    onSubmit={onFormSubmit}
+                  >
                     <div className='my-3'>
                       <label className='form-label' htmlFor='login-email'>
-                        email address
+                        Email Address
                       </label>
                       <input
                         className={`form-control ${
                           userNotExist ? 'is-invalid' : ''
                         }`}
                         type='email'
-                        placeholder=''
+                        placeholder='Email Address'
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         id='login-email'
                       />
                       <div className='invalid-feedback'>
-                        no user exist, please check your email
+                        {userNotExist
+                          ? 'no user exist, please check your email'
+                          : "email can't be empty"}
                       </div>
                     </div>
                     <div className='my-3'>
                       <label className='form-label' htmlFor='login-password'>
-                        password
+                        Password
                       </label>
                       <input
                         className={`form-control ${
                           wrongPassword || userNotExist ? 'is-invalid' : ''
                         }`}
                         type='password'
-                        placeholder=''
+                        placeholder='Password'
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -142,28 +194,18 @@ function Login() {
                       </Link>
                     </p>
                     <div className='text-center'>
-                      <button className='btn btn-aurora mt-4' type='submit'>
-                        Sign In
-                      </button>
+                      {loading ? (
+                        <Spinner />
+                      ) : (
+                        <button className='btn btn-aurora mt-4' type='submit'>
+                          Sign In
+                        </button>
+                      )}
                     </div>
                   </form>
                 </div>
               </div>
-              <div className='col-md-6 my-3'>
-                <div className='bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login'>
-                  <div className='text-center text-white'>
-                    <h2 className='mb-3'>Hello, Friend!</h2>
-                    <p>Enter your personal details and start journey with us</p>
-                    <Link
-                      className='rounded-pill mt-2 px-3 py-2 btn btn-outline-light'
-                      to='/register'
-                      title='register'
-                    >
-                      sign up
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <DummyCol />
             </div>
           </div>
         </section>

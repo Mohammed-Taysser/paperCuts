@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FcRadarPlot } from 'react-icons/fc';
+import React, { useEffect, useState } from 'react';
 import { SERVICES, ServicesAPI } from '../api/Localhost';
 import SectionTitle from './SectionTitle';
-import IsJsonServerDown from '../context/IsJsonServerDown';
+import Alert from './bootstrap/Alert';
+import Spinner from './bootstrap/Spinner';
+import SingleService from './single/SingleService';
 
 function Services() {
-  const is_jsonServer_down = useContext(IsJsonServerDown);
-  const [services, setServices] = useState(SERVICES);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setServices(SERVICES);
-    } else {
-      get_services_api();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    get_services_api();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_services_api = () => {
@@ -24,35 +21,35 @@ function Services() {
       })
       .catch((err) => {
         setServices(SERVICES);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  const service_items = () => {
+  const ServiceItems = () => {
     if (services.length > 0) {
-      return services.map((service) => {
-        return (
-          <div className='col-md-6 col-lg-3 my-3' key={service.id}>
-            <div className='single-service'>
-              <div className='card border-0 h-100 text-center'>
-                <img
-                  src={service.img}
-                  className='card-img-top img-fluid d-inline-block mx-auto'
-                  alt={service.title}
-                />
-                <div className='card-body'>
-                  <div className='my-2'>
-                    <FcRadarPlot className='h2' />
-                  </div>
-                  <h4 className='card-title text-aurora'>{service.title}</h4>
-                  <p className='card-text text-muted'>{service.info}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      });
+      let services_items = services.map((service) => (
+        <SingleService service={service} key={service.id} />
+      ));
+      return <> {services_items} </>;
     }
-    return <> no services available </>;
+    return <Alert> no services available </Alert>;
+  };
+
+  const Render = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+    if (services) {
+      return (
+        <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
+          <ServiceItems />
+        </div>
+      );
+    } else {
+      return <Alert> no services available </Alert>;
+    }
   };
 
   return (
@@ -60,9 +57,7 @@ function Services() {
       <section className='services-section my-5 py-5'>
         <SectionTitle title='our services' subtitle='what we introduce' />
         <div className='container'>
-          <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
-            {service_items()}
-          </div>
+          <Render />
         </div>
       </section>
     </>

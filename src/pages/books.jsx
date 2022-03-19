@@ -1,74 +1,64 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import SingleBook from '../components/SingleBook';
+import React, { useEffect, useState } from 'react';
+import SingleBook from '../components/single/SingleBook';
 import { BOOKS, BooksAPI } from '../api/Localhost';
-import useJsonServerToast from '../context/IsJsonServerDown';
-import RightSidebar from '../components/layout/RightSidebar';
-import Pagination from '../components/Pagination';
+import RightSidebar from '../layout/RightSidebar';
+import Spinner from '../components/bootstrap/Spinner';
+import FilterForm from '../components/FilterForm';
+import Alert from '../components/bootstrap/Alert';
 
 function Books() {
-  const LIMIT = 9;
-  const [searchParams] = useSearchParams();
-  const is_jsonServer_down = useContext(useJsonServerToast);
-  const [pageNumber, setPageNumber] = useState(searchParams.get('_page') || 1);
-  const [books, setBooks] = useState(BOOKS);
-
-  const [paginationHeaderSting, setPaginationHeaderSting] = useState('');
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   useEffect(() => {
-    initRender();
+    api_get_books();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [is_jsonServer_down]);
+  }, []);
 
-  const initRender = () => {
-    if (is_jsonServer_down) {
-      setBooks(BOOKS);
-    } else {
-      api_get_books(`?_limit=${LIMIT}&_page=${pageNumber}`);
-    }
-  };
-
-  useEffect(() => {
-    if (pageNumber !== searchParams.get('_page')) {
-      api_get_books(`?_limit=${LIMIT}&_page=${pageNumber}`);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
-
-  const api_get_books = async (url) => {
-    await BooksAPI.get(url)
+  const api_get_books = async () => {
+    await BooksAPI.get('/')
       .then((response) => {
         setBooks(response.data);
-        setPaginationHeaderSting(response.headers.link);
+        setFilteredBooks(response.data);
       })
       .catch((error) => {
         setBooks(BOOKS);
+        setFilteredBooks(BOOKS);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   const BookList = () => {
-    let book_list = books.map((book) => {
-      return <SingleBook book={book} key={book.id} col={4} />;
-    });
+    if (filteredBooks.length > 0) {
+      let book_list = filteredBooks.map((book) => {
+        return <SingleBook book={book} key={book.id} />;
+      });
 
-    return (
-      <div className='row justify-content-center align-items-stretch'>
-        {book_list}
-      </div>
-    );
+      return (
+        <div className='row justify-content-center align-items-stretch'>
+          {book_list}
+        </div>
+      );
+    }
+    return <Alert>No Books Found</Alert>;
+  };
+
+  const RenderBooks = () => {
+    return loading ? <Spinner /> : <BookList />;
   };
 
   return (
     <RightSidebar title='shop list' subtitle='products'>
-      <div className='text-muted'>
-        Showing <span className='text-aurora'> {books.length} </span>
-        results
-      </div>
-      <BookList />
-      <Pagination
-        onPageNumberChange={setPageNumber}
-        headerString={paginationHeaderSting}
+      <FilterForm
+        setLoading={setLoading}
+        books={books}
+        filteredBooks={filteredBooks}
+        setFilteredBooks={setFilteredBooks}
       />
+      <RenderBooks />
     </RightSidebar>
   );
 }

@@ -1,23 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { get_order_by_id, OrderAPI } from '../api/Localhost';
 import Banner from '../components/Banner';
 import { monthNames } from '../components/ManipulateData';
-import useJsonServerToast from '../context/IsJsonServerDown';
+import Spinner from '../components/bootstrap/Spinner';
+import Alert from '../components/bootstrap/Alert';
 
 function OrderDetails() {
   const { id } = useParams();
-  const is_jsonServer_down = useContext(useJsonServerToast);
-  const [currentOrder, setCurrentOrder] = useState(get_order_by_id(id));
+  const [currentOrder, setCurrentOrder] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (is_jsonServer_down) {
-      setCurrentOrder(get_order_by_id(id));
-    } else {
-      api_get_order();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [is_jsonServer_down]);
+    api_get_order();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const api_get_order = async () => {
     await OrderAPI.get(`/${id}`)
@@ -25,7 +22,13 @@ function OrderDetails() {
         setCurrentOrder(response.data);
       })
       .catch((error) => {
-        setCurrentOrder(get_order_by_id(id));
+        let temp_order = get_order_by_id(id);
+        if (temp_order) {
+          setCurrentOrder(temp_order);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -94,9 +97,9 @@ function OrderDetails() {
     );
   };
 
-  const personal_table = () => {
+  const PersonalTable = () => {
     return (
-      <div className='table-responsive'>
+      <div className='table-responsive my-3'>
         <table className='table'>
           <tbody>
             <tr>
@@ -112,16 +115,6 @@ function OrderDetails() {
               </td>
             </tr>
             <tr>
-              <td>company name</td>
-              <td>
-                {currentOrder.companyName ? (
-                  <span>{currentOrder.companyName}</span>
-                ) : (
-                  <span className='text-muted'>not provided</span>
-                )}
-              </td>
-            </tr>
-            <tr>
               <td>country</td>
               <td>
                 <span className=''>{currentOrder.country}</span>
@@ -131,37 +124,6 @@ function OrderDetails() {
               <td>address</td>
               <td>
                 <span className=''>{currentOrder.address}</span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>town</td>
-              <td>
-                {currentOrder.town ? (
-                  <span>{currentOrder.town}</span>
-                ) : (
-                  <span className='text-muted'>not provided</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>state</td>
-              <td>
-                {currentOrder.state ? (
-                  <span>{currentOrder.state}</span>
-                ) : (
-                  <span className='text-muted'>not provided</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>zip</td>
-              <td>
-                {currentOrder.zip ? (
-                  <span>{currentOrder.zip}</span>
-                ) : (
-                  <span className='text-muted'>not provided</span>
-                )}
               </td>
             </tr>
             <tr>
@@ -177,16 +139,6 @@ function OrderDetails() {
               </td>
             </tr>
             <tr>
-              <td>additional notes</td>
-              <td>
-                {currentOrder.additionalNote ? (
-                  <span>{currentOrder.additionalNote}</span>
-                ) : (
-                  <span className='text-muted'>not provided</span>
-                )}
-              </td>
-            </tr>
-            <tr>
               <td>payment method</td>
               <td>
                 <span className=''>{currentOrder.paymentMethod}</span>
@@ -198,20 +150,43 @@ function OrderDetails() {
                 <span className=''>{formatDate(currentOrder.date)}</span>
               </td>
             </tr>
+            <tr>
+              <td>additional notes</td>
+              <td>
+                {currentOrder.additionalNote ? (
+                  <span>{currentOrder.additionalNote}</span>
+                ) : (
+                  <span className='text-muted'>not provided</span>
+                )}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
     );
   };
 
+  const Render = () => {
+    if (currentOrder) {
+      return (
+        <>
+          <PersonalTable />
+          <OrderTable />
+        </>
+      );
+    } else {
+      return <Alert>no order found</Alert>;
+    }
+  };
+
   return (
     <>
-      <Banner title={`order#${currentOrder.id}`} subtitle='order details' />
+      <Banner
+        title={currentOrder ? `order#${currentOrder.id}` : 'order details'}
+        subtitle='order details'
+      />
       <section className='my-5 py-5'>
-        <div className='container'>
-          <OrderTable />
-          <div className='my-3'>{personal_table()}</div>
-        </div>
+        <div className='container'>{loading ? <Spinner /> : <Render />}</div>
       </section>
     </>
   );
