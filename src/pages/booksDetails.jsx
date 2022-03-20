@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BooksAPI, get_book_by_slug } from '../api/Localhost';
 import AboutAuthor from '../components/AboutAuthor';
@@ -10,14 +10,16 @@ import Spinner from '../components/bootstrap/Spinner';
 import GetBookByCategory from '../components/GetBookByCategory';
 import InlineCategoryTags from '../components/InlineCategoryTags';
 import { diff_in_days, Stars } from '../components/ManipulateData';
+import { Context as AuthContext } from '../context/auth';
 import SectionTitle from '../components/SectionTitle';
 import TabAndNav from '../components/TabAndNav';
+import 'bootstrap/js/src/tab';
 
 function BooksDetails() {
   let { slug } = useParams();
+  const auth_context = useContext(AuthContext);
   const reviews_tap_btn_ref = useRef(null);
   const [currentBook, setCurrentBook] = useState(null);
-  const [reviewsLength, setReviewsLength] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -56,7 +58,12 @@ function BooksDetails() {
             <span className='special-small-title'>
               publisher: {currentBook.publisher}
             </span>
-            <AddToWishList currentBook={currentBook} />
+            {auth_context.isAuth && (
+              <AddToWishList
+                currentBook={currentBook}
+                userData={auth_context.userData}
+              />
+            )}
           </div>
           <div className='d-flex align-items-start'>
             <h1 className='h2 mb-2'>{currentBook.title} </h1>
@@ -69,12 +76,17 @@ function BooksDetails() {
               href='#reviews'
               onClick={onReviewButtonClick}
             >
-              ({reviewsLength !== null && reviewsLength} reviews)
+              (reviews)
             </a>
           </div>
           <p className='mt-2 h4'>{currentBook.price}$</p>
           <p className='mt-3 text-muted'>{currentBook.info}</p>
-          <AddToCart currentBook={currentBook} />
+          {auth_context.isAuth && (
+            <AddToCart
+              currentBook={currentBook}
+              userData={auth_context.userData}
+            />
+          )}
           <InlineCategoryTags category={currentBook.category} />
           <AboutAuthor id={currentBook.author.id} />
         </div>
@@ -119,7 +131,6 @@ function BooksDetails() {
           <TabAndNav
             currentBook={currentBook}
             reviews_ref={reviews_tap_btn_ref}
-            setReviewsLength={setReviewsLength}
           />
           <RelatedBooks />
         </>
