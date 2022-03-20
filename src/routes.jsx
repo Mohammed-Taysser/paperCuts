@@ -10,6 +10,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import ForgetPassword from './pages/forget-password';
 import Profile from './pages/profile';
+import Wishlist from './pages/wishlist';
 import Cart from './pages/cart';
 import Checkout from './pages/checkout';
 import Books from './pages/books';
@@ -31,6 +32,7 @@ function PaperCutsRoutes() {
         <>
           <Route path='/profile' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/wishlist' element={<Wishlist />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/orders' element={<Order />} />
           <Route path='/orders/:id' element={<OrderDetails />} />
