@@ -1,13 +1,16 @@
-import react, { useState } from 'react';
-import { get_reviews_by_id, ReviewAPI } from '../api/Localhost';
+import react, { useContext, useState } from 'react';
+import { get_reviews_by_bookId, ReviewAPI } from '../api/Localhost';
+import { Context as AuthContext } from '../context/auth';
 import Alert from './bootstrap/Alert';
 import Spinner from './bootstrap/Spinner';
 import LeaveReview from './LeaveReview';
 import { human_date, Stars } from './ManipulateData';
+import { Link } from 'react-router-dom';
 import { MdDeleteOutline } from 'react-icons/md';
 
 function TabAndNav(props) {
-  const { currentBook, reviews_ref, setReviewsLength } = props;
+  const { currentBook, reviews_ref } = props;
+  const auth_context = useContext(AuthContext);
   const [reviews, setReviews] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -17,13 +20,11 @@ function TabAndNav(props) {
       await ReviewAPI.get(`?bookId=${currentBook.id}`)
         .then((response) => {
           setReviews(response.data);
-          setReviewsLength(response.data.length);
         })
         .catch((error) => {
-          let temp_reviews = get_reviews_by_id(currentBook.id);
+          let temp_reviews = get_reviews_by_bookId(currentBook.id);
           if (temp_reviews) {
             setReviews(temp_reviews);
-            setReviewsLength(temp_reviews.length);
           }
         })
         .finally(() => {
@@ -31,6 +32,20 @@ function TabAndNav(props) {
           reviews_ref.current.click();
         });
     }
+  };
+
+  const api_delete_review = async (id) => {
+    setLoading(true);
+    await ReviewAPI.delete(`/${id}`)
+      .then((response) => {
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const Navs = () => {
@@ -89,6 +104,11 @@ function TabAndNav(props) {
     );
   };
 
+  const onDeleteCommentClick = (evt, id) => {
+    evt.preventDefault();
+    api_delete_review(id);
+  };
+
   const ReviewsTap = () => {
     const RenderReviews = () => {
       if (reviews) {
@@ -98,7 +118,7 @@ function TabAndNav(props) {
               <div className='reviews-section mt-5' key={index}>
                 <div className='d-md-flex align-items-center'>
                   <img
-                    src={review.image}
+                    src={review.avatar}
                     alt={review.name}
                     width='100'
                     height='100'
@@ -110,9 +130,22 @@ function TabAndNav(props) {
                         <h4 className='mb-1 d-inline-block text-aurora'>
                           {review.name}
                         </h4>
-                        <small className='special-small-title text-muted mx-md-3 d-block d-md-inline-block'>
-                          {human_date(review.date)}
-                        </small>
+                        <div className='d-inline-block'>
+                          <small className='special-small-title text-muted mx-md-3 d-block d-md-inline-block'>
+                            {human_date(review.date)}
+                          </small>
+                          {auth_context.userData.id === review.userId && (
+                            <a
+                              href='#delete-comment'
+                              className='text-danger'
+                              onClick={(e) =>
+                                onDeleteCommentClick(e, review.id)
+                              }
+                            >
+                              <MdDeleteOutline />
+                            </a>
+                          )}
+                        </div>
                       </div>
                       <div className=''>
                         <Stars stars_length={review.stars} />
@@ -135,7 +168,16 @@ function TabAndNav(props) {
     return (
       <>
         <RenderReviews />
-        <LeaveReview currentBook={currentBook} />
+        {auth_context.isAuth ? (
+          <LeaveReview
+            currentBook={currentBook}
+            userData={auth_context.userData}
+          />
+        ) : (
+          <Alert>
+            <Link to='/login'>Sign in</Link> to comment
+          </Alert>
+        )}
       </>
     );
   };
