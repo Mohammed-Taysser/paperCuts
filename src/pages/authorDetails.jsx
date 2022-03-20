@@ -97,7 +97,7 @@ function AuthorDetails() {
         <div className='row justify-content-center align-items-center mb-5 pb-5'>
           <div className='col-md-5 my-3 text-center'>
             <img
-              src={currentAuthor.image}
+              src={currentAuthor.avatar}
               alt={full_name()}
               width={250}
               height={250}
@@ -110,13 +110,16 @@ function AuthorDetails() {
                 {currentAuthor.username}
               </small>
               <h1 className='h2 mb-3'> {full_name()} </h1>
-              <p className='small-info'>{currentAuthor.short_info}</p>
-              <p className='text-muted'>{currentAuthor.info}</p>
-              <p className='mb-1'>age: {currentAuthor.age}</p>
+              {currentAuthor.info && (
+                <p className='text-muted'>{currentAuthor.info}</p>
+              )}
+              {currentAuthor.extraInfo && (
+                <p className='small-info'>{currentAuthor.extraInfo}</p>
+              )}
               <InlineCategoryTags category={currentAuthor.category} />
               <p className='mb-1'>
                 Languages:{' '}
-                {currentAuthor.language.length > 0 ? (
+                {currentAuthor.language ? (
                   currentAuthor.language.join(', ')
                 ) : (
                   <small>no languages</small>
@@ -151,7 +154,6 @@ function AuthorDetails() {
         title={currentAuthor ? full_name() : 'Author Details'}
         subtitle='author'
       />
-
       <section className='my-5'>
         <div className='container'>
           <RenderMessage />
