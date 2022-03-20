@@ -41,7 +41,7 @@ function SingleAuthor(props) {
       <div className='single-member-wrapper'>
         <div className='member-image-container'>
           <img
-            src={author.image}
+            src={author.avatar}
             className='member-image'
             alt={author.firstName}
             width='200'
