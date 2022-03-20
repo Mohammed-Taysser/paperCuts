@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import SingleBook from './single/SingleBook';
 import Alert from './bootstrap/Alert';
 import Spinner from './bootstrap/Spinner';
@@ -18,7 +18,7 @@ function GetBookByCategory(props) {
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     api_get_books();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
