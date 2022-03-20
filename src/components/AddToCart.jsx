@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { CartAPI, get_cart_by_id } from '../api/Localhost';
+import { CartAPI, get_cart_by_bookId_and_userId } from '../api/Localhost';
 import { FiCheckCircle } from 'react-icons/fi';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import Spinner from './bootstrap/Spinner';
 import Quantity from './Quantity';
 
 function AddToCart(props) {
-  const { currentBook } = props;
+  const { currentBook, userData } = props;
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [cartItem, setCartItem] = useState(null);
@@ -19,17 +19,20 @@ function AddToCart(props) {
   }, []);
 
   const init_get_cart_api = () => {
-    CartAPI.get(`/${currentBook.id}`)
+    CartAPI.get(`?bookId=${currentBook.id}&userId=${userData.id}`)
       .then((response) => {
-        if (response.data) {
-          setQuantity(response.data.quantity);
-          setType(response.data.type);
-          setCartItem(response.data);
+        if (response.data.length === 1) {
+          setQuantity(response.data[0].quantity);
+          setType(response.data[0].type);
+          setCartItem(response.data[0]);
           set_message_by_type('success', '  In cart');
         }
       })
       .catch((error) => {
-        let cart_item = get_cart_by_id(currentBook.id);
+        let cart_item = get_cart_by_bookId_and_userId(
+          currentBook.id,
+          userData.id
+        );
         if (cart_item) {
           setQuantity(cart_item.quantity);
           setCartItem(cart_item);
@@ -45,7 +48,8 @@ function AddToCart(props) {
 
   const create_cart_item = () => {
     let item_data = {
-      id: currentBook.id,
+      bookId: currentBook.id,
+      userId: userData.id,
       slug: currentBook.slug,
       quantity: quantity,
       title: currentBook.title,
@@ -62,7 +66,6 @@ function AddToCart(props) {
         set_message_by_type('success', 'Success: Added To Cart');
       })
       .catch((error) => {
-        console.log(error);
         set_message_by_type('error');
       })
       .finally(() => {
@@ -114,12 +117,11 @@ function AddToCart(props) {
 
   const set_quantity_api = () => {
     setLoading(true);
-    CartAPI.patch(`/${currentBook.id}`, { quantity })
+    CartAPI.patch(`${cartItem.id}`, { quantity })
       .then((response) => {
         set_message_by_type('success');
       })
       .catch((error) => {
-        console.log(error);
         set_message_by_type('error');
       })
       .finally(() => {
@@ -129,13 +131,12 @@ function AddToCart(props) {
 
   const set_type_api = () => {
     setLoading(true);
-    CartAPI.patch(`/${currentBook.id}`, { type })
+    CartAPI.patch(`${cartItem.id}`, { type })
       .then((response) => {
         set_message_by_type('success', 'Success: Updated Type');
         setType(type);
       })
       .catch((error) => {
-        console.log(error);
         set_message_by_type('error');
       })
       .finally(() => {
