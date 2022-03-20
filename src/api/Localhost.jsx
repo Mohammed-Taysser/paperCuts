@@ -69,7 +69,7 @@ const SERVICES = Data.services,
   TEAM = Data.team,
   TESTIMONIALS = Data.testimonials;
 
-// // needed function
+// needed function
 
 function shuffle_arr(arr) {
   return arr.sort(() => 0.5 - Math.random());
@@ -96,7 +96,7 @@ function get_author_by_email(email = '') {
 }
 
 function get_coupon_by_title(title = '') {
-  return COUPONS.find((coupon) => coupon.title === title);
+  return COUPONS.find((coupon) => coupon.label === title);
 }
 
 function get_event_by_slug(slug = '') {
@@ -107,16 +107,22 @@ function get_order_by_id(id = '1') {
   return ORDERS.find((order) => order.id.toString() === id);
 }
 
-function get_reviews_by_id(id = 1) {
-  return REVIEWS.filter((review) => review.id === id);
+function get_reviews_by_bookId(bookId = 1) {
+  return REVIEWS.filter((review) => review.bookId === bookId);
 }
 
-function get_wishlist_by_bookId(id = 1) {
-  return WISHLIST.find((item) => item.bookId === id);
+function get_wishlist_by_bookId_and_userId(bookId = 1, userId = 1) {
+  return WISHLIST.find(
+    (item) => item.bookId === bookId && item.userId === userId
+  );
 }
 
-function get_cart_by_id(id = 1) {
-  return CART.find((item) => item.id === id);
+function get_wishlist_by_userId(userId = 1) {
+  return WISHLIST.find((item) => item.userId === userId);
+}
+
+function get_cart_by_bookId_and_userId(bookId = 1, userId = 1) {
+  return CART.find((item) => item.userId === userId && item.bookId === bookId);
 }
 
 export default base_url;
@@ -134,6 +140,7 @@ export {
   ReviewAPI,
   TestimonialsAPI,
 };
+
 export {
   SERVICES,
   REVIEWS,
@@ -147,12 +154,14 @@ export {
   TESTIMONIALS,
   EVENTS,
 };
+
 export {
   get_book_by_slug,
   get_author_by_id,
-  get_cart_by_id,
-  get_reviews_by_id,
-  get_wishlist_by_bookId,
+  get_cart_by_bookId_and_userId,
+  get_reviews_by_bookId,
+  get_wishlist_by_userId,
+  get_wishlist_by_bookId_and_userId,
   get_category_by_slug,
   get_coupon_by_title,
   get_event_by_slug,
