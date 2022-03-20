@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORY, CategoryAPI } from '../api/Localhost';
 import Spinner from './bootstrap/Spinner';
@@ -7,7 +7,7 @@ const InlineCategoryTags = (props) => {
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     api_get_category();
   }, []);
 
