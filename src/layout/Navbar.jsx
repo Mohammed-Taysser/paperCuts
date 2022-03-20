@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context as AuthContext } from '../context/auth';
 import { FcSearch } from 'react-icons/fc';
-import { BsCart4 } from 'react-icons/bs';
+import { BsCart4, BsBookmarkHeart } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
@@ -80,18 +80,19 @@ function Navbar() {
         {auth_context.isAuth ? (
           <>
             <li className='nav-item'>
-              <NavLink
-                className='nav-link css-tooltip tooltip-bottom'
-                data-tooltip='cart'
-                to='/cart'
-              >
+              <NavLink className='nav-link' to='/wishlist'>
+                <BsBookmarkHeart className='h5 m-0' />
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to='/cart'>
                 <BsCart4 className='h5 m-0' />
               </NavLink>
             </li>
             <li className='nav-item'>
               <NavLink className='nav-link' to='/profile'>
                 <img
-                  src={auth_context.userData.image}
+                  src={auth_context.userData.avatar}
                   alt={auth_context.userData.firstName}
                   width={25}
                   className='img-fluid rounded-circle me-1'
