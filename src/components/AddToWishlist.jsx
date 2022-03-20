@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { WishlistAPI, get_wishlist_by_bookId } from '../api/Localhost';
+import React, { useLayoutEffect, useState } from 'react';
+import {
+  WishlistAPI,
+  get_wishlist_by_bookId_and_userId,
+} from '../api/Localhost';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { slugify } from './ManipulateData';
 import Spinner from './bootstrap/Spinner';
 
 function AddToWishList(props) {
-  const { currentBook } = props;
+  const { currentBook, userData } = props;
   const [loading, setLoading] = useState(true);
   const [wishListItem, setWishListItem] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     init_get_wishlist_api();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const init_get_wishlist_api = () => {
-    WishlistAPI.get(`?bookId=${currentBook.id}`)
+    WishlistAPI.get(`?bookId=${currentBook.id}&userId=${userData.id}`)
       .then((response) => {
         if (response.data.length === 1) {
           setWishListItem(response.data[0]);
         }
       })
       .catch((error) => {
-        let wishlist_item = get_wishlist_by_bookId(currentBook.id);
+        let wishlist_item = get_wishlist_by_bookId_and_userId(currentBook.id);
         if (wishlist_item) {
           setWishListItem(wishlist_item);
         } else {
@@ -37,8 +41,13 @@ function AddToWishList(props) {
     evt.preventDefault();
     let item_data = {
       bookId: currentBook.id,
+      userId: userData.id,
       title: currentBook.title,
+      slug: slugify(currentBook.title),
       image: currentBook.image,
+      price: currentBook.price,
+      stars: currentBook.stars,
+      author: currentBook.author.name,
     };
 
     setLoading(true);
