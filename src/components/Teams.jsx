@@ -6,7 +6,7 @@ import Spinner from './bootstrap/Spinner';
 import Alert from './bootstrap/Alert';
 
 function TeamMembers() {
-  const [teams, setTeams] = useState([]);
+  const [teams, setTeams] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function TeamMembers() {
   };
 
   const TeamMemberList = () => {
-    if (teams.length > 0) {
+    if (teams && teams.length > 0) {
       let team_member = teams.map((member) => (
         <SingleMember key={member.id} member={member} />
       ));
