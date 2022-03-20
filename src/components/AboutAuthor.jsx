@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Alert from './bootstrap/Alert';
 import Spinner from './bootstrap/Spinner';
@@ -9,7 +9,7 @@ const AboutAuthor = (props) => {
   const [currentAuthor, setCurrentAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     api_get_author();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,7 +39,7 @@ const AboutAuthor = (props) => {
         <div className='author-section mt-5'>
           <div className='d-md-flex align-items-center'>
             <img
-              src={currentAuthor.image}
+              src={currentAuthor.avatar}
               alt={`${currentAuthor.firstName} ${currentAuthor.lastName}`}
               width='100'
               height='100'
