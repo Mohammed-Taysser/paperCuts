@@ -1,8 +1,123 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  AuthorsAPI,
+  get_author_by_email,
+  get_user_by_email,
+  UserAPI,
+} from '../api/Localhost';
+import Alert from '../components/bootstrap/Alert';
+import { CheckBox, InputField } from '../components/bootstrap/Form';
+import Spinner from '../components/bootstrap/Spinner';
+import { Context as AuthContext } from '../context/auth';
 
 function ForgetPassword() {
-  const onFormSubmit = (evt) => {
+  const navigate_to = useNavigate();
+  const auth_context = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [isAuthor, setIsAuthor] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [currentTempUser, setCurrentTempUser] = useState(null);
+
+  const [emailNotFound, setEmailNotFound] = useState(false);
+  const [passwordNotMatch, setPasswordNotMatch] = useState(false);
+
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [showEmailSearchForm, setShowEmailSearchForm] = useState(true);
+  const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
+
+  const api_get_author_by_email = async () => {
+    setLoading(true);
+    await AuthorsAPI.get(`?email=${email}`)
+      .then((response) => {
+        check_exist_email(response.data[0]);
+      })
+      .catch((error) => {
+        check_exist_email(get_author_by_email(email));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const api_get_user_by_email = async () => {
+    setLoading(true);
+    await UserAPI.get(`?email=${email}`)
+      .then((response) => {
+        check_exist_email(response.data[0]);
+      })
+      .catch((error) => {
+        check_exist_email(get_user_by_email(email));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const api_set_user_password = async () => {
+    setLoading(true);
+    await UserAPI.patch(`/${currentTempUser.id}`, { password })
+      .then((response) => {
+        navigate_to('/login');
+      })
+      .catch((error) => {
+        check_exist_email(get_user_by_email(email));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const api_set_author_password = async () => {
+    setLoading(true);
+    await AuthorsAPI.patch(`/${currentTempUser.id}`, { password })
+      .then((response) => {
+        navigate_to('/login');
+      })
+      .catch((error) => {
+        check_exist_email(get_user_by_email(email));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const check_exist_email = (response_data) => {
+    if (response_data) {
+      setEmailNotFound(false);
+      setShowEmailSearchForm(false);
+      setShowChangePasswordForm(true);
+      setCurrentTempUser(response_data)
+    } else {
+      setEmailNotFound(true);
+    }
+  };
+
+  const onSearchFormSubmit = (evt) => {
     evt.preventDefault();
+
+    if (isAuthor) {
+      api_get_author_by_email();
+    } else {
+      api_get_user_by_email();
+    }
+  };
+
+  const onChangeFormSubmit = (evt) => {
+    evt.preventDefault();
+    if (password === confirmPassword) {
+      setPasswordNotMatch(false);
+      if (isAuthor) {
+        api_set_author_password();
+      } else {
+        api_set_user_password();
+      }
+    } else {
+      setPasswordNotMatch(true);
+    }
   };
 
   return (
@@ -11,32 +126,106 @@ function ForgetPassword() {
         <div className='container'>
           <div className='row justify-content-center align-items-stretch g-0'>
             <div className='col-md-8 my-3'>
-              <div className='p-4 rounded-start border login-content'>
-                <h1 className='my-4 text-center'>Lost your password?</h1>
-                <p className='text-muted text-center'>
-                  Please enter your email address. You will receive a link to
-                  create a new password via email.
-                </p>
-                <form className='mb-3' onSubmit={onFormSubmit}>
-                  <div className='my-3'>
-                    <label className='form-label' htmlFor='rest-password-email'>
-                      email address
-                    </label>
-                    <input
-                      className='form-control'
-                      type='email'
-                      placeholder=''
-                      required={true}
-                      id='rest-password-email'
-                    />
-                  </div>
-                  <div className='text-center'>
-                    <button className='btn btn-aurora mt-4' type='submit'>
-                      Reset password
-                    </button>
-                  </div>
-                </form>
-              </div>
+              {auth_context.isAuth ? (
+                <Alert>you already sign in</Alert>
+              ) : (
+                <div className='p-4 rounded-start border login-content'>
+                  <h1 className='my-4 text-center'>Lost your password?</h1>
+                  <p className='text-muted text-center'>
+                    Please enter your email address. You will receive a link to
+                    create a new password via email.
+                  </p>
+                  {showEmailSearchForm && (
+                    <form className='mb-3' onSubmit={onSearchFormSubmit}>
+                      <InputField
+                        outer='my-3'
+                        type='email'
+                        className={emailNotFound ? 'is-invalid' : ''}
+                        id='forget-password-email'
+                        label='email address'
+                        value={email}
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder='email address'
+                        InvalidFeedback='email not exist'
+                      />
+                      <CheckBox
+                        outer='my-3'
+                        id='is-author'
+                        label="i'm an author"
+                        checked={isAuthor}
+                        className='me-2'
+                        onChange={(e) => setIsAuthor(e.target.checked)}
+                      />
+                      <div className=''>
+                        {loading ? (
+                          <Spinner />
+                        ) : (
+                          <button className='btn btn-aurora mt-4' type='submit'>
+                            Search
+                          </button>
+                        )}
+                      </div>
+                    </form>
+                  )}
+                  {showChangePasswordForm && (
+                    <form className='mb-3' onSubmit={onChangeFormSubmit}>
+                      <InputField
+                        outer='my-3'
+                        type='password'
+                        id='forget-password'
+                        className={passwordNotMatch ? 'is-invalid' : ''}
+                        label='new password'
+                        value={password}
+                        minLength={8}
+                        onChange={(e) => setPassword(e.target.value)}
+                        InvalidFeedback={
+                          passwordNotMatch && 'password not identical'
+                        }
+                        placeholder='new password'
+                        required
+                      />
+                      <InputField
+                        outer='my-3'
+                        className={passwordNotMatch ? 'is-invalid' : ''}
+                        type='password'
+                        id='forget-confirm-password'
+                        label='confirm password'
+                        value={confirmPassword}
+                        minLength={8}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder='confirm password'
+                        InvalidFeedback={
+                          passwordNotMatch && 'password not identical'
+                        }
+                        required
+                      />
+                      <div className='d-flex mt-4'>
+                        <div className=''>
+                          {loading ? (
+                            <Spinner />
+                          ) : (
+                            <button className='btn btn-aurora ' type='submit'>
+                              Save Changes
+                            </button>
+                          )}
+                        </div>
+                        <div className='mx-3'>
+                          <button
+                            className='btn btn-outline-aurora '
+                            onClick={() => {
+                              setShowEmailSearchForm(true);
+                              setShowChangePasswordForm(false);
+                            }}
+                          >
+                            Another Email
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
