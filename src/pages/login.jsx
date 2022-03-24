@@ -4,30 +4,53 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { IoMdWarning } from 'react-icons/io';
 import { Context as AuthContext } from '../context/auth';
-import Alert from '../components/bootstrap/Alert';
-import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
+import { InputField, CheckBox } from '../components/bootstrap/Form';
 import Spinner from '../components/bootstrap/Spinner';
+import Alert from '../components/bootstrap/Alert';
+import {
+  AuthorsAPI,
+  get_author_by_email,
+  UserAPI,
+  get_user_by_email,
+} from '../api/Localhost';
 import GetBookByCategory from '../components/GetBookByCategory';
 import SectionTitle from '../components/SectionTitle';
 
 function Login() {
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [wrongPassword, setWrongPassword] = useState(false);
   const [userNotExist, setUserNotExist] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [submited, setSubmited] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    signAsAuthor: false,
+  });
 
-  const api_get_user = async () => {
+  const api_get_author = async () => {
     setLoading(true);
-    await AuthorsAPI.get(`?email=${email}`)
+    await AuthorsAPI.get(`?email=${formData['email']}`)
       .then((response) => {
         check_user_exist(response.data[0]);
       })
       .catch((error) => {
-        check_user_exist(get_author_by_email(email));
+        check_user_exist(get_author_by_email(formData['email']));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const api_get_user = async () => {
+    setLoading(true);
+    await UserAPI.get(`?email=${formData['email']}`)
+      .then((response) => {
+        check_user_exist(response.data[0]);
+      })
+      .catch((error) => {
+        check_user_exist(get_user_by_email(formData['email']));
       })
       .finally(() => {
         setLoading(false);
@@ -36,13 +59,13 @@ function Login() {
 
   const check_user_exist = (user) => {
     if (user) {
-      setSubmited(false);
+      setSubmitted(false);
       setUserNotExist(false);
 
-      if (password === user.password) {
+      if (formData['password'] === user.password) {
         setWrongPassword(false);
-        auth_context.setIsAuth(true);
         auth_context.setUserData(user);
+        auth_context.setIsAuth(true);
 
         localStorage.setItem(
           'auth',
@@ -53,18 +76,31 @@ function Login() {
         setWrongPassword(true);
       }
     } else {
-      setSubmited(false);
+      setSubmitted(false);
       setUserNotExist(true);
     }
+  };
+
+  const onInputChange = (evt) => {
+    let new_data = {
+      ...formData,
+      [evt.target.name]:
+        evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value,
+    };
+    setFormData(new_data);
   };
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
     setWrongPassword(false);
     setUserNotExist(false);
-    setSubmited(true);
-    if (email && password) {
-      api_get_user();
+    setSubmitted(true);
+    if (formData['email'] && formData['password']) {
+      if (formData['signAsAuthor']) {
+        api_get_author();
+      } else {
+        api_get_user();
+      }
     }
   };
 
@@ -102,7 +138,7 @@ function Login() {
       <div className='col-md-6 my-3'>
         <div className='bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login'>
           <div className='text-center text-white'>
-            <h2 className='mb-3'>Hello, Friend!</h2>
+            <h2 className='mb-3'>welcome back!</h2>
             <p>Enter your personal details and start journey with us</p>
             <Link
               className='rounded-pill mt-2 px-3 py-2 btn btn-outline-light'
@@ -143,51 +179,60 @@ function Login() {
                   <OtherLoginMethods />
                   <form
                     className={`mb-3 ${
-                      submited && 'was-validated'
+                      submitted && 'was-validated'
                     } needs-validation`}
                     noValidate
                     onSubmit={onFormSubmit}
                   >
-                    <div className='my-3'>
-                      <label className='form-label' htmlFor='login-email'>
-                        Email Address
-                      </label>
-                      <input
-                        className={`form-control ${
-                          userNotExist ? 'is-invalid' : ''
-                        }`}
-                        type='email'
-                        placeholder='Email Address'
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        id='login-email'
-                      />
-                      <div className='invalid-feedback'>
-                        {userNotExist
+                    <InputField
+                      outer='my-3'
+                      type='email'
+                      id='login-email'
+                      label='email address'
+                      className={userNotExist ? 'is-invalid' : ''}
+                      name='email'
+                      value={formData['email']}
+                      onChange={onInputChange}
+                      placeholder='email address'
+                      required
+                      invalidFeedback={
+                        userNotExist
                           ? 'no user exist, please check your email'
-                          : "email can't be empty"}
-                      </div>
-                    </div>
-                    <div className='my-3'>
-                      <label className='form-label' htmlFor='login-password'>
-                        Password
-                      </label>
-                      <input
-                        className={`form-control ${
-                          wrongPassword || userNotExist ? 'is-invalid' : ''
-                        }`}
-                        type='password'
-                        placeholder='Password'
-                        required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        id='login-password'
-                      />
-                      <div className='invalid-feedback'>
-                        please check your password
-                      </div>
-                    </div>
+                          : 'please provide valid email'
+                      }
+                      validFeedback
+                    />
+                    <InputField
+                      outer='my-3'
+                      type='password'
+                      className={
+                        wrongPassword || userNotExist ? 'is-invalid' : ''
+                      }
+                      id='login-password'
+                      label='password'
+                      name='password'
+                      minLength={8}
+                      value={formData['password']}
+                      onChange={onInputChange}
+                      placeholder='password'
+                      required
+                      invalidFeedback={'please check your password'}
+                      validFeedback
+                    />
+                    <CheckBox
+                      outer='col-12 my-3'
+                      id='register-sign-as-author'
+                      label='sign as author'
+                      name='signAsAuthor'
+                      checked={formData['signAsAuthor']}
+                      className='me-2'
+                      onChange={onInputChange}
+                      validFeedback={
+                        formData['signAsAuthor']
+                          ? `looks good!, now you will login as author`
+                          : `looks good!, now you will login as reader`
+                      }
+                    />
                     <p className='text-end'>
                       <Link className='text-muted' to='/forget-password'>
                         forget password
