@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { get_order_by_id, OrderAPI } from '../api/Localhost';
 import Banner from '../components/Banner';
 import { monthNames } from '../components/ManipulateData';
+import { Context as AuthContext } from '../context/auth';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
+import OrdersImage from '../assets/images/background/orders.jpg';
 
 function OrderDetails() {
   const { id } = useParams();
+  const auth_context = useContext(AuthContext);
   const [currentOrder, setCurrentOrder] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +20,7 @@ function OrderDetails() {
   }, []);
 
   const api_get_order = async () => {
-    await OrderAPI.get(`/${id}`)
+    await OrderAPI.get(`/${id}?userId=${auth_context.userData.id}`)
       .then((response) => {
         setCurrentOrder(response.data);
       })
@@ -139,7 +142,7 @@ function OrderDetails() {
               </td>
             </tr>
             <tr>
-              <td>payment method</td>
+              <td style={{ minWidth: '180px' }}>payment method</td>
               <td>
                 <span className=''>{currentOrder.paymentMethod}</span>
               </td>
@@ -184,6 +187,7 @@ function OrderDetails() {
       <Banner
         title={currentOrder ? `order#${currentOrder.id}` : 'order details'}
         subtitle='order details'
+        img={OrdersImage}
       />
       <section className='my-5 py-5'>
         <div className='container'>{loading ? <Spinner /> : <Render />}</div>

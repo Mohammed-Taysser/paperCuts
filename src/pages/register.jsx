@@ -4,7 +4,12 @@ import { FcGoogle } from 'react-icons/fc';
 import { IoMdWarning } from 'react-icons/io';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Context as AuthContext } from '../context/auth';
-import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
+import {
+  AuthorsAPI,
+  get_author_by_email,
+  UserAPI,
+  get_user_by_email,
+} from '../api/Localhost';
 import Alert from '../components/bootstrap/Alert';
 import SectionTitle from '../components/SectionTitle';
 import GetBookByCategory from '../components/GetBookByCategory';
@@ -32,35 +37,60 @@ function Register() {
       });
   };
 
+  const api_get_user_by_email = async () => {
+    setLoading(true);
+    await UserAPI.get(`?email=${formData['email']}`)
+      .then((response) => {
+        check_exist_email(response.data[0]);
+      })
+      .catch((error) => {
+        check_exist_email(get_user_by_email(formData['email']));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const check_exist_email = (response_data) => {
     setFormSubmitted(false);
     if (response_data) {
       setExistEmail(true);
     } else {
       setExistEmail(false);
-      api_create_user();
+      if (formData['signAsAuthor']) {
+        api_create_author();
+      } else {
+        api_create_user();
+      }
     }
   };
 
-  const api_create_user = async () => {
+  const api_create_author = async () => {
     if (!existEmail && !is_empty()) {
       setLoading(true);
+
       let user_data = {
         ...formData,
-        gender: null,
-        age: null,
         username: null,
         info: null,
-        image:
+        extraInfo: null,
+        gender: null,
+        avatar:
           'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+        signature:
+          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/signatures/signature-2.png',
         language: [],
         socialMedia: [],
         category: [],
         books: [],
       };
-      await AuthorsAPI.post(`/`, user_data)
+
+      let user_data_without_signInAsAUthor = user_data;
+      delete user_data_without_signInAsAUthor.signAsAuthor;
+
+      await AuthorsAPI.post(`/`, user_data_without_signInAsAUthor)
         .then((response) => {
-          save_user(user_data);
+          save_user(response.data);
         })
         .catch((error) => {
           console.log(error);
@@ -68,8 +98,39 @@ function Register() {
         .finally(() => {
           setLoading(false);
         });
-    } else{
-      setFormSubmitted(true)
+    } else {
+      setFormSubmitted(true);
+    }
+  };
+
+  const api_create_user = async () => {
+    if (!existEmail && !is_empty()) {
+      setLoading(true);
+
+      let user_data = {
+        ...formData,
+        username: null,
+        info: null,
+        gender: null,
+        avatar:
+          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+      };
+
+      let user_data_without_signInAsAUthor = user_data;
+      delete user_data_without_signInAsAUthor.signAsAuthor;
+
+      await UserAPI.post(`/`, user_data_without_signInAsAUthor)
+        .then((response) => {
+          save_user(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setFormSubmitted(true);
     }
   };
 
@@ -97,7 +158,11 @@ function Register() {
     setExistEmail(false);
     setFormSubmitted(true);
     if (data !== null && !is_empty()) {
-      api_get_author_by_email();
+      if (data['signAsAuthor']) {
+        api_get_author_by_email();
+      } else {
+        api_get_user_by_email();
+      }
     }
   };
 

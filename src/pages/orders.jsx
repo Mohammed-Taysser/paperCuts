@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { OrderAPI, ORDERS } from '../api/Localhost';
 import Banner from '../components/Banner';
+import { Context as AuthContext } from '../context/auth';
 import { monthNames } from '../components/ManipulateData';
 import Alert from '../components/bootstrap/Alert';
 import Spinner from '../components/bootstrap/Spinner';
 import OrdersImage from '../assets/images/background/orders.jpg';
 
 function Orders() {
+  const auth_context = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api_get_category();
+    api_get_orders();
   }, []);
 
-  const api_get_category = async () => {
-    await OrderAPI.get('/')
+  const api_get_orders = async () => {
+    await OrderAPI.get(`?userId=${auth_context.userData.id}`)
       .then((response) => {
         setOrders(response.data);
       })
@@ -52,38 +54,61 @@ function Orders() {
     return `${hours}:${minutes} ${mid}`;
   };
 
-  const OrdersList = () => {
-    if (orders.length > 0) {
-      let orders_items = orders.map((order) => {
-        return (
-          <li key={order.id}>
-            <span className='line'></span>
-            <Link className='info text-white h5' to={`/orders/${order.id}`}>
-              order#{order.id} with {order.total.toFixed(2)}$
-            </Link>
-            <div className='time'>
-              <span>{date_details(order.date)}</span>
-              <span>{time_details(order.date)}</span>
-            </div>
-          </li>
-        );
-      });
-      return <ul>{orders_items}</ul>;
+  const OrdersTable = () => {
+    if (orders && orders.length > 0) {
+      return (
+        <div className='table-responsive'>
+          <table className='table text-center'>
+            <thead>
+              <tr>
+                <td className='text-center'>order id</td>
+                <th scope='col'>total</th>
+                <th scope='col'>date</th>
+                <th scope='col'>items number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <OrdersRow />
+            </tbody>
+          </table>
+        </div>
+      );
+    } else {
+      return <Alert> no orders yet </Alert>;
     }
+  };
 
-    return <Alert> nor orders yet </Alert>;
+  const OrdersRow = () => {
+    let orders_items = orders.map((order) => {
+      return (
+        <tr key={order.id}>
+          <td>
+            <Link className='h5' to={`/orders/${order.id}`}>
+              #{order.id}
+            </Link>
+          </td>
+          <td>
+            <span>{order.total.toFixed(2)}$</span>
+          </td>
+          <td>
+            <span>{date_details(order.date)}</span>
+            <span className='mx-2'>{time_details(order.date)}</span>
+          </td>
+          <td>{order.cartItems.length}</td>
+        </tr>
+      );
+    });
+
+    return <>{orders_items}</>;
   };
 
   return (
     <>
-      <Banner title='orders' subtitle='your choices' />
-      <section
-        className='bg-aurora bg-with-overlay order-page'
-        style={{ backgroundImage: `url(${OrdersImage})` }}
-      >
+      <Banner title='orders' subtitle='your choices' img={OrdersImage} />
+      <section className='order-page'>
         <div className='container py-5'>
           <div className='timeline-container my-5 py-5 mx-3 mx-md-0'>
-            {loading ? <Spinner /> : <OrdersList />}
+            {loading ? <Spinner /> : <OrdersTable />}
           </div>
         </div>
       </section>
