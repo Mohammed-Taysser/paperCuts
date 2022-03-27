@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { WishlistAPI, get_wishlist_by_userId } from '../api/Localhost';
 import { Context as AuthContext } from '../context/auth';
 import SingleBook from '../components/single/SingleBook';
 import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
-import Spinner from '../components/bootstrap/Spinner';
+import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
 
 function Wishlist() {
   const auth_context = useContext(AuthContext);
@@ -31,7 +32,7 @@ function Wishlist() {
 
   const Render = () => {
     if (loading) {
-      return <Spinner />;
+      return <RowOfPlaceholderCard num={6} />;
     }
     if (wishlistItems && wishlistItems.length > 0) {
       let wish_list_items = wishlistItems.map((item, index) => (
@@ -41,7 +42,18 @@ function Wishlist() {
         <div className='row justify-content-center'> {wish_list_items} </div>
       );
     } else {
-      return <Alert>no items added yet</Alert>;
+      return (
+        <Alert>
+          no items added yet. see
+          <Link to='/books' className='alert-link mx-1'>
+            books
+          </Link>
+          or
+          <Link to='/category' className='alert-link mx-1'>
+            category
+          </Link>
+        </Alert>
+      );
     }
   };
 
