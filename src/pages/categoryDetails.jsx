@@ -3,7 +3,7 @@ import { CategoryAPI, get_category_by_slug } from '../api/Localhost';
 import { useParams } from 'react-router-dom';
 import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
-import Spinner from '../components/bootstrap/Spinner';
+import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
 import GetBookByCategory from '../components/GetBookByCategory';
 
 function CategoryDetails() {
@@ -48,7 +48,7 @@ function CategoryDetails() {
         subtitle='shop list'
       />
       <section className='my-5 py-5'>
-        <div className='container '>{loading ? <Spinner /> : <BookList />}</div>
+        <div className='container '>{loading ? <RowOfPlaceholderCard num={6} /> : <BookList />}</div>
       </section>
     </>
   );
