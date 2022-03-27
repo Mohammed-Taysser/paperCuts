@@ -4,15 +4,10 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { IoMdWarning } from 'react-icons/io';
 import { Context as AuthContext } from '../context/auth';
-import { InputField, CheckBox } from '../components/bootstrap/Form';
+import { InputField } from '../components/bootstrap/Form';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
-import {
-  AuthorsAPI,
-  get_author_by_email,
-  UserAPI,
-  get_user_by_email,
-} from '../api/Localhost';
+import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
 import GetBookByCategory from '../components/GetBookByCategory';
 import SectionTitle from '../components/SectionTitle';
 
@@ -26,7 +21,6 @@ function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    signAsAuthor: false,
   });
 
   const api_get_author = async () => {
@@ -39,21 +33,7 @@ function Login() {
         check_user_exist(get_author_by_email(formData['email']));
       })
       .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const api_get_user = async () => {
-    setLoading(true);
-    await UserAPI.get(`?email=${formData['email']}`)
-      .then((response) => {
-        check_user_exist(response.data[0]);
-      })
-      .catch((error) => {
-        check_user_exist(get_user_by_email(formData['email']));
-      })
-      .finally(() => {
-        setLoading(false);
+        // setLoading(false);
       });
   };
 
@@ -82,12 +62,10 @@ function Login() {
   };
 
   const onInputChange = (evt) => {
-    let new_data = {
+    setFormData({
       ...formData,
-      [evt.target.name]:
-        evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value,
-    };
-    setFormData(new_data);
+      [evt.target.name]: evt.target.value,
+    });
   };
 
   const onFormSubmit = (evt) => {
@@ -96,11 +74,7 @@ function Login() {
     setUserNotExist(false);
     setSubmitted(true);
     if (formData['email'] && formData['password']) {
-      if (formData['signAsAuthor']) {
-        api_get_author();
-      } else {
-        api_get_user();
-      }
+      api_get_author();
     }
   };
 
@@ -218,20 +192,6 @@ function Login() {
                       required
                       invalidFeedback={'please check your password'}
                       validFeedback
-                    />
-                    <CheckBox
-                      outer='col-12 my-3'
-                      id='register-sign-as-author'
-                      label='sign as author'
-                      name='signAsAuthor'
-                      checked={formData['signAsAuthor']}
-                      className='me-2'
-                      onChange={onInputChange}
-                      validFeedback={
-                        formData['signAsAuthor']
-                          ? `looks good!, now you will login as author`
-                          : `looks good!, now you will login as reader`
-                      }
                     />
                     <p className='text-end'>
                       <Link className='text-muted' to='/forget-password'>
