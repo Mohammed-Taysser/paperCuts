@@ -12,10 +12,10 @@ function Testimonials(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api_get_tesimonials();
+    api_get_testimonials();
   }, []);
 
-  const api_get_tesimonials = async () => {
+  const api_get_testimonials = async () => {
     await TestimonialsAPI.get('/')
       .then((response) => {
         setTestimonials(response.data);
@@ -63,7 +63,9 @@ function Testimonials(props) {
               width={'150px'}
               height={'150px'}
             />
-            <h4 className='text-aurora my-2'>{item.customer}</h4>
+            <h4 className='text-aurora my-2 animate__slideInDown'>
+              {item.customer}
+            </h4>
             <p>{item.info}</p>
           </div>
         </div>
