@@ -12,7 +12,10 @@ function RegisterForm(props) {
   });
 
   const onInputChange = (evt) => {
-    let new_data = { ...formData, [evt.target.name]: evt.target.value };
+    let new_data = {
+      ...formData,
+      [evt.target.name]: evt.target.value,
+    };
     setFormData(new_data);
     props.setFormData(new_data);
   };
@@ -87,7 +90,7 @@ function RegisterForm(props) {
           validFeedback
         />
       </div>
-      <div className='text-center'>
+      <div className=''>
         {loading ? (
           <Spinner />
         ) : (
