@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleAuthor from '../components/single/SingleAuthor';
 import Banner from '../components/Banner';
-import Spinner from '../components/bootstrap/Spinner';
+import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
 import { AuthorsAPI, AUTHORS } from '../api/Localhost';
 
 function Authors() {
@@ -41,7 +41,7 @@ function Authors() {
 
   const RenderMessage = () => {
     if (loading) {
-      return <Spinner />;
+      return <RowOfPlaceholderCard num={6} />;
     } else {
       return <AuthorsList />;
     }
