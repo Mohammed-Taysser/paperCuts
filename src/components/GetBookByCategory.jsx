@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import SingleBook from './single/SingleBook';
 import Alert from './bootstrap/Alert';
-import Spinner from './bootstrap/Spinner';
+import { RowOfPlaceholderCard } from './bootstrap/Placeholder';
 import { BooksAPI, BOOKS } from '../api/Localhost';
 
 /**
@@ -64,7 +64,7 @@ function GetBookByCategory(props) {
 
   const Render = () => {
     if (loading) {
-      return <Spinner />;
+      return <RowOfPlaceholderCard num={6} />;
     }
 
     if (books && books.length > 0) {

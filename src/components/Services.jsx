@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SERVICES, ServicesAPI } from '../api/Localhost';
 import SectionTitle from './SectionTitle';
 import Alert from './bootstrap/Alert';
-import Spinner from './bootstrap/Spinner';
+import { RowOfPlaceholderCard } from './bootstrap/Placeholder';
 import SingleService from './single/SingleService';
 
 function Services() {
@@ -39,7 +39,7 @@ function Services() {
 
   const Render = () => {
     if (loading) {
-      return <Spinner />;
+      return <RowOfPlaceholderCard />;
     }
     if (services) {
       return (
