@@ -53,27 +53,6 @@ function Navbar() {
     );
   };
 
-  const SearchForm = () => {
-    return (
-      <form className='me-auto' onSubmit={onFormSubmit}>
-        <div className='navbar-search-form'>
-          <input
-            className='form-control form-control-sm'
-            type='search'
-            name='query'
-            placeholder='Search'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label='Search'
-          />
-          <button className='btn btn-link btn-sm' type='submit'>
-            <FcSearch />
-          </button>
-        </div>
-      </form>
-    );
-  };
-
   const AuthLinks = () => {
     return (
       <ul className='navbar-nav'>
@@ -173,7 +152,7 @@ function Navbar() {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    navigate_to(`/search?title=${query}`);
+    navigate_to(`/books?title=${query}`);
   };
 
   return (
@@ -196,7 +175,22 @@ function Navbar() {
           </button>
           <div className='collapse navbar-collapse' id='navbar-main-menu'>
             <MainNavBarItems />
-            <SearchForm />
+            <form className='me-auto' onSubmit={onFormSubmit}>
+              <div className='navbar-search-form'>
+                <input
+                  className='form-control form-control-sm'
+                  type='search'
+                  name='query'
+                  placeholder='Search'
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  aria-label='Search'
+                />
+                <button className='btn btn-link btn-sm' type='submit'>
+                  <FcSearch />
+                </button>
+              </div>
+            </form>
             <AuthLinks />
           </div>
         </div>
