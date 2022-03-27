@@ -89,9 +89,7 @@ function OrderDetails() {
             <tr>
               <td colSpan={2}>Total</td>
               <td>
-                <span className='text-aurora'>
-                  ${currentOrder.total.toFixed(2)}
-                </span>
+                <span className='text-aurora'>${currentOrder.total}</span>
               </td>
             </tr>
           </tbody>
@@ -108,43 +106,43 @@ function OrderDetails() {
             <tr>
               <td>first name</td>
               <td>
-                <span className=''>{currentOrder.firstName}</span>
+                <span>{currentOrder.firstName}</span>
               </td>
             </tr>
             <tr>
               <td>last name</td>
               <td>
-                <span className=''>{currentOrder.lastName}</span>
+                <span>{currentOrder.lastName}</span>
               </td>
             </tr>
             <tr>
               <td>country</td>
               <td>
-                <span className=''>{currentOrder.country}</span>
+                <span>{currentOrder.country}</span>
               </td>
             </tr>
             <tr>
               <td>address</td>
               <td>
-                <span className=''>{currentOrder.address}</span>
+                <span>{currentOrder.address}</span>
               </td>
             </tr>
             <tr>
               <td>phone</td>
               <td>
-                <span className=''>{currentOrder.phone}</span>
+                <span>{currentOrder.phone}</span>
               </td>
             </tr>
             <tr>
               <td>email</td>
               <td>
-                <span className=''>{currentOrder.email}</span>
+                <span>{currentOrder.email}</span>
               </td>
             </tr>
             <tr>
               <td style={{ minWidth: '180px' }}>payment method</td>
               <td>
-                <span className=''>{currentOrder.paymentMethod}</span>
+                <span>{currentOrder.paymentMethod}</span>
               </td>
             </tr>
             <tr>
