@@ -15,6 +15,7 @@ function Orders() {
 
   useEffect(() => {
     api_get_orders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const api_get_orders = async () => {
@@ -30,7 +31,7 @@ function Orders() {
       });
   };
 
-  const date_details = (date) => {
+  const getDate = (date) => {
     let current_date = new Date(date);
 
     return `${current_date.getDay()} ${
@@ -38,7 +39,7 @@ function Orders() {
     } ${current_date.getFullYear()}`;
   };
 
-  const time_details = (date) => {
+  const getTime = (date) => {
     let current_date = new Date(date),
       hours = current_date.getHours(),
       minutes = current_date.getMinutes(),
@@ -88,11 +89,11 @@ function Orders() {
             </Link>
           </td>
           <td>
-            <span>{order.total.toFixed(2)}$</span>
+            <span>{order.total}$</span>
           </td>
           <td>
-            <span>{date_details(order.date)}</span>
-            <span className='mx-2'>{time_details(order.date)}</span>
+            <span>{getDate(order.date)}</span>
+            <span className='mx-2'>{getTime(order.date)}</span>
           </td>
           <td>{order.cartItems.length}</td>
         </tr>
