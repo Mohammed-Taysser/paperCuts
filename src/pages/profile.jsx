@@ -1,235 +1,321 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthorsAPI } from '../api/Localhost';
+import { InputField } from '../components/bootstrap/Form';
+import {
+  isEqualArray,
+  getTypeOf,
+  isEqualObject,
+} from '../components/ManipulateData';
 import { Context as AuthContext } from '../context/auth';
-import { MdContentCopy } from 'react-icons/md';
+import ProfileCards from '../components/profileCards';
+import FullName from '../components/profileCards/FullNameCard';
+import Username from '../components/profileCards/UsernameCard';
+import InfoCard from '../components/profileCards/InfoCard';
+import SocialMedia from '../components/profileCards/SocialMediaCard';
+import IdCard from '../components/profileCards/IdCard';
+import CategoryCard from '../components/profileCards/CategoryCard';
+import BooksCard from '../components/profileCards/BooksCard';
+import DeleteAccountCard from '../components/profileCards/DeleteAccountCard';
+import AvatarCard from '../components/profileCards/AvatarCard';
 
 function Profile() {
   const auth_context = useContext(AuthContext);
-  const { userData } = auth_context;
+  const [isSaved, setIsSaved] = useState({});
+  const [isLoading, setIsLoading] = useState({});
+  const [formData, setFormData] = useState(auth_context.userData);
 
-  const copy_to_clipboard = (text) => {
-    const temp_textarea = document.createElement('textarea');
-    temp_textarea.value = text;
-    document.body.appendChild(temp_textarea);
-    temp_textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(temp_textarea);
+  const api_change_user_setting = (setting, key) => {
+    setIsLoading({ ...isLoading, [key]: true });
+
+    AuthorsAPI.patch(`/${auth_context.userData.id}`, { ...setting })
+      .then((response) => {
+        setIsSaved({ ...isSaved, [key]: true });
+        localStorage.setItem(
+          'auth',
+          JSON.stringify({ isAuth: true, userData: response.data })
+        );
+        auth_context.setUserData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading({ ...isLoading, [key]: false });
+      });
   };
 
-  return (
-    <section className='profile-page my-5'>
-      <div className='container'>
-        <div className='row justify-content-center'>
-          <div className='col-md-11'>
-            <h1 className='h2 mb-5 special-header'>
-              Personal Account Settings
-            </h1>
+  const onInputChange = (evt) => {
+    setFormData({
+      ...formData,
+      [evt.target.name]:
+        evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value,
+    });
+  };
 
-            <div className='card my-4'>
-              <div className='card-body'>
-                <h3 className='h4 card-title'>your name</h3>
-                <p className='card-text'>
-                  This is your URL namespace within paperCuts.
-                </p>
-                <div className='d-md-flex'>
-                  <div className='col-md-5'>
-                    <div className='input-group custom-input-group input-group-sm'>
-                      <span className='input-group-text' id='full-name-input'>
-                        paperCuts.com/
-                      </span>
-                      <input
-                        className='form-control'
-                        type='text'
-                        placeholder='Full Name'
-                        aria-label='Full Name'
-                        aria-describedby='full-name-input'
-                        value={`${userData.first_name} ${userData.last_name}`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='m-0 small text-dark'>
-                    Please use 48 characters at maximum.
-                  </p>
-                  <button
-                    className='btn btn-aurora btn-sm px-3'
-                    type='submit'
-                    aria-label='save changes'
-                  >
-                    save
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='card my-4'>
-              <div className='card-body'>
-                <h4 className='card-title'>your username</h4>
-                <p className='card-text'>
-                  This is your URL namespace within paperCuts.
-                </p>
-                <div className='d-md-flex'>
-                  <div className='col-md-5'>
-                    <input
-                      className='form-control form-control-sm'
-                      type='text'
-                      value='Mohammed-Taysser'
-                      placeholder='Username'
-                      aria-label='Username'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='m-0 small text-dark'>
-                    Please use 16 characters at minimum.
-                  </p>
-                  <button
-                    className='btn btn-aurora btn-sm px-3'
-                    type='submit'
-                    aria-label='save changes'
-                  >
-                    save
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='card my-4'>
-              <div className='card-body'>
-                <h4 className='card-title'>your email</h4>
-                <p className='card-text'>
-                  Please enter the email address you want to use to log in with
-                  paperCuts.
-                </p>
-                <div className='d-md-flex'>
-                  <div className='col-md-5'>
-                    <input
-                      className='form-control form-control-sm'
-                      type='email'
-                      value={userData.email}
-                      placeholder='email address'
-                      aria-label='your email address'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='m-0 small text-dark'>
-                    We will email you to verify the change.
-                  </p>
-                  <button
-                    className='btn btn-aurora btn-sm px-3'
-                    type='submit'
-                    aria-label='save changes'
-                  >
-                    save
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='card my-4'>
-              <div className='card-body'>
-                <div className='d-flex align-items-center'>
-                  <div className='flex-grow-1 me-3'>
-                    <h4 className='card-title'>your Avatar</h4>
-                    <p className='card-text'>
-                      his is your avatar.Click on the avatar to upload a custom
-                      one from your files.
-                    </p>
-                  </div>
-                  <div className='flex-shrink-0'>
-                    <img
-                      className='img-fluid rounded-circle'
-                      src={userData.img}
-                      alt={userData.first_name}
-                      width='80px'
-                      height='80px'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='m-0 small text-dark'>
-                    An avatar is optional but strongly recommended.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className='card my-4'>
-              <div className='card-body'>
-                <h4 className='card-title'>your ID</h4>
-                <p className='card-text'>
-                  This is your user ID within paperCuts.
-                </p>
-                <div className='d-md-flex'>
-                  <div className='col-md-5'>
-                    <div className='input-group input-group-sm'>
-                      <input
-                        className='form-control'
-                        type='text'
-                        placeholder='ID'
-                        aria-label='your id'
-                        disabled
-                        value='rXnB5e5aQpkYm2dC1uciGVLr'
-                      />
-                      <button
-                        className='btn btn-aurora css-tooltip'
-                        type='button'
-                        data-tooltip='Copy To Clipboard'
-                        onClick={(e) => {
-                          copy_to_clipboard('rXnB5e5aQpkYm2dC1uciGVLr');
-                        }}
-                      >
-                        <MdContentCopy />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <p className='m-0 small text-dark'>
-                    Used when interacting with the paperCuts API.
-                  </p>
-                  <button
-                    className='btn btn-aurora btn-sm px-3'
-                    type='submit'
-                    aria-label='save changes'
-                  >
-                    save
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className='card my-4 border-danger'>
-              <div className='card-body'>
-                <h4 className='card-title'>Delete Personal Account</h4>
-                <p className='card-text'>
-                  Permanently remove your Personal Account and all of its
-                  contents from the paperCuts platform. This action is not
-                  reversible, so please continue with caution.
-                </p>
-              </div>
-              <div className='card-footer bg-light'>
-                <div className='d-flex justify-content-end align-items-center'>
-                  <button
-                    className='btn btn-danger btn-sm px-3'
-                    type='submit'
-                    aria-label='save changes'
-                  >
-                    Delete Personal Account
-                  </button>
-                </div>
-              </div>
+  const updateSettingByKey = (key) => {
+    // hide saved icon
+    if (isSaved[key] === true) {
+      setIsSaved({ ...isSaved, [key]: false });
+    }
+    // array check
+    if (getTypeOf(formData[key]) === 'Array') {
+      if (!isEqualArray(formData[key], auth_context.userData[key])) {
+        api_change_user_setting({ [key]: formData[key] }, key);
+      }
+    } else if (getTypeOf(formData[key]) === 'Object') {
+      // object check
+      if (!isEqualObject(formData[key], auth_context.userData[key])) {
+        api_change_user_setting({ [key]: formData[key] }, key);
+      }
+    } else if (getTypeOf(formData[key]) === 'String') {
+      // string check
+      if (formData[key] !== auth_context.userData[key]) {
+        api_change_user_setting({ [key]: formData[key] }, key);
+      }
+    }
+  };
+
+  const onDoubleInputSaveBtnClick = (field1, field2, key) => {
+    if (
+      formData[field1] !== auth_context.userData[field1] &&
+      formData[field2] !== auth_context.userData[field2]
+    ) {
+      api_change_user_setting(
+        { [field1]: formData[field1], [field2]: formData[field2] },
+        key
+      );
+    } else if (formData[field1] !== auth_context.userData[field1]) {
+      api_change_user_setting({ [field1]: formData[field1] }, key);
+    } else if (formData[field2] !== auth_context.userData[field2]) {
+      api_change_user_setting({ [field2]: formData[field2] }, key);
+    }
+  };
+
+  const onSocialMediaInputChange = (evt) => {
+    let socialMedia = {
+      ...formData.socialMedia,
+      [evt.target.name]: evt.target.value,
+    };
+    setFormData({
+      ...formData,
+      socialMedia,
+    });
+  };
+
+  const onPasswordSave = () => {
+    if (formData.password.length > 8) {
+      updateSettingByKey('password');
+    }
+  };
+
+  const onEmailSave = async () => {
+    if (isSaved['email'] === true) {
+      setIsSaved({ ...isSaved, email: false });
+    }
+    if (formData.email !== auth_context.userData.email) {
+      setIsLoading({ ...isLoading, email: true });
+      await AuthorsAPI.get(`?email=${formData.email}`)
+        .then((response) => {
+          if (response.data.length === 0) {
+            updateSettingByKey('email');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setIsLoading({ ...isLoading, email: false });
+        });
+    }
+  };
+
+  const onUsernameSave = async () => {
+    if (isSaved['username'] === true) {
+      // to prevent multiple un needed render
+      setIsSaved({ ...isSaved, username: false });
+    }
+    if (formData.username !== auth_context.userData.username) {
+      setIsLoading({ ...isLoading, username: true });
+      await AuthorsAPI.get(`?username=${formData.username}`)
+        .then((response) => {
+          if (response.data.length === 0) {
+            updateSettingByKey('username');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setIsLoading({ ...isLoading, username: false });
+        });
+    }
+  };
+
+  const onCategoryChange = (new_category) => {
+    setFormData({ ...formData, category: new_category });
+  };
+
+  const onBooksChange = (books) => {
+    setFormData({ ...formData, books: books });
+  };
+
+  const CARDS_DATA = [
+    {
+      label: 'your name',
+      key: 'name',
+      cardText: 'This is how readers know you.',
+      footerText: 'Please use 48 characters at maximum.',
+      onSaveClick: () => {
+        onDoubleInputSaveBtnClick('firstName', 'lastName', 'name');
+      },
+      children: <FullName onInputChange={onInputChange} formData={formData} />,
+    },
+    {
+      label: 'your username',
+      key: 'username',
+      cardText: 'This is your URL namespace within paperCuts.',
+      footerText: 'Tip: use 16 characters at minimum.',
+      onSaveClick: onUsernameSave,
+      children: <Username onInputChange={onInputChange} formData={formData} />,
+    },
+    {
+      label: 'your email',
+      key: 'email',
+      cardText:
+        'Please enter the email address you want to use to log in with paperCuts',
+      footerText: 'We will email you to verify the change.',
+      onSaveClick: onEmailSave,
+      children: (
+        <InputField
+          outer='col-4'
+          className='form-control-sm'
+          maxLength={48}
+          placeholder='email address'
+          value={formData['email']}
+          name='email'
+          onChange={onInputChange}
+        />
+      ),
+    },
+    {
+      label: 'your password',
+      key: 'password',
+      cardText:
+        'Please enter the password you want to use to log in with paperCuts.',
+      footerText: 'Please use 8 characters at minimum.',
+      onSaveClick: onPasswordSave,
+      children: (
+        <InputField
+          outer='col-4'
+          className='form-control-sm'
+          minLength={8}
+          placeholder='password'
+          value={formData['password']}
+          name='password'
+          type='password'
+          onChange={onInputChange}
+        />
+      ),
+    },
+    {
+      label: 'your info',
+      key: 'info',
+      cardText: ' Tell us a little bit about yourself',
+      footerText: 'say something about yourself',
+      onSaveClick: () => {
+        onDoubleInputSaveBtnClick('info', 'extraInfo', 'info');
+      },
+      children: <InfoCard onInputChange={onInputChange} formData={formData} />,
+    },
+    {
+      label: 'your social Media',
+      key: 'socialMedia',
+      cardText: 'how to get you. write down your social media links',
+      footerText: 'keep on touch with other',
+      onSaveClick: () => {
+        updateSettingByKey('socialMedia');
+      },
+      children: (
+        <SocialMedia
+          onSocialMediaInputChange={onSocialMediaInputChange}
+          formData={formData}
+        />
+      ),
+    },
+    {
+      label: 'your avatar',
+      key: 'avatar',
+      cardText: null,
+      footerText: ' An avatar is optional but strongly recommended.',
+      children: <AvatarCard auth_context={auth_context} />,
+    },
+    {
+      label: 'your id',
+      key: 'id',
+      cardText: ' This is your user ID within paperCuts.',
+      footerText: 'Used when interacting with the paperCuts API',
+      children: <IdCard id={auth_context.userData.id} />,
+    },
+    {
+      label: 'your category',
+      key: 'category',
+      cardText: 'This is your book specifications',
+      footerText: 'differ between books',
+      onSaveClick: () => {
+        updateSettingByKey('category');
+      },
+      children: (
+        <CategoryCard
+          userCategory={auth_context.userData.category}
+          onCategoryChange={onCategoryChange}
+        />
+      ),
+    },
+    {
+      label: 'your books',
+      key: 'books',
+      cardText: 'This is your published books within paperCuts.',
+      footerText: 'your publishing',
+      onSaveClick: () => {
+        updateSettingByKey('books');
+      },
+      children: (
+        <BooksCard
+          userBooks={auth_context.userData.books}
+          onBooksChange={onBooksChange}
+        />
+      ),
+    },
+    {
+      label: 'delete Personal account',
+      cardText:
+        'Permanently remove your Personal Account and all of its reversible, so please continue with caution.',
+      footerText: 'This action cannot be undone.',
+      children: <DeleteAccountCard userData={auth_context.userData} />,
+      dangerBorder: true,
+    },
+  ];
+
+  return (
+    <>
+      <section className='profile-page my-5'>
+        <div className='container'>
+          <div className='row justify-content-center'>
+            <div className='col-md-10 my-3'>
+              <h1 className='h2 mb-5 special-header'>
+                Personal Account Settings
+              </h1>
+
+              <ProfileCards
+                CARDS_DATA={CARDS_DATA}
+                isLoading={isLoading}
+                isSaved={isSaved}
+              />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
