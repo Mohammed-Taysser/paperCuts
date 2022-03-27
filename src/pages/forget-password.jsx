@@ -1,13 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  AuthorsAPI,
-  get_author_by_email,
-  get_user_by_email,
-  UserAPI,
-} from '../api/Localhost';
+import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
 import Alert from '../components/bootstrap/Alert';
-import { CheckBox, InputField } from '../components/bootstrap/Form';
+import { InputField } from '../components/bootstrap/Form';
 import Spinner from '../components/bootstrap/Spinner';
 import { Context as AuthContext } from '../context/auth';
 
@@ -15,7 +10,6 @@ function ForgetPassword() {
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
   const [email, setEmail] = useState('');
-  const [isAuthor, setIsAuthor] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [currentTempUser, setCurrentTempUser] = useState(null);
@@ -43,34 +37,6 @@ function ForgetPassword() {
       });
   };
 
-  const api_get_user_by_email = async () => {
-    setLoading(true);
-    await UserAPI.get(`?email=${email}`)
-      .then((response) => {
-        check_exist_email(response.data[0]);
-      })
-      .catch((error) => {
-        check_exist_email(get_user_by_email(email));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const api_set_user_password = async () => {
-    setLoading(true);
-    await UserAPI.patch(`/${currentTempUser.id}`, { password })
-      .then((response) => {
-        navigate_to('/login');
-      })
-      .catch((error) => {
-        check_exist_email(get_user_by_email(email));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
   const api_set_author_password = async () => {
     setLoading(true);
     await AuthorsAPI.patch(`/${currentTempUser.id}`, { password })
@@ -78,10 +44,10 @@ function ForgetPassword() {
         navigate_to('/login');
       })
       .catch((error) => {
-        check_exist_email(get_user_by_email(email));
+        check_exist_email(get_author_by_email(email));
       })
       .finally(() => {
-        setLoading(false);
+        // setLoading(false);
       });
   };
 
@@ -90,7 +56,7 @@ function ForgetPassword() {
       setEmailNotFound(false);
       setShowEmailSearchForm(false);
       setShowChangePasswordForm(true);
-      setCurrentTempUser(response_data)
+      setCurrentTempUser(response_data);
     } else {
       setEmailNotFound(true);
     }
@@ -99,24 +65,28 @@ function ForgetPassword() {
   const onSearchFormSubmit = (evt) => {
     evt.preventDefault();
 
-    if (isAuthor) {
-      api_get_author_by_email();
-    } else {
-      api_get_user_by_email();
-    }
+    api_get_author_by_email();
   };
 
   const onChangeFormSubmit = (evt) => {
     evt.preventDefault();
     if (password === confirmPassword) {
       setPasswordNotMatch(false);
-      if (isAuthor) {
-        api_set_author_password();
-      } else {
-        api_set_user_password();
-      }
+      api_set_author_password();
     } else {
       setPasswordNotMatch(true);
+    }
+  };
+
+  const RenderSubmitButton = ({ label }) => {
+    if (loading) {
+      return <Spinner />;
+    } else {
+      return (
+        <button className='btn btn-aurora ' type='submit'>
+          {label}
+        </button>
+      );
     }
   };
 
@@ -149,22 +119,9 @@ function ForgetPassword() {
                         placeholder='email address'
                         InvalidFeedback='email not exist'
                       />
-                      <CheckBox
-                        outer='my-3'
-                        id='is-author'
-                        label="i'm an author"
-                        checked={isAuthor}
-                        className='me-2'
-                        onChange={(e) => setIsAuthor(e.target.checked)}
-                      />
+
                       <div className=''>
-                        {loading ? (
-                          <Spinner />
-                        ) : (
-                          <button className='btn btn-aurora mt-4' type='submit'>
-                            Search
-                          </button>
-                        )}
+                        <RenderSubmitButton label='Search' />
                       </div>
                     </form>
                   )}
@@ -202,13 +159,7 @@ function ForgetPassword() {
                       />
                       <div className='d-flex mt-4'>
                         <div className=''>
-                          {loading ? (
-                            <Spinner />
-                          ) : (
-                            <button className='btn btn-aurora ' type='submit'>
-                              Save Changes
-                            </button>
-                          )}
+                          <RenderSubmitButton label='Save Changes' />
                         </div>
                         <div className='mx-3'>
                           <button
@@ -218,7 +169,7 @@ function ForgetPassword() {
                               setShowChangePasswordForm(false);
                             }}
                           >
-                            Another Email
+                            Search Another Email
                           </button>
                         </div>
                       </div>
