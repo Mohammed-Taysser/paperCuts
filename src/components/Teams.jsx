@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from './SectionTitle';
 import SingleMember from './single/SingleMember';
 import { TEAM, TeamAPI } from '../api/Localhost';
-import Spinner from './bootstrap/Spinner';
+import { RowOfPlaceholderCard } from './bootstrap/Placeholder';
 import Alert from './bootstrap/Alert';
 
 function TeamMembers() {
@@ -40,7 +40,7 @@ function TeamMembers() {
 
   const Render = () => {
     if (loading) {
-      return <Spinner />;
+      return <RowOfPlaceholderCard />;
     }
     if (teams) {
       return <TeamMemberList />;
