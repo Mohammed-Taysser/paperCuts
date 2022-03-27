@@ -52,33 +52,36 @@ function AuthorDetails() {
     for (const key in currentAuthor.socialMedia) {
       if (Object.hasOwnProperty.call(currentAuthor.socialMedia, key)) {
         let icon = null;
-
-        switch (key) {
-          case 'instagram':
-            icon = <FaInstagram />;
-            break;
-          case 'facebook':
-            icon = <FaFacebookF />;
-            break;
-          case 'twitter':
-            icon = <FaTwitter />;
-            break;
-          case 'telegram':
-            icon = <FaTelegram />;
-            break;
-          default:
-            icon = <MdAlternateEmail />;
-            break;
+        if (currentAuthor.socialMedia[key]) {
+          switch (key) {
+            case 'instagram':
+              icon = <FaInstagram />;
+              break;
+            case 'facebook':
+              icon = <FaFacebookF />;
+              break;
+            case 'twitter':
+              icon = <FaTwitter />;
+              break;
+            case 'telegram':
+              icon = <FaTelegram />;
+              break;
+            default:
+              icon = <MdAlternateEmail />;
+              break;
+          }
+          author_social_media.push(
+            <a
+              className='text-dark h5 mx-2'
+              href={currentAuthor.socialMedia[key]}
+              key={key}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {icon}
+            </a>
+          );
         }
-        author_social_media.push(
-          <a
-            className='text-dark h5 mx-2'
-            href={currentAuthor.socialMedia[key]}
-            key={key}
-          >
-            {icon}
-          </a>
-        );
       }
     }
     return (
@@ -117,14 +120,6 @@ function AuthorDetails() {
                 <p className='small-info'>{currentAuthor.extraInfo}</p>
               )}
               <InlineCategoryTags category={currentAuthor.category} />
-              <p className='mb-1'>
-                Languages:{' '}
-                {currentAuthor.language ? (
-                  currentAuthor.language.join(', ')
-                ) : (
-                  <small>no languages</small>
-                )}
-              </p>
               <SocialMedia />
             </div>
           </div>
