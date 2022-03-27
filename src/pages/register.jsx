@@ -4,12 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { IoMdWarning } from 'react-icons/io';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Context as AuthContext } from '../context/auth';
-import {
-  AuthorsAPI,
-  get_author_by_email,
-  UserAPI,
-  get_user_by_email,
-} from '../api/Localhost';
+import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
 import Alert from '../components/bootstrap/Alert';
 import SectionTitle from '../components/SectionTitle';
 import GetBookByCategory from '../components/GetBookByCategory';
@@ -37,31 +32,13 @@ function Register() {
       });
   };
 
-  const api_get_user_by_email = async () => {
-    setLoading(true);
-    await UserAPI.get(`?email=${formData['email']}`)
-      .then((response) => {
-        check_exist_email(response.data[0]);
-      })
-      .catch((error) => {
-        check_exist_email(get_user_by_email(formData['email']));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
   const check_exist_email = (response_data) => {
     setFormSubmitted(false);
     if (response_data) {
       setExistEmail(true);
     } else {
       setExistEmail(false);
-      if (formData['signAsAuthor']) {
-        api_create_author();
-      } else {
-        api_create_user();
-      }
+      api_create_author();
     }
   };
 
@@ -69,26 +46,21 @@ function Register() {
     if (!existEmail && !is_empty()) {
       setLoading(true);
 
-      let user_data = {
+      let author_data = {
         ...formData,
         username: null,
         info: null,
         extraInfo: null,
         gender: null,
-        avatar:
-          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
-        signature:
-          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/signatures/signature-2.png',
+        avatar: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+        signature: null,
         language: [],
         socialMedia: [],
         category: [],
         books: [],
       };
 
-      let user_data_without_signInAsAUthor = user_data;
-      delete user_data_without_signInAsAUthor.signAsAuthor;
-
-      await AuthorsAPI.post(`/`, user_data_without_signInAsAUthor)
+      await AuthorsAPI.post(`/`, author_data)
         .then((response) => {
           save_user(response.data);
         })
@@ -96,38 +68,7 @@ function Register() {
           console.log(error);
         })
         .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      setFormSubmitted(true);
-    }
-  };
-
-  const api_create_user = async () => {
-    if (!existEmail && !is_empty()) {
-      setLoading(true);
-
-      let user_data = {
-        ...formData,
-        username: null,
-        info: null,
-        gender: null,
-        avatar:
-          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
-      };
-
-      let user_data_without_signInAsAUthor = user_data;
-      delete user_data_without_signInAsAUthor.signAsAuthor;
-
-      await UserAPI.post(`/`, user_data_without_signInAsAUthor)
-        .then((response) => {
-          save_user(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setLoading(false);
+          // setLoading(false);
         });
     } else {
       setFormSubmitted(true);
@@ -158,11 +99,7 @@ function Register() {
     setExistEmail(false);
     setFormSubmitted(true);
     if (data !== null && !is_empty()) {
-      if (data['signAsAuthor']) {
-        api_get_author_by_email();
-      } else {
-        api_get_user_by_email();
-      }
+      api_get_author_by_email();
     }
   };
 
@@ -213,7 +150,7 @@ function Register() {
       <section className='register-page my-5 py-5'>
         <div className='container'>
           <div className='row justify-content-center align-items-stretch g-0'>
-            <div className='col-md-6 my-3'>
+            <div className='col-lg-6 my-3'>
               <div className='p-4 rounded-start border register-content'>
                 <h1 className='my-4 text-center'>Sign up</h1>
                 <OtherSignUpMethods />
@@ -230,7 +167,7 @@ function Register() {
                 />
               </div>
             </div>
-            <div className='col-md-6 my-3'>
+            <div className='col-lg-6 my-3'>
               <div className='bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login'>
                 <div className='text-center text-white'>
                   <h2 className='mb-3'>Hello, Friend!</h2>
