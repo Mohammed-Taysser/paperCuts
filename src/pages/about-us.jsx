@@ -7,8 +7,11 @@ import CupShape from '../assets/images/shapes/cup-shape.png';
 import CoffeeImage from '../assets/images/background/about/coffee.png';
 import AutobiographyImage from '../assets/images/background/about/autobiography.png';
 import AboutAudioBook from '../components/AboutAudioBook';
+import usePageTitle from '../hooks/usePageTitle';
 
 function AboutUs() {
+  usePageTitle('About Us');
+
   return (
     <>
       <Banner title='about us' subtitle='info' />
@@ -26,7 +29,7 @@ function AboutUs() {
                   wide-ranging collation of papers examines a host of issues in
                   studying immigrant.
                 </p>
-                <button className='btn btn-aurora'>Read More</button>
+                {/* <button className='btn btn-aurora'>Read More</button> */}
                 <img
                   src={CupShape}
                   alt='cup-shape'
@@ -78,7 +81,7 @@ function AboutUs() {
                   wide-ranging collation of papers examines a host of issues in
                   studying immigrant.
                 </p>
-                <button className='btn btn-aurora'>Read More</button>
+                {/* <button className='btn btn-aurora'>Read More</button> */}
                 <img
                   src={FlyShape}
                   alt='fly-shape'

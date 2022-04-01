@@ -16,8 +16,11 @@ import Client3 from '../assets/images/icons/sponsors/sponsor-3.png';
 
 import SkewedShape from '../assets/images/shapes//skewed-shape.png';
 import AwardsImage from '../assets/images/background/awards.png';
+import usePageTitle from '../hooks/usePageTitle';
 
-function homepage() {
+function Homepage() {
+  usePageTitle('Homepage');
+
   const LatestBooks = () => {
     return (
       <section className='latest-books py-5 my-5'>
@@ -133,4 +136,4 @@ function homepage() {
   );
 }
 
-export default homepage;
+export default Homepage;

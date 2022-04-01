@@ -5,8 +5,10 @@ import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
 import GetBookByCategory from '../components/GetBookByCategory';
+import usePageTitle from '../hooks/usePageTitle';
 
 function CategoryDetails() {
+  const [, setPageTitle] = usePageTitle('Category Details');
   const { slug } = useParams();
   const [currentCategory, setCurrentCategory] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,12 +23,14 @@ function CategoryDetails() {
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentCategory(response.data[0]);
+          setPageTitle(response.data[0].title);
         }
       })
       .catch((error) => {
         let cty = get_category_by_slug(slug);
         if (cty) {
           setCurrentCategory(cty);
+          setPageTitle(cty.title);
         }
       })
       .finally(() => {
@@ -48,7 +52,9 @@ function CategoryDetails() {
         subtitle='shop list'
       />
       <section className='my-5 py-5'>
-        <div className='container '>{loading ? <RowOfPlaceholderCard num={6} /> : <BookList />}</div>
+        <div className='container '>
+          {loading ? <RowOfPlaceholderCard num={6} /> : <BookList />}
+        </div>
       </section>
     </>
   );

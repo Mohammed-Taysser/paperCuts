@@ -9,8 +9,10 @@ import JoinClubImage from '../assets/images/background/join-club.jpg';
 import SectionTitle from '../components/SectionTitle';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Events() {
+  usePageTitle('Events');
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
 

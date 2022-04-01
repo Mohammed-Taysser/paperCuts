@@ -3,8 +3,10 @@ import SingleAuthor from '../components/single/SingleAuthor';
 import Banner from '../components/Banner';
 import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
 import { AuthorsAPI, AUTHORS } from '../api/Localhost';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Authors() {
+  usePageTitle('Authors');
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +43,7 @@ function Authors() {
 
   const RenderMessage = () => {
     if (loading) {
-      return <RowOfPlaceholderCard num={6} />;
+      return <RowOfPlaceholderCard num={8} />;
     } else {
       return <AuthorsList />;
     }

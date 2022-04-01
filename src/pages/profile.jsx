@@ -17,8 +17,10 @@ import CategoryCard from '../components/profileCards/CategoryCard';
 import BooksCard from '../components/profileCards/BooksCard';
 import DeleteAccountCard from '../components/profileCards/DeleteAccountCard';
 import AvatarCard from '../components/profileCards/AvatarCard';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Profile() {
+  usePageTitle('Profile');
   const auth_context = useContext(AuthContext);
   const [isSaved, setIsSaved] = useState({});
   const [isLoading, setIsLoading] = useState({});

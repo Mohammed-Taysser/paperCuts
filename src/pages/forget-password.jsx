@@ -5,8 +5,10 @@ import Alert from '../components/bootstrap/Alert';
 import { InputField } from '../components/bootstrap/Form';
 import Spinner from '../components/bootstrap/Spinner';
 import { Context as AuthContext } from '../context/auth';
+import usePageTitle from '../hooks/usePageTitle';
 
 function ForgetPassword() {
+  usePageTitle('Forget Password');
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
   const [email, setEmail] = useState('');

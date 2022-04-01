@@ -5,13 +5,15 @@ import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { IoMdWarning } from 'react-icons/io';
 import { Context as AuthContext } from '../context/auth';
 import { InputField } from '../components/bootstrap/Form';
+import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
-import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
 import GetBookByCategory from '../components/GetBookByCategory';
 import SectionTitle from '../components/SectionTitle';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Login() {
+  usePageTitle('Login');
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
   const [wrongPassword, setWrongPassword] = useState(false);

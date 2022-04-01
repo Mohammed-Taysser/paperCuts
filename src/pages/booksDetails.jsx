@@ -13,9 +13,10 @@ import { diff_in_days, Stars } from '../components/ManipulateData';
 import { Context as AuthContext } from '../context/auth';
 import SectionTitle from '../components/SectionTitle';
 import TabAndNav from '../components/TabAndNav';
-import 'bootstrap/js/src/tab';
+import usePageTitle from '../hooks/usePageTitle';
 
 function BooksDetails() {
+  const [, setPageTitle] = usePageTitle('Book Details');
   let { slug } = useParams();
   const auth_context = useContext(AuthContext);
   const reviews_tap_btn_ref = useRef(null);
@@ -23,19 +24,24 @@ function BooksDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api_get_books();
+    api_get_book();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
-  const api_get_books = async () => {
+  const api_get_book = async () => {
     await BooksAPI.get(`?slug=${slug}`)
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentBook(response.data[0]);
+          setPageTitle(response.data[0].title);
         }
       })
       .catch((error) => {
-        setCurrentBook(get_book_by_slug(slug));
+        let temp_book = get_book_by_slug(slug);
+        if (temp_book) {
+          setCurrentBook(temp_book);
+          setPageTitle(temp_book.title);
+        }
       })
       .finally(() => {
         setLoading(false);
@@ -58,19 +64,14 @@ function BooksDetails() {
             <span className='special-small-title'>
               publisher: {currentBook.publisher}
             </span>
-            {auth_context.isAuth && (
-              <AddToWishList
-                currentBook={currentBook}
-                userData={auth_context.userData}
-              />
-            )}
+            {auth_context.isAuth && <AddToWishList currentBook={currentBook} />}
           </div>
           <div className='d-flex align-items-start'>
             <h1 className='h2 mb-2'>{currentBook.title} </h1>
             <BookBadge />
           </div>
           <div className='d-flex align-items-end'>
-            {<Stars stars_length={currentBook.stars} />}
+            <Stars stars_length={currentBook.stars} />
             <a
               className='small mx-4 text-muted special-small-title'
               href='#reviews'

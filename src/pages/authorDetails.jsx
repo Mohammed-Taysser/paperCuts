@@ -14,8 +14,10 @@ import Alert from '../components/bootstrap/Alert';
 import Spinner from '../components/bootstrap/Spinner';
 import GetBookByCategory from '../components/GetBookByCategory';
 import InlineCategoryTags from '../components/InlineCategoryTags';
+import usePageTitle from '../hooks/usePageTitle';
 
 function AuthorDetails() {
+  const [, setPageTitle] = usePageTitle('Author Details');
   const { username } = useParams();
   const [currentAuthor, setCurrentAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,12 +32,16 @@ function AuthorDetails() {
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentAuthor(response.data[0]);
+          setPageTitle(
+            response.data[0].firstName + ' ' + response.data[0].lastName
+          );
         }
       })
       .catch((err) => {
         let temp_author = get_author_by_username(username);
         if (temp_author) {
           setCurrentAuthor(temp_author);
+          setPageTitle(temp_author.firstName + ' ' + temp_author.lastName);
         }
       })
       .finally(() => {

@@ -8,13 +8,15 @@ import {
   FaTelegram,
 } from 'react-icons/fa';
 import { EventAPI, get_event_by_slug } from '../api/Localhost';
+import { monthNames } from '../components/ManipulateData';
 import Banner from '../components/Banner';
 import SecondaryBannerImage from '../assets/images/background/secondary-banner.jpg';
-import { monthNames } from '../components/ManipulateData';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
+import usePageTitle from '../hooks/usePageTitle';
 
 function EventsDetails() {
+  const [, setPageTitle] = usePageTitle('Event Details');
   const { slug } = useParams();
   const [currentEvent, setCurrentEvents] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,12 +31,14 @@ function EventsDetails() {
       .then((response) => {
         if (response.data.length === 1) {
           setCurrentEvents(response.data[0]);
+          setPageTitle(response.data[0].title);
         }
       })
       .catch((error) => {
         let temp_event = get_event_by_slug(slug);
         if (temp_event) {
           setCurrentEvents(temp_event);
+          setPageTitle(temp_event.title);
         }
       })
       .finally(() => {
