@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/js/src/carousel';
-import { Stars } from './ManipulateData';
-import { TestimonialsAPI, TESTIMONIALS } from '../api/Localhost';
-import RoundedBorder from '../assets/images/shapes/rounded-border.svg';
-import DashedShape from '../assets/images/shapes/dashed-shape.svg';
-import Spinner from './bootstrap/Spinner';
-import Alert from './bootstrap/Alert';
+import { Stars } from '../ManipulateData';
+import { TestimonialsAPI, TESTIMONIALS } from '../../api/Localhost';
+import RoundedBorder from '../../assets/images/shapes/rounded-border.svg';
+import DashedShape from '../../assets/images/shapes/dashed-shape.svg';
+import Spinner from '../bootstrap/Spinner';
+import Alert from '../bootstrap/Alert';
 
 function Testimonials(props) {
   const [testimonials, setTestimonials] = useState([]);

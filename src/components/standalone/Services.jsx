@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { SERVICES, ServicesAPI } from '../api/Localhost';
+import { SERVICES, ServicesAPI } from '../../api/Localhost';
 import SectionTitle from './SectionTitle';
-import Alert from './bootstrap/Alert';
-import { RowOfPlaceholderCard } from './bootstrap/Placeholder';
-import SingleService from './single/SingleService';
+import Alert from '../bootstrap/Alert';
+import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
+import SingleService from '../single/SingleService';
 
 function Services() {
   const [services, setServices] = useState([]);

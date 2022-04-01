@@ -1,11 +1,11 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
-import SingleAddress from './single/SingleAddress';
-import Sponsor1 from '../assets/images/icons/sponsors/sponsor-1.png';
-import Sponsor2 from '../assets/images/icons/sponsors/sponsor-2.png';
-import Sponsor3 from '../assets/images/icons/sponsors/sponsor-3.png';
-import Sponsor4 from '../assets/images/icons/sponsors/sponsor-4.png';
-import Sponsor5 from '../assets/images/icons/sponsors/sponsor-5.png';
+import SingleAddress from '../single/SingleAddress';
+import Sponsor1 from '../../assets/images/icons/sponsors/sponsor-1.png';
+import Sponsor2 from '../../assets/images/icons/sponsors/sponsor-2.png';
+import Sponsor3 from '../../assets/images/icons/sponsors/sponsor-3.png';
+import Sponsor4 from '../../assets/images/icons/sponsors/sponsor-4.png';
+import Sponsor5 from '../../assets/images/icons/sponsors/sponsor-5.png';
 
 function Location(props) {
   const GoogleMap = () => {

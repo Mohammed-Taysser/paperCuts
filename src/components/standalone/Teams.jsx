@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from './SectionTitle';
-import SingleMember from './single/SingleMember';
-import { TEAM, TeamAPI } from '../api/Localhost';
-import { RowOfPlaceholderCard } from './bootstrap/Placeholder';
-import Alert from './bootstrap/Alert';
+import SingleMember from '../single/SingleMember';
+import { TEAM, TeamAPI } from '../../api/Localhost';
+import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
+import Alert from '../bootstrap/Alert';
 
 function TeamMembers() {
   const [teams, setTeams] = useState(null);
