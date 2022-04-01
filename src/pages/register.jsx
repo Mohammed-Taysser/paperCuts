@@ -9,8 +9,11 @@ import Alert from '../components/bootstrap/Alert';
 import SectionTitle from '../components/SectionTitle';
 import GetBookByCategory from '../components/GetBookByCategory';
 import RegisterForm from '../components/RegisterForm';
+import { slugify, randomBigInt } from '../components/ManipulateData';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Register() {
+  usePageTitle('Register');
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
   const [formData, setFormData] = useState(null);
@@ -48,11 +51,14 @@ function Register() {
 
       let author_data = {
         ...formData,
-        username: null,
+        username: slugify(
+          formData['firstName'] + formData['lastName'] + randomBigInt()
+        ),
         info: null,
         extraInfo: null,
         gender: null,
-        avatar: 'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+        avatar:
+          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
         signature: null,
         language: [],
         socialMedia: [],
