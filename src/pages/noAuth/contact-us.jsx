@@ -1,7 +1,7 @@
 import React from 'react';
-import Banner from '../components/Banner';
-import Location from '../components/GeoLocation';
-import usePageTitle from '../hooks/usePageTitle';
+import Banner from '../../components/Banner';
+import Location from '../../components/GeoLocation';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function ContactUs() {
   usePageTitle('Contact Us');

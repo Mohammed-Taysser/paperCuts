@@ -7,13 +7,13 @@ import {
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import { EventAPI, get_event_by_slug } from '../api/Localhost';
-import { monthNames } from '../components/ManipulateData';
-import Banner from '../components/Banner';
-import SecondaryBannerImage from '../assets/images/background/secondary-banner.jpg';
-import Spinner from '../components/bootstrap/Spinner';
-import Alert from '../components/bootstrap/Alert';
-import usePageTitle from '../hooks/usePageTitle';
+import { EventAPI, get_event_by_slug } from '../../api/Localhost';
+import { monthNames } from '../../components/ManipulateData';
+import Banner from '../../components/Banner';
+import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
+import Spinner from '../../components/bootstrap/Spinner';
+import Alert from '../../components/bootstrap/Alert';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function EventsDetails() {
   const [, setPageTitle] = usePageTitle('Event Details');

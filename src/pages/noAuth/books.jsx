@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { BOOKS, BooksAPI } from '../api/Localhost';
-import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
+import { BOOKS, BooksAPI } from '../../api/Localhost';
+import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import { useSearchParams } from 'react-router-dom';
-import { SelectField } from '../components/bootstrap/Form';
-import SingleBook from '../components/single/SingleBook';
-import RightSidebar from '../layout/RightSidebar';
-import FilterForm from '../components/FilterForm';
-import Alert from '../components/bootstrap/Alert';
-import usePageTitle from '../hooks/usePageTitle';
+import { SelectField } from '../../components/bootstrap/Form';
+import SingleBook from '../../components/single/SingleBook';
+import RightSidebar from '../../layout/RightSidebar';
+import FilterForm from '../../components/FilterForm';
+import Alert from '../../components/bootstrap/Alert';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function Books() {
   usePageTitle('Books');

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
-import Alert from '../components/bootstrap/Alert';
-import { InputField } from '../components/bootstrap/Form';
-import Spinner from '../components/bootstrap/Spinner';
-import { Context as AuthContext } from '../context/auth';
-import usePageTitle from '../hooks/usePageTitle';
+import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
+import Alert from '../../components/bootstrap/Alert';
+import { InputField } from '../../components/bootstrap/Form';
+import Spinner from '../../components/bootstrap/Spinner';
+import { Context as AuthContext } from '../../context/auth';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function ForgetPassword() {
   usePageTitle('Forget Password');
@@ -47,9 +47,6 @@ function ForgetPassword() {
       })
       .catch((error) => {
         check_exist_email(get_author_by_email(email));
-      })
-      .finally(() => {
-        // setLoading(false);
       });
   };
 
@@ -92,6 +89,10 @@ function ForgetPassword() {
     }
   };
 
+  const isInvalidClass = (state) => {
+    return state ? 'is-invalid' : '';
+  };
+
   return (
     <>
       <section className='forget-password-page my-5 py-5'>
@@ -112,7 +113,7 @@ function ForgetPassword() {
                       <InputField
                         outer='my-3'
                         type='email'
-                        className={emailNotFound ? 'is-invalid' : ''}
+                        className={isInvalidClass(emailNotFound)}
                         id='forget-password-email'
                         label='email address'
                         value={email}
@@ -133,7 +134,7 @@ function ForgetPassword() {
                         outer='my-3'
                         type='password'
                         id='forget-password'
-                        className={passwordNotMatch ? 'is-invalid' : ''}
+                        className={isInvalidClass(passwordNotMatch)}
                         label='new password'
                         value={password}
                         minLength={8}
@@ -146,7 +147,7 @@ function ForgetPassword() {
                       />
                       <InputField
                         outer='my-3'
-                        className={passwordNotMatch ? 'is-invalid' : ''}
+                        className={isInvalidClass(passwordNotMatch)}
                         type='password'
                         id='forget-confirm-password'
                         label='confirm password'

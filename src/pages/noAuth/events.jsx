@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FcBrokenLink } from 'react-icons/fc';
-import Banner from '../components/Banner';
-import { EventAPI, EVENTS } from '../api/Localhost';
-import SecondaryBannerImage from '../assets/images/background/secondary-banner.jpg';
-import EventsBackgroundImage from '../assets/images/background/events-background.png';
-import JoinClubImage from '../assets/images/background/join-club.jpg';
-import SectionTitle from '../components/SectionTitle';
-import Spinner from '../components/bootstrap/Spinner';
-import Alert from '../components/bootstrap/Alert';
-import usePageTitle from '../hooks/usePageTitle';
+import Banner from '../../components/Banner';
+import { EventAPI, EVENTS } from '../../api/Localhost';
+import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
+import EventsBackgroundImage from '../../assets/images/background/events-background.png';
+import JoinClubImage from '../../assets/images/background/join-club.jpg';
+import SectionTitle from '../../components/SectionTitle';
+import Spinner from '../../components/bootstrap/Spinner';
+import Alert from '../../components/bootstrap/Alert';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function Events() {
   usePageTitle('Events');

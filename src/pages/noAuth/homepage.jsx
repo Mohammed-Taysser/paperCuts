@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Services from '../components/Services';
-import HeroHeader from '../components/HeroHeader';
-import Testimonials from '../components/Testimonials';
-import GeoLocation from '../components/GeoLocation';
-import SectionTitle from '../components/SectionTitle';
-import GetBookByCategory from '../components/GetBookByCategory';
+import Services from '../../components/Services';
+import HeroHeader from '../../components/HeroHeader';
+import Testimonials from '../../components/Testimonials';
+import GeoLocation from '../../components/GeoLocation';
+import SectionTitle from '../../components/SectionTitle';
+import GetBookByCategory from '../../components/GetBookByCategory';
 
-import NewsLetterImage from '../assets/images/background/news-letter-bg.png';
-import SleepyGirlImage from '../assets/images/shapes/sleepy-girl.png';
+import NewsLetterImage from '../../assets/images/background/news-letter-bg.png';
+import SleepyGirlImage from '../../assets/images/shapes/sleepy-girl.png';
 
-import Client1 from '../assets/images/icons/sponsors/sponsor-1.png';
-import Client2 from '../assets/images/icons/sponsors/sponsor-2.png';
-import Client3 from '../assets/images/icons/sponsors/sponsor-3.png';
+import Client1 from '../../assets/images/icons/sponsors/sponsor-1.png';
+import Client2 from '../../assets/images/icons/sponsors/sponsor-2.png';
+import Client3 from '../../assets/images/icons/sponsors/sponsor-3.png';
 
-import SkewedShape from '../assets/images/shapes//skewed-shape.png';
-import AwardsImage from '../assets/images/background/awards.png';
-import usePageTitle from '../hooks/usePageTitle';
+import SkewedShape from '../../assets/images/shapes//skewed-shape.png';
+import AwardsImage from '../../assets/images/background/awards.png';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function Homepage() {
   usePageTitle('Homepage');

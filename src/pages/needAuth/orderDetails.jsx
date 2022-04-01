@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { get_order_by_id, OrderAPI } from '../api/Localhost';
-import { monthNames } from '../components/ManipulateData';
-import { Context as AuthContext } from '../context/auth';
-import Banner from '../components/Banner';
-import Spinner from '../components/bootstrap/Spinner';
-import Alert from '../components/bootstrap/Alert';
-import OrdersImage from '../assets/images/background/orders.jpg';
-import usePageTitle from '../hooks/usePageTitle';
+import { get_order_by_id, OrderAPI } from '../../api/Localhost';
+import { monthNames } from '../../components/ManipulateData';
+import { Context as AuthContext } from '../../context/auth';
+import Banner from '../../components/Banner';
+import Spinner from '../../components/bootstrap/Spinner';
+import Alert from '../../components/bootstrap/Alert';
+import OrdersImage from '../../assets/images/background/orders.jpg';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function OrderDetails() {
   const { id } = useParams();

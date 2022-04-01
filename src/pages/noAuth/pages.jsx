@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../components/Banner';
+import Banner from '../../components/Banner';
 
 function WebsitePages() {
   const AUTH_PAGES = [

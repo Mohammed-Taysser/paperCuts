@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { IoMdWarning } from 'react-icons/io';
-import { Context as AuthContext } from '../context/auth';
-import { InputField } from '../components/bootstrap/Form';
-import { AuthorsAPI, get_author_by_email } from '../api/Localhost';
-import Spinner from '../components/bootstrap/Spinner';
-import Alert from '../components/bootstrap/Alert';
-import GetBookByCategory from '../components/GetBookByCategory';
-import SectionTitle from '../components/SectionTitle';
-import usePageTitle from '../hooks/usePageTitle';
+import { Context as AuthContext } from '../../context/auth';
+import { InputField } from '../../components/bootstrap/Form';
+import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
+import Spinner from '../../components/bootstrap/Spinner';
+import Alert from '../../components/bootstrap/Alert';
+import GetBookByCategory from '../../components/GetBookByCategory';
+import SectionTitle from '../../components/SectionTitle';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function Login() {
   usePageTitle('Login');
@@ -33,9 +33,6 @@ function Login() {
       })
       .catch((error) => {
         check_user_exist(get_author_by_email(formData['email']));
-      })
-      .finally(() => {
-        // setLoading(false);
       });
   };
 

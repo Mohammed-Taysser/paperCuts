@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdAlternateEmail } from 'react-icons/md';
-import Banner from '../components/Banner';
-import SectionTitle from '../components/SectionTitle';
-import { AuthorsAPI, get_author_by_username } from '../api/Localhost';
+import Banner from '../../components/Banner';
+import SectionTitle from '../../components/SectionTitle';
+import { AuthorsAPI, get_author_by_username } from '../../api/Localhost';
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import Alert from '../components/bootstrap/Alert';
-import Spinner from '../components/bootstrap/Spinner';
-import GetBookByCategory from '../components/GetBookByCategory';
-import InlineCategoryTags from '../components/InlineCategoryTags';
-import usePageTitle from '../hooks/usePageTitle';
+import Alert from '../../components/bootstrap/Alert';
+import Spinner from '../../components/bootstrap/Spinner';
+import GetBookByCategory from '../../components/GetBookByCategory';
+import InlineCategoryTags from '../../components/InlineCategoryTags';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function AuthorDetails() {
   const [, setPageTitle] = usePageTitle('Author Details');

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import Banner from '../components/Banner';
-import CartCoupon from '../components/CartCoupon';
-import useCart from '../hooks/useCart';
-import BillingForm from '../components/BillingForm';
-import usePageTitle from '../hooks/usePageTitle';
-import { CartAPI, OrderAPI } from '../api/Localhost';
+import Banner from '../../components/Banner';
+import CartCoupon from '../../components/CartCoupon';
+import useCart from '../../hooks/useCart';
+import BillingForm from '../../components/BillingForm';
+import usePageTitle from '../../hooks/usePageTitle';
+import { CartAPI, OrderAPI } from '../../api/Localhost';
 import { useNavigate } from 'react-router-dom';
-import { Context as AuthContext } from '../context/auth';
+import { Context as AuthContext } from '../../context/auth';
 
 function Checkout() {
   usePageTitle('Checkout');

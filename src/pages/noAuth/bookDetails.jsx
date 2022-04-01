@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BooksAPI, get_book_by_slug } from '../api/Localhost';
-import AboutAuthor from '../components/AboutAuthor';
-import AddToCart from '../components/AddToCart';
-import AddToWishList from '../components/AddToWishlist';
-import Banner from '../components/Banner';
-import Alert from '../components/bootstrap/Alert';
-import Spinner from '../components/bootstrap/Spinner';
-import GetBookByCategory from '../components/GetBookByCategory';
-import InlineCategoryTags from '../components/InlineCategoryTags';
-import { diff_in_days, Stars } from '../components/ManipulateData';
-import { Context as AuthContext } from '../context/auth';
-import SectionTitle from '../components/SectionTitle';
-import TabAndNav from '../components/TabAndNav';
-import usePageTitle from '../hooks/usePageTitle';
+import { BooksAPI, get_book_by_slug } from '../../api/Localhost';
+import AboutAuthor from '../../components/AboutAuthor';
+import AddToCart from '../../components/AddToCart';
+import AddToWishList from '../../components/AddToWishlist';
+import Banner from '../../components/Banner';
+import Alert from '../../components/bootstrap/Alert';
+import Spinner from '../../components/bootstrap/Spinner';
+import GetBookByCategory from '../../components/GetBookByCategory';
+import InlineCategoryTags from '../../components/InlineCategoryTags';
+import { diff_in_days, Stars } from '../../components/ManipulateData';
+import { Context as AuthContext } from '../../context/auth';
+import SectionTitle from '../../components/SectionTitle';
+import TabAndNav from '../../components/TabAndNav';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function BooksDetails() {
   const [, setPageTitle] = usePageTitle('Book Details');

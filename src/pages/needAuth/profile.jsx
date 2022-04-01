@@ -1,23 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { AuthorsAPI } from '../api/Localhost';
-import { InputField } from '../components/bootstrap/Form';
+import { AuthorsAPI } from '../../api/Localhost';
+import { InputField } from '../../components/bootstrap/Form';
 import {
   isEqualArray,
   getTypeOf,
   isEqualObject,
-} from '../components/ManipulateData';
-import { Context as AuthContext } from '../context/auth';
-import ProfileCards from '../components/profileCards';
-import FullName from '../components/profileCards/FullNameCard';
-import Username from '../components/profileCards/UsernameCard';
-import InfoCard from '../components/profileCards/InfoCard';
-import SocialMedia from '../components/profileCards/SocialMediaCard';
-import IdCard from '../components/profileCards/IdCard';
-import CategoryCard from '../components/profileCards/CategoryCard';
-import BooksCard from '../components/profileCards/BooksCard';
-import DeleteAccountCard from '../components/profileCards/DeleteAccountCard';
-import AvatarCard from '../components/profileCards/AvatarCard';
-import usePageTitle from '../hooks/usePageTitle';
+} from '../../components/ManipulateData';
+import { Context as AuthContext } from '../../context/auth';
+import ProfileCards from '../../components/profileCards';
+import FullName from '../../components/profileCards/FullNameCard';
+import Username from '../../components/profileCards/UsernameCard';
+import InfoCard from '../../components/profileCards/InfoCard';
+import SocialMedia from '../../components/profileCards/SocialMediaCard';
+import IdCard from '../../components/profileCards/IdCard';
+import CategoryCard from '../../components/profileCards/CategoryCard';
+import BooksCard from '../../components/profileCards/BooksCard';
+import DeleteAccountCard from '../../components/profileCards/DeleteAccountCard';
+import AvatarCard from '../../components/profileCards/AvatarCard';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function Profile() {
   usePageTitle('Profile');

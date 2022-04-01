@@ -1,13 +1,13 @@
 import React from 'react';
-import Banner from '../components/Banner';
-import Services from '../components/Services';
-import TeamMembers from '../components/Teams';
-import FlyShape from '../assets/images/shapes/fly-shape.svg';
-import CupShape from '../assets/images/shapes/cup-shape.png';
-import CoffeeImage from '../assets/images/background/about/coffee.png';
-import AutobiographyImage from '../assets/images/background/about/autobiography.png';
-import AboutAudioBook from '../components/AboutAudioBook';
-import usePageTitle from '../hooks/usePageTitle';
+import AutobiographyImage from '../../assets/images/background/about/autobiography.png';
+import CoffeeImage from '../../assets/images/background/about/coffee.png';
+import CupShape from '../../assets/images/shapes/cup-shape.png';
+import FlyShape from '../../assets/images/shapes/fly-shape.svg';
+import AboutAudioBook from '../../components/AboutAudioBook';
+import Banner from '../../components/Banner';
+import Services from '../../components/Services';
+import TeamMembers from '../../components/Teams';
+import usePageTitle from '../../hooks/usePageTitle';
 
 function AboutUs() {
   usePageTitle('About Us');
