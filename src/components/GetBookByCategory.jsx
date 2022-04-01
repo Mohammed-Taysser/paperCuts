@@ -37,25 +37,25 @@ function GetBookByCategory(props) {
   };
 
   const filter_books = (response_books) => {
-    let filterd_books = null;
+    let filtered_books = null;
 
     switch (typeof getBy) {
       case 'number':
-        filterd_books = response_books.filter((book) =>
+        filtered_books = response_books.filter((book) =>
           book.category.includes(props.getBy)
         );
         break;
       case 'object':
-        filterd_books = response_books.filter((book) =>
+        filtered_books = response_books.filter((book) =>
           props.getBy.includes(book.id)
         );
         break;
       default:
-        filterd_books = shuffle_arr(response_books).slice(0, 4);
+        filtered_books = shuffle_arr(response_books).slice(0, 4);
         break;
     }
 
-    setBooks([...new Set(filterd_books)]);
+    setBooks([...new Set(filtered_books)]);
   };
 
   function shuffle_arr(arr) {
@@ -64,7 +64,7 @@ function GetBookByCategory(props) {
 
   const Render = () => {
     if (loading) {
-      return <RowOfPlaceholderCard num={6} />;
+      return <RowOfPlaceholderCard num={4} />;
     }
 
     if (books && books.length > 0) {
