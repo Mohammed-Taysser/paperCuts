@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Banner from '../components/Banner';
 import CartCoupon from '../components/CartCoupon';
 import useCart from '../hooks/useCart';
-import { OrderAPI } from '../api/Localhost';
-import { useNavigate } from 'react-router-dom';
 import BillingForm from '../components/BillingForm';
+import usePageTitle from '../hooks/usePageTitle';
+import { CartAPI, OrderAPI } from '../api/Localhost';
+import { useNavigate } from 'react-router-dom';
+import { Context as AuthContext } from '../context/auth';
 
 function Checkout() {
+  usePageTitle('Checkout');
   const navigate = useNavigate();
+  const auth_context = useContext(AuthContext);
   const [SHIPPING_PRICE, COUPON_PRICE, TOTAL_CART_PRICE, cartItems] = useCart();
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -22,14 +26,31 @@ function Checkout() {
       ...formData,
       cartItems,
       total: total_price,
+      userId: auth_context.userData.id,
       date: new Date(),
     };
+
     await OrderAPI.post(`/`, order_detail)
       .then((response) => {
-        navigate(`/orders/${response.data.id}`);
+        api_set_cart();
       })
       .catch((error) => {
-        // handle error
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const api_set_cart = () => {
+    setLoading(true);
+
+    CartAPI.patch(`/${auth_context.userData.id}`, { items: {} })
+      .then((response) => {
+        navigate(`/orders/`);
+      })
+      .catch((error) => {
+        console.log(error);
       })
       .finally(() => {
         setLoading(false);
@@ -55,8 +76,8 @@ function Checkout() {
 
   const is_empty = () => {
     if (formData) {
-      let without_note = formData
-      delete without_note.additionalNote
+      let without_note = formData;
+      delete without_note.additionalNote;
       return !Object.values(without_note).every(
         (val) => val !== null && val !== ''
       );
@@ -66,8 +87,8 @@ function Checkout() {
   };
 
   const onFormSubmit = (data) => {
-    setFormData(data)
-    if(!is_empty()){
+    setFormData(data);
+    if (!is_empty()) {
       api_set_order();
     }
   };
@@ -96,7 +117,6 @@ function Checkout() {
         <table className='table'>
           <thead>
             <tr>
-              <td className='text-center'>quantity</td>
               <th scope='col'>Product</th>
               <th scope='col'>Subtotal</th>
             </tr>
@@ -104,19 +124,19 @@ function Checkout() {
           <tbody>
             <CartItemsRows />
             <tr>
-              <td colSpan={2}>Subtotal</td>
+              <td>Subtotal</td>
               <td> ${TOTAL_CART_PRICE.toFixed(2)}</td>
             </tr>
             <tr>
-              <td colSpan={2}>Shipping</td>
+              <td>Shipping</td>
               <td>Flat rate: ${SHIPPING_PRICE}</td>
             </tr>
             <tr>
-              <td colSpan={2}>Coupons</td>
+              <td>Coupons</td>
               <td>${COUPON_PRICE}</td>
             </tr>
             <tr>
-              <td colSpan={2}>Total</td>
+              <td>Total</td>
               <td>
                 <span className='text-aurora'>${show_price()}</span>
               </td>
