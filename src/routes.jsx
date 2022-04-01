@@ -23,6 +23,7 @@ import Author from './pages/authors';
 import AuthorDetails from './pages/authorDetails';
 import Order from './pages/orders';
 import OrderDetails from './pages/orderDetails';
+import WebsitePages from './pages/pages';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -45,6 +46,7 @@ function PaperCutsRoutes() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='*' element={<PageNotFound />} />
+        <Route path='/pages' element={<WebsitePages />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/about-us' element={<AboutUs />} />
