@@ -1,44 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { CartAPI, get_cart_by_bookId_and_userId } from '../api/Localhost';
+import React, { useLayoutEffect, useState } from 'react';
+import { CartAPI, get_cart_by_userId } from '../api/Localhost';
 import { FiCheckCircle } from 'react-icons/fi';
+import { BiEdit } from 'react-icons/bi';
+import { BsCartPlus, BsCartDash } from 'react-icons/bs';
 import { RiErrorWarningFill } from 'react-icons/ri';
+import { SelectField } from './bootstrap/Form';
 import Spinner from './bootstrap/Spinner';
 import Quantity from './Quantity';
 
 function AddToCart(props) {
   const { currentBook, userData } = props;
   const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-  const [cartItem, setCartItem] = useState(null);
-  const [type, setType] = useState('');
+  const [bookType, setBookType] = useState('');
+  const [bookQuantity, setBookQuantity] = useState(1);
   const [message, setMessage] = useState(null);
+  const [userCart, setUserCart] = useState(null);
+  const [currentCartBook, setCurrentCartBook] = useState(null);
 
-  useEffect(() => {
-    init_get_cart_api();
+  useLayoutEffect(() => {
+    api_get_cart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const init_get_cart_api = () => {
-    CartAPI.get(`?bookId=${currentBook.id}&userId=${userData.id}`)
+  const api_get_cart = () => {
+    CartAPI.get(`?userId=${userData.id}`)
       .then((response) => {
         if (response.data.length === 1) {
-          setQuantity(response.data[0].quantity);
-          setType(response.data[0].type);
-          setCartItem(response.data[0]);
-          set_message_by_type('success', '  In cart');
+          onCartItemsLoad(response.data[0]);
         }
       })
       .catch((error) => {
-        let cart_item = get_cart_by_bookId_and_userId(
-          currentBook.id,
-          userData.id
-        );
-        if (cart_item) {
-          setQuantity(cart_item.quantity);
-          setCartItem(cart_item);
-          set_message_by_type('success', '  In cart');
-        } else {
-          setCartItem(null);
+        let cart_items = get_cart_by_userId(userData.id);
+        if (cart_items) {
+          onCartItemsLoad(cart_items);
         }
       })
       .finally(() => {
@@ -46,24 +40,24 @@ function AddToCart(props) {
       });
   };
 
-  const create_cart_item = () => {
-    let item_data = {
-      bookId: currentBook.id,
-      userId: userData.id,
-      slug: currentBook.slug,
-      quantity: quantity,
-      title: currentBook.title,
-      price: currentBook.price,
-      image: currentBook.image,
-      type: type === '' ? currentBook.types[0] : type,
-    };
+  const onCartItemsLoad = (response_data) => {
+    setUserCart(response_data);
+    if (response_data.items) {
+      if (response_data.items[currentBook.id]) {
+        setBookQuantity(response_data.items[currentBook.id].quantity);
+        setBookType(response_data.items[currentBook.id].type);
+        setCurrentCartBook(response_data.items[currentBook.id]);
+        set_message_by_type('success', '  In cart');
+      }
+    }
+  };
 
+  const api_set_cart_item = (items) => {
     setLoading(true);
 
-    CartAPI.post(`/`, item_data)
+    CartAPI.patch(`/${userData.id}`, { items })
       .then((response) => {
-        setCartItem(response.data);
-        set_message_by_type('success', 'Success: Added To Cart');
+        onCartItemsLoad(response.data);
       })
       .catch((error) => {
         set_message_by_type('error');
@@ -115,53 +109,51 @@ function AddToCart(props) {
     }
   };
 
-  const set_quantity_api = () => {
-    setLoading(true);
-    CartAPI.patch(`${cartItem.id}`, { quantity })
-      .then((response) => {
-        set_message_by_type('success');
-      })
-      .catch((error) => {
-        set_message_by_type('error');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const onAddToCartClick = () => {
+    let item_data = {
+        slug: currentBook.slug,
+        quantity: bookQuantity,
+        title: currentBook.title,
+        price: currentBook.price,
+        image: currentBook.image,
+        type: bookType === '' ? currentBook.types[0] : bookType,
+      },
+      newCartItems = {
+        ...userCart.items,
+        [currentBook.id]: item_data,
+      };
+
+    api_set_cart_item(newCartItems);
   };
 
-  const set_type_api = () => {
-    setLoading(true);
-    CartAPI.patch(`${cartItem.id}`, { type })
-      .then((response) => {
-        set_message_by_type('success', 'Success: Updated Type');
-        setType(type);
-      })
-      .catch((error) => {
-        set_message_by_type('error');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const onFormSubmit = (evt) => {
-    evt.preventDefault();
-
-    if (cartItem) {
-      if (quantity !== cartItem.quantity) {
-        set_quantity_api();
-      } else if (type !== cartItem.type && type !== '') {
-        set_type_api();
-      }
+  const onUpdateCartBook = () => {
+    if (
+      bookQuantity !== currentCartBook.quantity ||
+      bookType !== currentCartBook.type
+    ) {
+      let item_data = {
+          ...currentCartBook,
+          quantity: bookQuantity,
+          type: bookType === '' ? currentBook.types[0] : bookType,
+        },
+        newCartItems = {
+          ...userCart.items,
+          [currentBook.id]: item_data,
+        };
+      api_set_cart_item(newCartItems);
     } else {
-      create_cart_item();
+      set_message_by_type('warn');
     }
-    set_message_by_type('warn');
   };
 
   const onRemoveBtnClick = () => {
     setLoading(true);
-    CartAPI.delete(`/${currentBook.id}`)
+
+    let newCartItems = { ...userCart.items };
+
+    delete newCartItems[currentBook.id];
+
+    CartAPI.patch(`/${userData.id}`, { items: newCartItems })
       .then((response) => {
         set_message_by_type('success', 'Success: Removed From Cart');
       })
@@ -174,55 +166,73 @@ function AddToCart(props) {
       });
   };
 
+  const RenderMessageBox = () => {
+    if (message) {
+      return (
+        <div
+          className={`alert alert-${message.type} alert-dismissible fade show p-1 small`}
+          role='alert'
+        >
+          {message.label}
+          <button
+            type='button'
+            className='btn-close p-2 css-tooltip'
+            data-tooltip='dismiss'
+            data-bs-dismiss='alert'
+            aria-label='Close'
+            onClick={() => setMessage(null)}
+          ></button>
+        </div>
+      );
+    }
+    return <></>;
+  };
+
+  const RenderAddToCartButton = () => {
+    if (currentCartBook) {
+      return (
+        <>
+          <button className='btn btn-aurora mx-4' onClick={onUpdateCartBook}>
+            <BiEdit className='h5 m-0' /> Save
+          </button>
+          <button
+            className='btn btn-outline-danger'
+            type='button'
+            onClick={onRemoveBtnClick}
+          >
+            <BsCartDash className='h5 m-0' /> Remove
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <button className='btn btn-aurora mx-4' onClick={onAddToCartClick}>
+          <BsCartPlus className='h5 m-0' /> Add To Cart
+        </button>
+      );
+    }
+  };
+
   if (loading) {
     return <Spinner />;
   } else {
     return (
-      <form onSubmit={onFormSubmit}>
-        {message && (
-          <div
-            className={`alert alert-${message.type} alert-dismissible fade show p-1 small`}
-            role='alert'
-          >
-            {message.label}
-            <button
-              type='button'
-              className='btn-close p-2 css-tooltip'
-              data-tooltip='dismiss'
-              data-bs-dismiss='alert'
-              aria-label='Close'
-              onClick={() => setMessage(null)}
-            ></button>
-          </div>
-        )}
-        <select
-          className='form-select w-auto'
-          aria-label='choose book type'
-          value={type}
-          onChange={(evt) => setType(evt.target.value)}
-        >
-          {currentBook.types.map((option, index) => {
-            return (
-              <option value={option} key={index}>
-                {option}
-              </option>
-            );
+      <form onSubmit={(evt) => evt.preventDefault()}>
+        <RenderMessageBox />
+        <SelectField
+          className='w-auto'
+          value={bookType}
+          onChange={(evt) => setBookType(evt.target.value)}
+          options={currentBook.types.map((option) => {
+            return { value: option, label: option };
           })}
-        </select>
+        />
         <div className='d-flex my-3'>
-          <Quantity onQuantityChange={setQuantity} initQuantity={quantity} />
-          <button className='btn btn-aurora mx-4'>
-            {cartItem !== null ? 'Update' : 'Add To Cart'}
-          </button>
-          {cartItem && (
-            <button
-              className='btn btn-outline-danger'
-              type='button'
-              onClick={onRemoveBtnClick}
-            >
-              Remove
-            </button>
-          )}
+          <Quantity
+            onQuantityChange={setBookQuantity}
+            initQuantity={bookQuantity}
+          />
+          <RenderAddToCartButton />
         </div>
       </form>
     );
