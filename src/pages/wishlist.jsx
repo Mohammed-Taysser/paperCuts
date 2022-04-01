@@ -6,10 +6,12 @@ import SingleBook from '../components/single/SingleBook';
 import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../components/bootstrap/Placeholder';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Wishlist() {
+  usePageTitle('Wishlist');
   const auth_context = useContext(AuthContext);
-  const [wishlistItems, setWishlistItems] = useState(null);
+  const [wishlistItems, setWishlistItems] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,10 +22,19 @@ function Wishlist() {
   const api_get_wishlist = () => {
     WishlistAPI.get(`?userId=${auth_context.userData.id}`)
       .then((response) => {
-        setWishlistItems(response.data);
+        if (response.data.length === 1) {
+          setWishlistItems(response.data[0].items);
+        } else {
+          setWishlistItems({});
+        }
       })
       .catch((err) => {
-        setWishlistItems(get_wishlist_by_userId(auth_context.userData.id));
+        let temp_items = get_wishlist_by_userId(auth_context.userData.id);
+        if (temp_items) {
+          setWishlistItems(temp_items.items);
+        } else {
+          setWishlistItems({});
+        }
       })
       .finally(() => {
         setLoading(false);
@@ -34,10 +45,20 @@ function Wishlist() {
     if (loading) {
       return <RowOfPlaceholderCard num={6} />;
     }
-    if (wishlistItems && wishlistItems.length > 0) {
-      let wish_list_items = wishlistItems.map((item, index) => (
-        <SingleBook book={item} key={index} />
-      ));
+    if (wishlistItems && Object.keys(wishlistItems).length > 0) {
+      let wish_list_items = [];
+
+      for (const bookId in wishlistItems) {
+        if (Object.hasOwnProperty.call(wishlistItems, bookId)) {
+          wish_list_items.push(
+            <SingleBook
+              book={{ ...wishlistItems[bookId], id: bookId }}
+              key={bookId}
+            />
+          );
+        }
+      }
+
       return (
         <div className='row justify-content-center'> {wish_list_items} </div>
       );
