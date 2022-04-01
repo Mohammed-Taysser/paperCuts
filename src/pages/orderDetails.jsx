@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { get_order_by_id, OrderAPI } from '../api/Localhost';
-import Banner from '../components/Banner';
 import { monthNames } from '../components/ManipulateData';
 import { Context as AuthContext } from '../context/auth';
+import Banner from '../components/Banner';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';
 import OrdersImage from '../assets/images/background/orders.jpg';
+import usePageTitle from '../hooks/usePageTitle';
 
 function OrderDetails() {
   const { id } = useParams();
+  usePageTitle('Order #' + id);
   const auth_context = useContext(AuthContext);
   const [currentOrder, setCurrentOrder] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,10 +27,7 @@ function OrderDetails() {
         setCurrentOrder(response.data);
       })
       .catch((error) => {
-        let temp_order = get_order_by_id(id);
-        if (temp_order) {
-          setCurrentOrder(temp_order);
-        }
+        setCurrentOrder(get_order_by_id(id));
       })
       .finally(() => {
         setLoading(false);
@@ -59,17 +58,25 @@ function OrderDetails() {
   };
 
   const CartItemsRows = () => {
-    let cartItems = currentOrder.cartItems.map((item) => {
-      return (
-        <tr key={item.id}>
-          <td className='text-center'>
-            <span className='text-aurora'>{item.quantity}</span>
-          </td>
-          <td>{item.title}</td>
-          <td> {`$${(item.quantity * item.price).toFixed(2)}`}</td>
-        </tr>
-      );
-    });
+    let cartItems = [];
+
+    for (const book in currentOrder.cartItems) {
+      if (Object.hasOwnProperty.call(currentOrder.cartItems, book)) {
+        let currentBook = currentOrder.cartItems[book];
+        cartItems.push(
+          <tr key={book}>
+            <td className='text-center'>
+              <span className='text-aurora'>{currentBook.quantity}</span>
+            </td>
+            <td>{currentBook.title}</td>
+            <td>
+              {`$${(currentBook.quantity * currentBook.price).toFixed(2)}`}
+            </td>
+          </tr>
+        );
+      }
+    }
+
     return <>{cartItems}</>;
   };
 

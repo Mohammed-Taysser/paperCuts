@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { OrderAPI, ORDERS } from '../api/Localhost';
-import Banner from '../components/Banner';
+import { OrderAPI, get_order_by_userId } from '../api/Localhost';
 import { Context as AuthContext } from '../context/auth';
 import { monthNames } from '../components/ManipulateData';
+import Banner from '../components/Banner';
 import Alert from '../components/bootstrap/Alert';
 import Spinner from '../components/bootstrap/Spinner';
 import OrdersImage from '../assets/images/background/orders.jpg';
+import usePageTitle from '../hooks/usePageTitle';
 
 function Orders() {
+  usePageTitle('Orders');
   const auth_context = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +26,7 @@ function Orders() {
         setOrders(response.data);
       })
       .catch((error) => {
-        setOrders(ORDERS);
+        setOrders(get_order_by_userId(auth_context.userData.id));
       })
       .finally(() => {
         setLoading(false);
@@ -95,7 +97,7 @@ function Orders() {
             <span>{getDate(order.date)}</span>
             <span className='mx-2'>{getTime(order.date)}</span>
           </td>
-          <td>{order.cartItems.length}</td>
+          <td>{orders.length}</td>
         </tr>
       );
     });
