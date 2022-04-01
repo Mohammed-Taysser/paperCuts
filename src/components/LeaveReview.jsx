@@ -23,6 +23,7 @@ function LeaveReview(props) {
     let review_data = {
       ...formData,
       date: new Date(),
+      username: userData.username,
       bookId: currentBook.id,
       userId: userData.id,
     };
