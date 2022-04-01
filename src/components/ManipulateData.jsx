@@ -149,15 +149,29 @@ const getTypeOf = (obj) => {
   return Object.prototype.toString.call(obj).match(/\[object (.*)\]/)[1];
 };
 
-
 /**
  * JavaScript Object equality: A smarter way to compare two Object
  * @param {Object} obj1 object 1
  * @param {Object} obj2 object 2
  * @returns {Boolean} is equal or not
  */
-function isEqualObject(obj1,obj2) {
-  return JSON.stringify(obj1) === JSON.stringify(obj2)
+function isEqualObject(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+/**
+ * generate big integer by length
+ * @param {Number} length length of generated number
+ * @returns {BigInt}
+ */
+function randomBigInt(length = 16) {
+  const hexString = Array(length)
+    .fill()
+    .map(() => Math.round(Math.random() * 0xf).toString(16))
+    .join('');
+
+  // eslint-disable-next-line no-undef
+  return BigInt(`0x${hexString}`);
 }
 
 export {
@@ -170,5 +184,6 @@ export {
   copyToClipboard,
   isEqualArray,
   isEqualObject,
-  getTypeOf
+  getTypeOf,
+  randomBigInt,
 };
