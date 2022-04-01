@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNotFoundImage from '../assets/images/background/404-img.jpg';
+import usePageTitle from '../hooks/usePageTitle';
 
 function PageNotFound() {
+  usePageTitle('404 Page Not Found');
+
   return (
     <section
       className='page-not-found bg-with-overlay'
@@ -17,6 +20,9 @@ function PageNotFound() {
         </p>
         <Link to='/' className='btn btn-aurora'>
           Go To Home
+        </Link>
+        <Link to='/login' className='btn btn-aurora mx-2'>
+          Login
         </Link>
       </div>
     </section>
