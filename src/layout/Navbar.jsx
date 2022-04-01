@@ -4,54 +4,14 @@ import { Context as AuthContext } from '../context/auth';
 import { FcSearch } from 'react-icons/fc';
 import { BsCart4, BsBookmarkHeart } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
+import favicon from '../assets/images/icons/favicon.png';
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
-import favicon from '../assets/images/icons/favicon.png';
 
 function Navbar() {
   const auth_context = useContext(AuthContext),
     navigate_to = useNavigate();
   const [query, setQuery] = useState('');
-
-  const PagesDropDownItems = () => {
-    return (
-      <ul className='dropdown-menu' aria-labelledby='sitemap-pages'>
-        <li>
-          <Link className='dropdown-item' to='/events'>
-            events
-          </Link>
-        </li>
-        <li>
-          <Link className='dropdown-item' to='/authors'>
-            authors
-          </Link>
-        </li>
-        <li>
-          <Link className='dropdown-item' to='/checkout'>
-            checkout
-          </Link>
-        </li>
-        <li>
-          <Link className='dropdown-item' to='/orders'>
-            orders
-          </Link>
-        </li>
-        <li>
-          <hr className='dropdown-divider' />
-        </li>
-        <li>
-          <Link className='dropdown-item' to='/forget-password'>
-            forget password
-          </Link>
-        </li>
-        <li>
-          <Link className='dropdown-item' to='/page-not-found'>
-            404
-          </Link>
-        </li>
-      </ul>
-    );
-  };
 
   const AuthLinks = () => {
     return (
@@ -125,18 +85,10 @@ function Navbar() {
             books
           </NavLink>
         </li>
-        <li className='nav-item dropdown'>
-          <a
-            className='nav-link dropdown-toggle'
-            href='#pages'
-            id='sitemap-pages'
-            role='button'
-            data-bs-toggle='dropdown'
-            aria-expanded='false'
-          >
-            Pages
-          </a>
-          <PagesDropDownItems />
+        <li className='nav-item'>
+          <NavLink className='nav-link' to='/pages'>
+            PAGES
+          </NavLink>
         </li>
       </ul>
     );
@@ -152,7 +104,9 @@ function Navbar() {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    navigate_to(`/books?title=${query}`);
+    let newQuery = query;
+    setQuery('');
+    navigate_to(`/books?title=${newQuery}`);
   };
 
   return (
