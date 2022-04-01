@@ -7,6 +7,7 @@ import LeaveReview from './LeaveReview';
 import { human_date, Stars } from './ManipulateData';
 import { Link } from 'react-router-dom';
 import { MdDeleteOutline } from 'react-icons/md';
+import 'bootstrap/js/src/tab';
 
 function TabAndNav(props) {
   const { currentBook, reviews_ref } = props;
@@ -117,19 +118,24 @@ function TabAndNav(props) {
             return (
               <div className='reviews-section mt-5' key={index}>
                 <div className='d-md-flex align-items-center'>
-                  <img
-                    src={review.avatar}
-                    alt={review.name}
-                    width='100'
-                    height='100'
-                    className='img-fluid rounded-circle border-aurora p-1'
-                  />
+                  <Link to={`/authors/${review.username}`}>
+                    <img
+                      src={review.avatar}
+                      alt={review.name}
+                      width='100'
+                      height='100'
+                      className='img-fluid rounded-circle border-aurora p-1'
+                    />
+                  </Link>
                   <div className='w-100 mx-3'>
                     <div className='d-md-flex justify-content-between'>
                       <div className=''>
-                        <h4 className='mb-1 d-inline-block text-aurora'>
+                        <Link
+                          to={`/authors/${review.username}`}
+                          className='mb-1 h4 d-inline-block'
+                        >
                           {review.name}
-                        </h4>
+                        </Link>
                         <div className='d-inline-block'>
                           <small className='special-small-title text-muted mx-md-3 d-block d-md-inline-block'>
                             {human_date(review.date)}
