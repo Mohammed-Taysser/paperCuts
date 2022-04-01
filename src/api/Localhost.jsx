@@ -71,7 +71,6 @@ const SERVICES = Data.services,
   COUPONS = Data.coupons,
   EVENTS = Data.events,
   TEAM = Data.team,
-  USERS = Data.users,
   TESTIMONIALS = Data.testimonials;
 
 // needed function
@@ -100,10 +99,6 @@ function get_author_by_email(email = '') {
   return AUTHORS.find((author) => author.email === email);
 }
 
-function get_user_by_email(email = '') {
-  return USERS.find((user) => user.email === email);
-}
-
 function get_coupon_by_title(title = '') {
   return COUPONS.find((coupon) => coupon.label === title);
 }
@@ -116,14 +111,12 @@ function get_order_by_id(id = '1') {
   return ORDERS.find((order) => order.id.toString() === id);
 }
 
-function get_reviews_by_bookId(bookId = 1) {
-  return REVIEWS.filter((review) => review.bookId === bookId);
+function get_order_by_userId(id = 1) {
+  return ORDERS.filter((order) => order.userId === id);
 }
 
-function get_wishlist_by_bookId_and_userId(bookId = 1, userId = 1) {
-  return WISHLIST.find(
-    (item) => item.bookId === bookId && item.userId === userId
-  );
+function get_reviews_by_bookId(bookId = 1) {
+  return REVIEWS.filter((review) => review.bookId === bookId);
 }
 
 function get_wishlist_by_userId(userId = 1) {
@@ -167,16 +160,15 @@ export {
 
 export {
   get_book_by_slug,
-  get_author_by_id,
   get_cart_by_userId,
   get_reviews_by_bookId,
   get_wishlist_by_userId,
-  get_wishlist_by_bookId_and_userId,
   get_category_by_slug,
   get_coupon_by_title,
   get_event_by_slug,
+  get_author_by_id,
   get_author_by_username,
   get_author_by_email,
-  get_user_by_email,
   get_order_by_id,
+  get_order_by_userId,
 };
