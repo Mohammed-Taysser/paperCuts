@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import CartCoupon from '../../components/CartCoupon';
 import useCart from '../../hooks/useCart';
 import BillingForm from '../../components/BillingForm';

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { BsCheck2Circle } from 'react-icons/bs';
 import { CartAPI } from '../../api/Localhost';
 import { Context as AuthContext } from '../../context/auth';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import Quantity from '../../components/Quantity';
 import CartCoupon from '../../components/CartCoupon';
 import useCart from '../../hooks/useCart';
 import Alert from '../../components/bootstrap/Alert';
 import GetBookByCategory from '../../components/GetBookByCategory';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function Cart() {

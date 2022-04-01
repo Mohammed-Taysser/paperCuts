@@ -1,6 +1,6 @@
 import React from 'react';
-import Banner from '../../components/Banner';
-import Location from '../../components/GeoLocation';
+import Banner from '../../components/standalone/Banner';
+import Location from '../../components/standalone/GeoLocation';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function ContactUs() {

@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { MdAlternateEmail } from 'react-icons/md';
-import Banner from '../../components/Banner';
-import SectionTitle from '../../components/SectionTitle';
-import { AuthorsAPI, get_author_by_username } from '../../api/Localhost';
 import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaTelegram,
+  FaFacebookF, FaInstagram,
+  FaTelegram, FaTwitter
 } from 'react-icons/fa';
+import { MdAlternateEmail } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
+import { AuthorsAPI, get_author_by_username } from '../../api/Localhost';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';
 import GetBookByCategory from '../../components/GetBookByCategory';
 import InlineCategoryTags from '../../components/InlineCategoryTags';
+import Banner from '../../components/standalone/Banner';
+import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function AuthorDetails() {

@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import { EventAPI, get_event_by_slug } from '../../api/Localhost';
 import { monthNames } from '../../components/ManipulateData';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';

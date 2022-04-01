@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CategoryAPI, get_category_by_slug } from '../../api/Localhost';
 import { useParams } from 'react-router-dom';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import Alert from '../../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import GetBookByCategory from '../../components/GetBookByCategory';

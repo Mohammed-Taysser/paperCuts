@@ -4,9 +4,9 @@ import CoffeeImage from '../../assets/images/background/about/coffee.png';
 import CupShape from '../../assets/images/shapes/cup-shape.png';
 import FlyShape from '../../assets/images/shapes/fly-shape.svg';
 import AboutAudioBook from '../../components/AboutAudioBook';
-import Banner from '../../components/Banner';
-import Services from '../../components/Services';
-import TeamMembers from '../../components/Teams';
+import Banner from '../../components/standalone/Banner';
+import Services from '../../components/standalone/Services';
+import TeamMembers from '../../components/standalone/Teams';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function AboutUs() {

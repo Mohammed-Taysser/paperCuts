@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../components/Banner';
+import Banner from '../components/standalone/Banner';
 import { CATEGORY, TOP_FIVE, CategoryAPI } from '../api/Localhost';
 import Spinner from '../components/bootstrap/Spinner';
 import Alert from '../components/bootstrap/Alert';

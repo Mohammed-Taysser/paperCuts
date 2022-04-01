@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaCog, FaSearch } from 'react-icons/fa';
 import { InputField } from './bootstrap/Form';
-import StarRate from '../components/StarRate';
+import StarRate from './StarRate';
 
 function SearchForm(props) {
   const { onSearchParamsChange, searchParams } = props;

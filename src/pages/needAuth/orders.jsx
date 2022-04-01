@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { OrderAPI, get_order_by_userId } from '../../api/Localhost';
 import { Context as AuthContext } from '../../context/auth';
 import { monthNames } from '../../components/ManipulateData';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';
 import OrdersImage from '../../assets/images/background/orders.jpg';

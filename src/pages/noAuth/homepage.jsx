@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Services from '../../components/Services';
-import HeroHeader from '../../components/HeroHeader';
-import Testimonials from '../../components/Testimonials';
-import GeoLocation from '../../components/GeoLocation';
-import SectionTitle from '../../components/SectionTitle';
+import Services from '../../components/standalone/Services';
+import HeroHeader from '../../components/standalone/HeroHeader';
+import Testimonials from '../../components/standalone/Testimonials';
+import GeoLocation from '../../components/standalone/GeoLocation';
+import SectionTitle from '../../components/standalone/SectionTitle';
 import GetBookByCategory from '../../components/GetBookByCategory';
 
 import NewsLetterImage from '../../assets/images/background/news-letter-bg.png';

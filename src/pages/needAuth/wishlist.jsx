@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { WishlistAPI, get_wishlist_by_userId } from '../../api/Localhost';
 import { Context as AuthContext } from '../../context/auth';
 import SingleBook from '../../components/single/SingleBook';
-import Banner from '../../components/Banner';
+import Banner from '../../components/standalone/Banner';
 import Alert from '../../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import usePageTitle from '../../hooks/usePageTitle';

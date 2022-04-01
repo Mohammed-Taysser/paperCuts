@@ -6,7 +6,7 @@ import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Context as AuthContext } from '../../context/auth';
 import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
 import Alert from '../../components/bootstrap/Alert';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/standalone/SectionTitle';
 import GetBookByCategory from '../../components/GetBookByCategory';
 import RegisterForm from '../../components/RegisterForm';
 import { slugify, randomBigInt } from '../../components/ManipulateData';

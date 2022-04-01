@@ -9,7 +9,7 @@ import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
 import GetBookByCategory from '../../components/GetBookByCategory';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function Login() {
