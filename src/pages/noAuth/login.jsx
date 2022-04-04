@@ -8,8 +8,6 @@ import { InputField } from '../../components/bootstrap/Form';
 import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
-import GetBookByCategory from '../../components/GetBookByCategory';
-import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function Login() {
@@ -32,7 +30,11 @@ function Login() {
         check_user_exist(response.data[0]);
       })
       .catch((error) => {
+        console.log(error);
         check_user_exist(get_author_by_email(formData['email']));
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -72,7 +74,11 @@ function Login() {
     setWrongPassword(false);
     setUserNotExist(false);
     setSubmitted(true);
-    if (formData['email'] && formData['password']) {
+    if (
+      formData['email'] &&
+      formData['password'] &&
+      formData['password'].length >= 8
+    ) {
       api_get_author();
     }
   };
@@ -133,10 +139,6 @@ function Login() {
           <Alert color='warning'>
             <IoMdWarning className='mx-1 h4 my-0' /> You already sign in
           </Alert>
-          <section className='my-5 pt-5'>
-            <SectionTitle title='new released' subtitle='you my like' />
-            <GetBookByCategory />
-          </section>
         </div>
       </section>
     );
@@ -189,7 +191,11 @@ function Login() {
                       onChange={onInputChange}
                       placeholder='password'
                       required
-                      invalidFeedback={'please check your password'}
+                      invalidFeedback={
+                        formData['password'].length < 8
+                          ? 'password must be 8 char or more'
+                          : 'please check your password'
+                      }
                       validFeedback
                     />
                     <p className='text-end'>
