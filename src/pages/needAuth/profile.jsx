@@ -13,11 +13,11 @@ import Username from '../../components/profileCards/UsernameCard';
 import InfoCard from '../../components/profileCards/InfoCard';
 import SocialMedia from '../../components/profileCards/SocialMediaCard';
 import IdCard from '../../components/profileCards/IdCard';
-import CategoryCard from '../../components/profileCards/CategoryCard';
 import BooksCard from '../../components/profileCards/BooksCard';
 import DeleteAccountCard from '../../components/profileCards/DeleteAccountCard';
 import AvatarCard from '../../components/profileCards/AvatarCard';
 import usePageTitle from '../../hooks/usePageTitle';
+import CategoryTags from '../../components/CategoryTags';
 
 function Profile() {
   usePageTitle('Profile');
@@ -267,7 +267,7 @@ function Profile() {
         updateSettingByKey('category');
       },
       children: (
-        <CategoryCard
+        <CategoryTags
           userCategory={auth_context.userData.category}
           onCategoryChange={onCategoryChange}
         />
