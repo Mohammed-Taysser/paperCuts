@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../../components/standalone/Banner';
+import usePageTitle from '../../hooks/usePageTitle';
 
-function WebsitePages() {
+function Pages() {
+  usePageTitle('Website Sitemap');
+
   const AUTH_PAGES = [
       { label: 'checkout', href: '/checkout' },
       { label: 'profile', href: '/profile' },
@@ -62,4 +65,4 @@ function WebsitePages() {
   );
 }
 
-export default WebsitePages;
+export default Pages;
