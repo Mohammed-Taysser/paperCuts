@@ -37,6 +37,7 @@ function BooksDetails() {
         }
       })
       .catch((error) => {
+        console.log(error);
         let temp_book = get_book_by_slug(slug);
         if (temp_book) {
           setCurrentBook(temp_book);
@@ -49,9 +50,13 @@ function BooksDetails() {
   };
 
   const BookBadge = () => {
-    const DAYS_NUMBER = 7;
-    if (diff_in_days(new Date(), currentBook.publishedAt) < DAYS_NUMBER) {
-      return <small className='badge rounded-pill bg-warning mx-3'>new</small>;
+    if (currentBook.publishedAt) {
+      const DAYS_NUMBER = 7;
+      if (diff_in_days(new Date(), currentBook.publishedAt) < DAYS_NUMBER) {
+        return (
+          <small className='badge rounded-pill bg-warning mx-3'>new</small>
+        );
+      }
     }
     return <></>;
   };
@@ -61,9 +66,11 @@ function BooksDetails() {
       <div className='col-md-8 my-3'>
         <div className='wrapper'>
           <div className='d-flex align-items-start justify-content-between'>
-            <span className='special-small-title'>
-              publisher: {currentBook.publisher}
-            </span>
+            {currentBook.publisher && (
+              <span className='special-small-title'>
+                publisher: {currentBook.publisher}
+              </span>
+            )}
             {auth_context.isAuth && <AddToWishList currentBook={currentBook} />}
           </div>
           <div className='d-flex align-items-start'>
@@ -81,8 +88,10 @@ function BooksDetails() {
             </a>
           </div>
           <p className='mt-2 h4'>{currentBook.price}$</p>
-          <p className='mt-3 text-muted'>{currentBook.info}</p>
-          {auth_context.isAuth && (
+          <p className='mt-3 text-muted'>
+            {currentBook.info ? currentBook.info : ''}
+          </p>
+          {auth_context.isAuth && currentBook.types && (
             <AddToCart
               currentBook={currentBook}
               userData={auth_context.userData}
