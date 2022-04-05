@@ -1,4 +1,5 @@
 import { FcRadarPlot } from 'react-icons/fc';
+import { onImageNotLoad } from '../ManipulateData';
 
 function SingleService(props) {
   const { service } = props;
@@ -11,6 +12,7 @@ function SingleService(props) {
             src={service.img}
             className='card-img-top img-fluid d-inline-block mx-auto'
             alt={service.title}
+            onError={onImageNotLoad}
           />
           <div className='card-body'>
             <div className='my-2'>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/js/src/carousel';
-import { Stars } from '../ManipulateData';
+import { onImageNotLoad, Stars } from '../ManipulateData';
 import { TestimonialsAPI, TESTIMONIALS } from '../../api/Localhost';
 import RoundedBorder from '../../assets/images/shapes/rounded-border.svg';
 import DashedShape from '../../assets/images/shapes/dashed-shape.svg';
 import Spinner from '../bootstrap/Spinner';
 import Alert from '../bootstrap/Alert';
+import 'bootstrap/js/src/carousel';
 
 function Testimonials(props) {
   const [testimonials, setTestimonials] = useState([]);
@@ -21,6 +21,7 @@ function Testimonials(props) {
         setTestimonials(response.data);
       })
       .catch((error) => {
+        console.log(error);
         setTestimonials(TESTIMONIALS);
       })
       .finally(() => {
@@ -60,6 +61,7 @@ function Testimonials(props) {
               src={item.img}
               className='d-inline-block rounded-circle border-aurora p-2'
               alt={item.customer}
+              onError={onImageNotLoad}
               width={'150px'}
               height={'150px'}
             />

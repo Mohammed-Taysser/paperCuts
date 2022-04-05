@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import ImageNotFound from '../assets/images/404.jpg';
 
 // --------------
 // - components |
@@ -174,6 +175,10 @@ function randomBigInt(length = 16) {
   return BigInt(`0x${hexString}`);
 }
 
+function onImageNotLoad(evt) {
+  evt.target.src = ImageNotFound;
+}
+
 export {
   Stars,
   capitalize,
@@ -186,4 +191,5 @@ export {
   isEqualObject,
   getTypeOf,
   randomBigInt,
+  onImageNotLoad,
 };

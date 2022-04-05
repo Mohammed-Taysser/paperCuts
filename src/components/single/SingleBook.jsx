@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AddToWishList from '../AddToWishlist';
-import { Stars } from '../ManipulateData';
+import { onImageNotLoad, Stars } from '../ManipulateData';
 import { Context as AuthContext } from '../../context/auth';
 
 function SingleBook(props) {
@@ -20,7 +20,12 @@ function SingleBook(props) {
           </div>
         )}
         <div className='img'>
-          <img src={book.image} className='card-img-top' alt={book.title} />
+          <img
+            src={book.image}
+            className='card-img-top'
+            onError={onImageNotLoad}
+            alt={book.title}
+          />
         </div>
         <div className='card-body'>
           <h5 className='card-title'>

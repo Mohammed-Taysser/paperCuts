@@ -1,4 +1,5 @@
 import React from 'react';
+import { onImageNotLoad } from '../ManipulateData';
 
 function SingleMember(props) {
   const { member } = props;
@@ -43,6 +44,7 @@ function SingleMember(props) {
             src={member.avatar}
             className='member-image'
             alt={member.name}
+            onError={onImageNotLoad}
             width='200'
             height='200'
           />
