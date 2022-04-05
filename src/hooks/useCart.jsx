@@ -12,7 +12,7 @@ function useCart() {
   const coupon_context = useContext(CouponContext);
   const auth_context = useContext(AuthContext);
   const appliedCoupons = coupon_context.coupons || [];
-  const [cartItems, setCartItems] = useState({});
+  const [userCart, setUserCart] = useState({});
   const [totalCartPrice, setTotalCartPrice] = useState(0);
   const [couponsPrice, setCouponsPrice] = useState(0);
 
@@ -37,13 +37,14 @@ function useCart() {
         onCartItemsLoad(response.data[0]);
       })
       .catch((error) => {
+        console.log(error);
         onCartItemsLoad(get_cart_by_userId(auth_context.userData.id));
       });
   };
 
   const onCartItemsLoad = (cart) => {
-    if (cart.items) {
-      setCartItems(cart.items);
+    if (cart && cart.items) {
+      setUserCart(cart);
       init_data(cart.items);
     }
   };
@@ -66,7 +67,7 @@ function useCart() {
     setTotalCartPrice(total_cart_price);
   };
 
-  return [SHIPPING_PRICE, couponsPrice, totalCartPrice, cartItems];
+  return [SHIPPING_PRICE, couponsPrice, totalCartPrice, userCart, setUserCart];
 }
 
 export default useCart;
