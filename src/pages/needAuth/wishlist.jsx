@@ -2,10 +2,10 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { WishlistAPI, get_wishlist_by_userId } from '../../api/Localhost';
 import { Context as AuthContext } from '../../context/auth';
+import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import SingleBook from '../../components/single/SingleBook';
 import Banner from '../../components/standalone/Banner';
 import Alert from '../../components/bootstrap/Alert';
-import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function Wishlist() {
@@ -28,7 +28,8 @@ function Wishlist() {
           setWishlistItems({});
         }
       })
-      .catch((err) => {
+      .catch((error) => {
+        console.log(error);
         let temp_items = get_wishlist_by_userId(auth_context.userData.id);
         if (temp_items) {
           setWishlistItems(temp_items.items);
