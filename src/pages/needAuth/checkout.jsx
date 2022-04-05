@@ -12,7 +12,7 @@ function Checkout() {
   usePageTitle('Checkout');
   const navigate = useNavigate();
   const auth_context = useContext(AuthContext);
-  const [SHIPPING_PRICE, COUPON_PRICE, TOTAL_CART_PRICE, cartItems] = useCart();
+  const [SHIPPING_PRICE, COUPON_PRICE, TOTAL_CART_PRICE, USER_CART] = useCart();
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,14 +24,14 @@ function Checkout() {
 
     const order_detail = {
       ...formData,
-      cartItems,
+      cartItems: USER_CART.items,
       total: total_price,
       userId: auth_context.userData.id,
       date: new Date(),
     };
 
     await OrderAPI.post(`/`, order_detail)
-      .then((response) => {
+      .then(() => {
         api_set_cart();
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ function Checkout() {
     setLoading(true);
 
     CartAPI.patch(`/${auth_context.userData.id}`, { items: {} })
-      .then((response) => {
+      .then(() => {
         navigate(`/orders/`);
       })
       .catch((error) => {
@@ -94,8 +94,8 @@ function Checkout() {
   };
 
   const CartItemsRows = () => {
-    if (cartItems.length > 0) {
-      return cartItems.map((item) => {
+    if (USER_CART && USER_CART.items && USER_CART.items.length > 0) {
+      return USER_CART.items.map((item) => {
         return (
           <tr key={item.id}>
             <td className='text-center'>
