@@ -4,12 +4,11 @@ import { FcGoogle } from 'react-icons/fc';
 import { IoMdWarning } from 'react-icons/io';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Context as AuthContext } from '../../context/auth';
-import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
+import { AuthorsAPI } from '../../api/Localhost';
 import Alert from '../../components/bootstrap/Alert';
 import SectionTitle from '../../components/standalone/SectionTitle';
 import GetBookByCategory from '../../components/GetBookByCategory';
 import RegisterForm from '../../components/RegisterForm';
-import { slugify, randomBigInt } from '../../components/ManipulateData';
 import usePageTitle from '../../hooks/usePageTitle';
 
 function Register() {
@@ -18,64 +17,38 @@ function Register() {
   const auth_context = useContext(AuthContext);
   const [formData, setFormData] = useState(null);
   const [existEmail, setExistEmail] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [existUsername, setExistUsername] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const api_get_author_by_email = async () => {
+  const api_create_author = async () => {
     setLoading(true);
-    await AuthorsAPI.get(`?email=${formData['email']}`)
+
+    let author_data = {
+      ...formData,
+      info: null,
+      extraInfo: null,
+      gender: null,
+      avatar:
+        'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
+      signature: null,
+      language: [],
+      socialMedia: [],
+      category: [],
+      books: [],
+    };
+
+    delete author_data.confirmPassword;
+
+    await AuthorsAPI.post(`/`, author_data)
       .then((response) => {
-        check_exist_email(response.data[0]);
+        save_user(response.data);
       })
       .catch((error) => {
-        check_exist_email(get_author_by_email(formData['email']));
+        console.log(error);
       })
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const check_exist_email = (response_data) => {
-    setFormSubmitted(false);
-    if (response_data) {
-      setExistEmail(true);
-    } else {
-      setExistEmail(false);
-      api_create_author();
-    }
-  };
-
-  const api_create_author = async () => {
-    if (!existEmail && !is_empty()) {
-      setLoading(true);
-
-      let author_data = {
-        ...formData,
-        username: slugify(
-          formData['firstName'] + formData['lastName'] + randomBigInt()
-        ),
-        info: null,
-        extraInfo: null,
-        gender: null,
-        avatar:
-          'https://cdn.jsdelivr.net/gh/Mohammed-Taysser/rakm1@master/paperCuts/authors/img/avatar-2.png',
-        signature: null,
-        language: [],
-        socialMedia: [],
-        category: [],
-        books: [],
-      };
-
-      await AuthorsAPI.post(`/`, author_data)
-        .then((response) => {
-          save_user(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      setFormSubmitted(true);
-    }
   };
 
   const save_user = (user_data) => {
@@ -88,22 +61,33 @@ function Register() {
     navigate_to('/');
   };
 
-  const is_empty = () => {
-    if (formData) {
-      return !Object.values(formData).every(
-        (val) => val !== null && val !== ''
-      );
-    } else {
-      return true;
-    }
-  };
-
-  const onFormSubmit = (data) => {
+  const onFormSubmit = async (data) => {
     setExistEmail(false);
-    setFormSubmitted(true);
-    if (data !== null && !is_empty()) {
-      api_get_author_by_email();
+    setExistUsername(false);
+    setFormData(data);
+    try {
+      setLoading(false);
+      let authorUsername = await AuthorsAPI.get(
+          `?username=${data['username']}`
+        ),
+        authorEmail = await AuthorsAPI.get(`?email=${data['email']}`);
+      if (authorUsername.status === 200 && authorEmail.status === 200) {
+        if (authorUsername.data.length !== 0) {
+          setExistUsername(true);
+        }
+        if (authorEmail.data.length !== 0) {
+          setExistEmail(true);
+        }
+        if (authorUsername.data.length === 0 && authorEmail.data.length === 0) {
+          api_create_author();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
+    // api_get_author_by_email();
   };
 
   const OtherSignUpMethods = () => {
@@ -163,10 +147,8 @@ function Register() {
                 <RegisterForm
                   onFormSubmit={onFormSubmit}
                   existEmail={existEmail}
-                  formSubmitted={formSubmitted}
-                  setFormSubmitted={setFormSubmitted}
+                  existUsername={existUsername}
                   loading={loading}
-                  setFormData={setFormData}
                 />
               </div>
             </div>
