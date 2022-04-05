@@ -19,7 +19,8 @@ function Services() {
       .then((response) => {
         setServices(response.data);
       })
-      .catch((err) => {
+      .catch((error) => {
+        console.log(error);
         setServices(SERVICES);
       })
       .finally(() => {

@@ -20,6 +20,7 @@ function TeamMembers() {
         setTeams(response.data);
       })
       .catch((error) => {
+        console.log(error);
         setTeams(TEAM);
       })
       .finally(() => {
