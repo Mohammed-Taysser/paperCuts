@@ -24,6 +24,7 @@ import AuthorDetails from './pages/noAuth/authorDetails';
 import Order from './pages/needAuth/orders';
 import OrderDetails from './pages/needAuth/orderDetails';
 import WebsitePages from './pages/noAuth/pages';
+import CreateBook from './pages/needAuth/create/createBook';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -37,6 +38,7 @@ function PaperCutsRoutes() {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/orders' element={<Order />} />
           <Route path='/orders/:id' element={<OrderDetails />} />
+          <Route path='/create/book' element={<CreateBook />} />
         </>
       );
     }
