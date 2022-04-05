@@ -24,6 +24,7 @@ function AddToWishList(props) {
         }
       })
       .catch((error) => {
+        console.log(error);
         let wishlist_item = get_wishlist_by_userId(auth_context.userData.id);
         if (wishlist_item) {
           onLoadWishlist(wishlist_item);
@@ -50,30 +51,47 @@ function AddToWishList(props) {
     setLoading(true);
 
     let newItemData = {
-        title: currentBook.title,
-        slug: currentBook.slug,
-        image: currentBook.image,
-        price: currentBook.price,
-        stars: currentBook.stars,
-        author: currentBook.author.name,
-      },
-      newWishlistItems = {
+      title: currentBook.title,
+      slug: currentBook.slug,
+      image: currentBook.image,
+      price: currentBook.price,
+      stars: currentBook.stars,
+      author: currentBook.author.name,
+    };
+
+    if (userWishlist) {
+      let newWishlistItems = {
         ...userWishlist.items,
         [currentBook.id]: newItemData,
       };
 
-    WishlistAPI.patch(`/${userWishlist.id}`, {
-      items: newWishlistItems,
-    })
-      .then((response) => {
-        onLoadWishlist(response.data);
+      WishlistAPI.patch(`/${userWishlist.id}`, {
+        items: newWishlistItems,
       })
-      .catch((error) => {
-        console.log(error);
+        .then((response) => {
+          onLoadWishlist(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      WishlistAPI.post(`/`, {
+        userId: auth_context.userData.id,
+        items: { [currentBook.id]: newItemData },
       })
-      .finally(() => {
-        setLoading(false);
-      });
+        .then((response) => {
+          onLoadWishlist(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   };
 
   const onRemoveBtnClick = (evt) => {
