@@ -13,6 +13,7 @@ function Pages() {
       { label: 'wishlist', href: '/wishlist' },
       { label: 'orders', href: '/orders' },
       { label: 'orders details', href: '/orders/1' },
+      { label: 'create book', href: '/create/book' },
     ],
     NO_AUTH_PAGES = [
       { label: 'homepage', href: '/' },
