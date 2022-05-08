@@ -22,11 +22,11 @@ const ValidFeedback = (props) => {
 };
 
 const Label = (props) => {
-  const { required, id, label, labelClass } = props.inputProps;
+  const { required, id, label, labelClass, labelClassName } = props.inputProps;
   const labelProps = {
-    className: `${labelClass ? labelClass : 'form-label'} ${
-      required ? 'require' : ''
-    }`,
+    className: `${labelClassName ? labelClassName : ''} ${
+      labelClass ? labelClass : 'form-label'
+    } ${required ? 'require' : ''}`,
     htmlFor: id,
   };
 
@@ -42,6 +42,8 @@ const INIT = (props) => ({
   required: props.required,
   disabled: props.disabled,
   readOnly: props.readOnly,
+  maxLength: props.maxLength,
+  minLength: props.minLength,
   onChange: props.onChange ? props.onChange : (data) => console.log(data),
 });
 
@@ -51,7 +53,7 @@ function SegmentWrapper(props) {
   const { inputProps } = props;
   return (
     <div className={inputProps.outer}>
-      {inputProps.type === 'radio' ? (
+      {inputProps.type === 'radio' || inputProps.type === 'checkbox' ? (
         <>
           {props.children}
           <Label inputProps={inputProps} />
@@ -73,7 +75,6 @@ function InputField(props) {
     ...INIT(props),
     type: props.type ? props.type : 'text',
     placeholder: props.placeholder,
-    minLength: props.minLength,
     className: `form-control ${props.className ? props.className : ''} ${
       props.sm ? 'form-control-sm' : ''
     } ${props.lg ? 'form-control-lg' : ''}`,
@@ -124,8 +125,6 @@ function Textarea(props) {
   const inputProps = {
     ...INIT(props),
     placeholder: props.placeholder,
-    minLength: props.minLength,
-    maxLength: props.maxLength,
     rows: props.rows,
     className: `form-control ${props.className ? props.className : ''}`,
   };
@@ -137,41 +136,27 @@ function Textarea(props) {
   );
 }
 
-// function CheckBox(props) {
-//   const checkboxProps = {
-//     type: 'checkbox',
-//     name: props.name,
-//     id: props.id,
-//     required: props.required,
-//     disabled: props.disabled,
-//     readOnly: props.readOnly,
-//     checked: props.checked,
-//     className: `form-check-input ${props.className ? props.className : ''}`,
-//     value: props.value,
-//     onChange: props.onChange,
-//   };
+function CheckBox(props) {
+  const checkboxProps = {
+    ...INIT(props),
+    type: 'checkbox',
+    id: props.id,
+    checked: props.checked,
+    className: `form-check-input ${props.className ? props.className : ''}`,
+  };
 
-//   return (
-//     <div className={props.outer}>
-//       <div className='form-check'>
-//         <input {...checkboxProps} />
-//         <label className='form-check-label' htmlFor={props.id}>
-//           {props.label}
-//         </label>
-//         <InvalidFeedback props={props} />
-//         <ValidFeedback props={props} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// CheckBox.defaultProps = {
-//   name: 'checkbox-name',
-//   id: 'checkbox-id',
-//   outer: '',
-//   value: 'checkbox-value',
-//   onchange: (e) => console.log(e.target.value),
-// };
+  return (
+    <SegmentWrapper
+      inputProps={{
+        ...props,
+        Name: 'form-check-label',
+        type: 'checkbox',
+      }}
+    >
+      <input {...checkboxProps} />
+    </SegmentWrapper>
+  );
+}
 
 function RadioField(props) {
   const radioProps = {
@@ -190,41 +175,4 @@ function RadioField(props) {
   );
 }
 
-// function Switch(props) {
-//   const switchProps = {
-//     type: 'checkbox',
-//     role: 'switch',
-//     name: props.name,
-//     id: props.id,
-//     required: props.required,
-//     disabled: props.disabled,
-//     readOnly: props.readOnly,
-//     checked: props.checked,
-//     className: `form-check-input ${props.className ? props.className : ''}`,
-//     value: props.value,
-//     onChange: props.onChange,
-//   };
-
-//   return (
-//     <div className={props.col}>
-//       <div className='form-check form-switch'>
-//         <input {...switchProps} />
-//         <label className='form-check-label' htmlFor={props.id}>
-//           {props.label}
-//         </label>
-//         <InvalidFeedback props={props} />
-//         <ValidFeedback props={props} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// Switch.defaultProps = {
-//   name: 'switch-name',
-//   id: 'switch-id',
-//   outer: '',
-//   value: 'switch-value',
-//   onchange: (e) => console.log(e.target.value),
-// };
-
-export { InputField, SelectField, Textarea, RadioField };
+export { InputField, SelectField, Textarea, RadioField, CheckBox };

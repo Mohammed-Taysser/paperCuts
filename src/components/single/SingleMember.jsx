@@ -1,4 +1,5 @@
 import React from 'react';
+import { onImageNotLoad } from '../ManipulateData';
 
 function SingleMember(props) {
   const { member } = props;
@@ -43,22 +44,13 @@ function SingleMember(props) {
             src={member.avatar}
             className='member-image'
             alt={member.name}
+            onError={onImageNotLoad}
             width='200'
             height='200'
           />
           <RoundedSvg />
           <LineSvg />
           <PlusShape />
-          <div className='member-signature'>
-            {member.signature && (
-              <img
-                src={member.signature}
-                alt='username signature'
-                width={120}
-                height={50}
-              />
-            )}
-          </div>
         </div>
         <div className='member-info'>
           <h6 className='member-position my-2'>{member.position}</h6>

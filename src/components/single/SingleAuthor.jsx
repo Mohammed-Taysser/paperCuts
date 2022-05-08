@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { onImageNotLoad } from '../ManipulateData';
 
 function SingleAuthor(props) {
   const { author } = props;
@@ -41,9 +42,10 @@ function SingleAuthor(props) {
       <div className='single-member-wrapper'>
         <div className='member-image-container'>
           <img
-            src={author.image}
+            src={author.avatar}
             className='member-image'
             alt={author.firstName}
+            onError={onImageNotLoad}
             width='200'
             height='200'
           />

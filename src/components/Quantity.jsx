@@ -3,8 +3,8 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import Spinner from './bootstrap/Spinner';
 
 function QuantityControlButton(props) {
-  const { loading } = props;
-  const [quantityNumber, setQuantityNumber] = useState(props.initQuantity);
+  const { loading, initQuantity = 1 } = props;
+  const [quantityNumber, setQuantityNumber] = useState(initQuantity);
 
   const onQuantityAdd = (evt) => {
     evt.preventDefault();

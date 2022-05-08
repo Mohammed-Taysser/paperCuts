@@ -146,5 +146,21 @@ for image url use [`picsum.photos`](https://picsum.photos/)
 
 ## Special Thanks For Inspiration To
 
-- [chapter-one-bookstore-and-publisher-theme](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
+- [chapter-one-bookstore](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
 - [dbooks](https://www.dbooks.org/)
+
+## additional tips
+
+### create tree map
+
+you can use `tree`
+
+the `.` to use the current directory(don't forget to use it inside our project directory which call `paperCuts`)
+
+[`TREE.md`](TREE.md) is the output file name
+
+`-I "directory name"` use to exclude un-needed directory like `node_modules`
+
+```shell
+tree  . > TREE.md  -I "node_modules"
+```

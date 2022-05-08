@@ -1,0 +1,47 @@
+import React, { useState, useEffect } from 'react';
+import { BiUpArrowCircle } from 'react-icons/bi';
+
+function BackToTop() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    back_to_top();
+  }, []);
+
+  const back_to_top = () => {
+    document.addEventListener('scroll', () => {
+      if (
+        document.body.scrollTop > 700 ||
+        document.documentElement.scrollTop > 700
+      ) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    });
+  };
+
+  const onBtnClick = (evt) => {
+    evt.preventDefault();
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+  if (show) {
+    return (
+      <a
+        href='#bact-to-top'
+        className='back-to-top text-white p-2 bg-aurora'
+        onClick={onBtnClick}
+      >
+        <BiUpArrowCircle className='h4 m-0' />
+      </a>
+    );
+  } else {
+    return <></>;
+  }
+}
+
+export default BackToTop;

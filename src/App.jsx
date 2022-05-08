@@ -6,6 +6,7 @@ import MainRoute from './routes';
 import AuthContext from './context/auth';
 import CouponContext from './context/coupon';
 import useJsonServerToast from './hooks/useJsonServerToast';
+import BackToTop from './components/standalone/BackToTop';
 
 function App() {
   const [isDown, jsonServerToast] = useJsonServerToast();
@@ -21,6 +22,7 @@ function App() {
       <CouponContext>
         <BrowserRouter>
           <Navbar />
+          <BackToTop />
           {isDown && jsonServerToast}
           <MainRoute />
           <Footer />

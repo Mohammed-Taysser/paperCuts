@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import ImageNotFound from '../assets/images/404.jpg';
 
 // --------------
 // - components |
@@ -95,4 +96,100 @@ const monthNames = [
   'December',
 ];
 
-export { Stars, capitalize, human_date, slugify, diff_in_days, monthNames };
+/**
+ * copy string to clipboard
+ * @param {String} text the string to be copy
+ */
+const copyToClipboard = (text) => {
+  const temp_textarea = document.createElement('textarea');
+  temp_textarea.value = text;
+  document.body.appendChild(temp_textarea);
+  temp_textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp_textarea);
+};
+
+/**
+ * JavaScript array equality: A smarter way to compare two arrays
+ * @param {Array} arr1 array 1
+ * @param {Array} arr2 array 2
+ * @returns {Boolean} is equal or not
+ */
+const isEqualArray = (arr1, arr2) => {
+  return (
+    arr1.length === arr2.length &&
+    arr1.every((element) => arr2.includes(element))
+  );
+};
+
+/**
+ *  Get type of a variable in string
+
+```js
+getTypeOf('hello world'); // String
+getTypeOf(1000); // Number
+getTypeOf(Infinity); // Number
+getTypeOf(true); // Boolean
+getTypeOf(Symbol()); // Symbol
+getTypeOf(null); // Null
+getTypeOf(undefined); // Undefined
+getTypeOf({}); // Object
+getTypeOf([]); // Array
+getTypeOf(/[a-z]/g); // RegExp
+getTypeOf(new Date(2021)); // Date
+getTypeOf(new Error()); // Error
+getTypeOf(function () {}); // Function
+getTypeOf((a, b) => a + b); // Function
+getTypeOf(async () => {}); // AsyncFunction
+getTypeOf(document); // HTMLDocument
+```
+ * @param {any} obj any variable
+ * @returns {String} type
+ */
+const getTypeOf = (obj) => {
+  return Object.prototype.toString.call(obj).match(/\[object (.*)\]/)[1];
+};
+
+/**
+ * JavaScript Object equality: A smarter way to compare two Object
+ * @param {Object} obj1 object 1
+ * @param {Object} obj2 object 2
+ * @returns {Boolean} is equal or not
+ */
+function isEqualObject(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+/**
+ * generate big integer by length
+ * @param {Number} length length of generated number
+ * @returns {BigInt}
+ */
+function randomBigInt(length = 16) {
+  const hexString = Array(length)
+    .fill()
+    .map(() => Math.round(Math.random() * 0xf).toString(16))
+    .join('');
+
+  // eslint-disable-next-line no-undef
+  return BigInt(`0x${hexString}`);
+}
+
+function onImageNotLoad(evt) {
+  evt.target.src = ImageNotFound;
+}
+
+export {
+  Stars,
+  capitalize,
+  human_date,
+  slugify,
+  diff_in_days,
+  monthNames,
+  copyToClipboard,
+  isEqualArray,
+  isEqualObject,
+  getTypeOf,
+  randomBigInt,
+  onImageNotLoad,
+};

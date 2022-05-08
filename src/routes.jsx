@@ -2,26 +2,29 @@ import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Context as AuthContext } from './context/auth';
 
-import Homepage from './pages/homepage';
-import PageNotFound from './pages/404';
-import AboutUs from './pages/about-us';
-import ContactUs from './pages/contact-us';
-import Login from './pages/login';
-import Register from './pages/register';
-import ForgetPassword from './pages/forget-password';
-import Profile from './pages/profile';
-import Cart from './pages/cart';
-import Checkout from './pages/checkout';
-import Books from './pages/books';
-import BooksDetails from './pages/booksDetails';
-import Category from './pages/category';
-import CategoryDetails from './pages/categoryDetails';
-import Events from './pages/events';
-import EventsDetails from './pages/eventDetails';
-import Author from './pages/authors';
-import AuthorDetails from './pages/authorDetails';
-import Order from './pages/orders';
-import OrderDetails from './pages/orderDetails';
+import Homepage from './pages/noAuth/homepage';
+import PageNotFound from './pages/noAuth/404';
+import AboutUs from './pages/noAuth/about-us';
+import ContactUs from './pages/noAuth/contact-us';
+import Login from './pages/noAuth/login';
+import Register from './pages/noAuth/register';
+import ForgetPassword from './pages/noAuth/forget-password';
+import Profile from './pages/needAuth/profile';
+import Wishlist from './pages/needAuth/wishlist';
+import Cart from './pages/needAuth/cart';
+import Checkout from './pages/needAuth/checkout';
+import Books from './pages/noAuth/books';
+import BooksDetails from './pages/noAuth/bookDetails';
+import Category from './pages/noAuth/category';
+import CategoryDetails from './pages/noAuth/categoryDetails';
+import Events from './pages/noAuth/events';
+import EventsDetails from './pages/noAuth/eventDetails';
+import Author from './pages/noAuth/authors';
+import AuthorDetails from './pages/noAuth/authorDetails';
+import Order from './pages/needAuth/orders';
+import OrderDetails from './pages/needAuth/orderDetails';
+import WebsitePages from './pages/noAuth/pages';
+import CreateBook from './pages/needAuth/create/createBook';
 
 function PaperCutsRoutes() {
   const auth_context = useContext(AuthContext);
@@ -31,9 +34,11 @@ function PaperCutsRoutes() {
         <>
           <Route path='/profile' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/wishlist' element={<Wishlist />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/orders' element={<Order />} />
           <Route path='/orders/:id' element={<OrderDetails />} />
+          <Route path='/create/book' element={<CreateBook />} />
         </>
       );
     }
@@ -43,6 +48,7 @@ function PaperCutsRoutes() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='*' element={<PageNotFound />} />
+        <Route path='/pages' element={<WebsitePages />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/about-us' element={<AboutUs />} />

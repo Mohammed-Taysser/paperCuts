@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Stars } from '../ManipulateData';
+import AddToWishList from '../AddToWishlist';
+import { onImageNotLoad, Stars } from '../ManipulateData';
+import { Context as AuthContext } from '../../context/auth';
 
 function SingleBook(props) {
-  const { book } = props;
+  const { book, withWishlist } = props;
+  const auth_context = useContext(AuthContext);
 
   return (
     <div className={`col-6 col-md-${props.col} my-3`}>
       <div className='card border-0 nice-shadow h-100 single-book'>
+        {auth_context.isAuth && withWishlist && (
+          <div
+            className='position-absolute top-0 end-0 m-2'
+            style={{ zIndex: 2 }}
+          >
+            <AddToWishList currentBook={book} />
+          </div>
+        )}
         <div className='img'>
-          <img src={book.image} className='card-img-top' alt={book.title} />
+          <img
+            src={book.image}
+            className='card-img-top'
+            onError={onImageNotLoad}
+            alt={book.title}
+          />
         </div>
         <div className='card-body'>
           <h5 className='card-title'>
-            <Link to={`/books/${book.slug}`} className='stretched-link'>
+            <Link to={`/books/${book.slug}`} className=''>
               {book.title}
             </Link>
           </h5>

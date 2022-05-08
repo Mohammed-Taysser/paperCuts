@@ -3,7 +3,9 @@ import React from 'react';
 const Alert = (props) => {
   return (
     <div
-      className={`alert alert-${props.color} d-flex align-items-center`}
+      className={`alert alert-${props.color} d-flex align-items-center ${
+        props.className ? props.className : ''
+      }`}
       role='alert'
     >
       {props.children}
