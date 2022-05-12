@@ -1,6 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { FaFacebook, FaGithub } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
 import { IoMdWarning } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../api/auth';
@@ -82,35 +80,6 @@ function Login() {
     }
   };
 
-  const OtherLoginMethods = () => {
-    return (
-      <div className='my-3 text-center'>
-        <a
-          className='text-dark social-media-icon'
-          href='#other-method'
-          title='google'
-        >
-          <FcGoogle className='h5 m-0' />
-        </a>
-        <a
-          className='text-primary social-media-icon'
-          href='#other-method'
-          title='facebook'
-        >
-          <FaFacebook className='h5 m-0' />
-        </a>
-        <a
-          className='text-dark social-media-icon'
-          href='#other-method'
-          title='github'
-        >
-          <FaGithub className='h5 m-0' />
-        </a>
-        <p className='small text-muted mt-4'>or use your account</p>
-      </div>
-    );
-  };
-
   const DummyCol = () => {
     return (
       <div className='col-md-6 my-3'>
@@ -150,7 +119,6 @@ function Login() {
               <div className='col-md-6 my-3'>
                 <div className='p-4 rounded-start border login-content'>
                   <h1 className='my-4 text-center'>Sign in</h1>
-                  {/* <OtherLoginMethods /> */}
                   <form
                     className={`mb-3 needs-validation`}
                     noValidate
