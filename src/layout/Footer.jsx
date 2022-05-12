@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaPhoneAlt, FaMapMarkerAlt, FaRegEnvelope } from 'react-icons/fa';
 import favicon from '../assets/images/icons/favicon.png';
 import dottedShape from '../assets/images/shapes/dotted-shape.svg';
+import '../assets/scss/layout/footer.scss'
 
 class Footer extends Component {
   constructor(props) {
