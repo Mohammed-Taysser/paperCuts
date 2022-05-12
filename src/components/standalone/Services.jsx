@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { SERVICES, ServicesAPI } from '../../api/Localhost';
+import { getAllServices } from '../../api/services';
+import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
 import SectionTitle from './SectionTitle';
 import Alert from '../bootstrap/Alert';
-import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
 import SingleService from '../single/SingleService';
+import '../../assets/scss/components/services.scss';
 
 function Services() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
 
   useEffect(() => {
     get_services_api();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_services_api = () => {
-    ServicesAPI.get('/')
+    getAllServices()
       .then((response) => {
         setServices(response.data);
       })
       .catch((error) => {
         console.log(error);
-        setServices(SERVICES);
+        setLoadingError(true);
       })
       .finally(() => {
         setLoading(false);
@@ -29,20 +30,18 @@ function Services() {
   };
 
   const ServiceItems = () => {
-    if (services.length > 0) {
-      let services_items = services.map((service) => (
-        <SingleService service={service} key={service.id} />
-      ));
-      return <> {services_items} </>;
-    }
-    return <Alert> no services available </Alert>;
+    let services_items = services.map((service) => (
+      <SingleService service={service} key={service._id} />
+    ));
+    return <> {services_items} </>;
   };
 
   const Render = () => {
-    if (loading) {
+    if (loading && !loadingError) {
       return <RowOfPlaceholderCard />;
-    }
-    if (services) {
+    } else if (loadingError) {
+      return <Alert> Error While Loading services </Alert>;
+    } else if (services && services.length > 0) {
       return (
         <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
           <ServiceItems />
