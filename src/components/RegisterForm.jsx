@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Spinner from './bootstrap/Spinner';
+import registerValidate from '../validations/register.validate';
 import { InputField } from './bootstrap/Form';
-import { isEqualObject } from './ManipulateData';
 
 function RegisterForm(props) {
-  const { existEmail, existUsername, loading } = props;
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [passwordNoMatch, setPasswordNoMatch] = useState(false);
-  const [debouncedFormData, setDebouncedFormData] = useState({});
+  const { errors, setErrors, loading } = props;
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,147 +20,98 @@ function RegisterForm(props) {
 
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    setIsFormSubmitted(true);
-    if (
-      !isFormDataEmpty() &&
-      confirmPasswordConstrains() &&
-      !isEqualObject(debouncedFormData, formData)
-    ) {
-      props.onFormSubmit(formData);
-      setIsFormSubmitted(false);
-    }
-    setDebouncedFormData(formData);
-  };
 
-  const isFormDataEmpty = () => {
-    if (formData) {
-      return !Object.values(formData).every(
-        (val) => val !== null && val !== ''
-      );
+    setErrors({});
+
+    const errorsAsObject = registerValidate(formData);
+
+    if (Object.keys(errorsAsObject).length > 0) {
+      setErrors(errorsAsObject);
     } else {
-      return true;
+      props.onFormSubmit(formData);
     }
   };
 
-  const confirmPasswordConstrains = () => {
-    if (formData.confirmPassword !== formData.password) {
-      setPasswordNoMatch(true);
-      setIsFormSubmitted(false);
-    }
-    if (formData.confirmPassword === formData.password) {
-      setPasswordNoMatch(false);
-    }
-    return (
-      formData.password &&
-      formData.confirmPassword &&
-      formData.password.length >= 8 &&
-      formData.confirmPassword.length >= 8 &&
-      formData.confirmPassword === formData.password
-    );
-  };
   return (
-    <form
-      className={`mb-3 needs-validation ${
-        isFormSubmitted ? 'was-validated' : ''
-      }`}
-      onSubmit={onFormSubmit}
-      noValidate
-    >
+    <form className='mb-3' onSubmit={onFormSubmit} noValidate>
       <div className='row justify-content-center'>
         <InputField
           outer='col-lg-6 my-3'
           id='register-first-name'
+          className={errors['firstName'] ? 'is-invalid' : ''}
           label='first name'
           name='firstName'
           value={formData['firstName']}
           onChange={onInputChange}
-          placeholder='first name'
+          placeholder='eg: mohammed'
           required
-          invalidFeedback
-          validFeedback
+          invalidFeedback={errors['firstName']}
         />
         <InputField
           outer='col-lg-6 my-3'
           id='register-last-name'
+          className={errors['lastName'] ? 'is-invalid' : ''}
           label='last name'
           name='lastName'
           value={formData['lastName']}
           onChange={onInputChange}
-          placeholder='last name'
+          placeholder='eg: taysser'
           required
-          invalidFeedback
-          validFeedback
+          invalidFeedback={errors['lastName']}
         />
         <InputField
           outer='col-lg-6 my-3'
           id='register-username'
-          className={existUsername ? 'is-invalid' : ''}
+          className={errors['username'] ? 'is-invalid' : ''}
           label='username'
           name='username'
           value={formData['username']}
           onChange={onInputChange}
-          placeholder='username'
+          placeholder='eg: superhero'
           required
-          invalidFeedback={
-            existUsername
-              ? 'username already exist'
-              : 'please provide valid username'
-          }
-          validFeedback
+          invalidFeedback={errors['username']}
         />
         <InputField
           outer='col-lg-6 my-3'
           type='email'
           id='register-email'
           label='email address'
-          className={existEmail ? 'is-invalid' : ''}
+          className={errors['email'] ? 'is-invalid' : ''}
           name='email'
           value={formData['email']}
           onChange={onInputChange}
-          placeholder='email address'
+          placeholder='eg: mo@mo.mo'
           required
-          invalidFeedback={
-            existEmail ? 'email already exist' : 'please provide valid email'
-          }
+          invalidFeedback={errors['email']}
           validFeedback
         />
         <InputField
           outer='col-lg-6 my-3'
           type='password'
-          className={passwordNoMatch ? 'is-invalid' : ''}
+          className={errors['password'] ? 'is-invalid' : ''}
           id='register-password'
           label='password'
           name='password'
           minLength={8}
           value={formData['password']}
           onChange={onInputChange}
-          placeholder='password'
+          placeholder='*********'
           required
-          invalidFeedback={
-            passwordNoMatch
-              ? 'password not match'
-              : "password can't be empty or less than 8 characters"
-          }
-          validFeedback
+          invalidFeedback={errors['password']}
         />
         <InputField
           outer='col-lg-6 my-3'
           type='password'
-          className={passwordNoMatch ? 'is-invalid' : ''}
+          className={errors['confirmPassword'] ? 'is-invalid' : ''}
           id='register-confirm-password'
           label='confirm password'
           name='confirmPassword'
           minLength={8}
           value={formData['confirmPassword']}
           onChange={onInputChange}
-          placeholder='confirm password'
+          placeholder='*********'
           required
-          invalidFeedback={
-            passwordNoMatch
-              ? 'password not match'
-              : "password can't be empty or less than 8 characters"
-          }
-          validFeedback
+          invalidFeedback={errors['confirmPassword']}
         />
       </div>
       <div className=''>
