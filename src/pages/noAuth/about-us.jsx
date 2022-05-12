@@ -4,17 +4,16 @@ import CoffeeImage from '../../assets/images/background/about/coffee.png';
 import CupShape from '../../assets/images/shapes/cup-shape.png';
 import FlyShape from '../../assets/images/shapes/fly-shape.svg';
 import AboutAudioBook from '../../components/AboutAudioBook';
-import Banner from '../../components/standalone/Banner';
 import Services from '../../components/standalone/Services';
-import TeamMembers from '../../components/standalone/Teams';
+import TeamMembers from '../../components/standalone/TeamMembers';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/WithBanner';
 
 function AboutUs() {
   usePageTitle('About Us');
 
   return (
-    <>
-      <Banner title='about us' subtitle='info' />
+    <WithBanner title='about us' subtitle='info'>
       <Services />
       <section className='autobiography-section my-5 py-5'>
         <div className='container'>
@@ -29,7 +28,6 @@ function AboutUs() {
                   wide-ranging collation of papers examines a host of issues in
                   studying immigrant.
                 </p>
-                {/* <button className='btn btn-aurora'>Read More</button> */}
                 <img
                   src={CupShape}
                   alt='cup-shape'
@@ -81,7 +79,6 @@ function AboutUs() {
                   wide-ranging collation of papers examines a host of issues in
                   studying immigrant.
                 </p>
-                {/* <button className='btn btn-aurora'>Read More</button> */}
                 <img
                   src={FlyShape}
                   alt='fly-shape'
@@ -96,7 +93,7 @@ function AboutUs() {
       </section>
       <TeamMembers />
       <AboutAudioBook />
-    </>
+    </WithBanner>
   );
 }
 
