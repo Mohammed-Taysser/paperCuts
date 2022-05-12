@@ -1,65 +1,54 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 import { IoMdWarning } from 'react-icons/io';
-import { Context as AuthContext } from '../../context/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../api/auth';
 import { InputField } from '../../components/bootstrap/Form';
-import { AuthorsAPI, get_author_by_email } from '../../api/Localhost';
-import Spinner from '../../components/bootstrap/Spinner';
+import { Context as AuthContext } from '../../context/auth';
 import Alert from '../../components/bootstrap/Alert';
+import Spinner from '../../components/bootstrap/Spinner';
 import usePageTitle from '../../hooks/usePageTitle';
+import loginValidate from '../../validations/login.validate';
 
 function Login() {
   usePageTitle('Login');
   const navigate_to = useNavigate();
   const auth_context = useContext(AuthContext);
-  const [wrongPassword, setWrongPassword] = useState(false);
-  const [userNotExist, setUserNotExist] = useState(false);
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
-  const api_get_author = async () => {
+  const api_login = async () => {
     setLoading(true);
-    await AuthorsAPI.get(`?email=${formData['email']}`)
+    await login(formData)
       .then((response) => {
-        check_user_exist(response.data[0]);
+        saveAuthor(response.data);
       })
       .catch((error) => {
-        console.log(error);
-        check_user_exist(get_author_by_email(formData['email']));
+        handelErrors(error.response.data.error);
       })
       .finally(() => {
         setLoading(false);
       });
   };
 
-  const check_user_exist = (user) => {
-    if (user) {
-      setSubmitted(false);
-      setUserNotExist(false);
+  const saveAuthor = (responseData) => {
+    const { author, token } = responseData;
+    auth_context.setUserData(author);
+    auth_context.setIsAuth(true);
 
-      if (formData['password'] === user.password) {
-        setWrongPassword(false);
-        auth_context.setUserData(user);
-        auth_context.setIsAuth(true);
+    localStorage.setItem(
+      'auth',
+      JSON.stringify({ isAuth: true, userData: author })
+    );
 
-        localStorage.setItem(
-          'auth',
-          JSON.stringify({ isAuth: true, userData: user })
-        );
-        navigate_to('/');
-      } else {
-        setWrongPassword(true);
-      }
-    } else {
-      setSubmitted(false);
-      setUserNotExist(true);
-    }
+    localStorage.setItem('token', JSON.stringify(token));
+
+    navigate_to('/');
   };
 
   const onInputChange = (evt) => {
@@ -69,17 +58,27 @@ function Login() {
     });
   };
 
+  const handelErrors = (errorsAsObject) => {
+    if (errorsAsObject.notExist) {
+      setErrors({
+        email: errorsAsObject.notExist,
+        password: errorsAsObject.notExist,
+      });
+    } else {
+      setErrors(errorsAsObject);
+    }
+  };
+
   const onFormSubmit = (evt) => {
     evt.preventDefault();
-    setWrongPassword(false);
-    setUserNotExist(false);
-    setSubmitted(true);
-    if (
-      formData['email'] &&
-      formData['password'] &&
-      formData['password'].length >= 8
-    ) {
-      api_get_author();
+    setErrors({});
+
+    const errorsAsObject = loginValidate(formData);
+
+    if (Object.keys(errorsAsObject).length > 0) {
+      handelErrors(errorsAsObject);
+    } else {
+      api_login();
     }
   };
 
@@ -153,9 +152,7 @@ function Login() {
                   <h1 className='my-4 text-center'>Sign in</h1>
                   <OtherLoginMethods />
                   <form
-                    className={`mb-3 ${
-                      submitted && 'was-validated'
-                    } needs-validation`}
+                    className={`mb-3 needs-validation`}
                     noValidate
                     onSubmit={onFormSubmit}
                   >
@@ -164,38 +161,28 @@ function Login() {
                       type='email'
                       id='login-email'
                       label='email address'
-                      className={userNotExist ? 'is-invalid' : ''}
+                      className={errors['email'] ? 'is-invalid' : ''}
                       name='email'
                       value={formData['email']}
                       onChange={onInputChange}
-                      placeholder='email address'
+                      placeholder='eg: mo@mo.mo'
                       required
-                      invalidFeedback={
-                        userNotExist
-                          ? 'no user exist, please check your email'
-                          : 'please provide valid email'
-                      }
+                      invalidFeedback={errors['email']}
                       validFeedback
                     />
                     <InputField
                       outer='my-3'
                       type='password'
-                      className={
-                        wrongPassword || userNotExist ? 'is-invalid' : ''
-                      }
+                      className={errors['password'] ? 'is-invalid' : ''}
                       id='login-password'
                       label='password'
                       name='password'
                       minLength={8}
                       value={formData['password']}
                       onChange={onInputChange}
-                      placeholder='password'
+                      placeholder='eg: ********'
                       required
-                      invalidFeedback={
-                        formData['password'].length < 8
-                          ? 'password must be 8 char or more'
-                          : 'please check your password'
-                      }
+                      invalidFeedback={errors['password']}
                       validFeedback
                     />
                     <p className='text-end'>
