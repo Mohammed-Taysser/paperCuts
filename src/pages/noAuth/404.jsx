@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageNotFoundImage from '../../assets/images/background/404-img.jpg';
 import usePageTitle from '../../hooks/usePageTitle';
+import '../../assets/scss/pages/404.scss';
 
 function PageNotFound() {
   usePageTitle('404 Page Not Found');
