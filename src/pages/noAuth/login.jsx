@@ -150,7 +150,7 @@ function Login() {
               <div className='col-md-6 my-3'>
                 <div className='p-4 rounded-start border login-content'>
                   <h1 className='my-4 text-center'>Sign in</h1>
-                  <OtherLoginMethods />
+                  {/* <OtherLoginMethods /> */}
                   <form
                     className={`mb-3 needs-validation`}
                     noValidate
