@@ -7,10 +7,11 @@ import { FiLogOut } from 'react-icons/fi';
 import favicon from '../assets/images/icons/favicon.png';
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
+import '../assets/scss/layout/navbar.scss';
 
 function Navbar() {
-  const auth_context = useContext(AuthContext),
-    navigate_to = useNavigate();
+  const auth_context = useContext(AuthContext);
+  const navigate_to = useNavigate();
   const [query, setQuery] = useState('');
 
   const AuthLinks = () => {
