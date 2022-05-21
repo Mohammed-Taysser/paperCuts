@@ -1,29 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../components/standalone/Banner';
-import { CATEGORY, TOP_FIVE, CategoryAPI } from '../api/Localhost';
+import { getAllCategory } from '../api/category';
+import { getTop5 } from '../api/books';
 import Spinner from '../components/bootstrap/Spinner';
+import Banner from '../components/standalone/Banner';
 import Alert from '../components/bootstrap/Alert';
 
 function RightSidebar(props) {
   const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState({
+    category: true,
+    top5: true,
+  });
+  const [loadingError, setLoadingError] = useState({
+    category: null,
+    top5: null,
+  });
+  const [top5, setTop5] = useState([]);
 
   useEffect(() => {
     get_category_api();
+    get_top5_api();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_category_api = () => {
-    CategoryAPI.get('/')
+    getAllCategory()
       .then((response) => {
         setCategories(response.data);
       })
       .catch((error) => {
-        setCategories(CATEGORY);
+        setLoadingError({ ...loadingError, category: error.data });
       })
       .finally(() => {
-        setLoading(false);
+        setLoading((load) => ({ ...load, category: false }));
+      });
+  };
+
+  const get_top5_api = () => {
+    getTop5()
+      .then((response) => {
+        setTop5(response.data.result);
+      })
+      .catch((error) => {
+        setLoadingError({ ...loadingError, top5: error.data });
+      })
+      .finally(() => {
+        setLoading((load) => ({ ...load, top5: false }));
       });
   };
 
@@ -33,10 +56,7 @@ function RightSidebar(props) {
         {categories.map((cat, index) => {
           return (
             <li className='special-small-title my-2' key={index}>
-              <Link to={`/category/${cat.slug}`}>
-                {cat.title}
-                <small className='text-muted'>({cat.books.length})</small>
-              </Link>
+              <Link to={`/category/${cat.slug}`}>{cat.title}</Link>
             </li>
           );
         })}
@@ -45,10 +65,11 @@ function RightSidebar(props) {
   };
 
   const RenderCategoryList = () => {
-    if (loading) {
+    if (loading.category) {
       return <Spinner />;
-    }
-    if (categories.length > 0) {
+    } else if (loadingError.category) {
+      return <Alert sm> {loadingError.category} </Alert>;
+    } else if (categories && categories.length > 0) {
       return <CategoryList />;
     } else {
       return <Alert> no category found </Alert>;
@@ -56,7 +77,7 @@ function RightSidebar(props) {
   };
 
   const TopFiveOfWeek = () => {
-    let top_5 = TOP_FIVE.map((book, index) => {
+    let top_5 = top5.map((book, index) => {
       return (
         <Link to={`/books/${book.slug}`} key={index}>
           <img
@@ -72,6 +93,18 @@ function RightSidebar(props) {
     return <>{top_5}</>;
   };
 
+  const RenderTopFiveOfWeek = () => {
+    if (loading.top5) {
+      return <Spinner />;
+    } else if (loadingError.top5) {
+      return <Alert> {loadingError.top5}</Alert>;
+    } else if (top5 && top5.length > 0) {
+      return <TopFiveOfWeek />;
+    } else {
+      return <Alert sm> no books found </Alert>;
+    }
+  };
+
   const Sidebar = () => {
     return (
       <div className='ms-lg-3'>
@@ -81,7 +114,7 @@ function RightSidebar(props) {
         </section>
         <section className='top-five-section mt-4'>
           <h4 className='mb-3'>Top 5 of the week</h4>
-          <TopFiveOfWeek />
+          <RenderTopFiveOfWeek />
         </section>
       </div>
     );
