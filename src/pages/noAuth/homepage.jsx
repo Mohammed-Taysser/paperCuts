@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Services from '../../components/standalone/Services';
 import HeroHeader from '../../components/standalone/HeroHeader';
 import Testimonials from '../../components/standalone/Testimonials';
 import GeoLocation from '../../components/standalone/GeoLocation';
 import SectionTitle from '../../components/standalone/SectionTitle';
-import GetBookByCategory from '../../components/GetBookByCategory';
+import SingleBook from '../../components/single/SingleBook';
+import Alert from '../../components/bootstrap/Alert';
 
 import NewsLetterImage from '../../assets/images/background/news-letter-bg.png';
 import SleepyGirlImage from '../../assets/images/shapes/sleepy-girl.png';
@@ -18,15 +19,48 @@ import SkewedShape from '../../assets/images/shapes//skewed-shape.png';
 import AwardsImage from '../../assets/images/background/awards.png';
 import usePageTitle from '../../hooks/usePageTitle';
 
+import '../../assets/scss/pages/homepage.scss';
+import { getLatestBooks } from '../../api/books';
+
 function Homepage() {
   usePageTitle('Homepage');
+  const [latestBooks, setLatestBooks] = useState([]);
+
+  useEffect(() => {
+    api_get_latest_books();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const api_get_latest_books = () => {
+    getLatestBooks()
+      .then((response) => {
+        setLatestBooks(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const LatestBooks = () => {
+    const RenderBooks = () => {
+      if (latestBooks && latestBooks.length > 0) {
+        let books_list = latestBooks.map((book, index) => (
+          <SingleBook book={book} key={index} />
+        ));
+        return (
+          <div className='row justify-content-center align-items-stretch'>
+            {books_list}
+          </div>
+        );
+      } else {
+        return <Alert>no available books found</Alert>;
+      }
+    };
     return (
       <section className='latest-books py-5 my-5'>
         <SectionTitle subtitle='shop online' title='Latest books online' />
         <div className='container'>
-          <GetBookByCategory />
+          <RenderBooks />
         </div>
         <div className='text-center mt-4'>
           <Link to='/books' className='btn btn-aurora'>
