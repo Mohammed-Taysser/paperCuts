@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import MainRoute from './routes';
@@ -15,16 +17,18 @@ function App() {
   }, []);
 
   return (
-    <AuthContext>
-      <CouponContext>
-        <BrowserRouter>
-          <Navbar />
-          <BackToTop />
-          <MainRoute />
-          <Footer />
-        </BrowserRouter>
-      </CouponContext>
-    </AuthContext>
+    <Provider store={store}>
+      <AuthContext>
+        <CouponContext>
+          <BrowserRouter>
+            <Navbar />
+            <BackToTop />
+            <MainRoute />
+            <Footer />
+          </BrowserRouter>
+        </CouponContext>
+      </AuthContext>
+    </Provider>
   );
 }
 
