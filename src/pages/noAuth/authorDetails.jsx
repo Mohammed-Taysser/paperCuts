@@ -1,57 +1,76 @@
 import React, { useEffect, useState } from 'react';
 import {
-  FaFacebookF, FaInstagram,
-  FaTelegram, FaTwitter
+  FaFacebookF,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
 } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { AuthorsAPI, get_author_by_username } from '../../api/Localhost';
+import { getAuthorByUsername } from '../../api/authors';
+import { onImageNotLoad } from '../../components/ManipulateData';
+import { getAuthorBooks } from '../../api/books';
+import BookList from '../../components/standalone/BookList';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';
-import GetBookByCategory from '../../components/GetBookByCategory';
-import InlineCategoryTags from '../../components/InlineCategoryTags';
-import Banner from '../../components/standalone/Banner';
 import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
+import InlineCategoryTags from '../../components/standalone/InlineCategoryTags';
+import WithBanner from '../../layout/WithBanner';
+import NoBookFound from '../../assets/images/image-not-found.png';
 
 function AuthorDetails() {
   const [, setPageTitle] = usePageTitle('Author Details');
   const { username } = useParams();
   const [currentAuthor, setCurrentAuthor] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [authorBooks, setAuthorBooks] = useState([]);
+  const [loading, setLoading] = useState({
+    author: true,
+    books: true,
+  });
+  const [loadingError, setLoadingError] = useState({
+    author: null,
+    books: null,
+  });
 
   useEffect(() => {
     get_author_api();
+    get_author_books_api();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const get_author_api = () => {
-    AuthorsAPI.get(`?username=${username}`)
+  const get_author_api = async () => {
+    await getAuthorByUsername(username)
       .then((response) => {
-        if (response.data.length === 1) {
-          setCurrentAuthor(response.data[0]);
-          setPageTitle(
-            response.data[0].firstName + ' ' + response.data[0].lastName
-          );
-        }
+        setCurrentAuthor(response.data);
+        setPageTitle(response.data.firstName + ' ' + response.data.lastName);
       })
-      .catch((err) => {
-        let temp_author = get_author_by_username(username);
-        if (temp_author) {
-          setCurrentAuthor(temp_author);
-          setPageTitle(temp_author.firstName + ' ' + temp_author.lastName);
-        }
+      .catch((error) => {
+        setLoadingError((load) => ({ ...load, author: error }));
       })
       .finally(() => {
-        setLoading(false);
+        setLoading((load) => ({ ...load, author: false }));
       });
   };
 
-  const full_name = () => {
+  const get_author_books_api = async () => {
+    await getAuthorBooks(username)
+      .then((response) => {
+        setAuthorBooks(response.data);
+      })
+      .catch((error) => {
+        setLoadingError((load) => ({ ...load, books: error }));
+      })
+      .finally(() => {
+        setLoading((load) => ({ ...load, books: false }));
+      });
+  };
+
+  const authorFullName = () => {
     return `${currentAuthor.firstName} ${currentAuthor.lastName}`;
   };
 
-  const SocialMedia = () => {
+  const AuthorSocialMediaLinks = () => {
     let author_social_media = [];
     for (const key in currentAuthor.socialMedia) {
       if (Object.hasOwnProperty.call(currentAuthor.socialMedia, key)) {
@@ -105,10 +124,18 @@ function AuthorDetails() {
           <div className='col-md-5 my-3 text-center'>
             <img
               src={currentAuthor.avatar}
-              alt={full_name()}
+              alt={authorFullName()}
               width={250}
               height={250}
               className='img-fluid rounded-circle'
+            />
+            <img
+              src={currentAuthor.signature}
+              alt={authorFullName()}
+              width={150}
+              height={100}
+              onError={onImageNotLoad}
+              className='img-fluid mt-3 d-block mx-auto'
             />
           </div>
           <div className='col-md-7 my-3'>
@@ -116,7 +143,7 @@ function AuthorDetails() {
               <small className='special-small-title'>
                 {currentAuthor.username}
               </small>
-              <h1 className='h2 mb-3'> {full_name()} </h1>
+              <h1 className='h2 mb-3'> {authorFullName()} </h1>
               {currentAuthor.info && (
                 <p className='text-muted'>{currentAuthor.info}</p>
               )}
@@ -124,41 +151,56 @@ function AuthorDetails() {
                 <p className='small-info'>{currentAuthor.extraInfo}</p>
               )}
               <InlineCategoryTags category={currentAuthor.category} />
-              <SocialMedia />
+              <AuthorSocialMediaLinks />
             </div>
           </div>
         </div>
         <SectionTitle subtitle='shop online' title='author books' />
-        <div className='row mt-4 justify-content-center align-items-center align-items-stretch'>
-          <GetBookByCategory getBy={currentAuthor.books} />
-        </div>
+        <RenderAuthorBooks />
       </>
     );
   };
 
-  const RenderMessage = () => {
-    if (loading) {
+  const RenderAuthor = () => {
+    if (loading.author) {
       return <Spinner />;
-    }
-    if (currentAuthor) {
+    } else if (loadingError.author) {
+      return <Alert> Error While Loading Author </Alert>;
+    } else if (currentAuthor) {
       return <AuthorDetailsSection />;
     } else {
       return <Alert> no author found </Alert>;
     }
   };
 
+  const RenderAuthorBooks = () => {
+    if (loading.books) {
+      return <Spinner />;
+    } else if (loadingError.books) {
+      return <Alert> Error While Loading Author books </Alert>;
+    } else if (authorBooks && authorBooks.length > 0) {
+      return <BookList books={authorBooks} outerClass='mt-5' />;
+    } else {
+      return (
+        <div className='text-center mt-4'>
+          <img src={NoBookFound} className='img-fluid' alt='no book found' />
+          <p className='text-muted'>no book found</p>
+        </div>
+      );
+    }
+  };
+
   return (
-    <>
-      <Banner
-        title={currentAuthor ? full_name() : 'Author Details'}
-        subtitle='author'
-      />
+    <WithBanner
+      title={currentAuthor ? authorFullName() : 'Author Details'}
+      subtitle='author'
+    >
       <section className='my-5'>
         <div className='container'>
-          <RenderMessage />
+          <RenderAuthor />
         </div>
       </section>
-    </>
+    </WithBanner>
   );
 }
 
