@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../assets/scss/components/alert.scss';
 
 const Alert = (props) => {
   return (
