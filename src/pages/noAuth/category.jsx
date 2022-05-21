@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Banner from '../../components/standalone/Banner';
+import { getAllCategory } from '../../api/category';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
-import { CATEGORY, CategoryAPI } from '../../api/Localhost';
+import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/WithBanner';
 
 function Category() {
   usePageTitle('Category');
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
 
   useEffect(() => {
     api_get_category();
   }, []);
 
   const api_get_category = async () => {
-    await CategoryAPI.get('/')
+    await getAllCategory()
       .then((response) => {
         setCategory(response.data);
       })
-      .catch((error) => {
-        setCategory(CATEGORY);
+      .catch(() => {
+        setLoadingError(true);
       })
       .then(() => {
         setLoading(false);
@@ -28,47 +30,51 @@ function Category() {
   };
 
   const CategoryList = () => {
-    if (category.length > 0) {
-      let category_items = category.map((cty) => {
-        return (
-          <div className='col-6 col-md-4 col-lg-3 my-3' key={cty.id}>
-            <div className='card border-0 nice-shadow h-100 single-category p-4 pb-2'>
-              <div className='img'>
-                <img src={cty.img} className='card-img-top' alt={cty.title} />
-              </div>
-              <div className='card-body text-center'>
-                <h5 className='card-title m-0'>
-                  <Link to={`/category/${cty.slug}`} className='stretched-link'>
-                    {cty.title}
-                  </Link>
-                </h5>
-              </div>
+    let category_items = category.map((cty) => {
+      return (
+        <div className='col-6 col-md-4 col-lg-3 my-3' key={cty._id}>
+          <div className='card border-0 nice-shadow h-100 single-category p-4 pb-2'>
+            <div className='img'>
+              <img src={cty.img} className='card-img-top' alt={cty.title} />
+            </div>
+            <div className='card-body text-center'>
+              <h5 className='card-title m-0'>
+                <Link to={`/category/${cty.slug}`} className='stretched-link'>
+                  {cty.title}
+                </Link>
+              </h5>
             </div>
           </div>
-        );
-      });
-      return (
-        <div className='row justify-content-center align-items-center'>
-          {category_items}
         </div>
       );
-    }
-    return <> no category </>;
+    });
+    return (
+      <div className='row justify-content-center align-items-center'>
+        {category_items}
+      </div>
+    );
   };
 
   const RenderCategories = () => {
-    return loading ? <RowOfPlaceholderCard num={6} /> : <CategoryList />;
+    if (loading) {
+      return <RowOfPlaceholderCard num={6} />;
+    } else if (loadingError) {
+      return <Alert> Error While Loading category </Alert>;
+    } else if (category && category.length > 0) {
+      return <CategoryList />;
+    } else {
+      return <Alert> no category found </Alert>;
+    }
   };
 
   return (
-    <>
-      <Banner title='our category' subtitle='our space' />
+    <WithBanner title='our category' subtitle='our space'>
       <section className='my-5 py-5'>
         <div className='container'>
           <RenderCategories />
         </div>
       </section>
-    </>
+    </WithBanner>
   );
 }
 
