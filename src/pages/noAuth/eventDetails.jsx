@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { useParams } from 'react-router-dom';
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import { EventAPI, get_event_by_slug } from '../../api/Localhost';
+import { getEventBySlug } from '../../api/events';
 import { monthNames } from '../../components/ManipulateData';
-import Banner from '../../components/standalone/Banner';
 import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/WithBanner';
 
 function EventsDetails() {
   const [, setPageTitle] = usePageTitle('Event Details');
   const { slug } = useParams();
   const [currentEvent, setCurrentEvents] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(null);
 
   useEffect(() => {
     get_events_api();
@@ -27,19 +27,13 @@ function EventsDetails() {
   }, []);
 
   const get_events_api = () => {
-    EventAPI.get(`?slug=${slug}`)
+    getEventBySlug(slug)
       .then((response) => {
-        if (response.data.length === 1) {
-          setCurrentEvents(response.data[0]);
-          setPageTitle(response.data[0].title);
-        }
+        setCurrentEvents(response.data);
+        setPageTitle(response.data.title);
       })
       .catch((error) => {
-        let temp_event = get_event_by_slug(slug);
-        if (temp_event) {
-          setCurrentEvents(temp_event);
-          setPageTitle(temp_event.title);
-        }
+        setLoadingError(error.data);
       })
       .finally(() => {
         setLoading(false);
@@ -56,7 +50,6 @@ function EventsDetails() {
 
   const top_date = (date) => {
     let current_date = new Date(date);
-
     return `${current_date.getDay()} ${monthNames[current_date.getMonth()]}`;
   };
 
@@ -173,16 +166,7 @@ function EventsDetails() {
           </div>
           <div className='mt-4'>
             <hr />
-            <div className='row justify-content-between align-items-center my-4'>
-              <div className='col-md-3 order-1 text-muted'>
-                <Link
-                  className='special-small-title small text-muted'
-                  to='/events/2'
-                >
-                  <FiChevronLeft className='h6 mb-1' />
-                  <span className='special-small-title small'>previous</span>
-                </Link>
-              </div>
+            <div className='row justify-content-center align-items-center my-4'>
               <div className='col-md-3 order-3 order-md-2 text-center'>
                 <a className='text-dark h5 mx-2' href='#media-link'>
                   <FaFacebookF />
@@ -197,46 +181,38 @@ function EventsDetails() {
                   <FaTwitter />
                 </a>
               </div>
-              <div className='col-md-3 order-2 text-muted oder-md-1 text-md-end text-end text-md-start'>
-                <Link className='text-muted' to='/events/1'>
-                  <span className='special-small-title small'>next</span>
-                  <FiChevronRight className='h6 mb-1' />
-                </Link>
-              </div>
             </div>
             <hr />
           </div>
-          {/* <div className='d-flex justify-content-end mt-4'>
-              <Link to='' className='btn btn-aurora'>
-                see tickets
-              </Link>
-            </div> */}
         </div>
       </>
     );
   };
 
-  const RenderMessage = () => {
+  const RenderEvent = () => {
     if (loading) {
       return <Spinner />;
-    }
-
-    if (!currentEvent) {
-      return <Alert> no event exist </Alert>;
-    } else {
+    } else if (loadingError) {
+      return <Alert> {loadingError} </Alert>;
+    } else if (currentEvent) {
       return <EventDetailsSection />;
+    } else {
+      return <Alert> no event found </Alert>;
     }
   };
 
   return (
-    <>
-      <Banner title='our Events' subtitle='info' img={SecondaryBannerImage} />
+    <WithBanner
+      title={currentEvent ? currentEvent.title : 'our Events'}
+      subtitle='info'
+      img={SecondaryBannerImage}
+    >
       <section className='py-5 events-details-page text-dark'>
         <div className='container my-5 py-5'>
-          <RenderMessage />
+          <RenderEvent />
         </div>
       </section>
-    </>
+    </WithBanner>
   );
 }
 
