@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BiUpArrowCircle } from 'react-icons/bi';
+import '../../assets/scss/components/backToTop.scss';
 
 function BackToTop() {
   const [show, setShow] = useState(false);
