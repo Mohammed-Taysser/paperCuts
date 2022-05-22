@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { getAllMembers } from '../../api/team';
+import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
 import SectionTitle from './SectionTitle';
 import SingleMember from '../single/SingleMember';
-import { TEAM, TeamAPI } from '../../api/Localhost';
-import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
 import Alert from '../bootstrap/Alert';
 
 function TeamMembers() {
   const [teams, setTeams] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
 
   useEffect(() => {
     get_team_member_api();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const get_team_member_api = () => {
-    TeamAPI.get('/')
+    getAllMembers()
       .then((response) => {
         setTeams(response.data);
       })
-      .catch((error) => {
-        console.log(error);
-        setTeams(TEAM);
+      .catch(() => {
+        setLoadingError(true);
       })
       .finally(() => {
         setLoading(false);
@@ -29,21 +28,18 @@ function TeamMembers() {
   };
 
   const TeamMemberList = () => {
-    if (teams && teams.length > 0) {
-      let team_member = teams.map((member) => (
-        <SingleMember key={member.id} member={member} />
-      ));
-      return <> {team_member} </>;
-    } else {
-      return <Alert> no team member available </Alert>;
-    }
+    let team_member = teams.map((member) => (
+      <SingleMember key={member._id} member={member} />
+    ));
+    return <> {team_member} </>;
   };
 
   const Render = () => {
-    if (loading) {
+    if (loading && !loadingError) {
       return <RowOfPlaceholderCard />;
-    }
-    if (teams) {
+    } else if (loadingError) {
+      return <Alert> Error While Loading members </Alert>;
+    } else if (teams && teams.length > 0) {
       return <TeamMemberList />;
     } else {
       return <Alert> no team member available </Alert>;
