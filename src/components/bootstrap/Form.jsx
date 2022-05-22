@@ -1,7 +1,7 @@
 import React from 'react';
+import '../../assets/scss/components/forms.scss';
 
 // helpers
-
 const InvalidFeedback = (props) => {
   const { invalidFeedback: invalid, label } = props.inputProps;
   let textContent =
@@ -34,7 +34,6 @@ const Label = (props) => {
 };
 
 // default init
-
 const INIT = (props) => ({
   name: props.name,
   value: props.value,
@@ -48,7 +47,6 @@ const INIT = (props) => ({
 });
 
 // components
-
 function SegmentWrapper(props) {
   const { inputProps } = props;
   return (
@@ -75,6 +73,8 @@ function InputField(props) {
     ...INIT(props),
     type: props.type ? props.type : 'text',
     placeholder: props.placeholder,
+    min: props.min,
+    max: props.max,
     className: `form-control ${props.className ? props.className : ''} ${
       props.sm ? 'form-control-sm' : ''
     } ${props.lg ? 'form-control-lg' : ''}`,
