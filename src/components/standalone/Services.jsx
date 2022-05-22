@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getAllServices } from '../../api/services';
-import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
-import SectionTitle from './SectionTitle';
-import Alert from '../bootstrap/Alert';
-import SingleService from '../single/SingleService';
 import '../../assets/scss/components/services.scss';
+import Alert from '../bootstrap/Alert';
+import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
+import SingleService from '../single/SingleService';
+import SectionTitle from './SectionTitle';
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -21,7 +21,7 @@ function Services() {
         setServices(response.data);
       })
       .catch((error) => {
-        setLoadingError(error);
+        setLoadingError(error.message);
       })
       .finally(() => {
         setLoading(false);
