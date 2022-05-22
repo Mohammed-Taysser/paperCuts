@@ -40,7 +40,7 @@ function RightSidebar(props) {
   const get_top5_api = () => {
     getTop5()
       .then((response) => {
-        setTop5(response.data.result);
+        setTop5(response.data);
       })
       .catch((error) => {
         setLoadingError({ ...loadingError, top5: error.data });
