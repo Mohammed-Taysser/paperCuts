@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../assets/scss/components/placeholder.scss';
 
 function PlaceholderCard(props) {
   return (
