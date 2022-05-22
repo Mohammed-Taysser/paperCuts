@@ -6,53 +6,51 @@ module.exports = (formData) => {
 
   let errorAsObject = {};
 
-  if (username) {
-    if (!validator.isSlug(username)) {
-      errorAsObject.username = `please provide valid username`;
-    }
-  } else {
-    errorAsObject.username = `username is missing`;
-  }
+  const CONFIG = [
+    {
+      key: 'username',
+      condition: !validator.isSlug(username),
+      msg: null,
+    },
+    {
+      key: 'email',
+      condition: !validator.isEmail(email),
+      msg: null,
+    },
+    {
+      key: 'firstName',
+      condition: !validator.isAlphanumeric(firstName, 'en-US', {
+        ignore: ' -',
+      }),
+      msg: null,
+    },
+    {
+      key: 'lastName',
+      condition: !validator.isAlphanumeric(lastName, 'en-US', { ignore: ' -' }),
+      msg: null,
+    },
+    {
+      key: 'password',
+      condition: !validator.isStrongPassword(password),
+      msg: `please provide strong password`,
+    },
+    {
+      key: 'confirmPassword',
+      condition: password !== confirmPassword,
+      msg: `password not match`,
+    },
+  ];
 
-  if (email) {
-    if (!validator.isEmail(email)) {
-      errorAsObject.email = `please provide valid email`;
+  CONFIG.forEach((element) => {
+    if (element.key) {
+      if (element.condition) {
+        errorAsObject[element.key] =
+          element.msg || `please provide valid ${element.key}`;
+      }
+    } else {
+      errorAsObject[element.key] = `${element.key} is missing`;
     }
-  } else {
-    errorAsObject.email = `email is missing`;
-  }
-
-  if (firstName) {
-    if (!validator.isAlphanumeric(firstName, 'en-US', { ignore: ' -' })) {
-      errorAsObject.firstName = `please provide valid first Name`;
-    }
-  } else {
-    errorAsObject.firstName = `firstName is missing`;
-  }
-
-  if (lastName) {
-    if (!validator.isAlphanumeric(lastName, 'en-US', { ignore: ' -' })) {
-      errorAsObject.lastName = `please provide valid first Name`;
-    }
-  } else {
-    errorAsObject.lastName = `lastName is missing`;
-  }
-
-  if (password) {
-    if (!validator.isStrongPassword(password)) {
-      errorAsObject.password = `please provide strong password`;
-    }
-  } else {
-    errorAsObject.password = `password is missing`;
-  }
-
-  if (confirmPassword) {
-    if (password !== confirmPassword) {
-      errorAsObject.confirmPassword = `password not match`;
-    }
-  } else {
-    errorAsObject.confirmPassword = `password is missing`;
-  }
+  });
 
   return errorAsObject;
 };
