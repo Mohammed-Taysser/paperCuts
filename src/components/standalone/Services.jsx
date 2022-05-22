@@ -9,7 +9,7 @@ import '../../assets/scss/components/services.scss';
 function Services() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingError, setLoadingError] = useState(false);
+  const [loadingError, setLoadingError] = useState(null);
 
   useEffect(() => {
     get_services_api();
@@ -21,8 +21,7 @@ function Services() {
         setServices(response.data);
       })
       .catch((error) => {
-        console.log(error);
-        setLoadingError(true);
+        setLoadingError(error);
       })
       .finally(() => {
         setLoading(false);
@@ -40,7 +39,7 @@ function Services() {
     if (loading && !loadingError) {
       return <RowOfPlaceholderCard />;
     } else if (loadingError) {
-      return <Alert> Error While Loading services </Alert>;
+      return <Alert> {loadingError} </Alert>;
     } else if (services && services.length > 0) {
       return (
         <div className='mt-4 row justify-content-center align-items-center align-items-stretch'>
