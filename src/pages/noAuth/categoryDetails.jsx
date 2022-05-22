@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { CategoryAPI, get_category_by_slug } from '../../api/Localhost';
+import { getCategoryBySlug } from '../../api/category';
+import { getBookByCategory } from '../../api/books';
 import { useParams } from 'react-router-dom';
-import Banner from '../../components/standalone/Banner';
-import Alert from '../../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
-import GetBookByCategory from '../../components/GetBookByCategory';
+import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/WithBanner';
+import BookList from '../../components/standalone/BookList';
 
 function CategoryDetails() {
   const [, setPageTitle] = usePageTitle('Category Details');
   const { slug } = useParams();
   const [currentCategory, setCurrentCategory] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [categoryBooks, setCategoryBooks] = useState([]);
+  const [loading, setLoading] = useState({
+    category: true,
+    books: true,
+  });
+  const [loadingError, setLoadingError] = useState({
+    category: null,
+    books: null,
+  });
 
   useEffect(() => {
     api_get_category();
@@ -19,44 +28,66 @@ function CategoryDetails() {
   }, []);
 
   const api_get_category = async () => {
-    await CategoryAPI.get(`?slug=${slug}`)
+    await getCategoryBySlug(slug)
       .then((response) => {
-        if (response.data.length === 1) {
-          setCurrentCategory(response.data[0]);
-          setPageTitle(response.data[0].title);
-        }
+        onCategoryLoad(response.data);
       })
       .catch((error) => {
-        let cty = get_category_by_slug(slug);
-        if (cty) {
-          setCurrentCategory(cty);
-          setPageTitle(cty.title);
-        }
+        setLoadingError((loadError) => ({
+          ...loadError,
+          category: error.message,
+        }));
       })
       .finally(() => {
-        setLoading(false);
+        setLoading((load) => ({ ...load, category: false }));
       });
   };
 
-  const BookList = () => {
-    if (currentCategory) {
-      return <GetBookByCategory getBy={currentCategory.id} />;
+  const api_get_category_book = async () => {
+    await getBookByCategory(slug)
+      .then((response) => {
+        setCategoryBooks(response.data);
+      })
+      .catch((error) => {
+        setLoadingError((loadError) => ({
+          ...loadError,
+          books: error.message,
+        }));
+      })
+      .finally(() => {
+        setLoading((load) => ({ ...load, books: false }));
+      });
+  };
+
+  const onCategoryLoad = (responseData) => {
+    setCurrentCategory(responseData);
+    setPageTitle(responseData.title);
+    api_get_category_book();
+  };
+
+  const RenderCategoryBooks = () => {
+    if (loading.books) {
+      return <RowOfPlaceholderCard num={6} />;
+    } else if (loadingError.books) {
+      return <Alert>{loadingError.books}</Alert>;
+    } else if (categoryBooks && categoryBooks.length > 0) {
+      return <BookList books={categoryBooks} />;
+    } else {
+      return <Alert> no books found </Alert>;
     }
-    return <Alert>no category found</Alert>;
   };
 
   return (
-    <>
-      <Banner
-        title={currentCategory ? currentCategory.title : 'category'}
-        subtitle='shop list'
-      />
+    <WithBanner
+      title={currentCategory ? currentCategory.title : 'category'}
+      subtitle='shop list'
+    >
       <section className='my-5 py-5'>
         <div className='container '>
-          {loading ? <RowOfPlaceholderCard num={6} /> : <BookList />}
+          <RenderCategoryBooks />
         </div>
       </section>
-    </>
+    </WithBanner>
   );
 }
 
