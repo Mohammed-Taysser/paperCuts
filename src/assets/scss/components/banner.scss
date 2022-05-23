@@ -1,0 +1,23 @@
+@import '../helpers//variables';
+
+.banner {
+  height: 300px;
+  background: center / cover no-repeat $main-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+
+  .page-subtitle {
+    letter-spacing: 4px;
+    color: $main-color;
+    text-transform: uppercase;
+  }
+  .page-title {
+    margin-top: -7px;
+    font-size: 2.5rem;
+  }
+}

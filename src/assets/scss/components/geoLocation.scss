@@ -1,0 +1,10 @@
+.location-section {
+  .clients-container {
+    .single-client img {
+      transition: 0.5s;
+      &:hover {
+        transform: translate(0, -5px);
+      }
+    }
+  }
+}
