@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getBookBySlug, getRelatedBooks } from '../../api/books';
+import { getBookBySlug, getRelatedBooks } from '../../api/books.api';
 import { diff_in_days, Stars } from '../../components/ManipulateData';
 import { Context as AuthContext } from '../../context/auth';
 import AddToCart from '../../components/AddToCart';

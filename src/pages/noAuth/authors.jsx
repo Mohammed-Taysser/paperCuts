@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
-import { getAllAuthors } from '../../api/authors';
+import { getAllAuthors } from '../../api/authors.api';
 import SingleAuthor from '../../components/single/SingleAuthor';
 import usePageTitle from '../../hooks/usePageTitle';
 import Alert from '../../components/bootstrap/Alert';

@@ -7,9 +7,9 @@ import {
 } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { getAuthorByUsername } from '../../api/authors';
+import { getAuthorByUsername } from '../../api/authors.api';
 import { onImageNotLoad } from '../../components/ManipulateData';
-import { getAuthorBooks } from '../../api/books';
+import { getAuthorBooks } from '../../api/books.api';
 import BookList from '../../components/standalone/BookList';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';

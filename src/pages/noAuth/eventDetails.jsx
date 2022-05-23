@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaTelegram,
 } from 'react-icons/fa';
-import { getEventBySlug } from '../../api/events';
+import { getEventBySlug } from '../../api/events.api';
 import { monthNames } from '../../components/ManipulateData';
 import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
 import Spinner from '../../components/bootstrap/Spinner';

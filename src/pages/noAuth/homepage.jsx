@@ -20,7 +20,7 @@ import AwardsImage from '../../assets/images/background/awards.png';
 import usePageTitle from '../../hooks/usePageTitle';
 
 import '../../assets/scss/pages/homepage.scss';
-import { getLatestBooks } from '../../api/books';
+import { getLatestBooks } from '../../api/books.api';
 
 function Homepage() {
   usePageTitle('Homepage');

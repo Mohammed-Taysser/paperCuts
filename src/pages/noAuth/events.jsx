@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FcBrokenLink } from 'react-icons/fc';
-import { getAllEvents } from '../../api/events';
+import { getAllEvents } from '../../api/events.api';
 import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
 import EventsBackgroundImage from '../../assets/images/background/events-background.png';
 import JoinClubImage from '../../assets/images/background/join-club.jpg';

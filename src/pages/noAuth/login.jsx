@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { IoMdWarning } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../api/auth';
+import { login } from '../../api/auth.api';
 import { InputField } from '../../components/bootstrap/Form';
 import { Context as AuthContext } from '../../context/auth';
 import Alert from '../../components/bootstrap/Alert';

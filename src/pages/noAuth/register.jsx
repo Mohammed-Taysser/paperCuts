@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { IoMdWarning } from 'react-icons/io';
 import { Context as AuthContext } from '../../context/auth';
-import { register as registerAPI } from '../../api/auth';
+import { register as registerAPI } from '../../api/auth.api';
 import Alert from '../../components/bootstrap/Alert';
 import RegisterForm from '../../components/RegisterForm';
 import usePageTitle from '../../hooks/usePageTitle';
@@ -55,9 +54,7 @@ function Register() {
     return (
       <section className='register-page my-5 py-5'>
         <div className='container'>
-          <Alert color='success'>
-            <IoMdWarning className='mx-1 h4 my-0' /> You already sign in
-          </Alert>
+          <Alert color='success'>You already sign in</Alert>
         </div>
       </section>
     );

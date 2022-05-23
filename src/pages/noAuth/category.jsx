@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllCategory } from '../../api/category';
+import { getAllCategory } from '../../api/category.api';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';

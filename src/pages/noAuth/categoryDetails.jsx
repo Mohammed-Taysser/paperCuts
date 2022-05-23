@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getCategoryBySlug } from '../../api/category';
-import { getBookByCategory } from '../../api/books';
+import { getCategoryBySlug } from '../../api/category.api';
+import { getBookByCategory } from '../../api/books.api';
 import { useParams } from 'react-router-dom';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import Alert from '../../components/bootstrap/Alert';
