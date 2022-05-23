@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllMembers } from '../../api/team';
+import { getAllMembers } from '../../api/team.api';
 import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';
 import SectionTitle from './SectionTitle';
 import SingleMember from '../single/SingleMember';

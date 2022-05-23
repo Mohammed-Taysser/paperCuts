@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllServices } from '../../api/services';
+import { getAllServices } from '../../api/services.api';
 import '../../assets/scss/components/services.scss';
 import Alert from '../bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../bootstrap/Placeholder';

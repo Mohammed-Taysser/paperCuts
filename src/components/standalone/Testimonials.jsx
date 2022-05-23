@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllTestimonials } from '../../api/testimonials';
+import { getAllTestimonials } from '../../api/testimonials.api';
 import { onImageNotLoad, Stars } from '../ManipulateData';
 import DashedShape from '../../assets/images/shapes/dashed-shape.svg';
 import RoundedBorder from '../../assets/images/shapes/rounded-border.svg';
