@@ -1,112 +1,73 @@
-import React, { useContext, useLayoutEffect, useState } from 'react';
-import { WishlistAPI, get_wishlist_by_userId } from '../api/Localhost';
+import React, { useLayoutEffect, useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { Context as AuthContext } from '../context/auth';
+import {
+  createWishlist,
+  deleteWishlist,
+  getWishlistByBookId,
+} from '../api/wishlist.api';
+import Alert from './bootstrap/Alert';
 import Spinner from './bootstrap/Spinner';
 
 function AddToWishList(props) {
-  const auth_context = useContext(AuthContext);
   const { currentBook } = props;
   const [loading, setLoading] = useState(true);
-  const [userWishlist, setUserWishlist] = useState(null);
-  const [currentWishlistItem, setCurrentWishlistItem] = useState(null);
+  const [currentWishlist, setCurrentWishlist] = useState(null);
+  const [loadingError, setLoadingError] = useState(null);
 
   useLayoutEffect(() => {
     api_get_wishlist();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const api_get_wishlist = () => {
-    WishlistAPI.get(`?userId=${auth_context.userData.id}`)
+  const api_get_wishlist = async () => {
+    await getWishlistByBookId(currentBook._id)
       .then((response) => {
-        if (response.data.length === 1) {
-          onLoadWishlist(response.data[0]);
-        }
+        setCurrentWishlist(response.data);
       })
       .catch((error) => {
-        console.log(error);
-        let wishlist_item = get_wishlist_by_userId(auth_context.userData.id);
-        if (wishlist_item) {
-          onLoadWishlist(wishlist_item);
-        }
+        setLoadingError(error.message);
       })
       .finally(() => {
         setLoading(false);
       });
   };
 
-  const onLoadWishlist = (response_data) => {
-    setUserWishlist(response_data);
-    if (response_data.items) {
-      if (response_data.items[currentBook.id]) {
-        setCurrentWishlistItem(response_data.items[currentBook.id]);
-      } else {
-        setCurrentWishlistItem(null);
-      }
-    }
-  };
-
-  const onAddBtnClick = (evt) => {
+  const onAddBtnClick = async (evt) => {
     evt.preventDefault();
     setLoading(true);
 
-    let newItemData = {
+    let bookData = {
       title: currentBook.title,
+      bookId: currentBook._id,
       slug: currentBook.slug,
       image: currentBook.image,
       price: currentBook.price,
       stars: currentBook.stars,
-      author: currentBook.author.name,
+      author: currentBook.author,
     };
 
-    if (userWishlist) {
-      let newWishlistItems = {
-        ...userWishlist.items,
-        [currentBook.id]: newItemData,
-      };
-
-      WishlistAPI.patch(`/${userWishlist.id}`, {
-        items: newWishlistItems,
+    await createWishlist(bookData)
+      .then((response) => {
+        setCurrentWishlist(response.data);
       })
-        .then((response) => {
-          onLoadWishlist(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      WishlistAPI.post(`/`, {
-        userId: auth_context.userData.id,
-        items: { [currentBook.id]: newItemData },
+      .catch((error) => {
+        setLoadingError(error);
       })
-        .then((response) => {
-          onLoadWishlist(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const onRemoveBtnClick = (evt) => {
     evt.preventDefault();
     setLoading(true);
 
-    let newWishlist = { ...userWishlist.items };
-    delete newWishlist[currentBook.id];
-
-    WishlistAPI.patch(`/${userWishlist.id}`, { items: newWishlist })
-      .then((response) => {
-        onLoadWishlist(response.data);
+    deleteWishlist(currentWishlist._id)
+      .then(() => {
+        setCurrentWishlist(null);
       })
       .catch((error) => {
-        console.log(error);
+        setLoadingError(error);
       })
       .finally(() => {
         setLoading(false);
@@ -114,7 +75,7 @@ function AddToWishList(props) {
   };
 
   const RenderButton = () => {
-    if (currentWishlistItem) {
+    if (currentWishlist) {
       return (
         <a
           href='#remove-from-wishlist'
@@ -125,22 +86,23 @@ function AddToWishList(props) {
           <FaHeart className='h4 m-0' />
         </a>
       );
-    } else {
-      return (
-        <a
-          href='#add-to-wishlist'
-          className='css-tooltip'
-          data-tooltip='add to wishlist'
-          onClick={onAddBtnClick}
-        >
-          <FaRegHeart className='h4 m-0' />
-        </a>
-      );
     }
+    return (
+      <a
+        href='#add-to-wishlist'
+        className='css-tooltip'
+        data-tooltip='add to wishlist'
+        onClick={onAddBtnClick}
+      >
+        <FaRegHeart className='h4 m-0' />
+      </a>
+    );
   };
 
   if (loading) {
     return <Spinner />;
+  } else if (loadingError) {
+    return <Alert sm>{loadingError}</Alert>;
   } else {
     return <RenderButton />;
   }
