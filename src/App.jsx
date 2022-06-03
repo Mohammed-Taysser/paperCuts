@@ -6,7 +6,6 @@ import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import MainRoute from './routes';
 import AuthContext from './context/auth';
-import CouponContext from './context/coupon';
 import BackToTop from './components/standalone/BackToTop';
 
 function App() {
@@ -19,14 +18,12 @@ function App() {
   return (
     <Provider store={store}>
       <AuthContext>
-        <CouponContext>
-          <BrowserRouter>
-            <Navbar />
-            <BackToTop />
-            <MainRoute />
-            <Footer />
-          </BrowserRouter>
-        </CouponContext>
+        <BrowserRouter>
+          <Navbar />
+          <BackToTop />
+          <MainRoute />
+          <Footer />
+        </BrowserRouter>
       </AuthContext>
     </Provider>
   );
