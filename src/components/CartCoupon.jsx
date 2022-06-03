@@ -1,96 +1,80 @@
-import React, { useContext, useState } from 'react';
-import { CouponAPI, get_coupon_by_title } from '../api/Localhost';
-import { Context as CouponContext } from '../context/coupon';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCoupon, removeCoupon } from '../redux/features/cart.slice';
+import { getCouponByLabel } from '../api/coupon.api';
 import { InputField } from './bootstrap/Form';
+import Spinner from './bootstrap/Spinner';
 
-function CartCoupon(props) {
-  const coupon_context = useContext(CouponContext);
-  const [inputCouponValue, setInputCouponValue] = useState('');
-  const [appliedCoupon, setAppliedCoupon] = useState(
-    coupon_context.coupons || []
-  );
-  const [couponErrorMessage, setCouponErrorMessage] = useState(null);
+function CartCoupon() {
+  const dispatch = useDispatch();
+  const { coupons: appliedCoupons } = useSelector((state) => state['cart']);
+  const [inputValue, setInputValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const api_get_coupon = async () => {
-    setLoading(true);
-    await CouponAPI.get(`?label=${inputCouponValue}`)
-      .then((response) => {
-        check_coupon_status(response.data[0]);
-      })
-      .catch((error) => {
-        check_coupon_status(get_coupon_by_title(inputCouponValue));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
 
   const onCouponInputChange = (evt) => {
     let input_value = evt.target.value;
-    setInputCouponValue(input_value);
+    setInputValue(input_value);
 
     if (input_value.length === 0) {
       evt.target.className = evt.target.className.replace('is-invalid', '');
     }
   };
 
-  const check_coupon_status = (coupon_instance) => {
-    if (coupon_instance) {
-      let coupon_is_exist = appliedCoupon.find(
-        (coupon) => coupon.id === coupon_instance.id
+  const check_coupon_status = (responseData) => {
+    if (responseData) {
+      let existCoupon = appliedCoupons.find(
+        (coupon) => coupon._id === responseData._id
       );
-      if (coupon_is_exist) {
-        setCouponErrorMessage('Coupon already applied');
+      if (existCoupon) {
+        setErrorMessage('Coupon already applied');
       } else {
-        setCouponErrorMessage(null);
-        let new_coupon = [...appliedCoupon, coupon_instance];
-        setAppliedCoupon(new_coupon);
-        coupon_context.setCoupons(new_coupon);
+        setErrorMessage(null);
+        dispatch(addCoupon(responseData));
       }
     } else {
-      setCouponErrorMessage('Coupon not exist or Misspelled');
+      setErrorMessage('Coupon not exist or Misspelled');
     }
   };
 
-  const onFormSubmitted = (evt) => {
+  const onFormSubmitted = async (evt) => {
     evt.preventDefault();
-    setCouponErrorMessage(null);
+    setErrorMessage(null);
+    setLoading(true);
 
-    api_get_coupon();
+    await getCouponByLabel(inputValue)
+      .then((response) => {
+        check_coupon_status(response.data);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  const onClearCoupon = (coupon_id) => {
-    let filtered_coupon = appliedCoupon.filter(
-      (coupon) => coupon.id !== coupon_id
+  const SingleCouponAlert = ({ coupon }) => {
+    return (
+      <div className='alert alert-success alert-dismissible fade show p-1 small'>
+        <strong className='me-1'>{`${coupon.label}(${coupon.value}$)`}</strong>
+        is applied
+        <button
+          type='button'
+          className='btn-close p-2'
+          onClick={() => dispatch(removeCoupon(coupon._id))}
+        ></button>
+      </div>
     );
-    setAppliedCoupon(filtered_coupon);
-    coupon_context.setCoupons(filtered_coupon);
   };
 
   const AppliedCoupons = () => {
-    if (appliedCoupon.length > 0) {
+    if (appliedCoupons.length > 0) {
       return (
         <div className='mt-3'>
-          {appliedCoupon.map((coupon) => {
-            return (
-              <div
-                className='alert alert-success alert-dismissible fade show p-1 small'
-                role='alert'
-                key={coupon.id}
-              >
-                <strong className='me-1'>{`${coupon.label}(${coupon.value}$)`}</strong>
-                is applied
-                <button
-                  type='button'
-                  className='btn-close p-2'
-                  data-bs-dismiss='alert'
-                  aria-label='Close'
-                  onClick={() => onClearCoupon(coupon.id)}
-                ></button>
-              </div>
-            );
-          })}
+          {appliedCoupons.map((coupon) => (
+            <SingleCouponAlert coupon={coupon} key={coupon._id} />
+          ))}
         </div>
       );
     } else {
@@ -103,23 +87,26 @@ function CartCoupon(props) {
       <form className='row g-3' onSubmit={onFormSubmitted}>
         <div className='col-auto'>
           <InputField
-            className={couponErrorMessage && 'is-invalid'}
-            value={inputCouponValue}
+            className={errorMessage && 'is-invalid'}
+            value={inputValue}
             placeholder='Coupon Code'
             label=''
             required
             name='coupon'
             onChange={onCouponInputChange}
             id='coupon-input-id'
-            invalidFeedback={couponErrorMessage}
+            invalidFeedback={errorMessage}
           />
-          {loading && <div className='form-text'>loading....</div>}
           <AppliedCoupons />
         </div>
         <div className='col-auto'>
-          <button type='submit' className='btn btn-aurora mb-3'>
-            Apply Coupon
-          </button>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <button type='submit' className='btn btn-aurora mb-3'>
+              Apply Coupon
+            </button>
+          )}
         </div>
       </form>
     </div>
