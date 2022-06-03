@@ -1,21 +1,22 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { CartAPI, get_cart_by_userId } from '../api/Localhost';
-import { FiCheckCircle } from 'react-icons/fi';
+import {
+  getCartByBookId,
+  createCartItem,
+  deleteCartItem,
+  updateCartQuantity,
+} from '../api/cart.api';
 import { BiEdit } from 'react-icons/bi';
 import { BsCartPlus, BsCartDash } from 'react-icons/bs';
-import { RiErrorWarningFill } from 'react-icons/ri';
-import { SelectField } from './bootstrap/Form';
 import Spinner from './bootstrap/Spinner';
 import Quantity from './Quantity';
+import Alert from './bootstrap/Alert';
 
 function AddToCart(props) {
-  const { currentBook, userData } = props;
+  const { currentBook } = props;
   const [loading, setLoading] = useState(true);
-  const [bookType, setBookType] = useState('');
-  const [bookQuantity, setBookQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState(null);
-  const [userCart, setUserCart] = useState(null);
-  const [currentCartBook, setCurrentCartBook] = useState(null);
+  const [currentCart, setCurrentCart] = useState(null);
 
   useLayoutEffect(() => {
     api_get_cart();
@@ -23,17 +24,12 @@ function AddToCart(props) {
   }, []);
 
   const api_get_cart = () => {
-    CartAPI.get(`?userId=${userData.id}`)
+    getCartByBookId(currentBook._id)
       .then((response) => {
-        if (response.data.length === 1) {
-          onCartItemsLoad(response.data[0]);
-        }
+        onCartItemsLoad(response.data);
       })
       .catch((error) => {
-        let cart_items = get_cart_by_userId(userData.id);
-        if (cart_items) {
-          onCartItemsLoad(cart_items);
-        }
+        setMessageByType('error', error.message);
       })
       .finally(() => {
         setLoading(false);
@@ -41,173 +37,110 @@ function AddToCart(props) {
   };
 
   const onCartItemsLoad = (response_data) => {
-    setUserCart(response_data);
-    if (response_data.items) {
-      if (response_data.items[currentBook.id]) {
-        setBookQuantity(response_data.items[currentBook.id].quantity);
-        setBookType(response_data.items[currentBook.id].type);
-        setCurrentCartBook(response_data.items[currentBook.id]);
-        set_message_by_type('success', '  In cart');
-      }
+    setCurrentCart(response_data);
+    if (response_data) {
+      setQuantity(response_data.quantity);
+      setMessageByType('success', 'In cart');
     }
   };
 
-  const api_set_cart_item = (items) => {
-    setLoading(true);
-
-    CartAPI.patch(`/${userData.id}`, { items })
-      .then((response) => {
-        onCartItemsLoad(response.data);
-      })
-      .catch((error) => {
-        set_message_by_type('error');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const set_message_by_type = (messageType, messageLabel = '') => {
-    switch (messageType) {
+  const setMessageByType = (type, label = '') => {
+    switch (type) {
       case 'success':
         setMessage({
           type: 'success',
-          label: (
-            <>
-              <FiCheckCircle />
-              {messageLabel ? messageLabel : ' Success: Quantity Updated.'}
-            </>
-          ),
+          label: <>{label}</>,
         });
         break;
       case 'error':
         setMessage({
           type: 'danger',
-          label: (
-            <>
-              <RiErrorWarningFill />
-              {messageLabel ? messageLabel : ' Error: Something Goes Wrong.'}
-            </>
-          ),
+          label: <>{label}</>,
         });
         break;
 
       case 'warn':
         setMessage({
           type: 'warning',
-          label: (
-            <>
-              <RiErrorWarningFill />
-              {messageLabel ? messageLabel : ' warning: Nothing Change.'}
-            </>
-          ),
+          label: <>{label}</>,
         });
         break;
-
       default:
         break;
     }
   };
 
   const onAddToCartClick = () => {
-    let item_data = {
-        slug: currentBook.slug,
-        quantity: bookQuantity,
-        title: currentBook.title,
-        price: currentBook.price,
-        image: currentBook.image,
-        type: bookType === '' ? currentBook.types[0] : bookType,
-      },
-      newCartItems = {
-        ...userCart.items,
-        [currentBook.id]: item_data,
-      };
-
-    api_set_cart_item(newCartItems);
-  };
-
-  const onUpdateCartBook = () => {
-    if (
-      bookQuantity !== currentCartBook.quantity ||
-      bookType !== currentCartBook.type
-    ) {
-      let item_data = {
-          ...currentCartBook,
-          quantity: bookQuantity,
-          type: bookType === '' ? currentBook.types[0] : bookType,
-        },
-        newCartItems = {
-          ...userCart.items,
-          [currentBook.id]: item_data,
-        };
-      api_set_cart_item(newCartItems);
-    } else {
-      set_message_by_type('warn');
-    }
-  };
-
-  const onRemoveBtnClick = () => {
     setLoading(true);
-
-    let newCartItems = { ...userCart.items };
-
-    delete newCartItems[currentBook.id];
-
-    CartAPI.patch(`/${userData.id}`, { items: newCartItems })
+    createCartItem({ quantity, ...currentBook, bookId: currentBook._id })
       .then((response) => {
-        set_message_by_type('success', 'Success: Removed From Cart');
+        setCurrentCart(response.data);
+        setMessageByType('success', 'successfully added to cart');
       })
       .catch((error) => {
-        console.log(error);
-        set_message_by_type('error');
+        setMessageByType('error', error.message);
       })
       .finally(() => {
         setLoading(false);
       });
   };
 
-  const RenderMessageBox = () => {
-    if (message) {
-      return (
-        <div
-          className={`alert alert-${message.type} alert-dismissible fade show p-1 small`}
-          role='alert'
-        >
-          {message.label}
-          <button
-            type='button'
-            className='btn-close p-2 css-tooltip'
-            data-tooltip='dismiss'
-            data-bs-dismiss='alert'
-            aria-label='Close'
-            onClick={() => setMessage(null)}
-          ></button>
-        </div>
-      );
+  const onUpdateCartBook = () => {
+    if (quantity !== currentCart.quantity) {
+      setLoading(true);
+      updateCartQuantity(currentCart._id, quantity)
+        .then((response) => {
+          setCurrentCart(response.data);
+          setMessageByType('success', 'successfully updated');
+        })
+        .catch((error) => {
+          setMessageByType('error', error.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setMessageByType('warn', 'no change');
     }
-    return <></>;
+  };
+
+  const onRemoveBtnClick = () => {
+    setLoading(true);
+
+    deleteCartItem(currentCart._id)
+      .then(() => {
+        setMessageByType('success', ' Success: Removed From Cart');
+        setCurrentCart(null);
+        setQuantity(1);
+      })
+      .catch((error) => {
+        setMessageByType('error', error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const RenderAddToCartButton = () => {
-    if (currentCartBook) {
+    if (currentCart) {
       return (
         <>
-          <button className='btn btn-aurora mx-4' onClick={onUpdateCartBook}>
-            <BiEdit className='h5 m-0' /> Save
+          <button className="btn btn-aurora mx-4" onClick={onUpdateCartBook}>
+            <BiEdit className="h5 m-0" /> Save
           </button>
           <button
-            className='btn btn-outline-danger'
-            type='button'
+            className="btn btn-outline-danger"
+            type="button"
             onClick={onRemoveBtnClick}
           >
-            <BsCartDash className='h5 m-0' /> Remove
+            <BsCartDash className="h5 m-0" /> Remove
           </button>
         </>
       );
     } else {
       return (
-        <button className='btn btn-aurora mx-4' onClick={onAddToCartClick}>
-          <BsCartPlus className='h5 m-0' /> Add To Cart
+        <button className="btn btn-aurora mx-4" onClick={onAddToCartClick}>
+          <BsCartPlus className="h5 m-0" /> Add To Cart
         </button>
       );
     }
@@ -218,20 +151,13 @@ function AddToCart(props) {
   } else {
     return (
       <form onSubmit={(evt) => evt.preventDefault()}>
-        <RenderMessageBox />
-        <SelectField
-          className='w-auto'
-          value={bookType}
-          onChange={(evt) => setBookType(evt.target.value)}
-          options={currentBook.types.map((option) => {
-            return { value: option, label: option };
-          })}
-        />
-        <div className='d-flex my-3'>
-          <Quantity
-            onQuantityChange={setBookQuantity}
-            initQuantity={bookQuantity}
-          />
+        {message && (
+          <Alert sm color={message.type}>
+            {message.label}
+          </Alert>
+        )}
+        <div className="d-flex my-3">
+          <Quantity onQuantityChange={setQuantity} initQuantity={quantity} />
           <RenderAddToCartButton />
         </div>
       </form>
