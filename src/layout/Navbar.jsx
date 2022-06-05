@@ -1,23 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, {  useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Context as AuthContext } from '../context/auth';
+import { useDispatch, useSelector } from 'react-redux';
 import { FcSearch } from 'react-icons/fc';
 import { BsCart4, BsBookmarkHeart } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
+import { logout } from '../redux/features/auth.slice';
 import favicon from '../assets/images/icons/favicon.png';
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
 import '../assets/scss/layout/navbar.scss';
 
 function Navbar() {
-  const auth_context = useContext(AuthContext);
   const navigate_to = useNavigate();
+	const dispatch = useDispatch()
+	const { jwt_token } = useSelector((state) => state['auth']);
   const [query, setQuery] = useState('');
 
   const AuthLinks = () => {
     return (
       <ul className='navbar-nav'>
-        {auth_context.isAuth ? (
+        {jwt_token ? (
           <>
             <li className='nav-item'>
               <NavLink className='nav-link' to='/wishlist'>
@@ -32,12 +34,12 @@ function Navbar() {
             <li className='nav-item'>
               <NavLink className='nav-link' to='/profile'>
                 <img
-                  src={auth_context.userData.avatar}
-                  alt={auth_context.userData.firstName}
+                  src={jwt_token.avatar}
+                  alt={jwt_token.username}
                   width={25}
                   className='img-fluid rounded-circle me-1'
                 />
-                {auth_context.userData.firstName}
+                {jwt_token.username}
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -97,9 +99,8 @@ function Navbar() {
 
   const onLogoutClick = (e) => {
     e.preventDefault();
-    auth_context.setIsAuth(false);
-    auth_context.setUserData(null);
-    localStorage.removeItem('auth');
+    dispatch(logout())
+    localStorage.removeItem('token');
     navigate_to('/login');
   };
 
