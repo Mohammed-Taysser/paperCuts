@@ -1,215 +1,229 @@
 body {
-  font-family: $main-font;
-  text-transform: capitalize;
-  position: relative;
-  &.load {
-    overflow: hidden;
-  }
+	font-family: $main-font;
+	text-transform: capitalize;
+	position: relative;
+	&.load {
+		overflow: hidden;
+	}
 }
 
 ::selection {
-  background-color: $main-color;
-  color: #fff;
+	background-color: $main-color;
+	color: #fff;
 }
 
 a {
-  color: $main-color;
-  text-decoration: none;
-  transition: 0.3s;
+	color: $main-color;
+	text-decoration: none;
+	transition: 0.3s;
 
-  &:hover {
-    color: $dark-main-color;
-  }
+	&:hover {
+		color: $dark-main-color;
+	}
 }
 .user-select-none {
-  user-select: none;
+	user-select: none;
 }
 
 .nice-shadow {
-  box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
+	box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
 }
 
 .text-aurora {
-  color: $main-color;
+	color: $main-color;
 }
 
 .border-aurora {
-  border: 1px solid $main-color;
+	border: 1px solid $main-color;
 }
 
 .bg-aurora {
-  background-color: $main-color;
+	background-color: $main-color;
 }
 
 .bg-real-dark {
-  background-color: #000;
+	background-color: #000;
 }
 
 .bg-gradient {
-  background-image: $main-gradient !important;
+	background-image: $main-gradient !important;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .alert a {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .btn-aurora {
-  background-color: $main-color;
-  color: #fff;
-  border-color: $main-color;
+	background-color: $main-color;
+	color: #fff;
+	border-color: $main-color;
 
-  &:hover {
-    color: #fff;
-    background-color: rgba($color: $main-color, $alpha: 0.9);
-    border-color: rgba($color: $main-color, $alpha: 0.9);
-  }
+	&:hover {
+		color: #fff;
+		background-color: rgba($color: $main-color, $alpha: 0.9);
+		border-color: rgba($color: $main-color, $alpha: 0.9);
+	}
 
-  &:focus {
-    background-color: rgba($color: $main-color, $alpha: 0.8);
-    border-color: rgba($color: $main-color, $alpha: 0.8);
-    box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
-  }
+	&:focus {
+		background-color: rgba($color: $main-color, $alpha: 0.8);
+		border-color: rgba($color: $main-color, $alpha: 0.8);
+		box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
+	}
 }
 .btn-outline-aurora {
-  background-color: transparent;
-  color: $main-color;
-  border-color: $main-color;
+	background-color: transparent;
+	color: $main-color;
+	border-color: $main-color;
 
-  &:hover {
-    color: #fff;
-    background-color: $main-color;
-  }
+	&:hover {
+		color: #fff;
+		background-color: $main-color;
+	}
 
-  &:focus {
-    color: #fff;
-    background-color: rgba($color: $main-color, $alpha: 0.8);
-    border-color: rgba($color: $main-color, $alpha: 0.8);
-    box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
-  }
+	&:focus {
+		color: #fff;
+		background-color: rgba($color: $main-color, $alpha: 0.8);
+		border-color: rgba($color: $main-color, $alpha: 0.8);
+		box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.5);
+	}
 }
 
 .custom-pagination {
-  .page-item {
-    a {
-      color: $main-color;
-      transition: 0.4s;
-      &:hover {
-        color: #fff;
-        background-color: $main-color;
-        border-color: $main-color;
-      }
-      &:focus {
-        color: $main-color;
-        background-color: #fff;
-        outline: 0;
-        box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.4);
-      }
-    }
-    &.active {
-      a {
-        background-color: $main-color;
-        border-color: $main-color;
-      }
-    }
-  }
+	.page-item {
+		a {
+			color: $main-color;
+			transition: 0.4s;
+			&:hover {
+				color: #fff;
+				background-color: $main-color;
+				border-color: $main-color;
+			}
+			&:focus {
+				color: $main-color;
+				background-color: #fff;
+				outline: 0;
+				box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.4);
+			}
+		}
+		&.active {
+			a {
+				background-color: $main-color;
+				border-color: $main-color;
+			}
+		}
+	}
 }
 
 .special-small-title {
-  letter-spacing: 4px;
-  color: $main-color;
-  text-transform: uppercase;
+	letter-spacing: 4px;
+	color: $main-color;
+	text-transform: uppercase;
 }
 
 .more-details {
-  text-align: center;
-  .small-title {
-    letter-spacing: 4px;
-    color: $main-color;
-    text-transform: uppercase;
-  }
-  .big-title {
-    margin-top: -7px;
-    font-size: 2.5rem;
-  }
+	text-align: center;
+	.small-title {
+		letter-spacing: 4px;
+		color: $main-color;
+		text-transform: uppercase;
+	}
+	.big-title {
+		margin-top: -7px;
+		font-size: 2.5rem;
+	}
 }
 
 a.text-muted,
 a.text-dark {
-  &:hover {
-    color: $main-color !important;
-  }
+	&:hover {
+		color: $main-color !important;
+	}
 }
 
 .star-rating {
-  button {
-    padding: 3px;
+	button {
+		padding: 3px;
 
-    &:focus {
-      box-shadow: none;
-    }
-  }
+		&:focus {
+			box-shadow: none;
+		}
+	}
 }
 
 .bg-with-overlay {
-  position: relative;
-  color: #fff;
-  z-index: 1;
+	position: relative;
+	color: #fff;
+	z-index: 1;
 
-  &::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #0000006e;
-    z-index: -1;
-  }
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: #0000006e;
+		z-index: -1;
+	}
 }
 
 .special-divider {
-  position: relative;
-  height: 2px;
-  background-color: #eee;
-  display: flex;
-  justify-content: center;
+	position: relative;
+	height: 2px;
+	background-color: #eee;
+	display: flex;
+	justify-content: center;
 
-  .icon-container {
-    background-color: #fff;
-    width: 40px;
-    height: 15px;
-    top: -12px;
-    position: absolute;
+	.icon-container {
+		background-color: #fff;
+		width: 40px;
+		height: 15px;
+		top: -12px;
+		position: absolute;
 
-    .icon {
-      font-size: 1.5rem;
-    }
-  }
+		.icon {
+			font-size: 1.5rem;
+		}
+	}
 }
 
 .required-input {
-  position: relative;
+	position: relative;
 }
 
 .z-index-10 {
-  z-index: 10;
+	z-index: 10;
 }
 
 .page-link {
-  color: $main-color;
-  &:hover {
-    z-index: 2;
-    color: $main-color;
-  }
-  &:focus {
-    color: $main-color;
-    box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.4);
-  }
+	color: $main-color;
+	&:hover {
+		z-index: 2;
+		color: $main-color;
+	}
+	&:focus {
+		color: $main-color;
+		box-shadow: 0 0 0 0.25rem rgba($color: $main-color, $alpha: 0.4);
+	}
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: $main-color;
+	background-color: $main-color;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+nav.navbar .nav-item .nav-link:hover,
+nav.navbar .nav-item .nav-link.active {
+	color: $main-color;
+	background-color: rgba($main-color, 0.1);
+}
+
+.dropdown-item.danger-item:hover,
+.dropdown-item.danger-item:focus {
+	color: $danger;
+	background-color: rgba($danger, 0.1);
 }
