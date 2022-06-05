@@ -26,10 +26,15 @@ function deleteCartItem(cartId) {
   return cartAPI.delete(`delete/${cartId}`);
 }
 
+function deleteAllAuthorCart() {
+  return cartAPI.delete(`delete/all`);
+}
+
 export {
   getAllAuthorCart,
   getCartByBookId,
   createCartItem,
   deleteCartItem,
   updateCartQuantity,
+  deleteAllAuthorCart,
 };
