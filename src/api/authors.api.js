@@ -1,16 +1,25 @@
 import axios from 'axios';
-import { BASE_URL } from '.';
+import { BASE_URL, token } from '.';
 
-function getAuthorByUsername(username) {
-  return axios.get(`${BASE_URL}/authors/${username}`);
-}
+const authorAPI = axios.create({
+	baseURL: `${BASE_URL}/authors`,
+	headers: { authorization: token },
+});
 
 function getAllAuthors() {
-  return axios.get(`${BASE_URL}/authors`);
+	return authorAPI.get(`/`);
 }
 
-function getAuthorByEmail(email) {
-  return axios.get(`${BASE_URL}/authors/${email}`);
+function updateAuthorSetting(setting) {
+	return authorAPI.patch(`/update`, { ...setting });
 }
 
-export { getAuthorByUsername, getAuthorByEmail, getAllAuthors };
+function getAuthor(key, value) {
+	return authorAPI.get(`/search?${key}=${value}`);
+}
+
+function deleteAuthor(_id) {
+	return authorAPI.delete(`/delete/${_id}`);
+}
+
+export { getAuthor, getAllAuthors, updateAuthorSetting, deleteAuthor };
