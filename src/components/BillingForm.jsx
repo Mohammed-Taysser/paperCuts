@@ -1,29 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { Context as AuthContext } from '../context/auth';
-import {
-	InputField,
-	// RadioField,
-	SelectField,
-	Textarea,
-} from './bootstrap/Form';
-// import { FaCcMastercard } from 'react-icons/fa';
-// import { FcInTransit } from 'react-icons/fc';
-// import { BsPaypal } from 'react-icons/bs';
-// import { RiVisaFill } from 'react-icons/ri';
+import React, { useState } from 'react';
+import { InputField, SelectField, Textarea } from './bootstrap/Form';
+import { useSelector } from 'react-redux';
 import checkoutValidate from '../validations/checkout.validate';
 import Spinner from './bootstrap/Spinner';
 
 function BillingForm(props) {
-	const auth_context = useContext(AuthContext);
+	const { jwt_token } = useSelector((state) => state['auth']);
 	const { loading, errors, setErrors } = props;
 
 	const [formData, setFormData] = useState({
-		fullName: auth_context.userData.fullName ||'',
+		fullName: jwt_token.username || '',
 		country: '',
 		address: '',
 		phone: '',
 		note: '',
-		// paymentMethod: 'masterCard',
 	});
 
 	// const PaymentMethod = () => {
@@ -201,7 +191,7 @@ function BillingForm(props) {
 }
 
 BillingForm.defaultProps = {
-  onFormSubmit: (data) => console.log(data),
+	onFormSubmit: (data) => console.log(data),
 };
 
 export default BillingForm;
