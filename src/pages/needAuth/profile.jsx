@@ -1,324 +1,337 @@
-import React, { useContext, useState } from 'react';
-import { AuthorsAPI } from '../../api/Localhost';
-import { InputField } from '../../components/bootstrap/Form';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import { logout, setToken } from '../../redux/features/auth.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
-  isEqualArray,
-  getTypeOf,
-  isEqualObject,
+	deleteAuthor,
+	getAuthor,
+	updateAuthorSetting,
+	updateAuthorAvatar,
+	changeAuthorPassword,
+} from '../../api/authors.api';
+import {
+	getTypeOf,
+	isEqualArray,
+	isEqualObject,
 } from '../../components/ManipulateData';
-import { Context as AuthContext } from '../../context/auth';
+import validator from 'validator/validator';
 import ProfileCards from '../../components/profileCards';
-import FullName from '../../components/profileCards/FullNameCard';
-import Username from '../../components/profileCards/UsernameCard';
-import InfoCard from '../../components/profileCards/InfoCard';
-import SocialMedia from '../../components/profileCards/SocialMediaCard';
-import IdCard from '../../components/profileCards/IdCard';
-import BooksCard from '../../components/profileCards/BooksCard';
-import DeleteAccountCard from '../../components/profileCards/DeleteAccountCard';
-import AvatarCard from '../../components/profileCards/AvatarCard';
 import usePageTitle from '../../hooks/usePageTitle';
-import CategoryTags from '../../components/CategoryTags';
+import '../../assets/scss/pages/profile.scss';
+import 'bootstrap/js/src/modal';
 
 function Profile() {
-  usePageTitle('Profile');
-  const auth_context = useContext(AuthContext);
-  const [isSaved, setIsSaved] = useState({});
-  const [isLoading, setIsLoading] = useState({});
-  const [formData, setFormData] = useState(auth_context.userData);
+	usePageTitle('Profile');
+	const dispatch = useDispatch();
+	const navigate_to = useNavigate();
+	const closeDeleteAccountModalBtn = useRef(null);
+	const { jwt_token } = useSelector((state) => state['auth']);
+	const [isSaved, setIsSaved] = useState({});
+	const [isLoading, setIsLoading] = useState({ author: true });
+	const [currentAuthor, setCurrentAuthor] = useState(null);
+	const [formData, setFormData] = useState({});
+	const [loadingError, setLoadingError] = useState({});
+	const [authorConfirmMessage] = useState(`paperCuts/${jwt_token.username}`);
 
-  const api_change_user_setting = (setting, key) => {
-    setIsLoading({ ...isLoading, [key]: true });
+	useLayoutEffect(() => {
+		apiGetAuthor();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-    AuthorsAPI.patch(`/${auth_context.userData.id}`, { ...setting })
-      .then((response) => {
-        setIsSaved({ ...isSaved, [key]: true });
-        localStorage.setItem(
-          'auth',
-          JSON.stringify({ isAuth: true, userData: response.data })
-        );
-        auth_context.setUserData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        setIsLoading({ ...isLoading, [key]: false });
-      });
-  };
+	const apiGetAuthor = async () => {
+		await getAuthor('username', jwt_token.username)
+			.then((response) => {
+				setCurrentAuthor(response.data);
+				setFormData(response.data);
+			})
+			.catch((error) => {
+				setLoadingError((err) => ({ ...err, username: error }));
+			})
+			.finally(() => {
+				setIsLoading((load) => ({ ...load, author: false }));
+			});
+	};
 
-  const onInputChange = (evt) => {
-    setFormData({
-      ...formData,
-      [evt.target.name]:
-        evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value,
-    });
-  };
+	const apiChangeAuthorSetting = (setting, key) => {
+		setIsLoading({ ...isLoading, [key]: true });
+		setLoadingError((err) => ({ ...err, [key]: null }));
 
-  const updateSettingByKey = (key) => {
-    // hide saved icon
-    if (isSaved[key] === true) {
-      setIsSaved({ ...isSaved, [key]: false });
-    }
-    // array check
-    if (getTypeOf(formData[key]) === 'Array') {
-      if (!isEqualArray(formData[key], auth_context.userData[key])) {
-        api_change_user_setting({ [key]: formData[key] }, key);
-      }
-    } else if (getTypeOf(formData[key]) === 'Object') {
-      // object check
-      if (!isEqualObject(formData[key], auth_context.userData[key])) {
-        api_change_user_setting({ [key]: formData[key] }, key);
-      }
-    } else if (getTypeOf(formData[key]) === 'String') {
-      // string check
-      if (formData[key] !== auth_context.userData[key]) {
-        api_change_user_setting({ [key]: formData[key] }, key);
-      }
-    }
-  };
+		updateAuthorSetting(setting)
+			.then((response) => {
+				setIsSaved({ ...isSaved, [key]: true });
+				const { token } = response.data;
+				setCurrentAuthor(response.data.author);
+				if (token) {
+					localStorage.setItem('token', JSON.stringify(token));
+					dispatch(setToken(token));
+				}
+			})
+			.catch((error) => {
+				setLoadingError((err) => ({ ...err, [key]: error.message }));
+			})
+			.finally(() => {
+				setIsLoading({ ...isLoading, [key]: false });
+			});
+	};
 
-  const onDoubleInputSaveBtnClick = (field1, field2, key) => {
-    if (
-      formData[field1] !== auth_context.userData[field1] &&
-      formData[field2] !== auth_context.userData[field2]
-    ) {
-      api_change_user_setting(
-        { [field1]: formData[field1], [field2]: formData[field2] },
-        key
-      );
-    } else if (formData[field1] !== auth_context.userData[field1]) {
-      api_change_user_setting({ [field1]: formData[field1] }, key);
-    } else if (formData[field2] !== auth_context.userData[field2]) {
-      api_change_user_setting({ [field2]: formData[field2] }, key);
-    }
-  };
+	const updateSettingByKey = (key) => {
+		if (isSaved[key] === true) {
+			setIsSaved({ ...isSaved, [key]: false });
+		}
+		// array  change check
+		if (getTypeOf(formData[key]) === 'Array') {
+			if (!isEqualArray(formData[key], currentAuthor[key])) {
+				apiChangeAuthorSetting({ [key]: formData[key] }, key);
+			} else {
+				setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+			}
+		} else if (getTypeOf(formData[key]) === 'Object') {
+			// object  change check
+			if (!isEqualObject(formData[key], currentAuthor[key])) {
+				apiChangeAuthorSetting({ [key]: formData[key] }, key);
+			} else {
+				setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+			}
+		} else if (getTypeOf(formData[key]) === 'String') {
+			// string  change check
+			if (formData[key] !== currentAuthor[key]) {
+				apiChangeAuthorSetting({ [key]: formData[key] }, key);
+			} else {
+				setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+			}
+		}
+	};
 
-  const onSocialMediaInputChange = (evt) => {
-    let socialMedia = {
-      ...formData.socialMedia,
-      [evt.target.name]: evt.target.value,
-    };
-    setFormData({
-      ...formData,
-      socialMedia,
-    });
-  };
+	const onDoubleInputSaveBtnClick = (field1, field2, key) => {
+		if (
+			formData[field1] !== currentAuthor[field1] &&
+			formData[field2] !== currentAuthor[field2]
+		) {
+			apiChangeAuthorSetting(
+				{ [field1]: formData[field1], [field2]: formData[field2] },
+				key
+			);
+		} else if (formData[field1] !== currentAuthor[field1]) {
+			apiChangeAuthorSetting({ [field1]: formData[field1] }, key);
+		} else if (formData[field2] !== currentAuthor[field2]) {
+			apiChangeAuthorSetting({ [field2]: formData[field2] }, key);
+		} else {
+			setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+			setIsSaved({ ...isSaved, [key]: false });
+		}
+	};
 
-  const onPasswordSave = () => {
-    if (formData.password.length > 8) {
-      updateSettingByKey('password');
-    }
-  };
+	const onSingleInputSave = async (key, condition = true) => {
+		if (condition) {
+			if (isSaved[key] === true) {
+				// to prevent multiple un needed render
+				setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+				setIsSaved({ ...isSaved, [key]: false });
+			}
 
-  const onEmailSave = async () => {
-    if (isSaved['email'] === true) {
-      setIsSaved({ ...isSaved, email: false });
-    }
-    if (formData.email !== auth_context.userData.email) {
-      setIsLoading({ ...isLoading, email: true });
-      await AuthorsAPI.get(`?email=${formData.email}`)
-        .then((response) => {
-          if (response.data.length === 0) {
-            updateSettingByKey('email');
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setIsLoading({ ...isLoading, email: false });
-        });
-    }
-  };
+			if (formData[key] !== currentAuthor[key]) {
+				setIsLoading((load) => ({ ...load, [key]: true }));
+				await getAuthor(key, formData[key])
+					.then((response) => {
+						if (response.data) {
+							setLoadingError((error) => ({
+								...error,
+								[key]: `${key} already exist`,
+							}));
+						} else {
+							updateSettingByKey(key);
+						}
+					})
+					.catch((error) => {
+						setLoadingError((err) => ({ ...err, [key]: error.message }));
+					})
+					.finally(() => {
+						setIsLoading((load) => ({ ...load, [key]: false }));
+					});
+			} else {
+				setLoadingError((error) => ({ ...error, [key]: 'no change' }));
+			}
+		} else {
+			setLoadingError((error) => ({
+				...error,
+				[key]: `please provide valid ${key}`,
+			}));
+		}
+	};
 
-  const onUsernameSave = async () => {
-    if (isSaved['username'] === true) {
-      // to prevent multiple un needed render
-      setIsSaved({ ...isSaved, username: false });
-    }
-    if (formData.username !== auth_context.userData.username) {
-      setIsLoading({ ...isLoading, username: true });
-      await AuthorsAPI.get(`?username=${formData.username}`)
-        .then((response) => {
-          if (response.data.length === 0) {
-            updateSettingByKey('username');
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setIsLoading({ ...isLoading, username: false });
-        });
-    }
-  };
+	const onSocialMediaInputChange = (evt) => {
+		let socialMedia = {
+			...formData['socialMedia'],
+			[evt.target.name]: evt.target.value,
+		};
+		setFormData((form_data) => ({
+			...form_data,
+			socialMedia,
+		}));
+	};
 
-  const onCategoryChange = (new_category) => {
-    setFormData({ ...formData, category: new_category });
-  };
+	const onSocialMediaSave = () => {
+		let errorsAsArray = [],
+			mediaTitles = ['facebook', 'twitter', 'telegram', 'instagram'];
 
-  const onBooksChange = (books) => {
-    setFormData({ ...formData, books: books });
-  };
+		mediaTitles.forEach((key) => {
+			if (formData['socialMedia'] && formData['socialMedia'][key]) {
+				if (!validator.isURL(formData['socialMedia'][key])) {
+					errorsAsArray.push(key);
+				}
+			}
+		});
 
-  const CARDS_DATA = [
-    {
-      label: 'your name',
-      key: 'name',
-      cardText: 'This is how readers know you.',
-      footerText: 'Please use 48 characters at maximum.',
-      onSaveClick: () => {
-        onDoubleInputSaveBtnClick('firstName', 'lastName', 'name');
-      },
-      children: <FullName onInputChange={onInputChange} formData={formData} />,
-    },
-    {
-      label: 'your username',
-      key: 'username',
-      cardText: 'This is your URL namespace within paperCuts.',
-      footerText: 'Tip: use 16 characters at minimum.',
-      onSaveClick: onUsernameSave,
-      children: <Username onInputChange={onInputChange} formData={formData} />,
-    },
-    {
-      label: 'your email',
-      key: 'email',
-      cardText:
-        'Please enter the email address you want to use to log in with paperCuts',
-      footerText: 'We will email you to verify the change.',
-      onSaveClick: onEmailSave,
-      children: (
-        <InputField
-          outer='col-4'
-          className='form-control-sm'
-          maxLength={48}
-          placeholder='email address'
-          value={formData['email']}
-          name='email'
-          onChange={onInputChange}
-        />
-      ),
-    },
-    {
-      label: 'your password',
-      key: 'password',
-      cardText:
-        'Please enter the password you want to use to log in with paperCuts.',
-      footerText: 'Please use 8 characters at minimum.',
-      onSaveClick: onPasswordSave,
-      children: (
-        <InputField
-          outer='col-4'
-          className='form-control-sm'
-          minLength={8}
-          placeholder='password'
-          value={formData['password']}
-          name='password'
-          type='password'
-          onChange={onInputChange}
-        />
-      ),
-    },
-    {
-      label: 'your info',
-      key: 'info',
-      cardText: ' Tell us a little bit about yourself',
-      footerText: 'say something about yourself',
-      onSaveClick: () => {
-        onDoubleInputSaveBtnClick('info', 'extraInfo', 'info');
-      },
-      children: <InfoCard onInputChange={onInputChange} formData={formData} />,
-    },
-    {
-      label: 'your social Media',
-      key: 'socialMedia',
-      cardText: 'how to get you. write down your social media links',
-      footerText: 'keep on touch with other',
-      onSaveClick: () => {
-        updateSettingByKey('socialMedia');
-      },
-      children: (
-        <SocialMedia
-          onSocialMediaInputChange={onSocialMediaInputChange}
-          formData={formData}
-        />
-      ),
-    },
-    {
-      label: 'your avatar',
-      key: 'avatar',
-      cardText: null,
-      footerText: ' An avatar is optional but strongly recommended.',
-      children: <AvatarCard auth_context={auth_context} />,
-    },
-    {
-      label: 'your id',
-      key: 'id',
-      cardText: ' This is your user ID within paperCuts.',
-      footerText: 'Used when interacting with the paperCuts API',
-      children: <IdCard id={auth_context.userData.id} />,
-    },
-    {
-      label: 'your category',
-      key: 'category',
-      cardText: 'This is your book specifications',
-      footerText: 'differ between books',
-      onSaveClick: () => {
-        updateSettingByKey('category');
-      },
-      children: (
-        <CategoryTags
-          userCategory={auth_context.userData.category}
-          onCategoryChange={onCategoryChange}
-        />
-      ),
-    },
-    {
-      label: 'your books',
-      key: 'books',
-      cardText: 'This is your published books within paperCuts.',
-      footerText: 'your publishing',
-      onSaveClick: () => {
-        updateSettingByKey('books');
-      },
-      children: (
-        <BooksCard
-          userBooks={auth_context.userData.books}
-          onBooksChange={onBooksChange}
-        />
-      ),
-    },
-    {
-      label: 'delete Personal account',
-      cardText:
-        'Permanently remove your Personal Account and all of its reversible, so please continue with caution.',
-      footerText: 'This action cannot be undone.',
-      children: <DeleteAccountCard userData={auth_context.userData} />,
-      dangerBorder: true,
-    },
-  ];
+		if (errorsAsArray.length === 0) {
+			updateSettingByKey('socialMedia');
+		} else {
+			setLoadingError((error) => ({
+				...error,
+				socialMedia: 'please provide valid url',
+			}));
+		}
+	};
 
-  return (
-    <>
-      <section className='profile-page my-5'>
-        <div className='container'>
-          <div className='row justify-content-center'>
-            <div className='col-md-10 my-3'>
-              <h1 className='h2 mb-5 special-header'>
-                Personal Account Settings
-              </h1>
+	const onDeleteUsernameConfirm = () => {
+		if (formData['deleteAccount'] === authorConfirmMessage) {
+			setIsLoading((load) => ({ ...load, deleteAccount: true }));
 
-              <ProfileCards
-                CARDS_DATA={CARDS_DATA}
-                isLoading={isLoading}
-                isSaved={isSaved}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+			deleteAuthor(jwt_token._id)
+				.then(() => {
+					closeDeleteAccountModalBtn.current.click();
+					dispatch(logout());
+					localStorage.removeItem('token');
+					setTimeout(() => {
+						navigate_to('/');
+					}, 3000);
+				})
+				.catch((error) => {
+					setLoadingError((err) => ({ ...err, deleteAccount: error.message }));
+				})
+				.finally(() => {
+					setIsLoading((load) => ({ ...load, deleteAccount: false }));
+				});
+		} else {
+			setLoadingError((err) => ({
+				...err,
+				deleteAccount: `Please type ${authorConfirmMessage} to confirm.`,
+			}));
+		}
+	};
+
+	const onAvatarSave = async () => {
+		setIsSaved({ ...isSaved, avatar: false });
+
+		if (typeof formData['avatar'] !== 'string') {
+			setLoadingError((error) => ({ ...error, avatar: null }));
+			setIsLoading((load) => ({ ...load, avatar: true }));
+
+			const avatarFormData = new FormData();
+			avatarFormData.append('avatar', formData['avatar']);
+			// get the old avatar id to remove it from cloudinary
+			// example: https://res.cloudinary.com/mohammed-taysser/image/upload/h_500,w_500/v1654621341/paperCuts/authors/avatar/vp2qhbrlozfdampgobvt.jpg
+			// will be `vp2qhbrlozfdampgobvt`
+			avatarFormData.append(
+				'oldAvatarId',
+				jwt_token.avatar.split('/')[11].split('.')[0]
+			);
+
+			await updateAuthorAvatar(avatarFormData)
+				.then((response) => {
+					setIsSaved({ ...isSaved, avatar: true });
+					const { token } = response.data;
+					setCurrentAuthor(response.data.author);
+					setFormData(response.data.author);
+					localStorage.setItem('token', JSON.stringify(token));
+					dispatch(setToken(token));
+				})
+				.catch((error) => {
+					setLoadingError((err) => ({ ...err, avatar: error.message }));
+				})
+				.finally(() => {
+					setIsLoading((load) => ({ ...load, avatar: false }));
+				});
+		} else {
+			setLoadingError((err) => ({ ...err, avatar: 'no avatar chosen' }));
+		}
+	};
+
+	const onPasswordSave = () => {
+		setIsSaved({ ...isSaved, password: false });
+		if (formData['currentPassword'] && formData['newPassword']) {
+			if (
+				validator.isStrongPassword(formData['currentPassword']) &&
+				validator.isStrongPassword(formData['newPassword'])
+			) {
+				if (formData['currentPassword'] !== formData['newPassword']) {
+					setLoadingError((err) => ({
+						...err,
+						password: null,
+					}));
+					changeAuthorPassword(
+						formData['currentPassword'],
+						formData['newPassword']
+					)
+						.then((response) => {
+							setIsSaved({ ...isSaved, password: true });
+							const { token } = response.data;
+							setCurrentAuthor(response.data.author);
+							localStorage.setItem('token', JSON.stringify(token));
+							dispatch(setToken(token));
+						})
+						.catch((error) => {
+							setLoadingError((err) => ({ ...err, password: error.message }));
+						})
+						.finally(() => {
+							setIsLoading((load) => ({ ...load, password: false }));
+						});
+				} else {
+					setLoadingError((err) => ({
+						...err,
+						password: "password shouldn't match",
+					}));
+				}
+			} else {
+				setLoadingError((err) => ({ ...err, password: 'week password' }));
+			}
+		} else {
+			setLoadingError((err) => ({ ...err, password: 'no password entered' }));
+		}
+	};
+
+	return (
+		<>
+			<section className="profile-page my-5">
+				<div className="container">
+					<div className="row justify-content-center">
+						<div className="col-md-10 my-3">
+							<h1 className="h2 mb-5 special-header">
+								Personal Account Settings
+							</h1>
+							<ProfileCards
+								loadingError={loadingError}
+								isLoading={isLoading}
+								isSaved={isSaved}
+								formData={formData}
+								setFormData={setFormData}
+								currentAuthor={currentAuthor}
+								onDoubleInputSaveBtnClick={onDoubleInputSaveBtnClick}
+								onSocialMediaSave={onSocialMediaSave}
+								onSingleInputSave={onSingleInputSave}
+								authorConfirmMessage={authorConfirmMessage}
+								updateSettingByKey={updateSettingByKey}
+								onSocialMediaInputChange={onSocialMediaInputChange}
+								closeDeleteAccountModalBtn={closeDeleteAccountModalBtn}
+								onDeleteUsernameConfirm={onDeleteUsernameConfirm}
+								onAvatarSave={onAvatarSave}
+								onPasswordSave={onPasswordSave}
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
 
 export default Profile;
