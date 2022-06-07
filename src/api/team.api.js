@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { BASE_URL } from '.';
 
-const getAllMembers = () => axios.get(`${BASE_URL}/team`);
+const teamAPI = axios.create({
+	baseURL: `${BASE_URL}/team`,
+});
+
+function getAllMembers() {
+	return teamAPI.get(`/`);
+}
 
 export { getAllMembers };

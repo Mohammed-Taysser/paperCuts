@@ -1,37 +1,32 @@
 import axios from 'axios';
 import { BASE_URL, token } from '.';
 
-const getAllAuthorWishlist = () =>
-  axios.get(`${BASE_URL}/wishlist`, {
-    headers: {
-      authorization: token,
-    },
-  });
+const wishlistAPI = axios.create({
+	baseURL: `${BASE_URL}/wishlist`,
+	headers: {
+		authorization: token,
+	},
+});
 
-const getWishlistByBookId = (bookId) =>
-  axios.get(`${BASE_URL}/wishlist/view/${bookId}`, {
-    headers: {
-      authorization: token,
-    },
-  });
+function getAllAuthorWishlist() {
+	return wishlistAPI.get(`/`);
+}
 
-const createWishlist = (bookData) =>
-  axios.post(`${BASE_URL}/wishlist/create`, bookData, {
-    headers: {
-      authorization: token,
-    },
-  });
+function getWishlistByBookId(bookId) {
+	return wishlistAPI.get(`/view/${bookId}`);
+}
 
-const deleteWishlist = (wishlistId) =>
-  axios.delete(`${BASE_URL}/wishlist/delete/${wishlistId}`, {
-    headers: {
-      authorization: token,
-    },
-  });
+function createWishlist(bookData) {
+	return wishlistAPI.post(`/create`, bookData);
+}
+
+function deleteWishlist(wishlistId) {
+	return wishlistAPI.delete(`/delete/${wishlistId}`);
+}
 
 export {
-  getAllAuthorWishlist,
-  getWishlistByBookId,
-  createWishlist,
-  deleteWishlist,
+	getAllAuthorWishlist,
+	getWishlistByBookId,
+	createWishlist,
+	deleteWishlist,
 };
