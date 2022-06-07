@@ -30,10 +30,15 @@ function updateAuthorAvatar(avatarFormData) {
 	});
 }
 
+function changeAuthorPassword(currentPassword, newPassword) {
+	return authorAPI.post(`/change-password`, { currentPassword, newPassword });
+}
+
 export {
 	getAuthor,
 	getAllAuthors,
 	updateAuthorSetting,
 	deleteAuthor,
 	updateAuthorAvatar,
+	changeAuthorPassword,
 };
