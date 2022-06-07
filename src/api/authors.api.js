@@ -22,4 +22,18 @@ function deleteAuthor(_id) {
 	return authorAPI.delete(`/delete/${_id}`);
 }
 
-export { getAuthor, getAllAuthors, updateAuthorSetting, deleteAuthor };
+function updateAuthorAvatar(avatarFormData) {
+	return authorAPI.post(`/update-avatar`, avatarFormData, {
+		headers: {
+			'Content-Type': 'multipart/form-data',
+		},
+	});
+}
+
+export {
+	getAuthor,
+	getAllAuthors,
+	updateAuthorSetting,
+	deleteAuthor,
+	updateAuthorAvatar,
+};
