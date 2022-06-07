@@ -81,12 +81,12 @@ function Orders() {
 	};
 
 	const OrdersRow = () => {
-		let orders_items = orders.map((order, index) => {
+		let orders_items = orders.map((order) => {
 			return (
 				<tr key={order._id}>
 					<td>
 						<Link className="h5" to={`/orders/${order._id}`}>
-							#{index + 1}
+							#{order._id}
 						</Link>
 					</td>
 					<td>
