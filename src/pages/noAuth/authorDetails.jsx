@@ -8,7 +8,6 @@ import {
 import { MdAlternateEmail } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import { getAuthor } from '../../api/authors.api';
-import { onImageNotLoad } from '../../components/ManipulateData';
 import { getAuthorBooks } from '../../api/books.api';
 import BookList from '../../components/standalone/BookList';
 import Alert from '../../components/bootstrap/Alert';
@@ -129,16 +128,6 @@ function AuthorDetails() {
 							height={250}
 							className="img-fluid rounded-circle"
 						/>
-						{currentAuthor.signature && (
-							<img
-								src={currentAuthor.signature}
-								alt={authorFullName()}
-								width={150}
-								height={100}
-								onError={onImageNotLoad}
-								className="img-fluid mt-3 d-block mx-auto"
-							/>
-						)}
 					</div>
 					<div className="col-md-7 my-3">
 						<div className="author-details-section">
