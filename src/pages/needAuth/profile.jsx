@@ -231,10 +231,13 @@ function Profile() {
 			// get the old avatar id to remove it from cloudinary
 			// example: https://res.cloudinary.com/mohammed-taysser/image/upload/h_500,w_500/v1654621341/paperCuts/authors/avatar/vp2qhbrlozfdampgobvt.jpg
 			// will be `vp2qhbrlozfdampgobvt`
-			avatarFormData.append(
-				'oldAvatarId',
-				jwt_token.avatar.split('/')[11].split('.')[0]
-			);
+			let jwt_token_avatar = jwt_token.avatar.split('/');
+			if (jwt_token_avatar.length > 10) {
+				avatarFormData.append(
+					'oldAvatarId',
+					jwt_token_avatar[11].split('.')[0]
+				);
+			}
 
 			await updateAuthorAvatar(avatarFormData)
 				.then((response) => {
