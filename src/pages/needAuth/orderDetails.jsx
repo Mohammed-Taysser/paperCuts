@@ -9,7 +9,7 @@ import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
 import OrdersImage from '../../assets/images/background/orders.jpg';
 import usePageTitle from '../../hooks/usePageTitle';
-import '../../assets/scss/pages/orderDetails.scss';
+import '../../assets/scss/pages/paperCuts/orderDetails.scss';
 
 function OrderDetails() {
 	const { id: orderId } = useParams();

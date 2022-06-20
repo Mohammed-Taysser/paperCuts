@@ -15,7 +15,7 @@ import Spinner from '../../components/bootstrap/Spinner';
 import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
 import InlineCategoryTags from '../../components/standalone/InlineCategoryTags';
-import WithBanner from '../../layout/WithBanner';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 import NoBookFound from '../../assets/images/image-not-found.png';
 
 function AuthorDetails() {

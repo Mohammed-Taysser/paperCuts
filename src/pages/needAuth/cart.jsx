@@ -53,7 +53,7 @@ function Cart() {
     setIsLoading((load) => ({ ...load, [cartId]: true }));
 
     updateCartQuantity(cartId, quantity)
-      .then((response) => {
+      .then(() => {
         setIsSaved({ ...isSaved, [cartId]: true });
 
         const newCartItems = cartItems.map((item) =>
@@ -83,10 +83,6 @@ function Cart() {
       .finally(() => {
         setIsLoading((load) => ({ ...load, [cartId]: false }));
       });
-
-    // let items_without_book = { ...userCart.items };
-    // delete items_without_book[bookId];
-    // set_quantity_api(items_without_book, bookId);
   };
 
   const BooksTable = () => {

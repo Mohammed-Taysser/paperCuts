@@ -17,7 +17,7 @@ import {
 import validator from 'validator/validator';
 import ProfileCards from '../../components/profileCards';
 import usePageTitle from '../../hooks/usePageTitle';
-import '../../assets/scss/pages/profile.scss';
+import '../../assets/scss/pages/paperCuts/profile.scss';
 import 'bootstrap/js/src/modal';
 
 function Profile() {

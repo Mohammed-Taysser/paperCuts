@@ -7,7 +7,7 @@ import Alert from '../../components/bootstrap/Alert';
 import FilterForm from '../../components/FilterForm';
 import SingleBook from '../../components/single/SingleBook';
 import usePageTitle from '../../hooks/usePageTitle';
-import RightSidebar from '../../layout/RightSidebar';
+import RightSidebar from '../../layout/paperCuts/RightSidebar.paperCuts';
 
 function Books() {
   usePageTitle('Books');

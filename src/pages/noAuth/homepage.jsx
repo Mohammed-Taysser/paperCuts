@@ -19,155 +19,155 @@ import SkewedShape from '../../assets/images/shapes//skewed-shape.png';
 import AwardsImage from '../../assets/images/background/awards.png';
 import usePageTitle from '../../hooks/usePageTitle';
 
-import '../../assets/scss/pages/homepage.scss';
+import '../../assets/scss/pages/paperCuts/homepage.scss';
 import { getLatestBooks } from '../../api/books.api';
 
 function Homepage() {
-  usePageTitle('Homepage');
-  const [latestBooks, setLatestBooks] = useState([]);
+	usePageTitle('Homepage');
+	const [latestBooks, setLatestBooks] = useState([]);
 
-  useEffect(() => {
-    api_get_latest_books();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+	useEffect(() => {
+		api_get_latest_books();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  const api_get_latest_books = () => {
-    getLatestBooks()
-      .then((response) => {
-        setLatestBooks(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+	const api_get_latest_books = () => {
+		getLatestBooks()
+			.then((response) => {
+				setLatestBooks(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
-  const LatestBooks = () => {
-    const RenderBooks = () => {
-      if (latestBooks && latestBooks.length > 0) {
-        let books_list = latestBooks.map((book, index) => (
-          <SingleBook book={book} key={index} />
-        ));
-        return (
-          <div className='row justify-content-center align-items-stretch'>
-            {books_list}
-          </div>
-        );
-      } else {
-        return <Alert>no available books found</Alert>;
-      }
-    };
-    return (
-      <section className='latest-books py-5 my-5'>
-        <SectionTitle subtitle='shop online' title='Latest books online' />
-        <div className='container'>
-          <RenderBooks />
-        </div>
-        <div className='text-center mt-4'>
-          <Link to='/books' className='btn btn-aurora'>
-            show more books
-          </Link>
-        </div>
-      </section>
-    );
-  };
+	const LatestBooks = () => {
+		const RenderBooks = () => {
+			if (latestBooks && latestBooks.length > 0) {
+				let books_list = latestBooks.map((book, index) => (
+					<SingleBook book={book} key={index} />
+				));
+				return (
+					<div className="row justify-content-center align-items-stretch">
+						{books_list}
+					</div>
+				);
+			} else {
+				return <Alert>no available books found</Alert>;
+			}
+		};
+		return (
+			<section className="latest-books py-5 my-5">
+				<SectionTitle subtitle="shop online" title="Latest books online" />
+				<div className="container">
+					<RenderBooks />
+				</div>
+				<div className="text-center mt-4">
+					<Link to="/books" className="btn btn-aurora">
+						show more books
+					</Link>
+				</div>
+			</section>
+		);
+	};
 
-  function NewsLetter() {
-    return (
-      <section
-        className='news-letter-page bg-with-overlay'
-        style={{ backgroundImage: `url(${NewsLetterImage})` }}
-      >
-        <div className='wrapper text-center'>
-          <div className='row justify-content-center'>
-            <div className='col-md-8'>
-              <img
-                src={SleepyGirlImage}
-                alt='sleepy-girl'
-                className='img-fluid d-block mx-auto mb-4'
-                width={150}
-                height={190}
-              />
-              <small className='special-small-title'>Get paperCuts</small>
-              <h2 className='display-4'>Pen your bestseller</h2>
-              <p className='my-4'>
-                With ChapterOne's every element, layout & feature, your new site
-                is a masterpiece waiting to be written
-              </p>
-              <Link to='' className='btn btn-aurora btn-lg'>
-                Purchase
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+	function NewsLetter() {
+		return (
+			<section
+				className="news-letter-page bg-with-overlay"
+				style={{ backgroundImage: `url(${NewsLetterImage})` }}
+			>
+				<div className="wrapper text-center">
+					<div className="row justify-content-center">
+						<div className="col-md-8">
+							<img
+								src={SleepyGirlImage}
+								alt="sleepy-girl"
+								className="img-fluid d-block mx-auto mb-4"
+								width={150}
+								height={190}
+							/>
+							<small className="special-small-title">Get paperCuts</small>
+							<h2 className="display-4">Pen your bestseller</h2>
+							<p className="my-4">
+								With ChapterOne's every element, layout & feature, your new site
+								is a masterpiece waiting to be written
+							</p>
+							<Link to="/" className="btn btn-aurora btn-lg">
+								Purchase
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+		);
+	}
 
-  function Awards() {
-    return (
-      <section className='awards-section my-5 py-5'>
-        <div className='container'>
-          <div className='row justify-content-between'>
-            <div className='col-md-6 my-3'>
-              <div className='writer-container'>
-                <img src={AwardsImage} alt='awards' className='img-fluid' />
-              </div>
-            </div>
-            <div className='col-md-6 my-3'>
-              <img
-                src={SkewedShape}
-                alt='skewed-shape'
-                className='img-fluid d-block ms-auto mb-4'
-                width={'220'}
-                height={'55'}
-              />
-              <small className='special-small-title'>writhers</small>
-              <h3 className='mb-3'>Awards & nominations</h3>
-              <p className='text-muted'>
-                This open access wide-ranging collation of papers examines a
-                host of issues in studying immigrant.
-              </p>
-              <div className='clients mt-4'>
-                <img
-                  src={Client1}
-                  alt='client-1'
-                  width={'75'}
-                  height={'75'}
-                  className='img-fluid me-3'
-                />
-                <img
-                  src={Client2}
-                  alt='client-2'
-                  width={'75'}
-                  height={'75'}
-                  className='img-fluid mx-3'
-                />
-                <img
-                  src={Client3}
-                  alt='client-3'
-                  width={'75'}
-                  height={'75'}
-                  className='img-fluid ms-3'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+	function Awards() {
+		return (
+			<section className="awards-section my-5 py-5">
+				<div className="container">
+					<div className="row justify-content-between">
+						<div className="col-md-6 my-3">
+							<div className="writer-container">
+								<img src={AwardsImage} alt="awards" className="img-fluid" />
+							</div>
+						</div>
+						<div className="col-md-6 my-3">
+							<img
+								src={SkewedShape}
+								alt="skewed-shape"
+								className="img-fluid d-block ms-auto mb-4"
+								width={'220'}
+								height={'55'}
+							/>
+							<small className="special-small-title">writhers</small>
+							<h3 className="mb-3">Awards & nominations</h3>
+							<p className="text-muted">
+								This open access wide-ranging collation of papers examines a
+								host of issues in studying immigrant.
+							</p>
+							<div className="clients mt-4">
+								<img
+									src={Client1}
+									alt="client-1"
+									width={'75'}
+									height={'75'}
+									className="img-fluid me-3"
+								/>
+								<img
+									src={Client2}
+									alt="client-2"
+									width={'75'}
+									height={'75'}
+									className="img-fluid mx-3"
+								/>
+								<img
+									src={Client3}
+									alt="client-3"
+									width={'75'}
+									height={'75'}
+									className="img-fluid ms-3"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		);
+	}
 
-  return (
-    <>
-      <HeroHeader />
-      <Services />
-      <LatestBooks />
-      <Testimonials />
-      <Awards />
-      <GeoLocation map={false} />
-      <NewsLetter />
-    </>
-  );
+	return (
+		<>
+			<HeroHeader />
+			<Services />
+			<LatestBooks />
+			<Testimonials />
+			<Awards />
+			<GeoLocation map={false} />
+			<NewsLetter />
+		</>
+	);
 }
 
 export default Homepage;

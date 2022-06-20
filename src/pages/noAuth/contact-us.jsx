@@ -1,7 +1,7 @@
 import React from 'react';
 import GeoLocation from '../../components/standalone/GeoLocation';
 import usePageTitle from '../../hooks/usePageTitle';
-import WithBanner from '../../layout/WithBanner';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 
 function ContactUs() {
   usePageTitle('Contact Us');

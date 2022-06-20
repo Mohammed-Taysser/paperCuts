@@ -9,7 +9,7 @@ import SectionTitle from '../../components/standalone/SectionTitle';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
-import WithBanner from '../../layout/WithBanner';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 
 function Events() {
   usePageTitle('Events');

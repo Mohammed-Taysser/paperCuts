@@ -12,8 +12,8 @@ import SectionTitle from '../../components/standalone/SectionTitle';
 import TabAndNav from '../../components/TabAndNav';
 import usePageTitle from '../../hooks/usePageTitle';
 import BookList from '../../components/standalone/BookList';
-import WithBanner from '../../layout/WithBanner';
-import '../../assets/scss/pages/bookDetails.scss';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
+import '../../assets/scss/pages/paperCuts/bookDetails.scss';
 
 function BooksDetails() {
 	const [, setPageTitle] = usePageTitle('Book Details');

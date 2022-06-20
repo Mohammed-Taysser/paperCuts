@@ -83,12 +83,11 @@ function Checkout() {
 
 	const onFormSubmit = (data) => {
 		setErrors({});
-
 		api_set_order(data);
 	};
 
 	const CartItemsRows = () => {
-		if (cartItems && cartItems && cartItems.length > 0) {
+		if (cartItems && cartItems.length > 0) {
 			const rows = cartItems.map((item) => {
 				return (
 					<tr key={item._id}>
@@ -154,6 +153,30 @@ function Checkout() {
 		}
 	};
 
+	const RenderBillingForm = () => {
+		if (loading.cart) {
+			return <Spinner />;
+		} else if (loadingError.order) {
+			return <Alert>{loadingError.order}</Alert>;
+		} else if (cartItems.length > 0) {
+			return (
+				<>
+					<CartCoupon />
+					<RenderCartInfo />
+					<h1 className="mt-5">Billing details</h1>
+					<BillingForm
+						loading={loading}
+						onFormSubmit={onFormSubmit}
+						errors={errors}
+						setErrors={setErrors}
+					/>
+				</>
+			);
+		} else {
+			return <Alert>no Cart items</Alert>;
+		}
+	};
+
 	return (
 		<>
 			<Banner title="Checkout" subtitle="info" />
@@ -162,19 +185,7 @@ function Checkout() {
 					<div className="billing-details">
 						<div className="row justify-content-center">
 							<div className="col-md-10">
-								<CartCoupon />
-								<RenderCartInfo />
-								<h1 className="mt-5">Billing details</h1>
-								{loadingError.order ? (
-									<Alert>{loadingError.order}</Alert>
-								) : (
-									<BillingForm
-										loading={loading}
-										onFormSubmit={onFormSubmit}
-										errors={errors}
-										setErrors={setErrors}
-									/>
-								)}
+								<RenderBillingForm />
 							</div>
 						</div>
 					</div>

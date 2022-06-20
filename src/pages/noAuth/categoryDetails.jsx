@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
-import WithBanner from '../../layout/WithBanner';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 import BookList from '../../components/standalone/BookList';
 
 function CategoryDetails() {
