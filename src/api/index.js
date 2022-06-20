@@ -1,5 +1,5 @@
 // axios BASE_URL for any api call
-export const BASE_URL = `http://localhost:8080/api`;
+export const BASE_URL = `https://papercuts-server.herokuapp.com/api`;
 
 // token for access authorization api call
 let token = null;
