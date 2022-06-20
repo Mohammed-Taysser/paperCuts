@@ -1,5 +1,13 @@
 import React from 'react';
 import { onImageNotLoad } from '../ManipulateData';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
+} from 'react-icons/fa';
+import { MdAlternateEmail } from 'react-icons/md';
+import '../../assets/scss/components/member.scss';
 
 function SingleMember(props) {
   const { member } = props;
@@ -36,6 +44,53 @@ function SingleMember(props) {
     );
   };
 
+  const SocialMediaIcons = ({socialMedia, email}) => {
+    let author_social_media = [];
+    for (const key in socialMedia) {
+      if (Object.hasOwnProperty.call(socialMedia, key)) {
+        let icon = null;
+        if (socialMedia[key]) {
+          switch (key) {
+            case 'instagram':
+              icon = <FaInstagram />;
+              break;
+            case 'facebook':
+              icon = <FaFacebookF />;
+              break;
+            case 'twitter':
+              icon = <FaTwitter />;
+              break;
+            case 'telegram':
+              icon = <FaTelegram />;
+              break;
+            default:
+              icon = <MdAlternateEmail />;
+              break;
+          }
+          author_social_media.push(
+            <a
+              className='text-dark h5 mx-2'
+              href={socialMedia[key]}
+              key={key}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {icon}
+            </a>
+          );
+        }
+      }
+    }
+    return (
+      <div className='mt-1 text-center'>
+        {author_social_media}
+        <a className='text-dark h5 ms-2' href={`mailto:${email}`}>
+          <MdAlternateEmail />
+        </a>
+      </div>
+    );
+  };
+
   return (
     <div className='col-md-6 col-lg-3 my-4'>
       <div className='single-member-wrapper'>
@@ -55,6 +110,7 @@ function SingleMember(props) {
         <div className='member-info'>
           <h6 className='member-position my-2'>{member.position}</h6>
           <h4 className='member-name text-aurora'>{member.name}</h4>
+          <SocialMediaIcons socialMedia={member.socialMedia} email={member.email} />
         </div>
       </div>
     </div>

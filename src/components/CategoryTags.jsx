@@ -1,152 +1,141 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import { CATEGORY, CategoryAPI } from '../api/Localhost';
+import { getAllCategory } from '../api/category.api';
 import Spinner from './bootstrap/Spinner';
 import Alert from './bootstrap/Alert';
 
 function CategoryTags(props) {
-  const { onCategoryChange, label } = props;
-  const [apiCategory, setApiCategory] = useState([]);
-  const [userCategory, setUserCategory] = useState(props.userCategory || []);
-  const [availableCategory, setAvailableCategory] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+	const { onCategoryChange, label, userCategory } = props;
+	const [allCategory, setAllCategory] = useState([]);
+	const [usedCategory, setUsedCategory] = useState(userCategory);
+	const [availableCategory, setAvailableCategory] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [loadingError, setLoadingError] = useState(null);
 
-  useEffect(() => {
-    api_get_category();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+	useLayoutEffect(() => {
+		getAllCategory()
+			.then((response) => {
+				onCategoryLoad(response.data);
+			})
+			.catch((error) => {
+				setLoadingError(error.message);
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  const api_get_category = () => {
-    CategoryAPI.get('/')
-      .then((response) => {
-        onCategoryLoad(response.data);
-      })
-      .catch((error) => {
-        onCategoryLoad(CATEGORY);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+	const onCategoryLoad = (categories) => {
+		setAllCategory(categories);
 
-  const onCategoryLoad = (categories) => {
-    setApiCategory(categories);
+		let user_category = [],
+			available_category = [];
 
-    let user_category = [],
-      available_category = [];
+		categories.forEach((cty) => {
+			if (userCategory.find((user_cty) => user_cty.slug === cty.slug)) {
+				user_category.push(cty);
+			} else {
+				available_category.push(cty);
+			}
+		});
 
-    categories.forEach((cty) => {
-      if (userCategory.includes(cty.id)) {
-        user_category.push(cty.id);
-      } else {
-        available_category.push(cty.id);
-      }
-    });
+		setUsedCategory(user_category);
+		setAvailableCategory(available_category);
+	};
 
-    setUserCategory(user_category);
-    setAvailableCategory(available_category);
-  };
+	const onDeleteCategoryClick = (clicked_cty) => {
+		let new_category = usedCategory.filter(
+			(cty) => cty.slug !== clicked_cty.slug
+		);
+		setUsedCategory(new_category);
+		setAvailableCategory([...availableCategory, clicked_cty]);
+		onCategoryChange(new_category);
+	};
 
-  const onDeleteCategoryClick = (categoryId) => {
-    let new_category = userCategory.filter((cty) => cty !== categoryId);
-    setUserCategory(new_category);
-    setAvailableCategory([...availableCategory, categoryId]);
-    onCategoryChange(new_category);
-  };
+	const onAddCategoryClick = (clicked_cty) => {
+		setAvailableCategory((availableCty) =>
+			availableCty.filter((cty) => cty.slug !== clicked_cty.slug)
+		);
 
-  const onAddCategoryClick = (clickedCategory) => {
-    setAvailableCategory(
-      availableCategory.filter((cty) => cty !== clickedCategory)
-    );
+		let new_user_category = [...usedCategory, clicked_cty];
+		setUsedCategory(new_user_category);
+		onCategoryChange(new_user_category);
+	};
 
-    let new_category = [...userCategory, clickedCategory];
-    setUserCategory(new_category);
-    onCategoryChange(new_category);
-  };
+	const GetUserCategory = () => {
+		if (usedCategory.length > 0) {
+			let temp_user_category = usedCategory.map((cty) => {
+				return (
+					<div
+						className="badge rounded-pill bg-aurora d-flex justify-content-between align-items-center m-1"
+						key={cty.slug}
+					>
+						<span>{cty.title}</span>
+						<MdClose
+							className="h6 my-0 ms-1 cursor-pointer"
+							onClick={() => onDeleteCategoryClick(cty)}
+						/>
+					</div>
+				);
+			});
 
-  const getCategoryTitle = (categoryId) => {
-    return apiCategory.find((cty) => cty.id === categoryId).title;
-  };
+			return <div className="d-flex flex-wrap">{temp_user_category}</div>;
+		} else {
+			return <Alert sm>no category chosen</Alert>;
+		}
+	};
 
-  const GetUserCategory = () => {
-    if (userCategory.length > 0) {
-      let temp_user_category = userCategory.map((cty) => {
-        return (
-          <div
-            className='badge rounded-pill bg-aurora d-flex justify-content-between align-items-center m-1'
-            key={cty}
-          >
-            <span>{getCategoryTitle(cty)}</span>
-            <MdClose
-              className='h6 my-0 ms-1 cursor-pointer'
-              onClick={() => onDeleteCategoryClick(cty)}
-            />
-          </div>
-        );
-      });
+	const GetAvailableCategory = () => {
+		if (availableCategory.length > 0) {
+			let available_category = availableCategory.map((cty) => {
+				return (
+					<span
+						className="badge rounded-pill bg-aurora m-1 cursor-pointer"
+						key={cty.slug}
+						onClick={() => onAddCategoryClick(cty)}
+					>
+						{cty.title}
+					</span>
+				);
+			});
 
-      return <div className='d-flex flex-wrap'>{temp_user_category}</div>;
-    } else {
-      return (
-        <Alert className='py-1 d-inline-block small'>
-          <p className='m-0'>no category chosen</p>
-        </Alert>
-      );
-    }
-  };
+			return <div className="d-flex flex-wrap">{available_category}</div>;
+		} else {
+			return <Alert sm>no category available</Alert>;
+		}
+	};
 
-  const GetAvailableCategory = () => {
-    if (availableCategory.length > 0) {
-      let available_category = availableCategory.map((cty) => {
-        return (
-          <span
-            className='badge rounded-pill bg-aurora m-1 cursor-pointer'
-            key={cty}
-            onClick={() => onAddCategoryClick(cty)}
-          >
-            {getCategoryTitle(cty)}
-          </span>
-        );
-      });
+	const Render = () => {
+		if (isLoading) {
+			return <Spinner />;
+		} else if (loadingError) {
+			return <Alert sm>{loadingError}</Alert>;
+		} else if (allCategory && allCategory.length > 0) {
+			return (
+				<>
+					<div className="col-md-6 my-3  ">
+						<h6 className="my-3">{label}</h6>
+						<GetUserCategory />
+					</div>
+					<div className="col-md-6 my-3 ">
+						<h6 className="my-3">available categories</h6>
+						<GetAvailableCategory />
+					</div>
+				</>
+			);
+		} else {
+			return <Alert sm>no category found</Alert>;
+		}
+	};
 
-      return <div className='d-flex flex-wrap'>{available_category}</div>;
-    } else {
-      return (
-        <Alert className='py-1 d-inline-block small'>
-          <p className='m-0'>no category available</p>
-        </Alert>
-      );
-    }
-  };
-
-  const Render = () => {
-    if (isLoading) {
-      return <Spinner />;
-    }
-    if (apiCategory && apiCategory.length > 0) {
-      return (
-        <>
-          <h6 className='my-3'>{label}</h6>
-          <GetUserCategory />
-          <h6 className='my-3'>available categories</h6>
-          <GetAvailableCategory />
-        </>
-      );
-    } else {
-      return (
-        <Alert className='p-1 small'>
-          <p className='m-0'>no category found</p>
-        </Alert>
-      );
-    }
-  };
-
-  return <Render />;
+	return <Render />;
 }
 
 CategoryTags.defaultProps = {
-  onCategoryChange: (data) => console.log(data),
-  label: 'choose category',
+	onCategoryChange: (data) => console.log(data),
+	label: 'choose category',
+	userCategory: [],
 };
 
 export default CategoryTags;

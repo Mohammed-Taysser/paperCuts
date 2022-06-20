@@ -1,0 +1,24 @@
+@import '../helpers/variables';
+
+.hero-header {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: $main-color;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  color: #fff;
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #0000006e;
+    z-index: -1;
+  }
+}

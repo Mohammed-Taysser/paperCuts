@@ -1,11 +1,13 @@
+import React from 'react';
 import { FcRadarPlot } from 'react-icons/fc';
 import { onImageNotLoad } from '../ManipulateData';
+import '../../assets/scss/components/card.scss';
 
 function SingleService(props) {
   const { service } = props;
 
   return (
-    <div className='col-md-6 col-lg-3 my-3' key={service.id}>
+    <div className='col-md-6 col-lg-3 my-3'>
       <div className='single-service'>
         <div className='card border-0 h-100 text-center'>
           <img

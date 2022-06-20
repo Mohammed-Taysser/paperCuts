@@ -64,6 +64,7 @@ npm start
 - Designed with progressive enhancement in mind.
 - Standalone With Only React
 - Using Hooks & Context & localStorage To Save And Deal With Data
+- Use Redux Store
 
 ## Adding Bootstrap
 
@@ -103,44 +104,9 @@ Finally, import the newly created `.scss` file instead of the default Bootstrap 
 import './custom.scss';
 ```
 
-## Json Server
-
-Thanks to [`json server`](https://www.npmjs.com/package/json-server) for create a full fake REST API with zero coding in less than 30 seconds
-
-please make sure it work to enable update via server
-
-### how to start it
-
-inside paperCuts directory
-
-1. using node directly `node src/json_server/server.js`
-2. with npm task `npm run json-server`
-
-## deside to use only json-server
-
-in this case you need to the [`db.json`](src/api/db.json) that provide the needed api call like authors, coupon ..
-
-so let's numerate waht we need
-
-- install `json-server`
-- use `db.json` as db call
-- make sure server run on `8080` port
-
-### how to change live port
-
-inside [`src/json_server/server.js`](https://github.com/Mohammed-Taysser/paperCuts/blob/a6a2357d838063f6641a75b98485f388d8d608f3/src/json_server/server.js#L1) in first line you can change the port to any one you want
-
 also create fake json using [`mockaroo`](https://mockaroo.com/)
 
-Used Public Dataset
-
-- [authors](https://mockaroo.com/8b7588a0)
-- [books](https://mockaroo.com/2ae647e0)
-- [cart](https://mockaroo.com/b5bf7990)
-- [categories](https://mockaroo.com/386903)
-- [coupons](https://mockaroo.com/fb04ecc0)
-- [reviews](https://mockaroo.com/2ae647e0)
-- [wishlist](https://mockaroo.com/b5bf7990)
+for used public schemas see [`db.md`](docs/db.md) for more details and example.
 
 for image url use [`picsum.photos`](https://picsum.photos/)
 
@@ -149,9 +115,9 @@ for image url use [`picsum.photos`](https://picsum.photos/)
 - [chapter-one-bookstore](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
 - [dbooks](https://www.dbooks.org/)
 
-## additional tips
+## Additional Tips
 
-### create tree map
+### Create Tree Map
 
 you can use `tree`
 

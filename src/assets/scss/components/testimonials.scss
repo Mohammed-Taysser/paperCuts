@@ -1,0 +1,55 @@
+/* bootstrap Configuration */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/utilities';
+
+@import '~bootstrap/scss/carousel';
+@import '../helpers/variables';
+
+.testimonial-section {
+  position: relative;
+  .shapes {
+    .rounded-border-shape {
+      position: absolute;
+      right: 0;
+      top: 0;
+      opacity: 0.7;
+    }
+    .dashed-shape {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      opacity: 0.7;
+    }
+  }
+  .carousel {
+    overflow: hidden;
+
+    .carousel-item {
+      height: 500px;
+
+      .carousel-caption {
+        bottom: 50%;
+        transform: translateY(50%);
+      }
+    }
+    .carousel-indicators [data-bs-target] {
+      background-color: $main-color;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+    }
+    .carousel-control-next {
+      &:hover {
+        transform: translateX(5px);
+      }
+    }
+    .carousel-control-prev {
+      &:hover {
+        transform: translateX(-5px);
+      }
+    }
+  }
+}

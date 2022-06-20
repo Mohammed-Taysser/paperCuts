@@ -1,16 +1,15 @@
 import React from 'react';
-import Banner from '../../components/standalone/Banner';
-import Location from '../../components/standalone/GeoLocation';
+import GeoLocation from '../../components/standalone/GeoLocation';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 
 function ContactUs() {
   usePageTitle('Contact Us');
 
   return (
-    <>
-      <Banner title='contact us' subtitle='find us' />
-      <Location />
-    </>
+    <WithBanner title='contact us' subtitle='find us'>
+      <GeoLocation />
+    </WithBanner>
   );
 }
 

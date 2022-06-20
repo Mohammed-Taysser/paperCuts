@@ -1,0 +1,119 @@
+@import '../../helpers/variables';
+
+.order-progress {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 4px;
+	margin: 0 auto;
+	background-color: #dadee4;
+	position: relative;
+
+	.progress-line {
+		width: 50%;
+		display: block;
+		height: 100%;
+
+		&.active {
+			background-color: $main-color;
+		}
+	}
+
+	.progress-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		background-color: transparent;
+		border-radius: 50%;
+		padding: 3px;
+
+		&.active {
+			background-color: #fff;
+			border: 2px solid $main-color;
+			span {
+				background-color: $main-color;
+			}
+		}
+
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 17px;
+			width: 35px;
+			height: 35px;
+			background-color: #dadee4;
+			color: #fff;
+			border-radius: 50%;
+
+			svg {
+				width: 1em;
+				display: inline-block;
+				font-size: inherit;
+				height: 1em;
+				overflow: visible;
+			}
+		}
+
+		&:first-of-type {
+			left: -20px;
+
+			&::before {
+				content: attr(data-content);
+				position: absolute;
+				bottom: -31px;
+				left: -50%;
+				white-space: nowrap;
+				font-weight: 400;
+
+				@media only screen and (max-width: 576px) {
+					left: -25%;
+				}
+			}
+		}
+		&:nth-of-type(2) {
+			left: 50%;
+			&::before {
+				content: attr(data-content);
+				position: absolute;
+				bottom: -31px;
+				left: -34%;
+				white-space: nowrap;
+				font-weight: 400;
+			}
+
+			@media only screen and (max-width: 576px) {
+				left: 42%;
+				&::before {
+					left: -14%;
+				}
+			}
+		}
+		&:last-of-type {
+			right: -20px;
+			&::before {
+				content: attr(data-content);
+				position: absolute;
+				bottom: -31px;
+				left: -50%;
+				white-space: nowrap;
+				font-weight: 400;
+			}
+
+			@media only screen and (max-width: 576px) {
+				right: -7%;
+				&::before {
+					left: -26%;
+				}
+			}
+		}
+		&::before {
+			color: $main-color;
+			@media only screen and (max-width: 576px) {
+				font-size: 12px;
+			}
+		}
+	}
+}

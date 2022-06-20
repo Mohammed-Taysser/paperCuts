@@ -1,13 +1,16 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import SingleAddress from '../single/SingleAddress';
+
 import Sponsor1 from '../../assets/images/icons/sponsors/sponsor-1.png';
 import Sponsor2 from '../../assets/images/icons/sponsors/sponsor-2.png';
 import Sponsor3 from '../../assets/images/icons/sponsors/sponsor-3.png';
 import Sponsor4 from '../../assets/images/icons/sponsors/sponsor-4.png';
 import Sponsor5 from '../../assets/images/icons/sponsors/sponsor-5.png';
 
-function Location(props) {
+import '../../assets/scss/components/geoLocation.scss';
+
+function GeoLocation(props) {
   const GoogleMap = () => {
     return (
       <div className='ratio ratio-16x9 my-5'>
@@ -55,11 +58,11 @@ function Location(props) {
   };
 
   const Sponsors = () => {
-    let sponser_images = [Sponsor1, Sponsor2, Sponsor3, Sponsor4, Sponsor5],
-      sponser_arr = [];
+    let sponsor_images = [Sponsor1, Sponsor2, Sponsor3, Sponsor4, Sponsor5],
+      sponsor_arr = [];
 
-    sponser_images.forEach((img, index) => {
-      sponser_arr.push(
+    sponsor_images.forEach((img, index) => {
+      sponsor_arr.push(
         <div className='col-6 col-lg-2 my-3' key={index}>
           <div className='single-client'>
             <img src={img} alt={`client-${index}`} className='img-fluid' />
@@ -71,7 +74,7 @@ function Location(props) {
     return (
       <div className='clients-container'>
         <div className='row mt-4 justify-content-center align-items-center align-items-stretch text-center'>
-          {sponser_arr}
+          {sponsor_arr}
         </div>
       </div>
     );
@@ -89,8 +92,8 @@ function Location(props) {
   );
 }
 
-Location.defaultProps = {
+GeoLocation.defaultProps = {
   map: true,
 };
 
-export default Location;
+export default GeoLocation;

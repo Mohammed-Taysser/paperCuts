@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getAllTestimonials } from '../../api/testimonials.api';
 import { onImageNotLoad, Stars } from '../ManipulateData';
-import { TestimonialsAPI, TESTIMONIALS } from '../../api/Localhost';
-import RoundedBorder from '../../assets/images/shapes/rounded-border.svg';
 import DashedShape from '../../assets/images/shapes/dashed-shape.svg';
-import Spinner from '../bootstrap/Spinner';
+import RoundedBorder from '../../assets/images/shapes/rounded-border.svg';
 import Alert from '../bootstrap/Alert';
+import Spinner from '../bootstrap/Spinner';
+import '../../assets/scss/components/testimonials.scss';
 import 'bootstrap/js/src/carousel';
 
 function Testimonials(props) {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(null);
 
   useEffect(() => {
     api_get_testimonials();
   }, []);
 
   const api_get_testimonials = async () => {
-    await TestimonialsAPI.get('/')
+    await getAllTestimonials()
       .then((response) => {
         setTestimonials(response.data);
       })
       .catch((error) => {
-        console.log(error);
-        setTestimonials(TESTIMONIALS);
+        setLoadingError(error.message);
       })
       .finally(() => {
         setLoading(false);
@@ -38,7 +39,7 @@ function Testimonials(props) {
           type='button'
           data-bs-target={`#${props.id}`}
           data-bs-slide-to={index}
-          className={`${index === 1 ? 'active' : ''}`}
+          className={`${index === 0 ? 'active' : ''}`}
           aria-current='true'
           aria-label={`review ${index}`}
           key={index}
@@ -52,21 +53,21 @@ function Testimonials(props) {
     let items = testimonials.map((item, index) => {
       return (
         <div
-          className={`carousel-item ${index === 1 ? 'active' : ''}`}
-          key={item.id}
+          className={`carousel-item ${index === 0 ? 'active' : ''}`}
+          key={index}
         >
           <div className='carousel-caption d-block '>
             <p className='rate'>{<Stars stars_length={item.rate} />}</p>
             <img
-              src={item.img}
+              src={item.avatar}
               className='d-inline-block rounded-circle border-aurora p-2'
-              alt={item.customer}
+              alt={item.name}
               onError={onImageNotLoad}
               width={'150px'}
               height={'150px'}
             />
             <h4 className='text-aurora my-2 animate__slideInDown'>
-              {item.customer}
+              {item.name}
             </h4>
             <p>{item.info}</p>
           </div>
@@ -120,12 +121,16 @@ function Testimonials(props) {
     );
   };
 
-  const Render = () => {
+  const RenderTestimonials = () => {
     if (loading) {
       return <Spinner />;
-    }
-
-    if (testimonials && testimonials.length > 0) {
+    } else if (loadingError) {
+      return (
+        <div className='container'>
+          <Alert> {loadingError} </Alert>
+        </div>
+      );
+    } else if (testimonials && testimonials.length > 0) {
       return (
         <section className='testimonial-section py-5 my-5'>
           <BackgroundShapes />
@@ -145,11 +150,15 @@ function Testimonials(props) {
         </section>
       );
     } else {
-      return <Alert> no testimonials found </Alert>;
+      return (
+        <div className='container'>
+          <Alert> no testimonials found </Alert>
+        </div>
+      );
     }
   };
 
-  return <Render />;
+  return <RenderTestimonials />;
 }
 
 Testimonials.defaultProps = {

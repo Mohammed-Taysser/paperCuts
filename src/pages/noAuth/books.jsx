@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { BOOKS, BooksAPI } from '../../api/Localhost';
-import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import { useSearchParams } from 'react-router-dom';
+import { getBookByQuery } from '../../api/books.api';
 import { SelectField } from '../../components/bootstrap/Form';
-import SingleBook from '../../components/single/SingleBook';
-import RightSidebar from '../../layout/RightSidebar';
-import FilterForm from '../../components/FilterForm';
+import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import Alert from '../../components/bootstrap/Alert';
+import FilterForm from '../../components/FilterForm';
+import SingleBook from '../../components/single/SingleBook';
 import usePageTitle from '../../hooks/usePageTitle';
+import RightSidebar from '../../layout/paperCuts/RightSidebar.paperCuts';
 
 function Books() {
   usePageTitle('Books');
@@ -22,25 +22,16 @@ function Books() {
   }, [searchParams]);
 
   const api_get_books = async () => {
-    await BooksAPI.get(`?${modifiedSearchParams()}`)
+    await getBookByQuery(searchParams)
       .then((response) => {
         setBooks(response.data);
       })
       .catch((error) => {
-        setBooks(BOOKS);
+        console.log(error);
       })
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const modifiedSearchParams = () => {
-    return searchParams
-      .toString()
-      .replace('title', 'title_like')
-      .replace('author', 'author.name_like')
-      .replace('endPrice', 'price_lte')
-      .replace('startPrice', 'price_gte');
   };
 
   const SelectSortType = () => {
@@ -105,12 +96,20 @@ function Books() {
 
     setSortType(sort_value);
     setBooks([...new_book]);
+
+    let newSearchParams = new URLSearchParams(searchParams.toString());
+    if (searchParams.has('sort')) {
+      newSearchParams.set('sort', sort_value);
+    } else {
+      newSearchParams.append('sort', sort_value);
+    }
+    setSearchParams(newSearchParams);
   };
 
   const BookList = () => {
-    if (books.length > 0) {
+    if (books && books.length > 0) {
       let book_list = books.map((book) => {
-        return <SingleBook book={book} key={book.id} />;
+        return <SingleBook book={book} key={book._id} />;
       });
 
       return (
@@ -134,9 +133,11 @@ function Books() {
       />
       <div className='filter-results d-md-flex justify-content-between align-items-center mb-4'>
         <span className='text-muted'>
-          Showing <span className='text-aurora'> {books.length} </span>
+          Showing{' '}
+          {books && <span className='text-aurora'> {books.length} </span>}
           results
         </span>
+
         <SelectSortType />
       </div>
       <RenderBooks />

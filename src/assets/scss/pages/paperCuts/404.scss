@@ -1,0 +1,12 @@
+@import'../../helpers/variables';
+
+.page-not-found {
+  height: calc(100vh - 76px);
+  background: center / cover no-repeat $main-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}

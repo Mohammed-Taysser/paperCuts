@@ -1,168 +1,216 @@
-import React, { useEffect, useRef, useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { BooksAPI, get_book_by_slug } from '../../api/Localhost';
-import AboutAuthor from '../../components/AboutAuthor';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getBookBySlug, getRelatedBooks } from '../../api/books.api';
+import { diff_in_days, Stars } from '../../components/ManipulateData';
 import AddToCart from '../../components/AddToCart';
 import AddToWishList from '../../components/AddToWishlist';
-import Banner from '../../components/standalone/Banner';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';
-import GetBookByCategory from '../../components/GetBookByCategory';
-import InlineCategoryTags from '../../components/InlineCategoryTags';
-import { diff_in_days, Stars } from '../../components/ManipulateData';
-import { Context as AuthContext } from '../../context/auth';
+import InlineCategoryTags from '../../components/standalone/InlineCategoryTags';
 import SectionTitle from '../../components/standalone/SectionTitle';
 import TabAndNav from '../../components/TabAndNav';
 import usePageTitle from '../../hooks/usePageTitle';
+import BookList from '../../components/standalone/BookList';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
+import '../../assets/scss/pages/paperCuts/bookDetails.scss';
 
 function BooksDetails() {
-  const [, setPageTitle] = usePageTitle('Book Details');
-  let { slug } = useParams();
-  const auth_context = useContext(AuthContext);
-  const reviews_tap_btn_ref = useRef(null);
-  const [currentBook, setCurrentBook] = useState(null);
-  const [loading, setLoading] = useState(true);
+	const [, setPageTitle] = usePageTitle('Book Details');
+	const { slug } = useParams();
+	const { token: reduxToken } = useSelector((state) => state['auth']);
+	const [currentBook, setCurrentBook] = useState(null);
+	const [isLoading, setIsLoading] = useState({
+		books: true,
+		relatedBooks: true,
+	});
+	const [loadingError, setLoadingError] = useState({
+		books: null,
+		relatedBooks: null,
+	});
+	const [relatedBooks, setRelatedBooks] = useState([]);
 
-  useEffect(() => {
-    api_get_book();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+	useEffect(() => {
+		api_get_book();
+		api_get_related_books();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [slug]);
 
-  const api_get_book = async () => {
-    await BooksAPI.get(`?slug=${slug}`)
-      .then((response) => {
-        if (response.data.length === 1) {
-          setCurrentBook(response.data[0]);
-          setPageTitle(response.data[0].title);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        let temp_book = get_book_by_slug(slug);
-        if (temp_book) {
-          setCurrentBook(temp_book);
-          setPageTitle(temp_book.title);
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+	const api_get_book = async () => {
+		await getBookBySlug(slug)
+			.then((response) => {
+				setCurrentBook(response.data);
+				setPageTitle(response.data.title);
+			})
+			.catch((error) => {
+				setLoadingError((loadError) => ({ ...loadError, books: error }));
+			})
+			.finally(() => {
+				setIsLoading((load) => ({ ...load, books: false }));
+			});
+	};
 
-  const BookBadge = () => {
-    if (currentBook.publishedAt) {
-      const DAYS_NUMBER = 7;
-      if (diff_in_days(new Date(), currentBook.publishedAt) < DAYS_NUMBER) {
-        return (
-          <small className='badge rounded-pill bg-warning mx-3'>new</small>
-        );
-      }
-    }
-    return <></>;
-  };
+	const api_get_related_books = async () => {
+		await getRelatedBooks()
+			.then((response) => {
+				setRelatedBooks(response.data);
+			})
+			.catch((error) => {
+				setLoadingError((loadError) => ({ ...loadError, books: error }));
+			})
+			.finally(() => {
+				setIsLoading((load) => ({ ...load, relatedBooks: false }));
+			});
+	};
 
-  const BookDetailsColumn = () => {
-    return (
-      <div className='col-md-8 my-3'>
-        <div className='wrapper'>
-          <div className='d-flex align-items-start justify-content-between'>
-            {currentBook.publisher && (
-              <span className='special-small-title'>
-                publisher: {currentBook.publisher}
-              </span>
-            )}
-            {auth_context.isAuth && <AddToWishList currentBook={currentBook} />}
-          </div>
-          <div className='d-flex align-items-start'>
-            <h1 className='h2 mb-2'>{currentBook.title} </h1>
-            <BookBadge />
-          </div>
-          <div className='d-flex align-items-end'>
-            <Stars stars_length={currentBook.stars} />
-            <a
-              className='small mx-4 text-muted special-small-title'
-              href='#reviews'
-              onClick={onReviewButtonClick}
-            >
-              (reviews)
-            </a>
-          </div>
-          <p className='mt-2 h4'>{currentBook.price}$</p>
-          <p className='mt-3 text-muted'>
-            {currentBook.info ? currentBook.info : ''}
-          </p>
-          {auth_context.isAuth && currentBook.types && (
-            <AddToCart
-              currentBook={currentBook}
-              userData={auth_context.userData}
-            />
-          )}
-          <InlineCategoryTags category={currentBook.category} />
-          <AboutAuthor id={currentBook.author.id} />
-        </div>
-      </div>
-    );
-  };
+	const BookNewBadge = () => {
+		if (currentBook.publishedAt) {
+			const DAYS_NUMBER = 7;
+			if (diff_in_days(new Date(), currentBook.publishedAt) < DAYS_NUMBER) {
+				return (
+					<small className="badge rounded-pill bg-warning mx-1">new</small>
+				);
+			}
+		}
+		return <></>;
+	};
 
-  const RelatedBooks = () => {
-    return (
-      <div className='my-5 pt-5'>
-        <SectionTitle title='related books' subtitle='you may like' />
-        <GetBookByCategory getBy={currentBook.category} />
-      </div>
-    );
-  };
+	const BookBadgeSellerBadge = () => {
+		if (currentBook.reviews) {
+			const REVIEWS_NUMBER = 5;
+			if (currentBook.reviews >= REVIEWS_NUMBER) {
+				return (
+					<small className="badge rounded-pill bg-info mx-1">best seller</small>
+				);
+			}
+		}
+		return <></>;
+	};
 
-  const onReviewButtonClick = (evt) => {
-    evt.preventDefault();
-    reviews_tap_btn_ref.current.scrollIntoView({ behavior: 'smooth' });
-    reviews_tap_btn_ref.current.click();
-  };
+	const ShowCartBtn = () => {
+		if (reduxToken) {
+			return <AddToCart currentBook={currentBook} />;
+		}
+		return (
+			<Alert sm>
+				<Link to="/login" className="alert-link mx-1">
+					login
+				</Link>
+				to active add to cart
+			</Alert>
+		);
+	};
 
-  const Render = () => {
-    if (loading) {
-      return <Spinner />;
-    }
-    if (currentBook) {
-      return (
-        <>
-          <div className='row justify-content-center'>
-            <div className='col-md-4 my-3'>
-              <div className='img-container'>
-                <img
-                  src={currentBook.image}
-                  alt={currentBook.title}
-                  className='img-fluid'
-                />
-              </div>
-            </div>
-            <BookDetailsColumn />
-          </div>
-          <TabAndNav
-            currentBook={currentBook}
-            reviews_ref={reviews_tap_btn_ref}
-          />
-          <RelatedBooks />
-        </>
-      );
-    } else {
-      return <Alert> no book exist </Alert>;
-    }
-  };
+	const BookDetailsColumn = () => {
+		return (
+			<div className="col-md-8 my-3">
+				<div className="wrapper">
+					<div className="d-flex align-items-start justify-content-between">
+						<span className="special-small-title">
+							publisher: {currentBook.publisher || 'not provide'}
+						</span>
+						{reduxToken && <AddToWishList currentBook={currentBook} />}
+					</div>
+					<div className="d-flex align-items-start">
+						<h1 className="h2 mb-2">{currentBook.title} </h1>
+						<BookNewBadge />
+						<BookBadgeSellerBadge />
+					</div>
+					<div className="d-flex align-items-end">
+						{currentBook.stars && <Stars stars_length={currentBook.stars} />}
+						<span className="small mx-4 text-muted special-small-title">
+							({currentBook.reviews}reviews)
+						</span>
+					</div>
+					<p className="mt-2 h4">{currentBook.price}$</p>
+					<p className="mt-3 text-muted">{currentBook.info || 'no info'}</p>
+					<ShowCartBtn />
+					<InlineCategoryTags category={currentBook.category} />
+					<div className="mt-3">
+						<div className="d-md-flex align-items-center">
+							<Link to={`/authors/${currentBook.author.username}`}>
+								<img
+									src={currentBook.author.avatar}
+									alt={`${currentBook.author.name}`}
+									width="80"
+									height="80"
+									className="img-fluid rounded-circle border-aurora p-1 mb-2 mb-md-0"
+								/>
+							</Link>
+							<div className=" mx-3">
+								<h5 className="mb-1">
+									<Link to={`/authors/${currentBook.author.username}`}>
+										{currentBook.author.name}
+									</Link>
+								</h5>
+								<h6 className="m-0 text-muted">
+									{currentBook.author.username}
+								</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	};
 
-  return (
-    <>
-      <Banner
-        title={currentBook ? currentBook.title : 'book details'}
-        subtitle='products'
-      />
-      <section className='book-details-page my-5'>
-        <div className='container'>
-          <Render />
-        </div>
-      </section>
-    </>
-  );
+	const RelatedBooks = () => {
+		if (isLoading.relatedBooks) {
+			return <Spinner />;
+		} else if (loadingError.relatedBooks) {
+			return <Alert> Error While Loading Related Books </Alert>;
+		} else if (relatedBooks && relatedBooks.length > 0) {
+			return (
+				<div className="my-5 pt-5">
+					<SectionTitle title="related books" subtitle="you may like" />
+					<BookList books={relatedBooks} />
+				</div>
+			);
+		} else {
+			return <Alert> no books found </Alert>;
+		}
+	};
+
+	const RenderBook = () => {
+		if (isLoading.books) {
+			return <Spinner />;
+		}
+		if (currentBook) {
+			return (
+				<>
+					<div className="row justify-content-center">
+						<div className="col-md-4 my-3">
+							<div className="img-container">
+								<img
+									src={currentBook.image}
+									alt={currentBook.title}
+									className="img-fluid"
+								/>
+							</div>
+						</div>
+						<BookDetailsColumn />
+					</div>
+					<TabAndNav currentBook={currentBook} />
+					<RelatedBooks />
+				</>
+			);
+		} else {
+			return <Alert> no book found </Alert>;
+		}
+	};
+
+	return (
+		<WithBanner
+			title={currentBook ? currentBook.title : 'book details'}
+			subtitle="products"
+		>
+			<section className="book-details-page my-5">
+				<div className="container">
+					<RenderBook />
+				</div>
+			</section>
+		</WithBanner>
+	);
 }
 
 export default BooksDetails;

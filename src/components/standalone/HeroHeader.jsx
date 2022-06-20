@@ -1,7 +1,8 @@
 import React from 'react';
 import HeroHerder from '../../assets/images/background/hero-header.jpg';
+import '../../assets/scss/components/heroHeader.scss';
 
-function Header() {
+function HeroHeader() {
   return (
     <header
       className='hero-header'
@@ -11,7 +12,9 @@ function Header() {
         <div className='row justify-content-center'>
           <div className='col-md-8'>
             <div className='content text-center'>
-              <small className='text-top'>forging writhers</small>
+              <small className='special-small-title bg-white p-1'>
+                forging writhers
+              </small>
               <h1 className='display-2'>Best bookshelf in town</h1>
               <p className='mt-4'>
                 paperCuts is a site that lists free eBooks books and online
@@ -29,4 +32,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeroHeader;

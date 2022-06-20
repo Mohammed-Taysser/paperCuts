@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FcBrokenLink } from 'react-icons/fc';
-import Banner from '../../components/standalone/Banner';
-import { EventAPI, EVENTS } from '../../api/Localhost';
+import { getAllEvents } from '../../api/events.api';
 import SecondaryBannerImage from '../../assets/images/background/secondary-banner.jpg';
 import EventsBackgroundImage from '../../assets/images/background/events-background.png';
 import JoinClubImage from '../../assets/images/background/join-club.jpg';
@@ -10,23 +9,25 @@ import SectionTitle from '../../components/standalone/SectionTitle';
 import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
 import usePageTitle from '../../hooks/usePageTitle';
+import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 
 function Events() {
   usePageTitle('Events');
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(null);
 
   useEffect(() => {
     get_events_api();
   }, []);
 
   const get_events_api = () => {
-    EventAPI.get(`/`)
+    getAllEvents()
       .then((response) => {
         setEvents(response.data);
       })
       .catch((error) => {
-        setEvents(EVENTS);
+        setLoadingError(error.data);
       })
       .finally(() => {
         setLoading(false);
@@ -67,7 +68,7 @@ function Events() {
       <ul className='events-list list-unstyled mt-5 pt-3'>
         {events.map((event) => {
           return (
-            <li key={event.id} className='py-3 text-center text-md-start'>
+            <li key={event._id} className='py-3 text-center text-md-start'>
               <div className='row algin-items-center align-items-center justify-content-between'>
                 <div className='col-md-4 my-2'>
                   <small className='special-small-title text-muted'>
@@ -93,21 +94,20 @@ function Events() {
     );
   };
 
-  const Render = () => {
+  const RenderEvents = () => {
     if (loading) {
       return <Spinner />;
-    }
-
-    if (events && events.length > 0) {
+    } else if (loadingError) {
+      return <Alert> {loadingError} </Alert>;
+    } else if (events && events.length > 0) {
       return <EventsList />;
     } else {
-      return <Alert> no events yet </Alert>;
+      return <Alert> no events found </Alert>;
     }
   };
 
   return (
-    <>
-      <Banner title='our Events' subtitle='info' img={SecondaryBannerImage} />
+    <WithBanner title='our Events' subtitle='info' img={SecondaryBannerImage}>
       <section className='py-5 events-page text-dark'>
         <div
           className='book-events'
@@ -115,7 +115,7 @@ function Events() {
         >
           <div className='container my-5 py-5'>
             <SectionTitle subtitle='events' title='Book promotions' />
-            <Render />
+            <RenderEvents />
           </div>
         </div>
         <div
@@ -278,7 +278,7 @@ function Events() {
           </div>
         </div>
       </section>
-    </>
+    </WithBanner>
   );
 }
 
