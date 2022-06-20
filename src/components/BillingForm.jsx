@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InputField, SelectField, Textarea } from './bootstrap/Form';
 import { useSelector } from 'react-redux';
 import checkoutValidate from '../validations/checkout.validate';
-import Spinner from './bootstrap/Spinner';
+import { LoadingButton } from './bootstrap/Spinner';
 
 function BillingForm(props) {
 	const { jwt_token } = useSelector((state) => state['auth']);
@@ -80,24 +80,18 @@ function BillingForm(props) {
 
 	const onFormSubmit = (evt) => {
 		evt.preventDefault();
-
-		setErrors({});
-
+		setErrors(null);		
 		const errorsAsObject = checkoutValidate(formData);
-
-		if (Object.keys(errorsAsObject).length > 0) {
-			setErrors(errorsAsObject);
-		} else {
+		
+		if (Object.keys(errorsAsObject).length === 0) {
 			props.onFormSubmit(formData);
+		} else {
+			setErrors(errorsAsObject);
 		}
 	};
 
 	return (
-		<form
-			onSubmit={onFormSubmit}
-			noValidate
-			// className={`needs-validation ${isSubmitted ? 'was-validated' : ''}`}
-		>
+		<form onSubmit={onFormSubmit} noValidate>
 			<div className="row justify-content-center">
 				<InputField
 					outer="col-lg-6 my-3"
@@ -172,7 +166,6 @@ function BillingForm(props) {
 					}
 				/>
 			</div>
-			{/* <PaymentMethod /> */}
 			<hr />
 			<div className="small text-muted">
 				Your personal data will be used to process your order, support your
@@ -180,7 +173,7 @@ function BillingForm(props) {
 				our privacy policy.
 			</div>
 			{loading.order ? (
-				<Spinner />
+				<LoadingButton />
 			) : (
 				<button className="btn btn-aurora btn-lg mt-3" type="submit">
 					Place Order
