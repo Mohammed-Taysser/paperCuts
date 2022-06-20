@@ -8,14 +8,15 @@ import { GrUserSettings } from 'react-icons/gr';
 import { IoIosCheckboxOutline } from 'react-icons/io';
 import { RiCalendarEventFill, RiFilePaper2Line } from 'react-icons/ri';
 import { FiLogOut, FiPhoneCall, FiUsers } from 'react-icons/fi';
-import { logout } from '../redux/features/auth.slice';
+import { logout } from '../../redux/features/auth.slice';
 import { GoBook } from 'react-icons/go';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { AiOutlineHome } from 'react-icons/ai';
-import favicon from '../assets/images/icons/favicon.png';
+import { MdOutlineMarkunreadMailbox } from 'react-icons/md';
+import favicon from '../../assets/images/icons/favicon.png';
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
-import '../assets/scss/layout/navbar.scss';
+import '../../assets/scss/layout/navbar.scss';
 
 function Navbar() {
 	const navigate_to = useNavigate();
@@ -26,7 +27,7 @@ function Navbar() {
 	const AuthLinks = () => {
 		return (
 			<ul className="navbar-nav">
-				{jwt_token ? (
+				{jwt_token && ['user', 'author', 'admin'].includes(jwt_token?.role) ? (
 					<li className="nav-item dropdown">
 						<a
 							className="nav-link dropdown-toggle"
@@ -125,13 +126,13 @@ function Navbar() {
 			<ul className="navbar-nav me-auto">
 				<li className="nav-item">
 					<NavLink className="nav-link" to="/">
-						<AiOutlineHome className="h5 m-0 mx-1" />
+						<AiOutlineHome className="h5 m-1 mt-0" />
 						Home
 					</NavLink>
 				</li>
 				<li className="nav-item">
 					<NavLink className="nav-link" to="/books">
-						<GoBook className="h5 m-0 mx-1" />
+						<GoBook className="h5 m-1 mt-0" />
 						books
 					</NavLink>
 				</li>
@@ -144,6 +145,7 @@ function Navbar() {
 						data-bs-toggle="dropdown"
 						aria-expanded="false"
 					>
+						<MdOutlineMarkunreadMailbox className="h5 m-1 mt-0" />
 						More
 					</a>
 					<ul

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllCategory } from '../api/category.api';
-import { getTop5 } from '../api/books.api';
-import Spinner from '../components/bootstrap/Spinner';
-import Banner from '../components/standalone/Banner';
-import Alert from '../components/bootstrap/Alert';
+import { getAllCategory } from '../../api/category.api';
+import { getTop5 } from '../../api/books.api';
+import Spinner from '../../components/bootstrap/Spinner';
+import Banner from '../../components/standalone/Banner';
+import Alert from '../../components/bootstrap/Alert';
 
 function RightSidebar(props) {
   const [categories, setCategories] = useState([]);
