@@ -227,3 +227,9 @@ nav.navbar .nav-item .nav-link.active {
 	color: $danger;
 	background-color: rgba($danger, 0.1);
 }
+
+.dropdown-item.primary-item:hover,
+.dropdown-item.primary-item:focus {
+	color: $primary;
+	background-color: rgba($primary, 0.1);
+}
