@@ -12,15 +12,16 @@
 │   ├── robots.txt
 │   ├── static
 │   │   ├── css
-│   │   │   ├── main.a648c95e.css
-│   │   │   └── main.a648c95e.css.map
+│   │   │   ├── main.4d4ab8db.css
+│   │   │   └── main.4d4ab8db.css.map
 │   │   ├── js
 │   │   │   ├── 787.839e875b.chunk.js
 │   │   │   ├── 787.839e875b.chunk.js.map
-│   │   │   ├── main.344b2754.js
-│   │   │   ├── main.344b2754.js.LICENSE.txt
-│   │   │   └── main.344b2754.js.map
+│   │   │   ├── main.7d8debf0.js
+│   │   │   ├── main.7d8debf0.js.LICENSE.txt
+│   │   │   └── main.7d8debf0.js.map
 │   │   └── media
+│   │       ├── 404.6cffe10513f6fffd55f6.jpg
 │   │       ├── 404-img.7edd9cf90d6e5034f32a.jpg
 │   │       ├── about-audio-book.1dffa46c732080dca284.png
 │   │       ├── autobiography.6913ec4372b8a0ecaab6.png
@@ -45,6 +46,7 @@
 ├── docs
 │   ├── db.md
 │   └── TREE.md
+├── jsconfig.json
 ├── package.json
 ├── package-lock.json
 ├── public
@@ -57,15 +59,25 @@
 ├── README.md
 ├── src
 │   ├── api
-│   │   ├── db.json
-│   │   ├── Localhost.jsx
-│   │   ├── routes.json
-│   │   └── server.js
+│   │   ├── auth.api.js
+│   │   ├── authors.api.js
+│   │   ├── books.api.js
+│   │   ├── cart.api.js
+│   │   ├── category.api.js
+│   │   ├── coupon.api.js
+│   │   ├── events.api.js
+│   │   ├── index.js
+│   │   ├── order.api.js
+│   │   ├── services.api.js
+│   │   ├── team.api.js
+│   │   ├── testimonials.api.js
+│   │   └── wishlist.api.js
 │   ├── App.jsx
 │   ├── assets
 │   │   ├── css
 │   │   │   └── libs
 │   │   ├── images
+│   │   │   ├── 404.jpg
 │   │   │   ├── background
 │   │   │   │   ├── 404-img.jpg
 │   │   │   │   ├── about
@@ -88,6 +100,7 @@
 │   │   │   │       ├── sponsor-3.png
 │   │   │   │       ├── sponsor-4.png
 │   │   │   │       └── sponsor-5.png
+│   │   │   ├── image-not-found.png
 │   │   │   └── shapes
 │   │   │       ├── cup-shape.png
 │   │   │       ├── dashed-shape.svg
@@ -96,8 +109,25 @@
 │   │   │       ├── rounded-border.svg
 │   │   │       ├── skewed-shape.png
 │   │   │       └── sleepy-girl.png
+│   │   ├── js
 │   │   └── scss
-│   │       ├── core.scss
+│   │       ├── components
+│   │       │   ├── alert.scss
+│   │       │   ├── backToTop.scss
+│   │       │   ├── banner.scss
+│   │       │   ├── card.scss
+│   │       │   ├── forms.scss
+│   │       │   ├── geoLocation.scss
+│   │       │   ├── heroHeader.scss
+│   │       │   ├── member.scss
+│   │       │   ├── placeholder.scss
+│   │       │   ├── services.scss
+│   │       │   ├── singleBook.scss
+│   │       │   ├── spinner.scss
+│   │       │   ├── steps.scss
+│   │       │   ├── testimonials.scss
+│   │       │   └── tooltip.scss
+│   │       ├── core.paperCuts.scss
 │   │       ├── helpers
 │   │       │   ├── _base.scss
 │   │       │   ├──_keyframes.scss
@@ -106,13 +136,17 @@
 │   │       │   ├── _utilities.scss
 │   │       │   └──_variables.scss
 │   │       ├── layout
-│   │       │   ├── _footer.scss
-│   │       │   ├──_header.scss
-│   │       │   └── _navbar.scss
-│   │       └── libs
+│   │       │   ├── footer.scss
+│   │       │   └── navbar.scss
+│   │       └── pages
+│   │           └── paperCuts
+│   │               ├── 404.scss
+│   │               ├── bookDetails.scss
+│   │               ├── homepage.scss
+│   │               ├── orderDetails.scss
+│   │               └── profile.scss
 │   ├── components
 │   │   ├── AboutAudioBook.jsx
-│   │   ├── AboutAuthor.jsx
 │   │   ├── AddToCart.jsx
 │   │   ├── AddToWishlist.jsx
 │   │   ├── BillingForm.jsx
@@ -123,23 +157,11 @@
 │   │   │   ├── Spinner.jsx
 │   │   │   └── Toast.jsx
 │   │   ├── CartCoupon.jsx
+│   │   ├── CategoryTags.jsx
 │   │   ├── FilterForm.jsx
-│   │   ├── GetBookByCategory.jsx
-│   │   ├── InlineCategoryTags.jsx
-│   │   ├── LeaveReview.jsx
 │   │   ├── ManipulateData.jsx
-│   │   ├── profileCards
-│   │   │   ├── AvatarCard.jsx
-│   │   │   ├── BooksCard.jsx
-│   │   │   ├── CategoryCard.jsx
-│   │   │   ├── DeleteAccountCard.jsx
-│   │   │   ├── FullNameCard.jsx
-│   │   │   ├── IdCard.jsx
-│   │   │   ├── index.jsx
-│   │   │   ├── InfoCard.jsx
-│   │   │   ├── SocialMediaCard.jsx
-│   │   │   └── UsernameCard.jsx
-│   │   ├── ProfileCardWrapper.jsx
+│   │   ├── profileCards.jsx
+│   │   ├── profileWrapper.jsx
 │   │   ├── Quantity.jsx
 │   │   ├── RegisterForm.jsx
 │   │   ├── single
@@ -151,27 +173,26 @@
 │   │   ├── standalone
 │   │   │   ├── BackToTop.jsx
 │   │   │   ├── Banner.jsx
+│   │   │   ├── BookList.jsx
 │   │   │   ├── GeoLocation.jsx
 │   │   │   ├── HeroHeader.jsx
+│   │   │   ├── InlineCategoryTags.jsx
 │   │   │   ├── SectionTitle.jsx
 │   │   │   ├── Services.jsx
-│   │   │   ├── Teams.jsx
+│   │   │   ├── TeamMembers.jsx
 │   │   │   └── Testimonials.jsx
 │   │   ├── StarRate.jsx
 │   │   └── TabAndNav.jsx
-│   ├── context
-│   │   ├── auth.jsx
-│   │   └── coupon.jsx
 │   ├── hooks
-│   │   ├── useAuthContext.jsx
-│   │   ├── useCart.jsx
-│   │   ├── useJsonServerToast.jsx
 │   │   └── usePageTitle.jsx
 │   ├── index.js
 │   ├── layout
-│   │   ├── Footer.jsx
-│   │   ├── Navbar.jsx
-│   │   └── RightSidebar.jsx
+│   │   ├── paperCuts
+│   │   │   ├── Footer.paperCuts.jsx
+│   │   │   ├── Navbar.paperCuts.jsx
+│   │   │   ├── RightSidebar.paperCuts.jsx
+│   │   │   └── WithBanner.paperCuts.jsx
+│   │   └── PaperCuts.layout.jsx
 │   ├── pages
 │   │   ├── needAuth
 │   │   │   ├── cart.jsx
@@ -192,18 +213,25 @@
 │   │       ├── contact-us.jsx
 │   │       ├── eventDetails.jsx
 │   │       ├── events.jsx
-│   │       ├── forget-password.jsx
 │   │       ├── homepage.jsx
 │   │       ├── login.jsx
-│   │       ├── pages.jsx
 │   │       └── register.jsx
+│   ├── provider
+│   │   └── auth.provider.js
+│   ├── redux
+│   │   ├── features
+│   │   │   ├── auth.slice.js
+│   │   │   └── cart.slice.js
+│   │   └── store.js
 │   ├── routes.jsx
-│   └── __tests__
-│       ├── App.test.js
-│       ├── reportWebVitals.js
-│       └── setupTests.js
+│   ├── __tests__
+│   │   ├── App.test.js
+│   │   ├── reportWebVitals.js
+│   │   └── setupTests.js
+│   └── validations
+│       ├── checkout.validate.js
+│       ├── login.validate.js
+│       └── register.validate.js
 └── temp
     └── TREE.md
-
-35 directories, 166 files
 ```
