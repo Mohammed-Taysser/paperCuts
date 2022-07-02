@@ -8,7 +8,7 @@ import { GrUserSettings } from 'react-icons/gr';
 import { IoIosCheckboxOutline } from 'react-icons/io';
 import { RiCalendarEventFill, RiFilePaper2Line } from 'react-icons/ri';
 import { FiLogOut, FiPhoneCall, FiUsers } from 'react-icons/fi';
-import { logout } from '../../redux/features/auth.slice';
+import { unsubscribeFeature } from '../../redux/features/auth.slice';
 import { GoBook } from 'react-icons/go';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { AiOutlineHome } from 'react-icons/ai';
@@ -21,13 +21,13 @@ import '../../assets/scss/layout/navbar.scss';
 function Navbar() {
 	const navigate_to = useNavigate();
 	const dispatch = useDispatch();
-	const { jwt_token } = useSelector((state) => state['auth']);
+	const { isLoggedIn, user } = useSelector((state) => state['auth']);
 	const [query, setQuery] = useState('');
 
 	const AuthLinks = () => {
 		return (
 			<ul className="navbar-nav">
-				{jwt_token && ['user', 'author', 'admin'].includes(jwt_token?.role) ? (
+				{isLoggedIn ? (
 					<li className="nav-item dropdown">
 						<a
 							className="nav-link dropdown-toggle"
@@ -38,12 +38,12 @@ function Navbar() {
 							aria-expanded="false"
 						>
 							<img
-								src={jwt_token.avatar}
-								alt={jwt_token.username}
+								src={user.avatar}
+								alt={user.username}
 								width={25}
 								className="img-fluid rounded-circle me-1"
 							/>
-							{jwt_token.username}
+							{user.username}
 						</a>
 						<ul
 							className="dropdown-menu profile-dropdown"
@@ -58,7 +58,7 @@ function Navbar() {
 							<li>
 								<Link
 									className="dropdown-item"
-									to={`/authors/${jwt_token.username}`}
+									to={`/authors/${user.username}`}
 								>
 									profile
 									<BsPersonBoundingBox />
@@ -217,8 +217,7 @@ function Navbar() {
 
 	const onLogoutClick = (e) => {
 		e.preventDefault();
-		dispatch(logout());
-		localStorage.removeItem('token');
+		dispatch(unsubscribeFeature());
 		navigate_to('/login');
 	};
 
