@@ -1,29 +1,23 @@
 import axios from 'axios';
-import { BASE_URL, token } from '.';
-
-const authorAPI = axios.create({
-	baseURL: `${BASE_URL}/authors`,
-	headers: { authorization: token },
-});
 
 function getAllAuthors() {
-	return authorAPI.get(`/`);
+	return axios.get(`/authors`);
 }
 
 function updateAuthorSetting(setting) {
-	return authorAPI.patch(`/update`, { ...setting });
+	return axios.patch(`/authors/update`, { ...setting });
 }
 
 function getAuthor(key, value) {
-	return authorAPI.get(`/search?${key}=${value}`);
+	return axios.get(`/authors/search?${key}=${value}`);
 }
 
 function deleteAuthor(_id) {
-	return authorAPI.delete(`/delete/${_id}`);
+	return axios.delete(`/authors/delete/${_id}`);
 }
 
 function updateAuthorAvatar(avatarFormData) {
-	return authorAPI.post(`/update-avatar`, avatarFormData, {
+	return axios.post(`/authors/update-avatar`, avatarFormData, {
 		headers: {
 			'Content-Type': 'multipart/form-data',
 		},
@@ -31,7 +25,10 @@ function updateAuthorAvatar(avatarFormData) {
 }
 
 function changeAuthorPassword(currentPassword, newPassword) {
-	return authorAPI.post(`/change-password`, { currentPassword, newPassword });
+	return axios.post(`/authors/change-password`, {
+		currentPassword,
+		newPassword,
+	});
 }
 
 export {

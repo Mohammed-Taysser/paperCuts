@@ -1,16 +1,15 @@
 import axios from 'axios';
-import { BASE_URL } from '.';
-
-const authAPI = axios.create({
-	baseURL: `${BASE_URL}/auth`,
-});
 
 function register(data) {
-	return authAPI.post(`/register`, data);
+	return axios.post(`/auth/register`, data);
 }
 
 function login(data) {
-	return authAPI.post(`/login`, data);
+	return axios.post(`/auth/login`, data);
 }
 
-export { register, login };
+function adminLogin(data) {
+	return axios.post(`/auth/admin/login`, data);
+}
+
+export { register, login, adminLogin };
