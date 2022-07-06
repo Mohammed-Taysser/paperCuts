@@ -1,16 +1,11 @@
 import axios from 'axios';
-import { BASE_URL } from '.';
-
-const eventsAPI = axios.create({
-	baseURL: `${BASE_URL}/events`,
-});
 
 function getAllEvents() {
-	return eventsAPI.get(`/`);
+	return axios.get(`/events`);
 }
 
 function getEventBySlug(slug) {
-	return eventsAPI.get(`/${slug}`);
+	return axios.get(`/events/${slug}`);
 }
 
 export { getAllEvents, getEventBySlug };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { register as registerAPI } from '../../api/auth.api';
-import { setToken } from '../../redux/features/auth.slice';
+import { saveUserFeature } from '../../redux/features/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../components/bootstrap/Alert';
 import RegisterForm from '../../components/RegisterForm';
@@ -11,7 +11,7 @@ function Register() {
 	usePageTitle('Register');
 	const navigate_to = useNavigate();
 	const dispatch = useDispatch();
-	const { token: reduxToken } = useSelector((state) => state['auth']);
+	const { isLoggedIn } = useSelector((state) => state['auth']);
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(false);
 
@@ -31,11 +31,7 @@ function Register() {
 	};
 
 	const saveAuthor = (responseData) => {
-		const { token } = responseData;
-
-		localStorage.setItem('token', JSON.stringify(token));
-		dispatch(setToken(token));
-
+		dispatch(saveUserFeature({ token: responseData.token }));
 		navigate_to('/');
 	};
 
@@ -45,7 +41,7 @@ function Register() {
 		api_register(data);
 	};
 
-	if (reduxToken) {
+	if (isLoggedIn) {
 		return (
 			<section className="register-page my-5 py-5">
 				<div className="container">

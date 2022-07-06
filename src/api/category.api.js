@@ -1,16 +1,11 @@
 import axios from 'axios';
-import { BASE_URL } from '.';
-
-const categoryAPI = axios.create({
-	baseURL: `${BASE_URL}/category`,
-});
 
 function getAllCategory() {
-	return categoryAPI.get(`/`);
+	return axios.get(`/category`);
 }
 
 function getCategoryBySlug(slug) {
-	return categoryAPI.get(`/${slug}`);
+	return axios.get(`/category/${slug}`);
 }
 
 export { getAllCategory, getCategoryBySlug };

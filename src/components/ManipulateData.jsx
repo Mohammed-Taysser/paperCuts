@@ -12,7 +12,7 @@ import ImageNotFound from '../assets/images/404.jpg';
  * @returns {import('react').ReactElement} span of generated stars
  */
 const Stars = (props) => {
-	const { stars_length } = props;
+	const { stars_length = 1 } = props;
 	let temp = [];
 	for (let index = 0; index < stars_length; index++) {
 		temp.push(<FaStar key={index} />);

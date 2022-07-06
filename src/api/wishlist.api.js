@@ -1,27 +1,19 @@
 import axios from 'axios';
-import { BASE_URL, token } from '.';
-
-const wishlistAPI = axios.create({
-	baseURL: `${BASE_URL}/wishlist`,
-	headers: {
-		authorization: token,
-	},
-});
 
 function getAllAuthorWishlist() {
-	return wishlistAPI.get(`/`);
+	return axios.get(`/wishlist`);
 }
 
 function getWishlistByBookId(bookId) {
-	return wishlistAPI.get(`/view/${bookId}`);
+	return axios.get(`/wishlist/view/${bookId}`);
 }
 
 function createWishlist(bookData) {
-	return wishlistAPI.post(`/create`, bookData);
+	return axios.post(`/wishlist/create`, bookData);
 }
 
 function deleteWishlist(wishlistId) {
-	return wishlistAPI.delete(`/delete/${wishlistId}`);
+	return axios.delete(`/wishlist/delete/${wishlistId}`);
 }
 
 export {

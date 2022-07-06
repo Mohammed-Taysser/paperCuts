@@ -1,21 +1,15 @@
-import { BASE_URL, token } from './';
 import axios from 'axios';
 
-const orderAPI = axios.create({
-	baseURL: `${BASE_URL}/order`,
-	headers: { authorization: token },
-});
-
 function getCartByOrderId(orderId) {
-	return orderAPI.get(`view/${orderId}`);
+	return axios.get(`/order/view/${orderId}`);
 }
 
 function getAllAuthorOrders() {
-	return orderAPI.get(`/`);
+	return axios.get(`/order`);
 }
 
 function createOrder(orderData) {
-	return orderAPI.post(`/create`, orderData);
+	return axios.post(`/order/create`, orderData);
 }
 
 export { getCartByOrderId, getAllAuthorOrders, createOrder };

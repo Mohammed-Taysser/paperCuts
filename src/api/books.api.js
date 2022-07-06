@@ -1,36 +1,48 @@
 import axios from 'axios';
-import { BASE_URL } from '.';
-
-const bookAPI = axios.create({
-	baseURL: `${BASE_URL}/books`,
-});
 
 function getLatestBooks() {
-	return bookAPI.get(`/latest`);
+	return axios.get(`/books/latest`);
 }
 
 function getRelatedBooks() {
-	return bookAPI.get(`/related`);
+	return axios.get(`/books/related`);
 }
 
 function getBookBySlug(slug) {
-	return bookAPI.get(`/${slug}`);
+	return axios.get(`/books/${slug}`);
 }
 
 function getTop5() {
-	return bookAPI.get(`/top5`);
+	return axios.get(`/books/top5`);
 }
 
 function getBookByQuery(query) {
-	return bookAPI.get(`/search?${query}`);
+	return axios.get(`/books/search?${query}`);
 }
 
 function getBookByCategory(category) {
-	return bookAPI.get(`/search?category=${category}`);
+	return axios.get(`/books/search?category=${category}`);
 }
 
 function getAuthorBooks(username) {
-	return bookAPI.get(`/search?author=${username}`);
+	return axios.get(`/books/search?author=${username}`);
+}
+
+function updateBook(bookData) {
+	return axios.patch(`/books/update`, bookData);
+}
+
+function createBook(bookData) {
+	return axios.post(`/books/create`, bookData);
+}
+
+function updateBookCover(bookData) {
+	return axios.post(`/books/update-cover`, bookData, {
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'multipart/form-data',
+		},
+	});
 }
 
 export {
@@ -41,4 +53,7 @@ export {
 	getBookByQuery,
 	getBookByCategory,
 	getAuthorBooks,
+	updateBook,
+	createBook,
+	updateBookCover,
 };

@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../api/auth.api';
+import { adminLogin } from '../../api/auth.api';
 import { InputField } from '../../components/bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveUserFeature } from '../../redux/features/auth.slice';
 import Alert from '../../components/bootstrap/Alert';
-import Spinner from '../../components/bootstrap/Spinner';
+import { LoadingButton } from '../../components/bootstrap/Spinner';
 import usePageTitle from '../../hooks/usePageTitle';
 import loginValidate from '../../validations/login.validate';
 
+import LoginImage from '../../assets/images/background/dashboard-login.png';
+import Favicon from '../../assets/images/icons/favicon.png';
+import '../../assets/scss/dashboard.scss';
+
 function Login() {
-	usePageTitle('Login');
+	usePageTitle('Admin Login');
 	const navigate_to = useNavigate();
 	const dispatch = useDispatch();
-	const { isLoggedIn } = useSelector((state) => state['auth']);
+	const { isLoggedIn, user } = useSelector((state) => state['auth']);
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
@@ -21,23 +25,9 @@ function Login() {
 		password: '',
 	});
 
-	const api_login = async () => {
-		setLoading(true);
-		await login(formData)
-			.then((response) => {
-				saveAuthor(response.data);
-			})
-			.catch((error) => {
-				handelErrors(error.response.data.error);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
-	};
-
-	const saveAuthor = (responseData) => {
-		dispatch(saveUserFeature({token:responseData.token}));
-		navigate_to('/');
+	const saveAdmin = (responseData) => {
+		dispatch(saveUserFeature({ token: responseData.token }));
+		navigate_to('/dashboard');
 	};
 
 	const onInputChange = (evt) => {
@@ -58,7 +48,7 @@ function Login() {
 		}
 	};
 
-	const onFormSubmit = (evt) => {
+	const onFormSubmit = async (evt) => {
 		evt.preventDefault();
 		setErrors({});
 
@@ -67,49 +57,73 @@ function Login() {
 		if (Object.keys(errorsAsObject).length > 0) {
 			handelErrors(errorsAsObject);
 		} else {
-			api_login();
+			setLoading(true);
+			await adminLogin(formData)
+				.then((response) => {
+					saveAdmin(response.data);
+				})
+				.catch((error) => {
+					handelErrors(error.response.data.error);
+				})
+				.finally(() => {
+					setLoading(false);
+				});
 		}
 	};
 
-	const DummyCol = () => {
+	if (isLoggedIn && user.role === 'admin') {
 		return (
-			<div className="col-md-6 my-3">
-				<div className="bg-gradient p-4 rounded-end h-100 d-flex justify-content-center align-items-center align-content-center bg-login">
-					<div className="text-center text-white">
-						<h2 className="mb-3">welcome back!</h2>
-						<p>Enter your personal details and start journey with us</p>
-						<Link
-							className="rounded-pill mt-2 px-3 py-2 btn btn-outline-light"
-							to="/register"
-							title="register"
-						>
-							sign up
-						</Link>
-					</div>
-				</div>
-			</div>
-		);
-	};
-
-	if (isLoggedIn) {
-		return (
-			<section className="login-page my-5 py-5">
+			<section className="dashboard-login-page">
 				<div className="container">
-					<Alert color="success">You already sign in</Alert>
+					<Alert color="success">
+						You already sign in, got to
+						<Link to="/dashboard" className="alert-link mx-1">
+							Dashboard
+						</Link>
+					</Alert>
 				</div>
 			</section>
 		);
 	} else {
 		return (
 			<>
-				<section className="login-page my-5 py-5">
+				<section className="dashboard-login-page">
 					<div className="container">
 						<div className="row justify-content-center align-items-stretch g-0">
 							<div className="col-md-6 my-3">
-								<div className="p-4 rounded-start border login-content">
-									<h1 className="my-4 text-center">Sign in</h1>
+								<div className="rounded nice-shadow login-content">
+									<div className="row g-0 rounded-top justify-content-between bg-aurora-soft align-items-center">
+										<div className="col-7">
+											<div className="text-aurora p-4 ">
+												<p className="mb-1">Welcome Back !</p>
+												<p className="small">
+													Sign in to continue to paperCuts.
+												</p>
+											</div>
+										</div>
+										<div className="col-5">
+											<div className="img">
+												<img
+													src={LoginImage}
+													alt="login"
+													className="img-fluid"
+												/>
+											</div>
+										</div>
+									</div>
+									<div className="login-logo position-relative">
+										<span className="rounded-circle bg-light position-absolute login-logo-container">
+											<img
+												src={Favicon}
+												alt="favicon"
+												className="img-fluid p-2"
+												width={70}
+												height={70}
+											/>
+										</span>
+									</div>
 									<form
-										className={`mb-3 needs-validation`}
+										className={`mt-4 needs-validation p-4`}
 										noValidate
 										onSubmit={onFormSubmit}
 									>
@@ -118,7 +132,7 @@ function Login() {
 											type="email"
 											id="login-email"
 											label="email address"
-											className={errors['email'] ? 'is-invalid' : ''}
+											className={`${errors['email'] ? 'is-invalid' : ''}`}
 											name="email"
 											value={formData['email']}
 											onChange={onInputChange}
@@ -130,7 +144,7 @@ function Login() {
 										<InputField
 											outer="my-3"
 											type="password"
-											className={errors['password'] ? 'is-invalid' : ''}
+											className={`${errors['password'] ? 'is-invalid' : ''}`}
 											id="login-password"
 											label="password"
 											name="password"
@@ -139,19 +153,15 @@ function Login() {
 											onChange={onInputChange}
 											placeholder="eg: ********"
 											required
+											withEye
 											invalidFeedback={errors['password']}
 											validFeedback
 										/>
-										<p className="text-end">
-											<Link className="text-muted" to="/forget-password">
-												forget password
-											</Link>
-										</p>
-										<div className="text-center">
+										<div className="">
 											{loading ? (
-												<Spinner />
+												<LoadingButton sm />
 											) : (
-												<button className="btn btn-aurora mt-4" type="submit">
+												<button className="btn btn-aurora" type="submit">
 													Sign In
 												</button>
 											)}
@@ -159,7 +169,6 @@ function Login() {
 									</form>
 								</div>
 							</div>
-							<DummyCol />
 						</div>
 					</div>
 				</section>

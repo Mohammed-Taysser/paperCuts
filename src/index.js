@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/store';
-import AuthProvider from './provider/auth.provider';
 import reportWebVitals from './__tests__/reportWebVitals';
 import './assets/scss/core.paperCuts.scss';
+import './api/axiosClient';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<AuthProvider>
-				<App />
-			</AuthProvider>
+			<App />
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
