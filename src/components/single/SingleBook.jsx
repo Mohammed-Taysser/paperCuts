@@ -13,12 +13,12 @@ import '../../assets/scss/components/singleBook.scss';
  */
 function SingleBook(props) {
 	const { book, withWishlist, md } = props;
-	const { token: reduxToken } = useSelector((state) => state['auth']);
+	const { isLoggedIn } = useSelector((state) => state['auth']);
 
 	return (
 		<div className={`col-sm-6 col-md-${md} my-3`}>
 			<div className="card border-0 nice-shadow h-100 single-book">
-				{reduxToken && withWishlist && (
+				{isLoggedIn && withWishlist && (
 					<div
 						className="position-absolute top-0 end-0 m-2"
 						style={{ zIndex: 2 }}
