@@ -1,5 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { logout, setToken } from '../../redux/features/auth.slice';
+import {
+	unsubscribeFeature,
+	saveUserFeature,
+} from '../../redux/features/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -25,13 +28,13 @@ function Profile() {
 	const dispatch = useDispatch();
 	const navigate_to = useNavigate();
 	const closeDeleteAccountModalBtn = useRef(null);
-	const { jwt_token } = useSelector((state) => state['auth']);
+	const { user } = useSelector((state) => state['auth']);
 	const [isSaved, setIsSaved] = useState({});
 	const [isLoading, setIsLoading] = useState({ author: true });
 	const [currentAuthor, setCurrentAuthor] = useState(null);
 	const [formData, setFormData] = useState({});
 	const [loadingError, setLoadingError] = useState({});
-	const [authorConfirmMessage] = useState(`paperCuts/${jwt_token.username}`);
+	const [authorConfirmMessage] = useState(`paperCuts/${user.username}`);
 
 	useLayoutEffect(() => {
 		apiGetAuthor();
@@ -39,7 +42,7 @@ function Profile() {
 	}, []);
 
 	const apiGetAuthor = async () => {
-		await getAuthor('username', jwt_token.username)
+		await getAuthor('username', user.username)
 			.then((response) => {
 				setCurrentAuthor(response.data);
 				setFormData(response.data);
@@ -59,12 +62,8 @@ function Profile() {
 		updateAuthorSetting(setting)
 			.then((response) => {
 				setIsSaved({ ...isSaved, [key]: true });
-				const { token } = response.data;
 				setCurrentAuthor(response.data.author);
-				if (token) {
-					localStorage.setItem('token', JSON.stringify(token));
-					dispatch(setToken(token));
-				}
+				dispatch(saveUserFeature({ token: response.data.token }));
 			})
 			.catch((error) => {
 				setLoadingError((err) => ({ ...err, [key]: error.message }));
@@ -196,11 +195,10 @@ function Profile() {
 		if (formData['deleteAccount'] === authorConfirmMessage) {
 			setIsLoading((load) => ({ ...load, deleteAccount: true }));
 
-			deleteAuthor(jwt_token._id)
+			deleteAuthor(user._id)
 				.then(() => {
 					closeDeleteAccountModalBtn.current.click();
-					dispatch(logout());
-					localStorage.removeItem('token');
+					dispatch(unsubscribeFeature());
 					setTimeout(() => {
 						navigate_to('/');
 					}, 3000);
@@ -231,22 +229,20 @@ function Profile() {
 			// get the old avatar id to remove it from cloudinary
 			// example: https://res.cloudinary.com/mohammed-taysser/image/upload/h_500,w_500/v1654621341/paperCuts/authors/avatar/vp2qhbrlozfdampgobvt.jpg
 			// will be `vp2qhbrlozfdampgobvt`
-			let jwt_token_avatar = jwt_token.avatar.split('/');
-			if (jwt_token_avatar.length > 10) {
+			let user_avatar = user.avatar.split('/');
+			if (user_avatar.length > 10) {
 				avatarFormData.append(
 					'oldAvatarId',
-					jwt_token_avatar[11].split('.')[0]
+					user_avatar[11].split('.')[0]
 				);
 			}
 
 			await updateAuthorAvatar(avatarFormData)
 				.then((response) => {
 					setIsSaved({ ...isSaved, avatar: true });
-					const { token } = response.data;
 					setCurrentAuthor(response.data.author);
 					setFormData(response.data.author);
-					localStorage.setItem('token', JSON.stringify(token));
-					dispatch(setToken(token));
+					dispatch(saveUserFeature({ token: response.data.token }));
 				})
 				.catch((error) => {
 					setLoadingError((err) => ({ ...err, avatar: error.message }));
@@ -277,10 +273,8 @@ function Profile() {
 					)
 						.then((response) => {
 							setIsSaved({ ...isSaved, password: true });
-							const { token } = response.data;
 							setCurrentAuthor(response.data.author);
-							localStorage.setItem('token', JSON.stringify(token));
-							dispatch(setToken(token));
+							dispatch(saveUserFeature({ token: response.data.token }));
 						})
 						.catch((error) => {
 							setLoadingError((err) => ({ ...err, password: error.message }));
