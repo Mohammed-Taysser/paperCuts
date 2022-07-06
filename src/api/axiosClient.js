@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080/api'|| process.env.REACT_APP_AXIOS_BASE_URL;
+axios.defaults.baseURL = process.env.REACT_APP_AXIOS_BASE_URL;
 axios.defaults.headers.common['authorization'] =
 	JSON.parse(localStorage.getItem('token')) || '';
 
