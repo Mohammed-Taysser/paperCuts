@@ -23,6 +23,11 @@ for live demo
 - [`React.js`](https://reactjs.org/)
 - [`React-Router-Dom`](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 - [`React-Icons`](https://react-icons.github.io/react-icons)
+- [`React-Dropzone`](https://react-dropzone.js.org)
+- [`React-Select`](https://react-select.com)
+- [`React-Redux`](https://react-redux.js.org/)
+- [`Redux-Toolkit`](https://redux-toolkit.js.org/)
+- [`Validator`](https://www.npmjs.com/package/validator)
 - [`sass`](https://sass-lang.com/)
 
 ## Quick start 🚀
