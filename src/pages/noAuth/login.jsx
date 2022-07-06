@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../api/auth.api';
 import { InputField } from '../../components/bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToken } from '../../redux/features/auth.slice';
+import { saveUserFeature } from '../../redux/features/auth.slice';
 import Alert from '../../components/bootstrap/Alert';
 import Spinner from '../../components/bootstrap/Spinner';
 import usePageTitle from '../../hooks/usePageTitle';
@@ -13,7 +13,7 @@ function Login() {
 	usePageTitle('Login');
 	const navigate_to = useNavigate();
 	const dispatch = useDispatch();
-	const { reduxToken } = useSelector((state) => state['auth']);
+	const { isLoggedIn } = useSelector((state) => state['auth']);
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
@@ -36,11 +36,7 @@ function Login() {
 	};
 
 	const saveAuthor = (responseData) => {
-		const { token } = responseData;
-
-		localStorage.setItem('token', JSON.stringify(token));
-		dispatch(setToken(token));
-
+		dispatch(saveUserFeature({token:responseData.token}));
 		navigate_to('/');
 	};
 
@@ -95,7 +91,7 @@ function Login() {
 		);
 	};
 
-	if (reduxToken) {
+	if (isLoggedIn) {
 		return (
 			<section className="login-page my-5 py-5">
 				<div className="container">
