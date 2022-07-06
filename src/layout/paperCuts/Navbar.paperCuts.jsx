@@ -11,7 +11,7 @@ import { FiLogOut, FiPhoneCall, FiUsers } from 'react-icons/fi';
 import { unsubscribeFeature } from '../../redux/features/auth.slice';
 import { GoBook } from 'react-icons/go';
 import { BiCategoryAlt } from 'react-icons/bi';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineDashboard, AiOutlineHome } from 'react-icons/ai';
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md';
 import favicon from '../../assets/images/icons/favicon.png';
 import 'bootstrap/js/src/collapse';
@@ -88,6 +88,14 @@ function Navbar() {
 									<BsBookmarkHeart />
 								</Link>
 							</li>
+							{user.role === 'admin' && (
+								<li>
+									<Link className="dropdown-item" to="/dashboard">
+										dashboard
+										<AiOutlineDashboard />
+									</Link>
+								</li>
+							)}
 							<li>
 								<hr className="dropdown-divider" />
 							</li>
