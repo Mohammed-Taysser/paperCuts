@@ -14,11 +14,12 @@ import usePageTitle from '../../hooks/usePageTitle';
 import BookList from '../../components/standalone/BookList';
 import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 import '../../assets/scss/pages/paperCuts/bookDetails.scss';
+import ImageNotFound from '../../assets/images/404.jpg';
 
 function BooksDetails() {
 	const [, setPageTitle] = usePageTitle('Book Details');
 	const { slug } = useParams();
-	const { token: reduxToken } = useSelector((state) => state['auth']);
+	const { isLoggedIn } = useSelector((state) => state['auth']);
 	const [currentBook, setCurrentBook] = useState(null);
 	const [isLoading, setIsLoading] = useState({
 		books: true,
@@ -88,7 +89,7 @@ function BooksDetails() {
 	};
 
 	const ShowCartBtn = () => {
-		if (reduxToken) {
+		if (isLoggedIn) {
 			return <AddToCart currentBook={currentBook} />;
 		}
 		return (
@@ -109,7 +110,7 @@ function BooksDetails() {
 						<span className="special-small-title">
 							publisher: {currentBook.publisher || 'not provide'}
 						</span>
-						{reduxToken && <AddToWishList currentBook={currentBook} />}
+						{isLoggedIn && <AddToWishList currentBook={currentBook} />}
 					</div>
 					<div className="d-flex align-items-start">
 						<h1 className="h2 mb-2">{currentBook.title} </h1>
@@ -117,7 +118,7 @@ function BooksDetails() {
 						<BookBadgeSellerBadge />
 					</div>
 					<div className="d-flex align-items-end">
-						{currentBook.stars && <Stars stars_length={currentBook.stars} />}
+						<Stars stars_length={currentBook.stars} />
 						<span className="small mx-4 text-muted special-small-title">
 							({currentBook.reviews}reviews)
 						</span>
@@ -182,7 +183,7 @@ function BooksDetails() {
 						<div className="col-md-4 my-3">
 							<div className="img-container">
 								<img
-									src={currentBook.image}
+									src={currentBook.image || ImageNotFound}
 									alt={currentBook.title}
 									className="img-fluid"
 								/>
