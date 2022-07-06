@@ -28,6 +28,23 @@ function getAuthorBooks(username) {
 	return axios.get(`/books/search?author=${username}`);
 }
 
+function updateBook(bookData) {
+	return axios.patch(`/books/update`, bookData);
+}
+
+function createBook(bookData) {
+	return axios.post(`/books/create`, bookData);
+}
+
+function updateBookCover(bookData) {
+	return axios.post(`/books/update-cover`, bookData, {
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'multipart/form-data',
+		},
+	});
+}
+
 export {
 	getLatestBooks,
 	getRelatedBooks,
@@ -36,4 +53,7 @@ export {
 	getBookByQuery,
 	getBookByCategory,
 	getAuthorBooks,
+	updateBook,
+	createBook,
+	updateBookCover,
 };
