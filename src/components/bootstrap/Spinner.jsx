@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/scss/components/spinner.scss';
 
 const Spinner = (props) => {
 	const spinnerClassName = `spinner-border text-${props.color} ${

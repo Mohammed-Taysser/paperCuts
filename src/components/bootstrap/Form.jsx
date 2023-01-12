@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/scss/components/forms.scss';
 
 // helpers
 const InvalidFeedback = (props) => {
