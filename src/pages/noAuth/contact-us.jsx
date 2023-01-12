@@ -4,13 +4,13 @@ import usePageTitle from '../../hooks/usePageTitle';
 import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
 
 function ContactUs() {
-  usePageTitle('Contact Us');
+	usePageTitle('Contact Us');
 
-  return (
-    <WithBanner title='contact us' subtitle='find us'>
-      <GeoLocation />
-    </WithBanner>
-  );
+	return (
+		<WithBanner title='contact us' subtitle='find us'>
+			<GeoLocation />
+		</WithBanner>
+	);
 }
 
 export default ContactUs;
