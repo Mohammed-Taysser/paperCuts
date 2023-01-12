@@ -1,11 +1,13 @@
 @use 'sass:color';
 
-$main-color: #16b8ba;
-$dark-main-color: color.adjust($main-color, $lightness: -18%);
+$aurora: #16b8ba;
+
+$dark-main-color: color.adjust($aurora, $lightness: -18%);
 $main-font: Ubuntu, sans-serif;
 $gray-500: #adb5bd;
+
 $main-gradient: linear-gradient(
   90deg,
   rgba($dark-main-color, 1) 32%,
-  rgba($main-color, 1) 100%
+  rgba($aurora, 1) 100%
 );

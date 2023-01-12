@@ -1,7 +1,5 @@
-@import '../helpers/variables';
-
 footer.footer {
-  background: $main-color;
+  background: $aurora;
   background: $main-gradient;
   color: #fff;
   position: relative;
@@ -10,7 +8,8 @@ footer.footer {
 
   .shapes {
     img.website-logo {
-      filter: brightness(0) invert(1);
+      -webkit-filter: brightness(0) invert(1);
+              filter: brightness(0) invert(1);
       position: absolute;
       z-index: -1;
       width: 400px;
@@ -59,12 +58,14 @@ footer.footer {
       width: 100%;
       display: inline-block;
       text-align: center;
-      filter: brightness(0) invert(1);
+      -webkit-filter: brightness(0) invert(1);
+              filter: brightness(0) invert(1);
 
       img {
         width: 200px;
         height: 200px;
-        object-fit: contain;
+        -o-object-fit: contain;
+           object-fit: contain;
         display: inline-block;
       }
     }
