@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './App';
-import store from './redux/store';
+import App from './apps/App';
+import { ReduxProvider } from './redux/store';
 import reportWebVitals from './__tests__/reportWebVitals';
-import './assets/scss/core.paperCuts.scss';
-import './api/axiosClient';
+import './apps/axiosClient';
+import './assets/scss/papercuts/core.scss';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
+		<ReduxProvider>
 			<App />
-		</Provider>
+		</ReduxProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
