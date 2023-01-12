@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
 	FaFacebookF,
 	FaInstagram,
@@ -6,75 +6,43 @@ import {
 	FaTwitter,
 } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getAuthor } from '../../api/authors.api';
-import { getAuthorBooks } from '../../api/books.api';
-import BookList from '../../components/standalone/BookList';
+import NoBookFound from '../../assets/images/image-not-found.png';
 import Alert from '../../components/bootstrap/Alert';
+import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
 import Spinner from '../../components/bootstrap/Spinner';
+import BookList from '../../components/standalone/BookList';
+import InlineCategoryTags from '../../components/standalone/InlineCategoryTags';
 import SectionTitle from '../../components/standalone/SectionTitle';
 import usePageTitle from '../../hooks/usePageTitle';
-import InlineCategoryTags from '../../components/standalone/InlineCategoryTags';
 import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
-import NoBookFound from '../../assets/images/image-not-found.png';
+import { fetchAuthor } from '../../redux/features/author.slice';
+import { fetchAuthorBooks } from '../../redux/features/books.slice';
 
 function AuthorDetails() {
+	const dispatch = useDispatch();
+	const authorState = useSelector((state) => state['authors']['single']);
+	const booksState = useSelector((state) => state['books']['author']);
 	const [, setPageTitle] = usePageTitle('Author Details');
 	const { username } = useParams();
-	const [currentAuthor, setCurrentAuthor] = useState(null);
-	const [authorBooks, setAuthorBooks] = useState([]);
-	const [loading, setLoading] = useState({
-		author: true,
-		books: true,
-	});
-	const [loadingError, setLoadingError] = useState({
-		author: null,
-		books: null,
-	});
 
 	useEffect(() => {
-		get_author_api();
-		get_author_books_api();
+		dispatch(fetchAuthor({ key: 'username', value: username }));
+		dispatch(fetchAuthorBooks({ username }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const get_author_api = async () => {
-		await getAuthor('username', username)
-			.then((response) => {
-				setCurrentAuthor(response.data);
-				setPageTitle(response.data.firstName + ' ' + response.data.lastName);
-			})
-			.catch((error) => {
-				setLoadingError((load) => ({ ...load, author: error }));
-			})
-			.finally(() => {
-				setLoading((load) => ({ ...load, author: false }));
-			});
-	};
-
-	const get_author_books_api = async () => {
-		await getAuthorBooks(username)
-			.then((response) => {
-				setAuthorBooks(response.data);
-			})
-			.catch((error) => {
-				setLoadingError((load) => ({ ...load, books: error }));
-			})
-			.finally(() => {
-				setLoading((load) => ({ ...load, books: false }));
-			});
-	};
-
 	const authorFullName = () => {
-		return `${currentAuthor.firstName} ${currentAuthor.lastName}`;
+		return `${authorState.author.firstName} ${authorState.author.lastName}`;
 	};
 
 	const AuthorSocialMediaLinks = () => {
 		let author_social_media = [];
-		for (const key in currentAuthor.socialMedia) {
-			if (Object.hasOwnProperty.call(currentAuthor.socialMedia, key)) {
+		for (const key in authorState.author.socialMedia) {
+			if (Object.hasOwnProperty.call(authorState.author.socialMedia, key)) {
 				let icon = null;
-				if (currentAuthor.socialMedia[key]) {
+				if (authorState.author.socialMedia[key]) {
 					switch (key) {
 						case 'instagram':
 							icon = <FaInstagram />;
@@ -94,11 +62,11 @@ function AuthorDetails() {
 					}
 					author_social_media.push(
 						<a
-							className="text-dark h5 mx-2"
-							href={currentAuthor.socialMedia[key]}
+							className='text-dark h5 mx-2'
+							href={authorState.author.socialMedia[key]}
 							key={key}
-							target="_blank"
-							rel="noreferrer"
+							target='_blank'
+							rel='noreferrer'
 						>
 							{icon}
 						</a>
@@ -107,9 +75,12 @@ function AuthorDetails() {
 			}
 		}
 		return (
-			<div className="mt-4">
+			<div className='mt-4'>
 				{author_social_media}
-				<a className="text-dark h5 ms-2" href={`mailto:${currentAuthor.email}`}>
+				<a
+					className='text-dark h5 ms-2'
+					href={`mailto:${authorState.author.email}`}
+				>
 					<MdAlternateEmail />
 				</a>
 			</div>
@@ -119,45 +90,46 @@ function AuthorDetails() {
 	const AuthorDetailsSection = () => {
 		return (
 			<>
-				<div className="row justify-content-center align-items-center mb-5 pb-5">
-					<div className="col-md-5 my-3 text-center">
+				<div className='row justify-content-center align-items-center mb-5 pb-5'>
+					<div className='col-md-5 my-3 text-center'>
 						<img
-							src={currentAuthor.avatar}
+							src={authorState.author.avatar}
 							alt={authorFullName()}
 							width={250}
 							height={250}
-							className="img-fluid rounded-circle"
+							className='img-fluid rounded-circle'
 						/>
 					</div>
-					<div className="col-md-7 my-3">
-						<div className="author-details-section">
-							<small className="special-small-title">
-								{currentAuthor.username}
+					<div className='col-md-7 my-3'>
+						<div className='author-details-section'>
+							<small className='special-small-title'>
+								{authorState.author.username}
 							</small>
-							<h1 className="h2 mb-3"> {authorFullName()} </h1>
-							{currentAuthor.info && (
-								<p className="text-muted">{currentAuthor.info}</p>
+							<h1 className='h2 mb-3'> {authorFullName()} </h1>
+							{authorState.author.info && (
+								<p className='text-muted'>{authorState.author.info}</p>
 							)}
-							{currentAuthor.extraInfo && (
-								<p className="small-info">{currentAuthor.extraInfo}</p>
+							{authorState.author.extraInfo && (
+								<p className='small-info'>{authorState.author.extraInfo}</p>
 							)}
-							<InlineCategoryTags category={currentAuthor.category} />
+							<InlineCategoryTags category={authorState.author.category} />
 							<AuthorSocialMediaLinks />
 						</div>
 					</div>
 				</div>
-				<SectionTitle subtitle="shop online" title="author books" />
+				<SectionTitle subtitle='shop online' title='author books' />
 				<RenderAuthorBooks />
 			</>
 		);
 	};
 
 	const RenderAuthor = () => {
-		if (loading.author) {
+		if (authorState.loading) {
 			return <Spinner />;
-		} else if (loadingError.author) {
-			return <Alert> Error While Loading Author </Alert>;
-		} else if (currentAuthor) {
+		} else if (authorState.error) {
+			return <Alert> {JSON.stringify(authorState.error)} </Alert>;
+		} else if (authorState.author) {
+			setPageTitle(authorFullName());
 			return <AuthorDetailsSection />;
 		} else {
 			return <Alert> no author found </Alert>;
@@ -165,17 +137,17 @@ function AuthorDetails() {
 	};
 
 	const RenderAuthorBooks = () => {
-		if (loading.books) {
-			return <Spinner />;
-		} else if (loadingError.books) {
-			return <Alert> Error While Loading Author books </Alert>;
-		} else if (authorBooks && authorBooks.length > 0) {
-			return <BookList books={authorBooks} outerClass="mt-5" />;
+		if (booksState.loading) {
+			return <RowOfPlaceholderCard />;
+		} else if (booksState.error) {
+			return <Alert> {JSON.stringify(booksState.error)} </Alert>;
+		} else if (booksState.books && booksState.books.length > 0) {
+			return <BookList books={booksState.books} outerClass='mt-5' />;
 		} else {
 			return (
-				<div className="text-center mt-4">
-					<img src={NoBookFound} className="img-fluid" alt="no book found" />
-					<p className="text-muted">no book found</p>
+				<div className='text-center mt-5'>
+					<img src={NoBookFound} className='img-fluid' alt='no book found' />
+					<p className='text-muted'>no book found</p>
 				</div>
 			);
 		}
@@ -183,11 +155,11 @@ function AuthorDetails() {
 
 	return (
 		<WithBanner
-			title={currentAuthor ? authorFullName() : 'Author Details'}
-			subtitle="author"
+			title={authorState.author ? authorFullName() : 'Author Details'}
+			subtitle='author'
 		>
-			<section className="my-5">
-				<div className="container">
+			<section className='my-5'>
+				<div className='container'>
 					<RenderAuthor />
 				</div>
 			</section>
