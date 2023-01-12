@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { initTokenFeature } from './redux/features/auth.slice';
-import MainRoute from './routes/routes';
+import { BrowserRouter } from 'react-router-dom';
+import { initToken } from '../redux/features/auth.slice';
+import ErrorBoundary from './ErrorBoundary';
+import MainRoute from './routes';
 
 function App() {
 	const dispatch = useDispatch();
@@ -13,14 +14,16 @@ function App() {
 			document.body.classList.remove('load');
 		};
 
-		dispatch(initTokenFeature());
+		dispatch(initToken());
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
-		<BrowserRouter>
-			<MainRoute />
-		</BrowserRouter>
+		<ErrorBoundary>
+			<BrowserRouter>
+				<MainRoute />
+			</BrowserRouter>
+		</ErrorBoundary>
 	);
 }
 
