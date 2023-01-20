@@ -2,11 +2,11 @@ import React from 'react';
 import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { MdContentCopy } from 'react-icons/md';
 import validator from 'validator/validator';
-import Alert from './bootstrap/Alert';
-import { InputField, Textarea } from './bootstrap/Form';
-import Spinner, { LoadingButton } from './bootstrap/Spinner';
+import { copyToClipboard, onImageNotLoad } from '../ManipulateData';
+import Alert from '../bootstrap/Alert';
+import { InputField, Textarea } from '../bootstrap/Form';
+import Spinner, { LoadingButton } from '../bootstrap/Spinner';
 import CategoryTags from './CategoryTags';
-import { copyToClipboard, onImageNotLoad } from './ManipulateData';
 import Wrapper from './profileWrapper';
 
 function profileCards(props) {
@@ -138,6 +138,7 @@ function profileCards(props) {
 						outer="col-4"
 						className="form-control-sm"
 						maxLength={48}
+						type='email'
 						placeholder="email address"
 						value={formData['email']}
 						name="email"
@@ -338,7 +339,7 @@ function profileCards(props) {
 								</span>
 								<input
 									className="form-control"
-									type="text"
+									type="url"
 									placeholder="Facebook Profile"
 									aria-label="facebook-profile"
 									aria-describedby="facebook-profile"
@@ -356,7 +357,7 @@ function profileCards(props) {
 								</span>
 								<input
 									className="form-control"
-									type="text"
+									type="url"
 									placeholder="Twitter Profile"
 									aria-label="twitter-profile"
 									aria-describedby="twitter-profile"
@@ -374,7 +375,7 @@ function profileCards(props) {
 								</span>
 								<input
 									className="form-control"
-									type="text"
+									type="url"
 									placeholder="Telegram Profile"
 									aria-label="telegram-profile"
 									aria-describedby="telegram-profile"
@@ -392,7 +393,7 @@ function profileCards(props) {
 								</span>
 								<input
 									className="form-control"
-									type="text"
+									type="url"
 									placeholder="Instagram Profile"
 									aria-label="instagram-profile"
 									aria-describedby="instagram-profile"

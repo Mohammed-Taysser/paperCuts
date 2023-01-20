@@ -1,9 +1,9 @@
 import React from 'react';
 import { BsCheck2Circle } from 'react-icons/bs';
-import { RiHashtag } from 'react-icons/ri';
-import { slugify } from './ManipulateData';
-import { LoadingButton } from './bootstrap/Spinner';
 import { IoMdWarning } from 'react-icons/io';
+import { RiHashtag } from 'react-icons/ri';
+import { slugify } from '../ManipulateData';
+import { LoadingButton } from '../bootstrap/Spinner';
 
 const ProfileCardWrapper = (props) => {
 	const {
