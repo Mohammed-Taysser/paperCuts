@@ -76,6 +76,23 @@ const authSlice = createSlice({
 			state.isLoggedIn = true;
 			Cookies.set('token', action.payload.token);
 		},
+		refreshUserInfo: (state, action) => {
+			const { token } = action.payload;
+			if (token) {
+				state.token = token;
+				Cookies.set('token', token);
+				try {
+					const jwtDecodedToken = jwtDecode(token);
+					const isExpired = Date.now() / 1000 > jwtDecodedToken?.exp;
+					if (jwtDecodedToken && !isExpired) {
+						state.user = jwtDecodedToken;
+						state.isLoggedIn = true;
+					}
+				} catch (error) {
+					//
+				}
+			}
+		},
 		logout: (state) => {
 			state.token = null;
 			state.user = null;
@@ -90,5 +107,6 @@ const authSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export default authSlice.reducer;
-export const { initToken, logout, refreshToken } = authSlice.actions;
+export const { initToken, logout, refreshToken, refreshUserInfo } =
+	authSlice.actions;
 export { authFeature };
