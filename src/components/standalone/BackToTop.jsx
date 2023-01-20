@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BiUpArrowCircle } from 'react-icons/bi';
-import '../../assets/scss/components/backToTop.scss';
 
 function BackToTop() {
 	const [show, setShow] = useState(false);
@@ -32,11 +31,11 @@ function BackToTop() {
 	};
 	return (
 		<a
-			href="#bact-to-top"
+			href='#bact-to-top'
 			className={`back-to-top text-white p-2 bg-aurora ${show ? '' : 'd-none'}`}
 			onClick={onBtnClick}
 		>
-			<BiUpArrowCircle className="h4 m-0" />
+			<BiUpArrowCircle className='h4 m-0' />
 		</a>
 	);
 }

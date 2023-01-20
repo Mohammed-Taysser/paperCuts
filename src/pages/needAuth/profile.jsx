@@ -1,27 +1,22 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import {
-	unsubscribeFeature,
-	saveUserFeature,
-} from '../../redux/features/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import validator from 'validator/validator';
 import {
+	changeAuthorPassword,
 	deleteAuthor,
 	getAuthor,
-	updateAuthorSetting,
 	updateAuthorAvatar,
-	changeAuthorPassword,
+	updateAuthorSetting,
 } from '../../api/authors.api';
 import {
 	getTypeOf,
 	isEqualArray,
 	isEqualObject,
 } from '../../components/ManipulateData';
-import validator from 'validator/validator';
-import ProfileCards from '../../components/profileCards';
+import ProfileCards from '../../components/profile/profileCards';
 import usePageTitle from '../../hooks/usePageTitle';
-import '../../assets/scss/pages/paperCuts/profile.scss';
-import 'bootstrap/js/src/modal';
+import { logout, refreshUserInfo } from '../../redux/features/auth.slice';
 
 function Profile() {
 	usePageTitle('Profile');
@@ -63,7 +58,7 @@ function Profile() {
 			.then((response) => {
 				setIsSaved({ ...isSaved, [key]: true });
 				setCurrentAuthor(response.data.author);
-				dispatch(saveUserFeature({ token: response.data.token }));
+				dispatch(refreshUserInfo({ token: response.data.token }));
 			})
 			.catch((error) => {
 				setLoadingError((err) => ({ ...err, [key]: error.message }));
@@ -198,7 +193,7 @@ function Profile() {
 			deleteAuthor(user._id)
 				.then(() => {
 					closeDeleteAccountModalBtn.current.click();
-					dispatch(unsubscribeFeature());
+					dispatch(logout());
 					setTimeout(() => {
 						navigate_to('/');
 					}, 3000);
@@ -231,10 +226,7 @@ function Profile() {
 			// will be `vp2qhbrlozfdampgobvt`
 			let user_avatar = user.avatar.split('/');
 			if (user_avatar.length > 10) {
-				avatarFormData.append(
-					'oldAvatarId',
-					user_avatar[11].split('.')[0]
-				);
+				avatarFormData.append('oldAvatarId', user_avatar[11].split('.')[0]);
 			}
 
 			await updateAuthorAvatar(avatarFormData)
@@ -242,7 +234,7 @@ function Profile() {
 					setIsSaved({ ...isSaved, avatar: true });
 					setCurrentAuthor(response.data.author);
 					setFormData(response.data.author);
-					dispatch(saveUserFeature({ token: response.data.token }));
+					dispatch(refreshUserInfo({ token: response.data.token }));
 				})
 				.catch((error) => {
 					setLoadingError((err) => ({ ...err, avatar: error.message }));
@@ -274,7 +266,7 @@ function Profile() {
 						.then((response) => {
 							setIsSaved({ ...isSaved, password: true });
 							setCurrentAuthor(response.data.author);
-							dispatch(saveUserFeature({ token: response.data.token }));
+							dispatch(refreshUserInfo({ token: response.data.token }));
 						})
 						.catch((error) => {
 							setLoadingError((err) => ({ ...err, password: error.message }));
@@ -298,11 +290,11 @@ function Profile() {
 
 	return (
 		<>
-			<section className="profile-page my-5">
-				<div className="container">
-					<div className="row justify-content-center">
-						<div className="col-md-10 my-3">
-							<h1 className="h2 mb-5 special-header">
+			<section className='profile-page my-5'>
+				<div className='container'>
+					<div className='row justify-content-center'>
+						<div className='col-md-10 my-3'>
+							<h1 className='h2 mb-5 special-header'>
 								Personal Account Settings
 							</h1>
 							<ProfileCards

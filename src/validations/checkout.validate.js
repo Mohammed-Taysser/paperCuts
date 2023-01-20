@@ -27,7 +27,7 @@ const checkoutValidation = (formData) => {
 		},
 		{
 			key: 'phone',
-			condition: !validator.isMobilePhone(phone, 'ar-EG'),
+			condition: !phone,
 			msg: null,
 		},
 	];

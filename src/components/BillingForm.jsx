@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { InputField, SelectField, Textarea } from './bootstrap/Form';
-import { useSelector } from 'react-redux';
 import checkoutValidate from '../validations/checkout.validate';
 import { LoadingButton } from './bootstrap/Spinner';
 
 function BillingForm(props) {
-	const { user } = useSelector((state) => state['auth']);
 	const { loading, errors, setErrors } = props;
 
 	const [formData, setFormData] = useState({
-		fullName: user.username || '',
+		fullName: '',
 		country: '',
 		address: '',
 		phone: '',
@@ -34,28 +32,28 @@ function BillingForm(props) {
 
 	return (
 		<form onSubmit={onFormSubmit} noValidate>
-			<div className="row justify-content-center">
+			<div className='row justify-content-center'>
 				<InputField
-					outer="col-lg-6 my-3"
-					id="fullName-input-id"
+					outer='col-lg-6 my-3'
+					id='fullName-input-id'
 					className={errors['fullName'] ? 'is-invalid' : ''}
-					label="full name"
-					name="fullName"
+					label='full name'
+					name='fullName'
 					value={formData['fullName']}
 					onChange={onInputChange}
-					placeholder="full name"
+					placeholder='full name'
 					invalidFeedback={errors['fullName']}
 					required
 				/>
 				<SelectField
-					outer="col-lg-6 my-3"
-					id="country-input-id"
-					label="country"
+					outer='col-lg-6 my-3'
+					id='country-input-id'
+					label='country'
 					className={errors['country'] ? 'is-invalid' : ''}
-					name="country"
+					name='country'
 					value={formData['country']}
 					onChange={onInputChange}
-					placeholder="country"
+					placeholder='country'
 					required
 					options={[
 						{ value: '', label: 'Select Country' },
@@ -67,40 +65,40 @@ function BillingForm(props) {
 					validFeedback
 				/>
 				<InputField
-					outer="col-lg-6 my-3"
-					id="address-input-id"
-					label="address"
-					name="address"
+					outer='col-lg-6 my-3'
+					id='address-input-id'
+					label='address'
+					name='address'
 					value={formData['address']}
 					className={errors['address'] ? 'is-invalid' : ''}
 					onChange={onInputChange}
-					placeholder="address"
+					placeholder='address'
 					required
 					invalidFeedback={errors['address']}
 					validFeedback
 				/>
 				<InputField
-					outer="col-lg-6 my-3"
-					id="phone-input-id"
-					label="phone"
-					name="phone"
+					outer='col-lg-6 my-3'
+					id='phone-input-id'
+					label='phone'
+					name='phone'
 					value={formData['phone']}
 					className={errors['phone'] ? 'is-invalid' : ''}
 					onChange={onInputChange}
-					placeholder="phone"
+					placeholder='phone'
 					required
 					invalidFeedback={errors['phone']}
 					validFeedback
 				/>
 				<Textarea
-					outer="col-12 my-3"
-					id="register-additional-note"
-					label="additional note"
+					outer='col-12 my-3'
+					id='register-additional-note'
+					label='additional note'
 					className={errors['note'] ? 'is-invalid' : ''}
-					name="note"
+					name='note'
 					value={formData['note']}
 					onChange={onInputChange}
-					placeholder="additional note"
+					placeholder='additional note'
 					rows={3}
 					invalidFeedback={errors['note']}
 					validFeedback={
@@ -109,7 +107,7 @@ function BillingForm(props) {
 				/>
 			</div>
 			<hr />
-			<div className="small text-muted">
+			<div className='small text-muted'>
 				Your personal data will be used to process your order, support your
 				experience throughout this website, and for other purposes described in
 				our privacy policy.
@@ -117,7 +115,7 @@ function BillingForm(props) {
 			{loading.order ? (
 				<LoadingButton />
 			) : (
-				<button className="btn btn-aurora btn-lg mt-3" type="submit">
+				<button className='btn btn-aurora btn-lg mt-3' type='submit'>
 					Place Order
 				</button>
 			)}

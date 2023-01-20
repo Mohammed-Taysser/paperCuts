@@ -1,171 +1,158 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { getAllAuthorCart, deleteAllAuthorCart } from '../../api/cart.api';
-import { createOrder } from '../../api/order.api';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { calculateAmount } from '../../redux/features/cart.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import Banner from '../../components/standalone/Banner';
-import CartCoupon from '../../components/CartCoupon';
 import BillingForm from '../../components/BillingForm';
-import usePageTitle from '../../hooks/usePageTitle';
-import Spinner from '../../components/bootstrap/Spinner';
 import Alert from '../../components/bootstrap/Alert';
+import Spinner from '../../components/bootstrap/Spinner';
+import Banner from '../../components/standalone/Banner';
+import usePageTitle from '../../hooks/usePageTitle';
+import { fetchAllCartItems } from '../../redux/features/cart.slice';
+import { createOrder, placeOrder } from '../../redux/features/orders.slice';
+
+const OrderTable = ({ cartState }) => {
+	return (
+		<div className='table-responsive'>
+			<table className='table'>
+				<thead>
+					<tr>
+						<th scope='col' className='text-center' colSpan={3}>
+							Product
+						</th>
+						<th scope='col'>Subtotal</th>
+					</tr>
+					<tr>
+						<td className='text-center'>quantity</td>
+						<td>title</td>
+						<td>price</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					{cartState.items.map((item) => {
+						return (
+							<tr key={item._id}>
+								<td className='text-center'>
+									<span className='text-aurora'>{item.quantity}</span>
+								</td>
+								<td>{item.title}</td>
+								<td>{item.price}</td>
+								<td> ${(item.quantity * item.price).toFixed(2)}</td>
+							</tr>
+						);
+					})}
+					<tr>
+						<td colSpan={4} className='p-4'></td>
+					</tr>
+					<tr>
+						<td>Subtotal</td>
+						<td colSpan={3}> ${cartState.subtotal.toFixed(2)}</td>
+					</tr>
+					<tr>
+						<td>Shipping</td>
+						<td colSpan={3}>Flat rate: ${cartState.shipping}</td>
+					</tr>
+					<tr>
+						<td>Coupons</td>
+						<td colSpan={3}>${cartState.discount}</td>
+					</tr>
+					<tr>
+						<td>Total</td>
+						<td colSpan={3}>
+							<span className='text-aurora'>
+								$
+								{cartState.subtotal + cartState.shipping - cartState.discount >
+								0 ? (
+									(
+										cartState.subtotal +
+										cartState.shipping -
+										cartState.discount
+									).toFixed(2)
+								) : (
+									<>
+										<small className='text-decoration-line-through'>
+											{(cartState.subtotal + cartState.shipping).toFixed(2)}
+										</small>{' '}
+										<strong>Free</strong>
+									</>
+								)}
+							</span>
+							{cartState.discount > 0 && (
+								<small className='text-warning ms-2'>
+									(-{cartState.discount})
+								</small>
+							)}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	);
+};
 
 function Checkout() {
 	const dispatch = useDispatch();
 	usePageTitle('Checkout');
-	const navigate = useNavigate();
-	const {
-		shipping,
-		discount,
-		total: totalPay,
-	} = useSelector((state) => state['cart']);
-	const [cartItems, setCartItems] = useState([]);
-	const [loading, setLoading] = useState({ cart: true, order: false });
+	const navigate_to = useNavigate();
+	const cartState = useSelector((state) => state['cart']);
+	const orderState = useSelector((state) => state['orders']['single']);
+	const { placeOrder: isPlaceOrder } = useSelector((state) => state['orders']);
 	const [errors, setErrors] = useState({});
-	const [loadingError, setLoadingError] = useState({ cart: null, order: null });
 
 	useLayoutEffect(() => {
-		api_get_cart();
+		dispatch(fetchAllCartItems());
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const api_get_cart = () => {
-		getAllAuthorCart()
-			.then((response) => {
-				setCartItems(response.data);
-				dispatch(calculateAmount(response.data));
-			})
-			.catch((error) => {
-				setLoadingError((err) => ({ ...err, cart: error.message }));
-			})
-			.finally(() => {
-				setLoading((load) => ({ ...load, cart: false }));
-			});
-	};
-
-	const api_set_order = async (data) => {
-		setLoading((load) => ({ ...load, order: true }));
-
-		try {
-			const deletedCart = await deleteAllAuthorCart();
-			const createdOrder = await createOrder({
-				...data,
-				items: cartItems,
-				total: totalPay + shipping + discount,
-			});
-			if (deletedCart && createdOrder) {
-				navigate(`/orders/${createdOrder.data._id}`);
-			}
-		} catch (error) {
-			setLoadingError((err) => ({ ...err, order: error.message }));
-		} finally {
-			setLoading((load) => ({ ...load, order: false }));
+	useEffect(() => {
+		if (isPlaceOrder) {
+			dispatch(placeOrder());
+			navigate_to(`/orders/${orderState.order._id}`);
 		}
-	};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [orderState]);
 
-	const show_price = () => {
-		const total_to_pay = shipping + totalPay - discount;
-
-		if (total_to_pay > 0) {
-			return total_to_pay.toFixed(2);
-		} else {
-			return (
-				<>
-					<small className="text-decoration-line-through">
-						{(shipping + totalPay).toFixed(2)}
-					</small>{' '}
-					<strong>Free</strong>
-				</>
-			);
-		}
-	};
-
-	const onFormSubmit = (data) => {
+	const onFormSubmit = (formData) => {
 		setErrors({});
-		api_set_order(data);
-	};
 
-	const CartItemsRows = () => {
-		if (cartItems && cartItems.length > 0) {
-			const rows = cartItems.map((item) => {
-				return (
-					<tr key={item._id}>
-						<td className="text-center">
-							<span className="text-aurora">{item.quantity}</span>
-						</td>
-						<td>{item.title}</td>
-						<td> ${(item.quantity * item.price).toFixed(2)}</td>
-					</tr>
-				);
-			});
-			return <>{rows}</>;
-		} else {
-			return <></>;
-		}
-	};
+		const total =
+			cartState.subtotal + cartState.shipping - cartState.discount > 0
+				? cartState.subtotal + cartState.shipping - cartState.discount
+				: 0;
 
-	const OrderTable = () => {
-		return (
-			<div className="table-responsive">
-				<table className="table">
-					<thead>
-						<tr>
-							<th scope="col">Product</th>
-							<th scope="col">Subtotal</th>
-						</tr>
-					</thead>
-					<tbody>
-						<CartItemsRows />
-						<tr>
-							<td>Subtotal</td>
-							<td colSpan={2}> ${totalPay.toFixed(2)}</td>
-						</tr>
-						<tr>
-							<td>Shipping</td>
-							<td colSpan={2}>Flat rate: ${shipping}</td>
-						</tr>
-						<tr>
-							<td>Coupons</td>
-							<td colSpan={2}>${discount}</td>
-						</tr>
-						<tr>
-							<td>Total</td>
-							<td colSpan={2}>
-								<span className="text-aurora">${show_price()}</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+		dispatch(
+			createOrder({
+				data: {
+					...formData,
+					items: cartState.items,
+					total,
+				},
+			})
 		);
 	};
 
 	const RenderCartInfo = () => {
-		if (loading.cart) {
+		if (cartState.loading) {
 			return <Spinner />;
-		} else if (loadingError.cart) {
-			return <Alert>{loading.cart}</Alert>;
-		} else if (cartItems && cartItems.length > 0) {
-			return <OrderTable />;
+		} else if (cartState.error) {
+			return <Alert>{JSON.stringify(cartState.error)}</Alert>;
+		} else if (cartState.items && cartState.items.length > 0) {
+			return <OrderTable cartState={cartState} />;
 		} else {
 			return <Alert>no cart items yet</Alert>;
 		}
 	};
 
 	const RenderBillingForm = () => {
-		if (loading.cart) {
+		if (orderState.loading) {
 			return <Spinner />;
-		} else if (loadingError.order) {
-			return <Alert>{loadingError.order}</Alert>;
-		} else if (cartItems.length > 0) {
+		} else if (orderState.error) {
+			return <Alert>{JSON.stringify(orderState.error)}</Alert>;
+		} else if (cartState.items.length > 0) {
 			return (
 				<>
-					<CartCoupon />
-					<RenderCartInfo />
-					<h1 className="mt-5">Billing details</h1>
+					<h1 className='mt-5'>Billing details</h1>
 					<BillingForm
-						loading={loading}
+						loading={orderState.loading}
 						onFormSubmit={onFormSubmit}
 						errors={errors}
 						setErrors={setErrors}
@@ -177,15 +164,32 @@ function Checkout() {
 		}
 	};
 
+	const RenderMainContent = () => {
+		if (cartState.loading) {
+			return <Spinner />;
+		} else if (cartState.error) {
+			return <Alert>{JSON.stringify(cartState.error)}</Alert>;
+		} else if (cartState.items && cartState.items.length > 0) {
+			return (
+				<>
+					<RenderCartInfo />
+					<RenderBillingForm />
+				</>
+			);
+		} else {
+			return <Alert>no cart items yet</Alert>;
+		}
+	};
+
 	return (
 		<>
-			<Banner title="Checkout" subtitle="info" />
-			<section className="checkout-page my-5 py-5">
-				<div className="container">
-					<div className="billing-details">
-						<div className="row justify-content-center">
-							<div className="col-md-10">
-								<RenderBillingForm />
+			<Banner title='Checkout' subtitle='info' />
+			<section className='checkout-page my-5 py-5'>
+				<div className='container'>
+					<div className='billing-details'>
+						<div className='row justify-content-center'>
+							<div className='col-md-10'>
+								<RenderMainContent />
 							</div>
 						</div>
 					</div>

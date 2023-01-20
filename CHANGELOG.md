@@ -1,35 +1,41 @@
 
 # paperCuts changelog
 
+## TODO
+
+- [ ] add new image design for author details page
+- [ ] refactor profile page 🙃
+
 ## Upcoming Features
 
-- Create Review Video For Project Functionality
-- Chat With Other Authors
-- Add Followers & Notification & Likes & Dislike
-- Add Reviews For Each Book
-- Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
-- [Admin Dashboard](https://appseed.us/)
-- Add Free Hand Drawer To Get Author Signature
-- Crop Avatar Before Upload
-- Add Toast For Login User
-- Add Real Payment Methods
-- Create Kids Page <https://chapterone.qodeinteractive.com/childrens-books/>
-- Split Visitors To Users & Authors By Role (User By Default)
-- Update UI Layout Use[tabler](https://preview.tabler.io)
-- Create Better Documentation (Like StoryBook)
-- Use UI Library Like [Material UI](https://mui.com/)
-- Add Useful Ui Warning (Like No Cart Items With Cart Icon 💬)
-- Add Require Option On Needed Schema Fields (Server)
-- Redux Not Work As Token Variable At Api Call (Api/Index.Js)
-- Is All Author Appear In `Author` Page. Why ?? (Use `Role` To Specify Use From Author)
-- Checkbox Page Remove Input Values On Invalid Values
-- Use Access Token & Refresh Token
-- Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
-- Why Coupons Is Still Apply After Order Create 🥲, Is This A Feature !!
-- In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
-- Handel Load More Book In Book Page
-- Handel Children Api Call (Only Parent Has Api Call)
-- Use `useMemo` To Store Category & Quantity For Both Book-Details & Author-Details For. For Save Api Quota
+- [ ] Create Review Video For Project Functionality
+- [ ] Chat With Other Authors
+- [ ] Add Followers & Notification & Likes & Dislike
+- [ ] Add Reviews For Each Book
+- [ ] Active Forget-Password Page [`see`](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
+- [ ] [`Admin Dashboard`](https://appseed.us/)
+- [ ] Add Free Hand Drawer To Get Author Signature
+- [ ] Crop Avatar Before Upload
+- [ ] Add Toast For Login User
+- [ ] Add Real Payment Methods
+- [ ] Create Kids Page <https://chapterone.qodeinteractive.com/childrens-books/>
+- [ ] Split Visitors To Users & Authors By Role (User By Default)
+- [ ] Update UI Layout Use[`tabler`](https://preview.tabler.io)
+- [ ] Create Better Documentation (Like StoryBook)
+- [ ] Use UI Library Like [`Material UI`](https://mui.com/)
+- [ ] Add Useful Ui Warning (Like No Cart Items With Cart Icon 💬)
+- [ ] Add Require Option On Needed Schema Fields (Server)
+- [ ] Redux Not Work As Token Variable At Api Call (Api/Index.Js)
+- [ ] Is All Author Appear In `Author` Page. Why ?? (Use `Role` To Specify Use From Author)
+- [ ] Checkbox Page Remove Input Values On Invalid Values
+- [ ] Use Access Token & Refresh Token
+- [ ] Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
+- [ ] Why Coupons Is Still Apply After Order Create 🥲, Is This A Feature !!
+- [ ] In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
+- [ ] Handel Load More Book In Book Page
+- [ ] add pagination
+- [ ] Handel Children Api Call (Only Parent Has Api Call)
+- [ ] Use `useMemo` To Store Category & Quantity For Both Book-Details & Author-Details For. For Save Api Quota
 
 ## Useful Articles
 
@@ -45,7 +51,21 @@
 - <https://www.bezkoder.com/react-jwt-auth/>
 - <https://codesource.io/setting-up-react-authentication-using-jwt/>
 - <https://dev.to/franciscomendes10866/how-to-use-axios-interceptors-b7d>
-- Search For `Login and Registration Form in Node JS + Express + mongoDB`
+
+## 12 Jan 2023
+
+- add new layout for book details taps
+- refactor api calling using `redux` & `redux-toolkit`
+- drop some api calling like testimonials and services and using theme as constants
+- drop using `localStorage`
+- replace `localStorage` with `js-cookie`for saving token
+- move constants from page to single folder
+- use `lazy-loading` for routing
+- create `error-boundary` for handel untracked errors
+- separate complex component to single directory like homepage
+- fix bootstrap files bug
+- fix token not recognize until reload the page
+- refactor books details page as move cart item manipulate to cart page
 
 ## 16 Jun 2022
 
@@ -65,7 +85,7 @@
 - Restructure Sass Files As Pages
 - Drop Reviews
 - Drop Forget-Password Page
-- Drop Book Types [ "Paperback", "Hardcover", "Audiobook", "Audio", "Cd", "Kindle" ]
+- Drop Book Types `[ "Paperback", "Hardcover", "Audiobook", "Audio", "Cd", "Kindle" ]`
 - Remove Books From Profile (Only Add By Admin)
 - Drop Crop Avatar In Profile Page
 - Replace Coupon Context With Redux Cart Store

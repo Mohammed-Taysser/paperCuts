@@ -1,36 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Alert from '../../components/bootstrap/Alert';
 import { RowOfPlaceholderCard } from '../../components/bootstrap/Placeholder';
-import { getAllAuthors } from '../../api/authors.api';
 import SingleAuthor from '../../components/single/SingleAuthor';
 import usePageTitle from '../../hooks/usePageTitle';
-import Alert from '../../components/bootstrap/Alert';
 import WithBanner from '../../layout/paperCuts/WithBanner.paperCuts';
+import { fetchAllAuthor } from '../../redux/features/author.slice';
 
 function Authors() {
 	usePageTitle('Authors');
-	const [authors, setAuthors] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [loadingError, setLoadingError] = useState(false);
+	const dispatch = useDispatch();
+	const authorsState = useSelector((state) => state['authors']['all']);
 
 	useEffect(() => {
-		get_author_api();
+		dispatch(fetchAllAuthor())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const get_author_api = async () => {
-		await getAllAuthors()
-			.then((response) => {
-				setAuthors(response.data);
-			})
-			.catch(() => {
-				setLoadingError(true);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
-	};
 
 	const AuthorsList = () => {
-		let authors_list = authors.map((author) => (
+		let authors_list = authorsState.authors.map((author) => (
 			<SingleAuthor key={author._id} author={author} />
 		));
 		return (
@@ -41,11 +30,11 @@ function Authors() {
 	};
 
 	const RenderAuthors = () => {
-		if (loading) {
+		if (authorsState.loading) {
 			return <RowOfPlaceholderCard num={8} />;
-		} else if (loadingError) {
-			return <Alert> Error While Loading Author </Alert>;
-		} else if (authors && authors.length > 0) {
+		} else if (authorsState.error) {
+			return <Alert> {JSON.stringify(authorsState.error)} </Alert>;
+		} else if (authorsState.authors && authorsState.authors.length > 0) {
 			return <AuthorsList />;
 		} else {
 			return <Alert> no author found </Alert>;

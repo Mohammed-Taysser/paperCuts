@@ -17,7 +17,7 @@ const Stars = (props) => {
 	for (let index = 0; index < stars_length; index++) {
 		temp.push(<FaStar key={index} />);
 	}
-	return <span className="text-warning">{temp}</span>;
+	return <span className='text-warning'>{temp}</span>;
 };
 
 Stars.defaultProps = {

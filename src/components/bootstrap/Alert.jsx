@@ -1,7 +1,6 @@
 import React from 'react';
 import { IoMdAlert, IoMdWarning, IoIosCheckmarkCircle } from 'react-icons/io';
 import 'bootstrap/js/src/alert';
-import '../../assets/scss/components/alert.scss';
 
 /**
  * @use `noIcon` to disable icons
