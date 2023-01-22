@@ -13,8 +13,6 @@
   "events": [],
   "orders": [],
   "services": [],
-  "team": [],
-  "testimonials": [],
   "wishlist": [],
 }
 ```

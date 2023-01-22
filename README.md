@@ -18,23 +18,24 @@ for live demo
 
 ## Used tools
 
-- [`Bootstrap`](https://getbootstrap.com/)
 - [`Axios`](https://axios-http.com/)
-- [`React.js`](https://reactjs.org/)
-- [`React-Router-Dom`](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
-- [`React-Icons`](https://react-icons.github.io/react-icons)
+- [`Bootstrap`](https://getbootstrap.com/)
+- [`js-cookie`](https://www.npmjs.com/package/js-cookie)
+- [`jwt-decode`](https://www.npmjs.com/package/jwt-decode)
 - [`React-Dropzone`](https://react-dropzone.js.org)
-- [`React-Select`](https://react-select.com)
+- [`React-Icons`](https://react-icons.github.io/react-icons)
 - [`React-Redux`](https://react-redux.js.org/)
+- [`React-Router-Dom`](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
+- [`React.js`](https://reactjs.org/)
 - [`Redux-Toolkit`](https://redux-toolkit.js.org/)
-- [`Validator`](https://www.npmjs.com/package/validator)
 - [`sass`](https://sass-lang.com/)
+- [`Validator`](https://www.npmjs.com/package/validator)
 
 ## Quick start 🚀
 
 ### First Step
 
-Download the files from [releases](https://github.com/Mohammed-Taysser/paperCuts/releases) or clone it with **git** version control:
+Download the files from [`releases`](https://github.com/Mohammed-Taysser/paperCuts/releases) or clone it with **git** version control:
 
 ```shell
 git clone https://github.com/Mohammed-Taysser/paperCuts.git
@@ -42,18 +43,10 @@ git clone https://github.com/Mohammed-Taysser/paperCuts.git
 
 ### Second Step
 
-Inside Papercuts Directory Install Dependencies By
+Inside paperCuts Directory Install Dependencies By
 
 ```shell
 npm install
-```
-
-### Pre Last Step
-
-Start Json Server
-
-```shell
-npm run json-server
 ```
 
 ### Last Step
@@ -68,8 +61,8 @@ npm start
 
 - Designed with progressive enhancement in mind.
 - Standalone With Only React
-- Using Hooks & Context & localStorage To Save And Deal With Data
-- Use Redux Store
+- Using Hooks & redux & cookies To Save And Deal With Data
+- Use Redux with redux-toolkit Store
 
 ## Adding Bootstrap
 
@@ -117,8 +110,8 @@ for image url use [`picsum.photos`](https://picsum.photos/)
 
 ## Special Thanks For Inspiration To
 
-- [chapter-one-bookstore](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
-- [dbooks](https://www.dbooks.org/)
+- [`chapter-one-bookstore`](https://themeforest.net/item/chapterone-bookstore-and-publisher-theme/24715791)
+- [`dbooks`](https://www.dbooks.org/)
 
 ## Additional Tips
 
